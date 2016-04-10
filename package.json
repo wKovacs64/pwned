@@ -8,7 +8,7 @@
     "pwned",
     "security"
   ],
-  "author": "Justin R. Hall <justin.r.hall@gmail.com>",
+  "author": "Justin Hall <justin.r.hall@gmail.com>",
   "contributors": [],
   "license": "MIT",
   "main": "bin/pwned.js",
