@@ -206,16 +206,7 @@ function getBreach (name, raw) {
           fetchSpinner.stop();
           console.log();
         }
-        // Temporary hack for the [what I would consider] broken "breach" APIv2
-        // endpoint. It should respond with HTTP status 404 or 400, but instead
-        // responds with 200 and "page not found" HTML in the body. The author
-        // has been notified and this can be removed if the endpoint is changed
-        // to behave like the other endpoints (as documented).
-        if (err instanceof SyntaxError) {
-          console.log('No breach found by that name.');
-        } else {
-          console.error(err.message);
-        }
+        console.error(err.message);
       });
 }
 
