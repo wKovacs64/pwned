@@ -5,4 +5,3 @@ node_js:
   - "iojs"
   - "4"
   - "5"
-  - "node"
