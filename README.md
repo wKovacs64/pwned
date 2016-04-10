@@ -4,7 +4,8 @@
 [Have I been pwned?](https://haveibeenpwned.com/) service using the
 [hibp](https://github.com/wKovacs64/hibp) Node.js module.*
 
-[![Build Status](https://travis-ci.org/wKovacs64/pwned.svg?branch=master)](https://travis-ci.org/wKovacs64/pwned)
+[![npm Version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
 
 ## Installation
 
@@ -129,3 +130,8 @@ Fetching data... \
 ## License
 
 This tool is distributed under the [MIT License](LICENSE.txt).
+
+[npm-image]: https://img.shields.io/npm/v/pwned.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/pwned
+[travis-image]: https://img.shields.io/travis/wKovacs64/pwned.svg?style=flat-square
+[travis-url]: https://travis-ci.org/wKovacs64/pwned
