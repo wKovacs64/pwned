@@ -1,8 +1,12 @@
 # Change Log
 
+## Version 1.0.2 *(2016-04-10)*
+
+* Updated hibp to 1.0.3
+
 ## Version 1.0.1 *(2016-04-10)*
 
-* Updated [hibp](https://github.com/wKovacs64/hibp) to 1.0.2
+* Updated hibp to 1.0.2
 * Removed temporary hack for broken
   '[breach](https://haveibeenpwned.com/API/v2#SingleBreach)' endpoint (moved to
   hibp)
