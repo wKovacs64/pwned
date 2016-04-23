@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.0.5 *(2016-04-22)*
+
+* Updated dependencies
+
 ## Version 1.0.4 *(2016-04-12)*
 
 * Updated hibp to 1.0.4
