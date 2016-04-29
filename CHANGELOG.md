@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.0.6 *(2016-04-29)*
+
+* Fixed grammar typo in usage information
+
 ## Version 1.0.5 *(2016-04-22)*
 
 * Updated dependencies
