@@ -27,7 +27,7 @@ Commands:
   dc [options]             get all data classes in the system
   pa [options] <email>     get all pastes for an account (email address)
 
-Each command has it's own -h (--help) option.
+Each command has its own -h (--help) option.
 
 Options:
 

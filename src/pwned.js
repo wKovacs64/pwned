@@ -23,7 +23,7 @@ fetchSpinner.setSpinnerString('|/-\\');
 // Begin command-line argument configuration
 program
     .usage(`${pkg.name} [option | command]`)
-    .description('Each command has it\'s own -h (--help) option.')
+    .description('Each command has its own -h (--help) option.')
     .version(pkg.version, '-v, --version');
 
 // Fetch and display breach data for an account
