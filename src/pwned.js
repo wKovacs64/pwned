@@ -1,19 +1,19 @@
 #!/usr/bin/env node
-'use strict';
 
 // Enable source map support
-require('source-map-support').install();
+import 'source-map-support/register';
 
 // Polyfill Promise if necessary
+import {polyfill} from 'es6-promise';
 if (global.Promise === undefined) {
-  require('es6-promise').polyfill();
+  polyfill();
 }
 
-const pkg = require('../package.json');
-const hibp = require('hibp');
-const program = require('commander');
-const prettyjson = require('prettyjson');
-const Spinner = require('cli-spinner').Spinner;
+import hibp from 'hibp';
+import program from 'commander';
+import prettyjson from 'prettyjson';
+import {Spinner} from 'cli-spinner';
+import * as pkg from '../package.json';
 
 // Configure the progress spinner
 const fetchSpinner = new Spinner('Fetching data... %s');
