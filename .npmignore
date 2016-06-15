@@ -3,5 +3,6 @@
 .babelrc
 .eslintrc
 .idea
+.travis.yml
 coverage
 src
