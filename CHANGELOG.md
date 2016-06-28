@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 1.0.7 *(2016-06-28)*
+
+* Increased visibility in npm search
+* Minor improvements to development environment
+
 ## Version 1.0.6 *(2016-04-29)*
 
 * Fixed grammar typo in usage information
