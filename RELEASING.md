@@ -13,10 +13,9 @@
         semver.inc('1.0.1-dev.0', 'major') # 2.0.0
 
 2. Update the `CHANGELOG.md` for the impending release.
-3. `git commit -am "Prepare for release X.Y.Z"` (where X.Y.Z is the new
-   version)
-4. `git checkout master && git merge develop --no-ff`
-5. `git tag -a X.Y.Z -m "Version X.Y.Z"` (where X.Y.Z is the new version)
+3. `git commit -am "X.Y.Z"` (where X.Y.Z is the new version)
+4. `git checkout master && git merge develop`
+5. `git tag vX.Y.Z` (where X.Y.Z is the new version)
 6. `git push && git push --tags`
 7. `npm publish`
 8. `git checkout develop`
