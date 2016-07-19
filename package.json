@@ -26,8 +26,9 @@
   },
   "scripts": {
     "compile": "babel src --out-dir lib --source-maps",
+    "lint": "eslint bin src",
     "prepublish": "npm run compile",
-    "test": "eslint bin src && npm run compile"
+    "test": "npm run compile"
   },
   "repository": {
     "type": "git",
