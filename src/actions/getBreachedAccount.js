@@ -22,12 +22,12 @@ export default (account, domain, truncateResults, raw) => {
           spinner.stop();
           console.log();
         }
-        if (!breachData) {
-          console.log('Good news — no pwnage found!');
-        } else if (raw) {
+        if (breachData && raw) {
           console.log(JSON.stringify(breachData));
-        } else {
+        } else if (breachData) {
           console.log(prettyjson.render(breachData));
+        } else if (!breachData && !raw) {
+          console.log('Good news — no pwnage found!');
         }
       })
       .catch((err) => {

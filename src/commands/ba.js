@@ -12,7 +12,8 @@ export default (program) => {
       .description('get all breaches for an account (username or email ' +
           'address)')
       .option('-d, --domain-filter <domain>', 'filter breach data by domain')
-      .option('-r, --raw', 'output the raw JSON data')
+      .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
+          'results found)')
       .option('-t, --truncate', 'truncate data to just the name of each breach')
       .action((account, options) => {
         account = account.trim();

@@ -10,7 +10,8 @@ export default (program) => {
   program
       .command('pa <email>')
       .description('get all pastes for an account (email address)')
-      .option('-r, --raw', 'output the raw JSON data')
+      .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
+          'results found)')
       .action((email, options) => {
         email = email.trim();
         if (email.length) {

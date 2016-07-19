@@ -19,11 +19,11 @@ export default (name, raw) => {
           spinner.stop();
           console.log();
         }
-        if (raw) {
+        if (breachData && raw) {
           console.log(JSON.stringify(breachData));
         } else if (breachData) {
           console.log(prettyjson.render(breachData));
-        } else {
+        } else if (!breachData && !raw) {
           console.log('No breach found by that name.');
         }
       })

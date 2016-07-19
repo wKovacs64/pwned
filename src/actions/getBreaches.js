@@ -19,11 +19,11 @@ export default (domain, raw) => {
           spinner.stop();
           console.log();
         }
-        if (raw) {
+        if (breachData.length && raw) {
           console.log(JSON.stringify(breachData));
         } else if (breachData.length) {
           console.log(prettyjson.render(breachData));
-        } else {
+        } else if (!breachData.length && !raw) {
           console.log('No breaches found.');
         }
       })

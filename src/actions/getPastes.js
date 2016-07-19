@@ -19,11 +19,11 @@ export default (email, raw) => {
           spinner.stop();
           console.log();
         }
-        if (raw) {
+        if (pasteData && raw) {
           console.log(JSON.stringify(pasteData));
         } else if (pasteData) {
           console.log(prettyjson.render(pasteData));
-        } else {
+        } else if (!pasteData && !raw) {
           console.log('Good news — no pwnage found!');
         }
       })
