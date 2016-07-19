@@ -16,7 +16,7 @@ export default (account, domain, truncateResults, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  hibp.breachedAccount(account, domain, truncateResults)
+  Promise.resolve(hibp.breachedAccount(account, domain, truncateResults))
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

@@ -13,7 +13,7 @@ export default (domain, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  hibp.breaches(domain)
+  Promise.resolve(hibp.breaches(domain))
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

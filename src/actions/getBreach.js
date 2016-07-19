@@ -13,7 +13,7 @@ export default (name, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  hibp.breach(name)
+  Promise.resolve(hibp.breach(name))
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

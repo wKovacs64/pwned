@@ -13,7 +13,7 @@ export default (email, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  hibp.pasteAccount(email)
+  Promise.resolve(hibp.pasteAccount(email))
       .then((pasteData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

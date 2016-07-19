@@ -12,7 +12,7 @@ export default (raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  hibp.dataClasses()
+  Promise.resolve(hibp.dataClasses())
       .then((dataClasses) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();
