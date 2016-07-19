@@ -25,11 +25,9 @@
     "lib": "./lib"
   },
   "scripts": {
-    "compile": "npm run compileBin && npm run compileLib",
-    "compileBin": "babel cli --out-dir bin --source-maps",
-    "compileLib": "babel src --out-dir lib --source-maps",
+    "compile": "babel src --out-dir lib --source-maps",
     "prepublish": "npm run compile",
-    "test": "eslint cli src && npm run compile"
+    "test": "eslint bin src && npm run compile"
   },
   "repository": {
     "type": "git",
@@ -53,6 +51,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.9.0",
     "eslint": "^3.1.1",
     "eslint-config-semistandard": "^6.0.2",

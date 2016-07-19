@@ -147,5 +147,4 @@ fabric.properties
 sftp-config.json
 
 ### Babel output ###
-bin/
 lib/

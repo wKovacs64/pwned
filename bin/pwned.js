@@ -1,17 +1,16 @@
 #!/usr/bin/env node
 
 // Enable source map support
-import 'source-map-support/register';
+require('source-map-support').install();
 
 // Polyfill Promise if necessary
-import {polyfill} from 'es6-promise';
 if (global.Promise === undefined) {
-  polyfill();
+  require('es6-promise').polyfill();
 }
 
-import program from 'commander';
-import * as pkg from '../package.json';
-import addCommands from '../lib/commands';
+var program = require('commander');
+var pkg = require('../package.json');
+var addCommands = require('../lib/commands');
 
 // Begin command-line argument configuration
 program
@@ -23,7 +22,7 @@ program
 addCommands(program);
 
 // Display help and exit if unknown arguments are provided
-program.on('*', () => {
+program.on('*', function () {
   program.help();
 });
 
