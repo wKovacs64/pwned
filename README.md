@@ -16,7 +16,7 @@ npm install pwned -g
 ## Usage
 
 ```
-Usage:  pwned [option | command]
+Usage: pwned [option | command]
 
 
 Commands:

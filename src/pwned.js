@@ -15,7 +15,7 @@ import addCommands from './commands';
 
 // Begin command-line argument configuration
 program
-    .usage(`${pkg.name} [option | command]`)
+    .usage('[option | command]')
     .description('Each command has its own -h (--help) option.')
     .version(pkg.version, '-v, --version');
 
@@ -27,10 +27,10 @@ program.on('*', () => {
   program.help();
 });
 
+// Initiate the parser
+program.parse(process.argv);
+
 // Display help and exit if no arguments are provided
 if (!process.argv.slice(2).length) {
   program.help();
 }
-
-// Initiate the parser
-program.parse(process.argv);
