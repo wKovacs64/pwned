@@ -11,7 +11,7 @@ if (global.Promise === undefined) {
 
 import program from 'commander';
 import * as pkg from '../package.json';
-import addCommands from './commands';
+import addCommands from '../lib/commands';
 
 // Begin command-line argument configuration
 program

@@ -5,4 +5,5 @@
 .idea
 .travis.yml
 coverage
+cli
 src

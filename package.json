@@ -20,10 +20,16 @@
   "bin": {
     "pwned": "./bin/pwned.js"
   },
+  "directories": {
+    "bin": "./bin",
+    "lib": "./lib"
+  },
   "scripts": {
-    "compile": "babel src --out-dir bin --source-maps",
+    "compile": "npm run compileBin && npm run compileLib",
+    "compileBin": "babel cli --out-dir bin --source-maps",
+    "compileLib": "babel src --out-dir lib --source-maps",
     "prepublish": "npm run compile",
-    "test": "eslint src && npm run compile"
+    "test": "eslint cli src && npm run compile"
   },
   "repository": {
     "type": "git",
