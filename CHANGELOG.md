@@ -1,5 +1,12 @@
 # Change Log
 
+## Version 1.0.8 *(2016-07-21)*
+
+* Normalized command behavior (suppress output for empty results in raw mode)
+* Fixed usage output for unknown or missing commands
+* Restructured project
+* Updated dependencies
+
 ## Version 1.0.7 *(2016-06-28)*
 
 * Increased visibility in npm search
