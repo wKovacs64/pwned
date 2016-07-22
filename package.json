@@ -25,7 +25,8 @@
     "lib": "./lib"
   },
   "scripts": {
-    "compile": "babel src --out-dir lib --source-maps",
+    "clean": "rimraf lib",
+    "compile": "npm run clean && babel src --out-dir lib --source-maps",
     "lint": "eslint bin src",
     "prepublish": "npm run compile",
     "test": "npm run compile"
@@ -58,7 +59,8 @@
     "eslint-config-semistandard": "^6.0.2",
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-promise": "^2.0.0",
-    "eslint-plugin-standard": "^2.0.0"
+    "eslint-plugin-standard": "^2.0.0",
+    "rimraf": "^2.5.4"
   },
   "preferGlobal": true
 }
