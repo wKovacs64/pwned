@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-// Enable source map support
-require('source-map-support').install();
-
 // Polyfill Promise if necessary
 if (global.Promise === undefined) {
   require('es6-promise').polyfill();
