@@ -1,4 +1,4 @@
-import getBreach from '../actions/getBreach';
+import breach from '../actions/breach';
 
 /**
  * Initializes the 'breach' command.
@@ -12,12 +12,5 @@ export default (program) => {
       .description('get a single breached site by breach name')
       .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
           'results found)')
-      .action((name, options) => {
-        name = name.trim();
-        if (name.length) {
-          getBreach(name, options.raw);
-        } else {
-          program.help();
-        }
-      });
+      .action(breach);
 };

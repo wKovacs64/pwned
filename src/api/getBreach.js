@@ -7,13 +7,13 @@ import spinner from '../utils/spinner';
  *
  * @param {string} name the name of a breach in the system
  * @param {boolean} [raw] output the raw JSON data (default: false)
- * @returns {undefined}
+ * @returns {Promise} the resulting Promise where output is rendered
  */
 export default (name, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  Promise.resolve(hibp.breach(name))
+  return Promise.resolve(hibp.breach(name))
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

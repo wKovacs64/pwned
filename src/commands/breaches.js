@@ -1,4 +1,4 @@
-import getBreaches from '../actions/getBreaches';
+import breaches from '../actions/breaches';
 
 /**
  * Initializes the 'breaches' command.
@@ -13,7 +13,5 @@ export default (program) => {
       .option('-d, --domain-filter <domain>', 'filter breach data by domain')
       .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
           'results found)')
-      .action((options) => {
-        getBreaches(options.domainFilter, options.raw);
-      });
+      .action(breaches);
 };

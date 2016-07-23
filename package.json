@@ -25,11 +25,26 @@
     "lib": "./lib"
   },
   "scripts": {
-    "clean": "rimraf lib",
-    "compile": "npm run clean && babel src --out-dir lib --source-maps",
-    "lint": "eslint bin src",
-    "prepublish": "npm run compile",
-    "test": "npm run compile"
+    "clean": "npm run srcClean && npm run testClean",
+    "compile": "npm run clean && npm run srcCompile && npm run testCompile",
+    "coverage": "npm run compile && nyc mocha --recursive lib-test",
+    "lint": "eslint bin src test",
+    "prepublish": "npm run srcClean && npm run srcCompile",
+    "srcClean": "rimraf ./lib",
+    "srcCompile": "babel src --out-dir lib --source-maps",
+    "test": "npm run coverage",
+    "testClean": "rimraf ./lib-test ./coverage",
+    "testCompile": "babel test --out-dir lib-test --source-maps"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "**/lib/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
   },
   "repository": {
     "type": "git",
@@ -60,7 +75,12 @@
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-promise": "^2.0.0",
     "eslint-plugin-standard": "^2.0.0",
-    "rimraf": "^2.5.4"
+    "expect.js": "^0.3.1",
+    "mocha": "^2.5.3",
+    "mockery": "^1.7.0",
+    "nyc": "^7.1.0",
+    "rimraf": "^2.5.4",
+    "sinon": "^1.17.4"
   },
   "preferGlobal": true
 }

@@ -1,4 +1,4 @@
-import getDataClasses from '../actions/getDataClasses';
+import dc from '../actions/dc';
 
 /**
  * Initializes the 'dc' command.
@@ -11,7 +11,5 @@ export default (program) => {
       .command('dc')
       .description('get all data classes in the system')
       .option('-r, --raw', 'output the raw JSON data')
-      .action((options) => {
-        getDataClasses(options.raw);
-      });
+      .action(dc);
 };

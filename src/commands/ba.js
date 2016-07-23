@@ -1,4 +1,4 @@
-import getBreachedAccount from '../actions/getBreachedAccount';
+import ba from '../actions/ba';
 
 /**
  * Initializes the 'ba' command.
@@ -15,15 +15,5 @@ export default (program) => {
       .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
           'results found)')
       .option('-t, --truncate', 'truncate data to just the name of each breach')
-      .action((account, options) => {
-        account = account.trim();
-        if (account.length) {
-          getBreachedAccount(account,
-              options.domainFilter,
-              options.truncate,
-              options.raw);
-        } else {
-          program.help();
-        }
-      });
+      .action(ba);
 };

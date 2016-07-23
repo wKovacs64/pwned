@@ -7,13 +7,13 @@ import spinner from '../utils/spinner';
  *
  * @param {string} email the email address to query
  * @param {boolean} [raw] output the raw JSON data (default: false)
- * @returns {undefined}
+ * @returns {Promise} the resulting Promise where output is rendered
  */
 export default (email, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  Promise.resolve(hibp.pasteAccount(email))
+  return Promise.resolve(hibp.pasteAccount(email))
       .then((pasteData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

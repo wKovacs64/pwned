@@ -10,13 +10,13 @@ import spinner from '../utils/spinner';
  * @param {boolean} [truncateResults] truncate the results to only include the
  * name of each breach (default: false)
  * @param {boolean} [raw] output the raw JSON data (default: false)
- * @returns {undefined}
+ * @returns {Promise} the resulting Promise where output is rendered
  */
 export default (account, domain, truncateResults, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  Promise.resolve(hibp.breachedAccount(account, domain, truncateResults))
+  return Promise.resolve(hibp.breachedAccount(account, domain, truncateResults))
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

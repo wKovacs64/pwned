@@ -7,13 +7,13 @@ import spinner from '../utils/spinner';
  *
  * @param {string} [domain] a domain by which to filter the results
  * @param {boolean} [raw] output the raw JSON data (default: false)
- * @returns {undefined}
+ * @returns {Promise} the resulting Promise where output is rendered
  */
 export default (domain, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  Promise.resolve(hibp.breaches(domain))
+  return Promise.resolve(hibp.breaches(domain))
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

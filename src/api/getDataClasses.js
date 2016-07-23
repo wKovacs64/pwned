@@ -6,13 +6,13 @@ import spinner from '../utils/spinner';
  * Fetches and outputs all data classes in the system.
  *
  * @param {boolean} [raw] output the raw JSON data (default: false)
- * @returns {undefined}
+ * @returns {Promise} the resulting Promise where output is rendered
  */
 export default (raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  Promise.resolve(hibp.dataClasses())
+  return Promise.resolve(hibp.dataClasses())
       .then((dataClasses) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

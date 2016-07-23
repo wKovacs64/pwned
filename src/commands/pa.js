@@ -1,4 +1,4 @@
-import getPastes from '../actions/getPastes';
+import pa from '../actions/pa';
 
 /**
  * Initializes the 'pa' command.
@@ -12,12 +12,5 @@ export default (program) => {
       .description('get all pastes for an account (email address)')
       .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
           'results found)')
-      .action((email, options) => {
-        email = email.trim();
-        if (email.length) {
-          getPastes(email, options.raw);
-        } else {
-          program.help();
-        }
-      });
+      .action(pa);
 };
