@@ -1,5 +1,6 @@
 import hibp from 'hibp';
 import prettyjson from 'prettyjson';
+import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 /**
@@ -17,21 +18,21 @@ export default (domain, raw) => {
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();
-          console.log();
+          logger.log();
         }
         if (breachData.length && raw) {
-          console.log(JSON.stringify(breachData));
+          logger.log(JSON.stringify(breachData));
         } else if (breachData.length) {
-          console.log(prettyjson.render(breachData));
+          logger.log(prettyjson.render(breachData));
         } else if (!breachData.length && !raw) {
-          console.log('No breaches found.');
+          logger.log('No breaches found.');
         }
       })
       .catch((err) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();
-          console.log();
+          logger.log();
         }
-        console.error(err.message);
+        logger.error(err.message);
       });
 };
