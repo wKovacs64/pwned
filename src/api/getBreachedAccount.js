@@ -1,5 +1,6 @@
 import hibp from 'hibp';
 import prettyjson from 'prettyjson';
+import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 /**
@@ -20,21 +21,21 @@ export default (account, domain, truncateResults, raw) => {
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();
-          console.log();
+          logger.log();
         }
         if (breachData && raw) {
-          console.log(JSON.stringify(breachData));
+          logger.log(JSON.stringify(breachData));
         } else if (breachData) {
-          console.log(prettyjson.render(breachData));
+          logger.log(prettyjson.render(breachData));
         } else if (!breachData && !raw) {
-          console.log('Good news — no pwnage found!');
+          logger.log('Good news — no pwnage found!');
         }
       })
       .catch((err) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();
-          console.log();
+          logger.log();
         }
-        console.error(err.message);
+        logger.error(err.message);
       });
 };

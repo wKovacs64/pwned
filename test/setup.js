@@ -10,3 +10,14 @@ export const data = {
   },
   none: ''
 };
+
+export const loggerMock = {
+  error: () => {
+  },
+  info: () => {
+  },
+  log: () => {
+  },
+  warn: () => {
+  }
+};
