@@ -8,6 +8,9 @@ export const data = {
   breach: {
     foo: 'bar'
   },
+  error: 'foo',
+  found: 'bar',
+  notFound: 'baz',
   email: 'foo@bar.baz',
   message: 'Wubba lubba dub dub!',
   none: ' ',
