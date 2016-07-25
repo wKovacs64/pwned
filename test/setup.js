@@ -9,7 +9,11 @@ export const data = {
     foo: 'bar'
   },
   email: 'foo@bar.baz',
-  none: ' '
+  message: 'Wubba lubba dub dub!',
+  none: ' ',
+  obj: {
+    foo: 'bar'
+  }
 };
 
 export const loggerMock = {
