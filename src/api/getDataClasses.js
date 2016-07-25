@@ -1,5 +1,6 @@
 import hibp from 'hibp';
 import prettyjson from 'prettyjson';
+import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 /**
@@ -16,19 +17,22 @@ export default (raw) => {
       .then((dataClasses) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();
-          console.log();
+          logger.log();
         }
-        if (raw) {
-          console.log(JSON.stringify(dataClasses));
-        } else {
-          console.log(prettyjson.render(dataClasses));
+        if (dataClasses.length && raw) {
+          logger.log(JSON.stringify(dataClasses));
+        } else if (dataClasses.length) {
+          logger.log(prettyjson.render(dataClasses));
+        } else if (!dataClasses.length && !raw) {
+          logger.log('No data classes found. This is unexpected - the remote ' +
+              'API may be having difficulties.');
         }
       })
       .catch((err) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();
-          console.log();
+          logger.log();
         }
-        console.error(err.message);
+        logger.error(err.message);
       });
 };
