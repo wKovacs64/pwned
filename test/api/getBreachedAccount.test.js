@@ -9,11 +9,11 @@ import {data, loggerMock} from '../setup';
 describe('api: getBreachedAccount', () => {
   const hibpMock = {
     breachedAccount: (account) => {
-      if (account === data.accountFound) {
+      if (account === data.found) {
         return Promise.resolve(data.breach);
-      } else if (account === data.accountNotFound) {
+      } else if (account === data.notFound) {
         return Promise.resolve(undefined);
-      } else if (account === data.accountError) {
+      } else if (account === data.error) {
         return Promise.reject(new Error('Set sail for fail!'));
       }
     }
@@ -59,13 +59,13 @@ describe('api: getBreachedAccount', () => {
   // ////////////////// spinner.start() ////////////////// //
 
   it('should call spinner.start (!raw)', (done) => {
-    getBreachedAccount(data.accountNotFound, data.none, false, false);
+    getBreachedAccount(data.notFound, data.none, false, false);
     expect(spinnerStart.called).to.be(true);
     done();
   });
 
   it('should not call spinner.start (raw)', (done) => {
-    getBreachedAccount(data.accountNotFound, data.none, false, true);
+    getBreachedAccount(data.notFound, data.none, false, true);
     expect(spinnerStart.called).to.be(false);
     done();
   });
@@ -74,7 +74,7 @@ describe('api: getBreachedAccount', () => {
 
   it('should call spinner.stop (non-error results, !raw)', (done) => {
     expect(spinnerStop.called).to.be(false);
-    getBreachedAccount(data.accountNotFound, data.none, false, false)
+    getBreachedAccount(data.notFound, data.none, false, false)
         .then(() => {
           expect(spinnerStop.called).to.be(true);
           done();
@@ -84,7 +84,7 @@ describe('api: getBreachedAccount', () => {
 
   it('should not call spinner.stop (non-error results, raw)', (done) => {
     expect(spinnerStop.called).to.be(false);
-    getBreachedAccount(data.accountNotFound, data.none, false, true)
+    getBreachedAccount(data.notFound, data.none, false, true)
         .then(() => {
           expect(spinnerStop.called).to.be(false);
           done();
@@ -94,9 +94,9 @@ describe('api: getBreachedAccount', () => {
 
   // ////////////////// breachData ////////////////// //
 
-  it('should call logger.log (accountFound && !raw)', (done) => {
+  it('should call logger.log (found && !raw)', (done) => {
     expect(loggerMock.log.called).to.be(false);
-    getBreachedAccount(data.accountFound, data.none, false, false)
+    getBreachedAccount(data.found, data.none, false, false)
         .then(() => {
           expect(loggerMock.log.called).to.be(true);
           done();
@@ -104,9 +104,9 @@ describe('api: getBreachedAccount', () => {
         .catch(done);
   });
 
-  it('should call logger.log (accountFound && raw)', (done) => {
+  it('should call logger.log (found && raw)', (done) => {
     expect(loggerMock.log.called).to.be(false);
-    getBreachedAccount(data.accountFound, data.none, false, true)
+    getBreachedAccount(data.found, data.none, false, true)
         .then(() => {
           expect(loggerMock.log.called).to.be(true);
           done();
@@ -114,9 +114,9 @@ describe('api: getBreachedAccount', () => {
         .catch(done);
   });
 
-  it('should call logger.log (accountNotFound && !raw)', (done) => {
+  it('should call logger.log (notFound && !raw)', (done) => {
     expect(loggerMock.log.called).to.be(false);
-    getBreachedAccount(data.accountNotFound, data.none, false, false)
+    getBreachedAccount(data.notFound, data.none, false, false)
         .then(() => {
           expect(loggerMock.log.called).to.be(true);
           done();
@@ -124,9 +124,9 @@ describe('api: getBreachedAccount', () => {
         .catch(done);
   });
 
-  it('should not call logger.log (accountNotFound && raw)', (done) => {
+  it('should not call logger.log (notFound && raw)', (done) => {
     expect(loggerMock.log.called).to.be(false);
-    getBreachedAccount(data.accountNotFound, data.none, false, true)
+    getBreachedAccount(data.notFound, data.none, false, true)
         .then(() => {
           expect(loggerMock.log.called).to.be(false);
           done();
@@ -136,9 +136,9 @@ describe('api: getBreachedAccount', () => {
 
   // ////////////////// error ////////////////// //
 
-  it('should call spinner.stop (accountError && !raw)', (done) => {
+  it('should call spinner.stop (error && !raw)', (done) => {
     expect(spinnerStop.called).to.be(false);
-    getBreachedAccount(data.accountError, data.none, false, false)
+    getBreachedAccount(data.error, data.none, false, false)
         .then(() => {
           expect(spinnerStop.called).to.be(true);
           done();
@@ -146,9 +146,9 @@ describe('api: getBreachedAccount', () => {
         .catch(done);
   });
 
-  it('should not call spinner.stop (accountError && raw)', (done) => {
+  it('should not call spinner.stop (error && raw)', (done) => {
     expect(spinnerStop.called).to.be(false);
-    getBreachedAccount(data.accountError, data.none, false, true)
+    getBreachedAccount(data.error, data.none, false, true)
         .then(() => {
           expect(spinnerStop.called).to.be(false);
           done();
@@ -156,9 +156,9 @@ describe('api: getBreachedAccount', () => {
         .catch(done);
   });
 
-  it('should call logger.error (accountError)', (done) => {
+  it('should call logger.error (error)', (done) => {
     expect(loggerMock.error.called).to.be(false);
-    getBreachedAccount(data.accountError, data.none, false, false)
+    getBreachedAccount(data.error, data.none, false, false)
         .then(() => {
           expect(loggerMock.error.called).to.be(true);
           done();

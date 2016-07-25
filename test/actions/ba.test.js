@@ -36,7 +36,7 @@ describe('action: ba', () => {
 
   it('should call getBreachedAccount when passed a non-empty string',
       (done) => {
-        ba(data.accountNotFound, command);
+        ba(data.notFound, command);
         expect(getBreachedAccountStub.called).to.be(true);
         done();
       });

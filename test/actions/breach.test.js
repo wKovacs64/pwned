@@ -35,7 +35,7 @@ describe('action: breach', () => {
   });
 
   it('should call getBreach when passed a non-empty string', (done) => {
-    breach(data.accountNotFound, command);
+    breach(data.notFound, command);
     expect(getBreachStub.called).to.be(true);
     done();
   });
