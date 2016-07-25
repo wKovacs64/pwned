@@ -107,7 +107,7 @@ describe('api: getDataClasses', () => {
     getDataClasses = require('../../lib/api/getDataClasses');
     getDataClasses(false)
         .then(() => {
-          expect(loggerMock.log.called).to.be(true);
+          expect(loggerMock.log.callCount).to.be(2);
           done();
         })
         .catch(done);
@@ -119,7 +119,7 @@ describe('api: getDataClasses', () => {
     getDataClasses = require('../../lib/api/getDataClasses');
     getDataClasses(true)
         .then(() => {
-          expect(loggerMock.log.called).to.be(true);
+          expect(loggerMock.log.callCount).to.be(1);
           done();
         })
         .catch(done);
@@ -131,7 +131,7 @@ describe('api: getDataClasses', () => {
     getDataClasses = require('../../lib/api/getDataClasses');
     getDataClasses(false)
         .then(() => {
-          expect(loggerMock.log.called).to.be(true);
+          expect(loggerMock.log.callCount).to.be(2);
           done();
         })
         .catch(done);

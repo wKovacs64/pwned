@@ -98,7 +98,7 @@ describe('api: getBreachedAccount', () => {
     expect(loggerMock.log.called).to.be(false);
     getBreachedAccount(data.found, data.none, false, false)
         .then(() => {
-          expect(loggerMock.log.called).to.be(true);
+          expect(loggerMock.log.callCount).to.be(2);
           done();
         })
         .catch(done);
@@ -108,7 +108,7 @@ describe('api: getBreachedAccount', () => {
     expect(loggerMock.log.called).to.be(false);
     getBreachedAccount(data.found, data.none, false, true)
         .then(() => {
-          expect(loggerMock.log.called).to.be(true);
+          expect(loggerMock.log.callCount).to.be(1);
           done();
         })
         .catch(done);
@@ -118,7 +118,7 @@ describe('api: getBreachedAccount', () => {
     expect(loggerMock.log.called).to.be(false);
     getBreachedAccount(data.notFound, data.none, false, false)
         .then(() => {
-          expect(loggerMock.log.called).to.be(true);
+          expect(loggerMock.log.callCount).to.be(2);
           done();
         })
         .catch(done);
