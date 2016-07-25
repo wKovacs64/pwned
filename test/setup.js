@@ -2,15 +2,12 @@ import {polyfill} from 'es6-promise';
 polyfill();
 
 export const data = {
-  breach: {
-    foo: 'bar'
-  },
-  error: 'foo',
-  found: 'bar',
-  notFound: 'baz',
   email: 'foo@bar.baz',
   emptyArray: [],
+  error: 'foo',
+  found: 'bar',
   message: 'Wubba lubba dub dub!',
+  notFound: 'baz',
   none: ' ',
   obj: {
     foo: 'bar'

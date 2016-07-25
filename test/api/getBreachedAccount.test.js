@@ -10,7 +10,7 @@ describe('api: getBreachedAccount', () => {
   const hibpMock = {
     breachedAccount: (account) => {
       if (account === data.found) {
-        return Promise.resolve(data.breach);
+        return Promise.resolve(data.obj);
       } else if (account === data.notFound) {
         return Promise.resolve(undefined);
       } else if (account === data.error) {

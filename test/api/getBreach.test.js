@@ -10,7 +10,7 @@ describe('api: getBreach', () => {
   const hibpMock = {
     breach: (breachName) => {
       if (breachName === data.found) {
-        return Promise.resolve(data.breach);
+        return Promise.resolve(data.obj);
       } else if (breachName === data.notFound) {
         return Promise.resolve(undefined);
       } else if (breachName === data.error) {
