@@ -7,9 +7,9 @@ import mockery from 'mockery';
 import sinon from 'sinon';
 import {data} from '../setup';
 
-describe('action: ba', () => {
-  const getBreachedAccountStub = sinon.stub();
-  let ba;
+describe('action: pa', () => {
+  const getPastesStub = sinon.stub();
+  let pa;
   let command;
 
   before(() => {
@@ -17,8 +17,8 @@ describe('action: ba', () => {
       useCleanCache: true,
       warnOnUnregistered: false
     });
-    mockery.registerMock('../api/getBreachedAccount', getBreachedAccountStub);
-    ba = require('../../lib/actions/ba');
+    mockery.registerMock('../api/getPastes', getPastesStub);
+    pa = require('../../lib/actions/pa');
     command = new commander.Command('');
   });
 
@@ -29,15 +29,14 @@ describe('action: ba', () => {
 
   it('should call command help when passed an empty string', (done) => {
     const help = sinon.stub(command, 'help').returns();
-    ba(data.none, command);
+    pa(data.none, command);
     expect(help.called).to.be(true);
     done();
   });
 
-  it('should call getBreachedAccount when passed a non-empty string',
-      (done) => {
-        ba(data.accountNotFound, command);
-        expect(getBreachedAccountStub.called).to.be(true);
-        done();
-      });
+  it('should call getPastes when passed a non-empty string', (done) => {
+    pa(data.email, command);
+    expect(getPastesStub.called).to.be(true);
+    done();
+  });
 });

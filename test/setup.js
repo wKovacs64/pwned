@@ -8,7 +8,8 @@ export const data = {
   breach: {
     foo: 'bar'
   },
-  none: ''
+  email: 'foo@bar.baz',
+  none: ' '
 };
 
 export const loggerMock = {
