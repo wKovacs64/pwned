@@ -8,10 +8,20 @@
   },
   "extends": "semistandard",
   "rules": {
+    "indent": [
+      "error",
+      2,
+      {
+        "MemberExpression": 2,
+        "SwitchCase": 1
+      }
+    ],
     "max-len": [
       "error",
       80
     ],
-    "valid-jsdoc": 2
+    "valid-jsdoc": [
+      "error"
+    ]
   }
 }
