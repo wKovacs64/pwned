@@ -26,13 +26,13 @@
   },
   "scripts": {
     "clean": "npm run srcClean && npm run testClean",
-    "compile": "npm run clean && npm run srcCompile && npm run testCompile",
-    "coverage": "npm run compile && nyc mocha --recursive lib-test",
+    "compile": "npm run srcCompile && npm run testCompile",
+    "coverage": "nyc mocha --recursive lib-test",
     "lint": "eslint bin src test",
     "prepublish": "npm run srcClean && npm run srcCompile",
     "srcClean": "rimraf ./lib",
     "srcCompile": "babel src --out-dir lib --source-maps",
-    "test": "npm run coverage",
+    "test": "npm run clean && npm run compile && npm run coverage",
     "testClean": "rimraf ./lib-test ./coverage",
     "testCompile": "babel test --out-dir lib-test --source-maps"
   },
