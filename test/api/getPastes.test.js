@@ -98,7 +98,7 @@ describe('api: getPastes', () => {
     expect(loggerMock.log.called).to.be(false);
     getPastes(data.found, false)
         .then(() => {
-          expect(loggerMock.log.callCount).to.be(2);
+          expect(loggerMock.log.callCount).to.be(1);
           done();
         })
         .catch(done);
@@ -118,7 +118,7 @@ describe('api: getPastes', () => {
     expect(loggerMock.log.called).to.be(false);
     getPastes(data.notFound, false)
         .then(() => {
-          expect(loggerMock.log.callCount).to.be(2);
+          expect(loggerMock.log.callCount).to.be(1);
           done();
         })
         .catch(done);
@@ -160,6 +160,7 @@ describe('api: getPastes', () => {
     expect(loggerMock.error.called).to.be(false);
     getPastes(data.error, false)
         .then(() => {
+          expect(loggerMock.log.called).to.be(false);
           expect(loggerMock.error.called).to.be(true);
           done();
         })

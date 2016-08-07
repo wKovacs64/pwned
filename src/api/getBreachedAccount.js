@@ -25,8 +25,7 @@ export default (account, domain, truncate, raw) => {
       }))
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
-          spinner.stop();
-          logger.log();
+          spinner.stop(true);
         }
         if (breachData && raw) {
           logger.log(JSON.stringify(breachData));
@@ -38,8 +37,7 @@ export default (account, domain, truncate, raw) => {
       })
       .catch((err) => {
         if (!raw && process.stdout.isTTY) {
-          spinner.stop();
-          logger.log();
+          spinner.stop(true);
         }
         logger.error(err.message);
       });

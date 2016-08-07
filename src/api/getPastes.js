@@ -18,8 +18,7 @@ export default (email, raw) => {
       .resolve(hibp.pasteAccount(email))
       .then((pasteData) => {
         if (!raw && process.stdout.isTTY) {
-          spinner.stop();
-          logger.log();
+          spinner.stop(true);
         }
         if (pasteData && raw) {
           logger.log(JSON.stringify(pasteData));
@@ -31,8 +30,7 @@ export default (email, raw) => {
       })
       .catch((err) => {
         if (!raw && process.stdout.isTTY) {
-          spinner.stop();
-          logger.log();
+          spinner.stop(true);
         }
         logger.error(err.message);
       });

@@ -18,8 +18,7 @@ export default (name, raw) => {
       .resolve(hibp.breach(name))
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
-          spinner.stop();
-          logger.log();
+          spinner.stop(true);
         }
         if (breachData && raw) {
           logger.log(JSON.stringify(breachData));
@@ -31,8 +30,7 @@ export default (name, raw) => {
       })
       .catch((err) => {
         if (!raw && process.stdout.isTTY) {
-          spinner.stop();
-          logger.log();
+          spinner.stop(true);
         }
         logger.error(err.message);
       });

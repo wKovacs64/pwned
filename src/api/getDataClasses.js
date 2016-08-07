@@ -17,8 +17,7 @@ export default (raw) => {
       .resolve(hibp.dataClasses())
       .then((dataClasses) => {
         if (!raw && process.stdout.isTTY) {
-          spinner.stop();
-          logger.log();
+          spinner.stop(true);
         }
         if (dataClasses.length && raw) {
           logger.log(JSON.stringify(dataClasses));
@@ -31,8 +30,7 @@ export default (raw) => {
       })
       .catch((err) => {
         if (!raw && process.stdout.isTTY) {
-          spinner.stop();
-          logger.log();
+          spinner.stop(true);
         }
         logger.error(err.message);
       });

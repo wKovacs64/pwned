@@ -99,7 +99,7 @@ describe('api: getBreaches', () => {
     expect(loggerMock.log.called).to.be(false);
     getBreaches(data.found, false)
         .then(() => {
-          expect(loggerMock.log.callCount).to.be(2);
+          expect(loggerMock.log.callCount).to.be(1);
           done();
         })
         .catch(done);
@@ -119,7 +119,7 @@ describe('api: getBreaches', () => {
     expect(loggerMock.log.called).to.be(false);
     getBreaches(data.notFound, false)
         .then(() => {
-          expect(loggerMock.log.callCount).to.be(2);
+          expect(loggerMock.log.callCount).to.be(1);
           done();
         })
         .catch(done);
@@ -161,6 +161,7 @@ describe('api: getBreaches', () => {
     expect(loggerMock.error.called).to.be(false);
     getBreaches(data.error, false)
         .then(() => {
+          expect(loggerMock.log.called).to.be(false);
           expect(loggerMock.error.called).to.be(true);
           done();
         })
