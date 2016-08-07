@@ -4,13 +4,13 @@
    branch.
 
         # Patch
-        semver.inc('1.0.1-dev.0', 'patch') # 1.0.1
+        semver -i patch 1.0.1-dev.0 # 1.0.1
 
         # Minor
-        semver.inc('1.0.1-dev.0', 'minor') # 1.1.0
+        semver -i minor 1.0.1-dev.0 # 1.1.0
 
         # Major
-        semver.inc('1.0.1-dev.0', 'major') # 2.0.0
+        semver -i major 1.0.1-dev.0 # 2.0.0
 
 2. Update the `CHANGELOG.md` for the impending release.
 3. `git commit -am "X.Y.Z"` (where X.Y.Z is the new version)
@@ -22,7 +22,7 @@
 9. Update the version in `package.json` to the next dev version in the
    `develop` branch.
 
-        semver.inc('1.0.1', 'prerelease', 'dev') # 1.0.2-dev.0
+        semver -i prerelease --preid dev 1.0.1 # 1.0.2-dev.0
 
 10. `git commit -am "Prepare next development version"`
 11. `git push`
