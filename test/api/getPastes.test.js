@@ -12,9 +12,9 @@ describe('api: getPastes', () => {
       if (email === data.found) {
         return Promise.resolve(data.objArray);
       } else if (email === data.notFound) {
-        return Promise.resolve(undefined);
+        return Promise.resolve(null);
       } else if (email === data.error) {
-        return Promise.reject(new Error('Set sail for fail!'));
+        return Promise.reject(new Error(data.errorMsg));
       }
     }
   };

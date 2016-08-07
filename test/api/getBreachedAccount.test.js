@@ -12,9 +12,9 @@ describe('api: getBreachedAccount', () => {
       if (account === data.found) {
         return Promise.resolve(data.obj);
       } else if (account === data.notFound) {
-        return Promise.resolve(undefined);
+        return Promise.resolve(null);
       } else if (account === data.error) {
-        return Promise.reject(new Error('Set sail for fail!'));
+        return Promise.reject(new Error(data.errorMsg));
       }
     }
   };

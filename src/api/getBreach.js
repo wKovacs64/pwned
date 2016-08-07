@@ -14,7 +14,8 @@ export default (name, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(hibp.breach(name))
+  return Promise
+      .resolve(hibp.breach(name))
       .then((breachData) => {
         if (!raw && process.stdout.isTTY) {
           spinner.stop();

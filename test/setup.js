@@ -5,6 +5,7 @@ export const data = {
   email: 'foo@bar.baz',
   emptyArray: [],
   error: 'foo',
+  errorMsg: 'Set sail for fail!',
   found: 'bar',
   message: 'Wubba lubba dub dub!',
   notFound: 'baz',

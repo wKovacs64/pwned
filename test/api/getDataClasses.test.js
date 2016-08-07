@@ -21,7 +21,7 @@ describe('api: getDataClasses', () => {
 
   const hibpMockError = {
     dataClasses: () => {
-      return Promise.reject(new Error('Set sail for fail!'));
+      return Promise.reject(new Error(data.errorMsg));
     }
   };
 

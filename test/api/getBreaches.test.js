@@ -8,13 +8,14 @@ import {data, loggerMock} from '../setup';
 
 describe('api: getBreaches', () => {
   const hibpMock = {
-    breaches: (domain) => {
-      if (domain === data.found) {
+    breaches: (options) => {
+      options = options || {};
+      if (options.domain === data.found) {
         return Promise.resolve(data.objArray);
-      } else if (domain === data.notFound) {
+      } else if (options.domain === data.notFound) {
         return Promise.resolve(data.emptyArray);
-      } else if (domain === data.error) {
-        return Promise.reject(new Error('Set sail for fail!'));
+      } else if (options.domain === data.error) {
+        return Promise.reject(new Error(data.errorMsg));
       }
     }
   };

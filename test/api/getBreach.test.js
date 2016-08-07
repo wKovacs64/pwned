@@ -12,9 +12,9 @@ describe('api: getBreach', () => {
       if (breachName === data.found) {
         return Promise.resolve(data.obj);
       } else if (breachName === data.notFound) {
-        return Promise.resolve(undefined);
+        return Promise.resolve(null);
       } else if (breachName === data.error) {
-        return Promise.reject(new Error('Set sail for fail!'));
+        return Promise.reject(new Error(data.errorMsg));
       }
     }
   };
