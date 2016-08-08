@@ -41,16 +41,12 @@ Options:
 Get all breaches for an account:
 ```
 $ pwned ba pleasebeclean@fingerscrossed.tld
-
-Fetching data... |
 Good news — no pwnage found!
 ```
 
 Get all breaches in the system, filtering results to just the 'adobe.com' domain:
 ```
 $ pwned breaches -d adobe.com
-
-Fetching data... \
 -
   Title:       Adobe
   Name:        Adobe
@@ -58,7 +54,7 @@ Fetching data... \
   BreachDate:  2013-10-04
   AddedDate:   2013-12-04T00:00:00Z
   PwnCount:    152445165
-  Description: The big one. In October 2013, 153 million Adobe accounts were breached with each containing an internal ID, username, email, <em>encrypted</em> password and a password hint in plain text. The password cryptography was poorly done and <a href="http://stricture-group.com/files/adobe-top100.txt" target="_blank">many were quickly resolved back to plain text</a>. The unencrypted hints also <a href="http://www.troyhunt.com/2013/11/adobe-credentials-and-serious.html" target="_blank">disclosed much about the passwords</a> adding further to the risk that hundreds of millions of Adobe customers already faced.
+  Description: In October 2013, 153 million Adobe accounts were breached with each containing an internal ID, username, email, <em>encrypted</em> password and a password hint in plain text. The password cryptography was poorly done and <a href="http://stricture-group.com/files/adobe-top100.txt" target="_blank">many were quickly resolved back to plain text</a>. The unencrypted hints also <a href="http://www.troyhunt.com/2013/11/adobe-credentials-and-serious.html" target="_blank">disclosed much about the passwords</a> adding further to the risk that hundreds of millions of Adobe customers already faced.
   DataClasses:
     - Email addresses
     - Password hints
@@ -66,6 +62,7 @@ Fetching data... \
     - Usernames
   IsVerified:  true
   IsSensitive: false
+  IsActive:    true
   IsRetired:   false
   LogoType:    svg
 ```
@@ -73,23 +70,18 @@ Fetching data... \
 Get a single breached site by breach name:
 ```
 $ pwned breach MyCompany
-
-Fetching data... \
 No breach found by that name.
 ```
 
 Get all the data classes in the system, returning raw JSON results for external/chained consumption:
 ```
 $ pwned dc --raw
-
-["Account balances","Age groups","Avatars","Career levels","Credit cards","Customer interactions","Dates of birth","Device usage tracking data","Education levels","Email addresses","Email messages","Employers","Ethnicities","Genders","Geographic location","Government issued IDs","Historical passwords","Home addresses","Homepage URLs","Instant messenger identities","IP addresses","Job titles","MAC addresses","Names","Nicknames","Passport numbers","Password hints","Passwords","Payment histories","Phone numbers","Private messages","Purchases","Races","Recovery email addresses","Relationship statuses","Reward program balances","Salutations","Security questions and answers","Sexual preferences","SMS messages","Social connections","Spoken languages","Time zones","User agent details","User website URLs","Usernames","Website activity","Years of birth"]
+["Account balances","Age groups","Astrological signs","Avatars","Bank account numbers","Banking PINs","Beauty ratings","Biometric data","Car ownership statuses","Career levels","Chat logs","Credit cards","Customer feedback","Customer interactions","Dates of birth","Device information","Device usage tracking data","Drinking habits","Drug habits","Education levels","Email addresses","Email messages","Employers","Ethnicities","Family members' names","Family plans","Financial transactions","Fitness levels","Genders","Geographic locations","Government issued IDs","Historical passwords","Home ownership statuses","Homepage URLs","Income levels","Instant messenger identities","IP addresses","Job titles","MAC addresses","Marital statuses","Names","Nicknames","Parenting plans","Partial credit card data","Passport numbers","Password hints","Passwords","Payment histories","Personal descriptions","Personal interests","Phone numbers","Physical addresses","Physical attributes","Political views","Private messages","Purchases","Races","Recovery email addresses","Relationship statuses","Religions","Reward program balances","Salutations","Security questions and answers","Sexual fetishes","Sexual orientations","Smoking habits","SMS messages","Social connections","Spoken languages","Time zones","Travel habits","User agent details","User statuses","User website URLs","Usernames","Website activity","Work habits","Years of birth"]
 ```
 
 Get all pastes for an email address:
 ```
 $ pwned pa nobody@nowhere.com
-
-Fetching data... \
 -
   Source:     Pastebin
   Id:         xyb8vavK
@@ -126,6 +118,12 @@ Fetching data... \
   Title:      BuzzMachines.com 40k+
   Date:       null
   EmailCount: 36959
+-
+  Source:     AdHocUrl
+  Id:         http://siph0n.in/exploits.php?id=4737
+  Title:      PayPalSucks Database 102k
+  Date:       null
+  EmailCount: 82071
 ```
 
 ## License
