@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 2.0.1 *(2016-08-07)*
+
+* Updated examples in README to reflect 2.0.0 changes
+
 ## Version 2.0.0 *(2016-08-07)*
 
 * Removed spinner output when command completes
