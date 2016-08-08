@@ -1,5 +1,24 @@
 # Change Log
 
+## Version 2.0.0 *(2016-08-07)*
+
+* Removed spinner output when command completes
+
+  *This is technically a breaking change as the output for the same input will
+  be different than in previous versions. Previously, the progress spinner was
+  included in the output (unless using the `--raw` option) and now it isn't. So,
+  if you were previously parsing the __formatted__ (non-raw) output, you may
+  need to adjust.*
+* Shortened error messages
+
+  *In the event of a failed request to the remote API (network errors, etc.), an
+  error message is written to `stderr`. Due to an upstream change in the
+  underlying network request technology in the `hibp` library, these messages
+  will be significantly shorter as only the "reason" will be displayed now as
+  opposed to a more verbose explanation of what went wrong.*
+* Added tests
+* Updated dependencies
+
 ## Version 1.0.8 *(2016-07-21)*
 
 * Normalized command behavior (suppress output for empty results in raw mode)
