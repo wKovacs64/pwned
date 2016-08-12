@@ -1,5 +1,7 @@
 import {polyfill} from 'es6-promise';
-polyfill();
+if (global.Promise === undefined) {
+  polyfill();
+}
 
 export const data = {
   email: 'foo@bar.baz',
