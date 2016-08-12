@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-/* global describe, it, before, after, beforeEach, afterEach */
-
 import expect from 'expect.js';
 import mockery from 'mockery';
 import sinon from 'sinon';

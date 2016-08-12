@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-/* global describe, it */
-
 import expect from 'expect.js';
 import spinner from '../../lib/utils/spinner';
 

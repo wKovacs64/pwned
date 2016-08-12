@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-/* global describe, it, before, after */
-
 import commander from 'commander';
 import expect from 'expect.js';
 import ba from '../../lib/commands/ba';

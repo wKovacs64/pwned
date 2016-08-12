@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-/* global describe, it */
-
 import expect from 'expect.js';
 import sinon from 'sinon';
 import logger from '../../lib/utils/logger';
