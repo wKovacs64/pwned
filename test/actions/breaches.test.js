@@ -14,7 +14,7 @@ describe('action: breaches', () => {
       warnOnUnregistered: false
     });
     mockery.registerMock('../api/getBreaches', getBreachesStub);
-    breaches = require('../../lib/actions/breaches');
+    breaches = require('../../src/actions/breaches');
     command = new commander.Command('');
   });
 

@@ -15,7 +15,7 @@ describe('action: pa', () => {
       warnOnUnregistered: false
     });
     mockery.registerMock('../api/getPastes', getPastesStub);
-    pa = require('../../lib/actions/pa');
+    pa = require('../../src/actions/pa');
     command = new commander.Command('');
   });
 

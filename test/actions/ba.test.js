@@ -15,7 +15,7 @@ describe('action: ba', () => {
       warnOnUnregistered: false
     });
     mockery.registerMock('../api/getBreachedAccount', getBreachedAccountStub);
-    ba = require('../../lib/actions/ba');
+    ba = require('../../src/actions/ba');
     command = new commander.Command('');
   });
 

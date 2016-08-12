@@ -10,5 +10,5 @@ before_script:
   - nvm install stable
   - npm run lint
   - nvm use $TRAVIS_NODE_VERSION
-after_script:
-  - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+after_success:
+  - "nyc report --reporter=text-lcov | coveralls"

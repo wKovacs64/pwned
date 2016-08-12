@@ -1,6 +1,6 @@
 import commander from 'commander';
 import expect from 'expect.js';
-import ba from '../../lib/commands/ba';
+import ba from '../../src/commands/ba';
 
 describe('command: ba', () => {
   it('should add "ba" command to Commander instance', (done) => {

@@ -35,14 +35,14 @@ describe('api: getPastes', () => {
   beforeEach(() => {
     sinon.spy(loggerMock, 'log');
     sinon.spy(loggerMock, 'error');
-    spinner = require('../../lib/utils/spinner');
+    spinner = require('../../src/utils/spinner');
     spinnerStart = sinon.stub(spinner, 'start');
     spinnerStop = sinon.stub(spinner, 'stop');
 
     mockery.registerMock('hibp', hibpMock);
     mockery.registerMock('../utils/logger', loggerMock);
     mockery.registerMock('../utils/spinner', spinner);
-    getPastes = require('../../lib/api/getPastes');
+    getPastes = require('../../src/api/getPastes');
   });
 
   afterEach(() => {

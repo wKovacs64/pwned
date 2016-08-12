@@ -1,6 +1,6 @@
 import commander from 'commander';
 import expect from 'expect.js';
-import pa from '../../lib/commands/pa';
+import pa from '../../src/commands/pa';
 
 describe('command: pa', () => {
   it('should add "pa" command to Commander instance', (done) => {

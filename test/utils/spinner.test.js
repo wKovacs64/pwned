@@ -1,5 +1,5 @@
 import expect from 'expect.js';
-import spinner from '../../lib/utils/spinner';
+import spinner from '../../src/utils/spinner';
 
 describe('util: spinner', () => {
   it('should return an object with start and stop functions', (done) => {

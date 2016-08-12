@@ -25,26 +25,19 @@
     "lib": "./lib"
   },
   "scripts": {
-    "clean": "npm run srcClean && npm run testClean",
-    "compile": "npm run srcCompile && npm run testCompile",
-    "coverage": "nyc mocha --recursive lib-test",
+    "clean": "rimraf ./lib ./coverage ./nyc_output",
+    "compile": "babel src --out-dir lib --source-maps",
     "lint": "eslint bin src test",
-    "prepublish": "npm run srcClean && npm run srcCompile",
-    "srcClean": "rimraf ./lib",
-    "srcCompile": "babel src --out-dir lib --source-maps",
-    "test": "npm run clean && npm run compile && npm run coverage",
-    "testClean": "rimraf ./lib-test ./coverage",
-    "testCompile": "babel test --out-dir lib-test --source-maps"
+    "prepublish": "npm run clean && npm run compile",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary mocha"
   },
   "nyc": {
     "all": true,
     "include": [
-      "**/lib/**"
+      "**/src/**"
     ],
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ]
+    "sourceMap": false,
+    "instrument": false
   },
   "repository": {
     "type": "git",
@@ -68,9 +61,12 @@
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
+    "babel-core": "^6.13.2",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-istanbul": "^1.1.0",
     "babel-preset-es2015": "^6.13.2",
     "coveralls": "^2.11.12",
+    "cross-env": "^2.0.0",
     "eslint": "^3.2.2",
     "eslint-config-semistandard": "^6.0.2",
     "eslint-config-standard": "^5.3.5",

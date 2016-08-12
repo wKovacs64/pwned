@@ -1,6 +1,6 @@
 import commander from 'commander';
 import expect from 'expect.js';
-import dc from '../../lib/commands/dc';
+import dc from '../../src/commands/dc';
 
 describe('command: dc', () => {
   it('should add "dc" command to Commander instance', (done) => {

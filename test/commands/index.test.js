@@ -1,6 +1,6 @@
 import commander from 'commander';
 import expect from 'expect.js';
-import addCommands from '../../lib/commands/index';
+import addCommands from '../../src/commands/index';
 
 describe('command loader', () => {
   it('should add all commands to Commander instance', (done) => {

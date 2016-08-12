@@ -1,6 +1,6 @@
 import commander from 'commander';
 import expect from 'expect.js';
-import breaches from '../../lib/commands/breaches';
+import breaches from '../../src/commands/breaches';
 
 describe('command: breaches', () => {
   it('should add "breaches" command to Commander instance', (done) => {

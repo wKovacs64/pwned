@@ -14,7 +14,7 @@ describe('action: dc', () => {
       warnOnUnregistered: false
     });
     mockery.registerMock('../api/getDataClasses', getDataClassesStub);
-    dc = require('../../lib/actions/dc');
+    dc = require('../../src/actions/dc');
     command = new commander.Command('');
   });
 
