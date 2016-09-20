@@ -31,14 +31,6 @@
     "prepublish": "npm run clean && npm run compile",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary mocha"
   },
-  "nyc": {
-    "all": true,
-    "include": [
-      "**/src/**"
-    ],
-    "sourceMap": false,
-    "instrument": false
-  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/wKovacs64/pwned.git"

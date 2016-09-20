@@ -1,0 +1,8 @@
+{
+  "all": true,
+  "include": [
+    "**/src/**"
+  ],
+  "sourceMap": false,
+  "instrument": false
+}
