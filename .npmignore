@@ -4,6 +4,7 @@
 .eslintrc
 .idea
 .travis.yml
+.nycrc
 .nyc_output
 coverage
 test
