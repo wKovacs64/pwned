@@ -19,14 +19,3 @@ export const data = {
     {foo: 'bar'}
   ]
 };
-
-export const loggerMock = {
-  error: () => {
-  },
-  info: () => {
-  },
-  log: () => {
-  },
-  warn: () => {
-  }
-};
