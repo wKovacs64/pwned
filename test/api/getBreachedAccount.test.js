@@ -1,7 +1,9 @@
 import expect from 'expect.js';
 import mockery from 'mockery';
 import sinon from 'sinon';
-import {data, loggerMock} from '../setup';
+import logger from '../../src/utils/logger';
+import spinner from '../../src/utils/spinner';
+import {data} from '../setup';
 
 describe('api: getBreachedAccount', () => {
   const hibpMock = {
@@ -17,132 +19,119 @@ describe('api: getBreachedAccount', () => {
   };
 
   let getBreachedAccount;
-  let spinner;
-  let spinnerStart;
-  let spinnerStop;
 
   before(() => {
     mockery.enable({
       useCleanCache: true,
       warnOnUnregistered: false
     });
+    mockery.registerMock('../utils/logger', logger);
+    mockery.registerMock('../utils/spinner', spinner);
+    mockery.registerMock('hibp', hibpMock);
+    getBreachedAccount = require('../../src/api/getBreachedAccount');
   });
 
   after(() => {
+    mockery.deregisterAll();
     mockery.disable();
   });
 
   beforeEach(() => {
-    sinon.spy(loggerMock, 'log');
-    sinon.spy(loggerMock, 'error');
-    spinner = require('../../src/utils/spinner');
-    spinnerStart = sinon.stub(spinner, 'start');
-    spinnerStop = sinon.stub(spinner, 'stop');
-
-    mockery.registerMock('hibp', hibpMock);
-    mockery.registerMock('../utils/logger', loggerMock);
-    mockery.registerMock('../utils/spinner', spinner);
-    getBreachedAccount = require('../../src/api/getBreachedAccount');
+    sinon.stub(logger, 'log');
+    sinon.stub(logger, 'error');
+    sinon.stub(spinner, 'start');
+    sinon.stub(spinner, 'stop');
   });
 
   afterEach(() => {
-    loggerMock.log.restore();
-    loggerMock.error.restore();
-    spinnerStart.restore();
-    spinnerStop.restore();
-    mockery.deregisterAll();
+    logger.log.restore();
+    logger.error.restore();
+    spinner.start.restore();
+    spinner.stop.restore();
   });
-
-  // ////////////////// spinner.start() ////////////////// //
 
   it('should call spinner.start (!raw)', (done) => {
     getBreachedAccount(data.notFound, data.none, false, false);
-    expect(spinnerStart.called).to.be(true);
+    expect(spinner.start.called).to.be(true);
     done();
   });
 
   it('should not call spinner.start (raw)', (done) => {
     getBreachedAccount(data.notFound, data.none, false, true);
-    expect(spinnerStart.called).to.be(false);
+    expect(spinner.start.called).to.be(false);
     done();
   });
 
-  // ////////////////// spinner.stop() ////////////////// //
-
   it('should call spinner.stop (non-error results, !raw)', () => {
-    expect(spinnerStop.called).to.be(false);
+    expect(spinner.stop.called).to.be(false);
     return getBreachedAccount(data.notFound, data.none, false, false)
         .then(() => {
-          expect(spinnerStop.called).to.be(true);
+          expect(spinner.stop.called).to.be(true);
         });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
-    expect(spinnerStop.called).to.be(false);
+    expect(spinner.stop.called).to.be(false);
     return getBreachedAccount(data.notFound, data.none, false, true)
         .then(() => {
-          expect(spinnerStop.called).to.be(false);
+          expect(spinner.stop.called).to.be(false);
         });
   });
 
-  // ////////////////// breachData ////////////////// //
-
   it('should call logger.log (found && !raw)', () => {
-    expect(loggerMock.log.called).to.be(false);
+    expect(logger.log.called).to.be(false);
     return getBreachedAccount(data.found, data.none, false, false)
         .then(() => {
-          expect(loggerMock.log.callCount).to.be(1);
+          expect(logger.log.callCount).to.be(1);
         });
   });
 
   it('should call logger.log (found && raw)', () => {
-    expect(loggerMock.log.called).to.be(false);
+    expect(logger.log.called).to.be(false);
     return getBreachedAccount(data.found, data.none, false, true)
         .then(() => {
-          expect(loggerMock.log.callCount).to.be(1);
+          expect(logger.log.callCount).to.be(1);
         });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
-    expect(loggerMock.log.called).to.be(false);
+    expect(logger.log.called).to.be(false);
     return getBreachedAccount(data.notFound, data.none, false, false)
         .then(() => {
-          expect(loggerMock.log.callCount).to.be(1);
+          expect(logger.log.callCount).to.be(1);
         });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
-    expect(loggerMock.log.called).to.be(false);
+    expect(logger.log.called).to.be(false);
     return getBreachedAccount(data.notFound, data.none, false, true)
         .then(() => {
-          expect(loggerMock.log.called).to.be(false);
+          expect(logger.log.called).to.be(false);
         });
   });
 
-  // ////////////////// error ////////////////// //
-
   it('should call spinner.stop (error && !raw)', () => {
-    expect(spinnerStop.called).to.be(false);
+    expect(spinner.stop.called).to.be(false);
     return getBreachedAccount(data.error, data.none, false, false)
         .then(() => {
-          expect(spinnerStop.called).to.be(true);
+          expect(spinner.stop.called).to.be(true);
         });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
-    expect(spinnerStop.called).to.be(false);
+    expect(spinner.stop.called).to.be(false);
     return getBreachedAccount(data.error, data.none, false, true)
         .then(() => {
-          expect(spinnerStop.called).to.be(false);
+          expect(spinner.stop.called).to.be(false);
         });
   });
 
   it('should call logger.error (error)', () => {
-    expect(loggerMock.error.called).to.be(false);
+    expect(logger.error.called).to.be(false);
     return getBreachedAccount(data.error, data.none, false, false)
         .then(() => {
-          expect(loggerMock.log.called).to.be(false);
-          expect(loggerMock.error.called).to.be(true);
+          expect(logger.log.called).to.be(false);
+          expect(logger.error.called).to.be(true);
         });
   });
 });
