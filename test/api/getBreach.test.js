@@ -69,98 +69,80 @@ describe('api: getBreach', () => {
 
   // ////////////////// spinner.stop() ////////////////// //
 
-  it('should call spinner.stop (non-error results, !raw)', (done) => {
+  it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinnerStop.called).to.be(false);
-    getBreach(data.found, false)
+    return getBreach(data.found, false)
         .then(() => {
           expect(spinnerStop.called).to.be(true);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should not call spinner.stop (non-error results, raw)', (done) => {
+  it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinnerStop.called).to.be(false);
-    getBreach(data.found, true)
+    return getBreach(data.found, true)
         .then(() => {
           expect(spinnerStop.called).to.be(false);
-          done();
-        })
-        .catch(done);
+        });
   });
 
   // ////////////////// breachData ////////////////// //
 
-  it('should call logger.log (found && !raw)', (done) => {
+  it('should call logger.log (found && !raw)', () => {
     expect(loggerMock.log.called).to.be(false);
-    getBreach(data.found, false)
+    return getBreach(data.found, false)
         .then(() => {
           expect(loggerMock.log.callCount).to.be(1);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should call logger.log (found && raw)', (done) => {
+  it('should call logger.log (found && raw)', () => {
     expect(loggerMock.log.called).to.be(false);
-    getBreach(data.found, true)
+    return getBreach(data.found, true)
         .then(() => {
           expect(loggerMock.log.callCount).to.be(1);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should call logger.log (notFound && !raw)', (done) => {
+  it('should call logger.log (notFound && !raw)', () => {
     expect(loggerMock.log.called).to.be(false);
-    getBreach(data.notFound, false)
+    return getBreach(data.notFound, false)
         .then(() => {
           expect(loggerMock.log.callCount).to.be(1);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should not call logger.log (notFound && raw)', (done) => {
+  it('should not call logger.log (notFound && raw)', () => {
     expect(loggerMock.log.called).to.be(false);
-    getBreach(data.notFound, true)
+    return getBreach(data.notFound, true)
         .then(() => {
           expect(loggerMock.log.called).to.be(false);
-          done();
-        })
-        .catch(done);
+        });
   });
 
   // ////////////////// error ////////////////// //
 
-  it('should call spinner.stop (error && !raw)', (done) => {
+  it('should call spinner.stop (error && !raw)', () => {
     expect(spinnerStop.called).to.be(false);
-    getBreach(data.error, false)
+    return getBreach(data.error, false)
         .then(() => {
           expect(spinnerStop.called).to.be(true);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should not call spinner.stop (error && raw)', (done) => {
+  it('should not call spinner.stop (error && raw)', () => {
     expect(spinnerStop.called).to.be(false);
-    getBreach(data.error, true)
+    return getBreach(data.error, true)
         .then(() => {
           expect(spinnerStop.called).to.be(false);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should call logger.error (error)', (done) => {
+  it('should call logger.error (error)', () => {
     expect(loggerMock.error.called).to.be(false);
-    getBreach(data.error, false)
+    return getBreach(data.error, false)
         .then(() => {
           expect(loggerMock.log.called).to.be(false);
           expect(loggerMock.error.called).to.be(true);
-          done();
-        })
-        .catch(done);
+        });
   });
 });

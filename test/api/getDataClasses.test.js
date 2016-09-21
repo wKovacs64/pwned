@@ -72,116 +72,98 @@ describe('api: getDataClasses', () => {
 
   // ////////////////// spinner.stop() ////////////////// //
 
-  it('should call spinner.stop (non-error results, !raw)', (done) => {
+  it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinnerStop.called).to.be(false);
     mockery.registerMock('hibp', hibpMockFound);
     getDataClasses = require('../../src/api/getDataClasses');
-    getDataClasses(false)
+    return getDataClasses(false)
         .then(() => {
           expect(spinnerStop.called).to.be(true);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should not call spinner.stop (non-error results, raw)', (done) => {
+  it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinnerStop.called).to.be(false);
     mockery.registerMock('hibp', hibpMockFound);
     getDataClasses = require('../../src/api/getDataClasses');
-    getDataClasses(true)
+    return getDataClasses(true)
         .then(() => {
           expect(spinnerStop.called).to.be(false);
-          done();
-        })
-        .catch(done);
+        });
   });
 
   // ////////////////// breachData ////////////////// //
 
-  it('should call logger.log (found && !raw)', (done) => {
+  it('should call logger.log (found && !raw)', () => {
     expect(loggerMock.log.called).to.be(false);
     mockery.registerMock('hibp', hibpMockFound);
     getDataClasses = require('../../src/api/getDataClasses');
-    getDataClasses(false)
+    return getDataClasses(false)
         .then(() => {
           expect(loggerMock.log.callCount).to.be(1);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should call logger.log (found && raw)', (done) => {
+  it('should call logger.log (found && raw)', () => {
     expect(loggerMock.log.called).to.be(false);
     mockery.registerMock('hibp', hibpMockFound);
     getDataClasses = require('../../src/api/getDataClasses');
-    getDataClasses(true)
+    return getDataClasses(true)
         .then(() => {
           expect(loggerMock.log.callCount).to.be(1);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should call logger.log (notFound && !raw)', (done) => {
+  it('should call logger.log (notFound && !raw)', () => {
     expect(loggerMock.log.called).to.be(false);
     mockery.registerMock('hibp', hibpMockNotFound);
     getDataClasses = require('../../src/api/getDataClasses');
-    getDataClasses(false)
+    return getDataClasses(false)
         .then(() => {
           expect(loggerMock.log.callCount).to.be(1);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should not call logger.log (notFound && raw)', (done) => {
+  it('should not call logger.log (notFound && raw)', () => {
     expect(loggerMock.log.called).to.be(false);
     mockery.registerMock('hibp', hibpMockNotFound);
     getDataClasses = require('../../src/api/getDataClasses');
-    getDataClasses(true)
+    return getDataClasses(true)
         .then(() => {
           expect(loggerMock.log.called).to.be(false);
-          done();
-        })
-        .catch(done);
+        });
   });
 
   // ////////////////// error ////////////////// //
 
-  it('should call spinner.stop (error && !raw)', (done) => {
+  it('should call spinner.stop (error && !raw)', () => {
     expect(spinnerStop.called).to.be(false);
     mockery.registerMock('hibp', hibpMockError);
     getDataClasses = require('../../src/api/getDataClasses');
-    getDataClasses(false)
+    return getDataClasses(false)
         .then(() => {
           expect(spinnerStop.called).to.be(true);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should not call spinner.stop (error && raw)', (done) => {
+  it('should not call spinner.stop (error && raw)', () => {
     expect(spinnerStop.called).to.be(false);
     mockery.registerMock('hibp', hibpMockError);
     getDataClasses = require('../../src/api/getDataClasses');
-    getDataClasses(true)
+    return getDataClasses(true)
         .then(() => {
           expect(spinnerStop.called).to.be(false);
-          done();
-        })
-        .catch(done);
+        });
   });
 
-  it('should call logger.error (error)', (done) => {
+  it('should call logger.error (error)', () => {
     expect(loggerMock.error.called).to.be(false);
     mockery.registerMock('hibp', hibpMockError);
     getDataClasses = require('../../src/api/getDataClasses');
-    getDataClasses(false)
+    return getDataClasses(false)
         .then(() => {
           expect(loggerMock.log.called).to.be(false);
           expect(loggerMock.error.called).to.be(true);
-          done();
-        })
-        .catch(done);
+        });
   });
 });
