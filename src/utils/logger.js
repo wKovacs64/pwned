@@ -4,15 +4,15 @@
  */
 export default {
   error: (...args) => {
-    console.error.apply(console, Array.prototype.slice.call(args));
+    console.error(...args);
   },
   info: (...args) => {
-    console.info.apply(console, Array.prototype.slice.call(args));
+    console.info(...args);
   },
   log: (...args) => {
-    console.log.apply(console, Array.prototype.slice.call(args));
+    console.log(...args);
   },
   warn: (...args) => {
-    console.warn.apply(console, Array.prototype.slice.call(args));
+    console.warn(...args);
   }
 };
