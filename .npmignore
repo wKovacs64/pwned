@@ -1,7 +1,9 @@
+.editorconfig
+.gitattributes
 .gitignore
 .npmignore
 .babelrc
-.eslintrc
+.eslintrc.json
 .idea
 .travis.yml
 .nycrc
