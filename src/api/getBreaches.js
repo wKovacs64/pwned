@@ -16,25 +16,25 @@ export default (domain, raw) => {
     spinner.start();
   }
   return Promise
-      .resolve(hibp.breaches({
-        domain: domain
-      }))
-      .then((breachData) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        if (breachData.length && raw) {
-          logger.log(JSON.stringify(breachData));
-        } else if (breachData.length) {
-          logger.log(prettyjson.render(breachData));
-        } else if (!breachData.length && !raw) {
-          logger.log('No breaches found.');
-        }
-      })
-      .catch((err) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        logger.error(err.message);
-      });
+    .resolve(hibp.breaches({
+      domain,
+    }))
+    .then((breachData) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      if (breachData.length && raw) {
+        logger.log(JSON.stringify(breachData));
+      } else if (breachData.length) {
+        logger.log(prettyjson.render(breachData));
+      } else if (!breachData.length && !raw) {
+        logger.log('No breaches found.');
+      }
+    })
+    .catch((err) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.error(err.message);
+    });
 };

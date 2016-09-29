@@ -2,7 +2,7 @@ import commander from 'commander';
 import expect from 'expect.js';
 import mockery from 'mockery';
 import sinon from 'sinon';
-import {data} from '../setup';
+import { data } from '../setup';
 
 describe('action: pa', () => {
   const getPastesStub = sinon.stub();
@@ -12,7 +12,7 @@ describe('action: pa', () => {
   before(() => {
     mockery.enable({
       useCleanCache: true,
-      warnOnUnregistered: false
+      warnOnUnregistered: false,
     });
     mockery.registerMock('../api/getPastes', getPastesStub);
     pa = require('../../src/actions/pa');

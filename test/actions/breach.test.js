@@ -2,7 +2,7 @@ import commander from 'commander';
 import expect from 'expect.js';
 import mockery from 'mockery';
 import sinon from 'sinon';
-import {data} from '../setup';
+import { data } from '../setup';
 
 describe('action: breach', () => {
   const getBreachStub = sinon.stub();
@@ -12,7 +12,7 @@ describe('action: breach', () => {
   before(() => {
     mockery.enable({
       useCleanCache: true,
-      warnOnUnregistered: false
+      warnOnUnregistered: false,
     });
     mockery.registerMock('../api/getBreach', getBreachStub);
     breach = require('../../src/actions/breach');

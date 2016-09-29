@@ -19,26 +19,26 @@ export default (account, domain, truncate, raw) => {
     spinner.start();
   }
   return Promise
-      .resolve(hibp.breachedAccount(account, {
-        domain: domain,
-        truncate: truncate
-      }))
-      .then((breachData) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        if (breachData && raw) {
-          logger.log(JSON.stringify(breachData));
-        } else if (breachData) {
-          logger.log(prettyjson.render(breachData));
-        } else if (!breachData && !raw) {
-          logger.log('Good news — no pwnage found!');
-        }
-      })
-      .catch((err) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        logger.error(err.message);
-      });
+    .resolve(hibp.breachedAccount(account, {
+      domain,
+      truncate,
+    }))
+    .then((breachData) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      if (breachData && raw) {
+        logger.log(JSON.stringify(breachData));
+      } else if (breachData) {
+        logger.log(prettyjson.render(breachData));
+      } else if (!breachData && !raw) {
+        logger.log('Good news — no pwnage found!');
+      }
+    })
+    .catch((err) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.error(err.message);
+    });
 };

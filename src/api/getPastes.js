@@ -15,23 +15,23 @@ export default (email, raw) => {
     spinner.start();
   }
   return Promise
-      .resolve(hibp.pasteAccount(email))
-      .then((pasteData) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        if (pasteData && raw) {
-          logger.log(JSON.stringify(pasteData));
-        } else if (pasteData) {
-          logger.log(prettyjson.render(pasteData));
-        } else if (!pasteData && !raw) {
-          logger.log('Good news — no pwnage found!');
-        }
-      })
-      .catch((err) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        logger.error(err.message);
-      });
+    .resolve(hibp.pasteAccount(email))
+    .then((pasteData) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      if (pasteData && raw) {
+        logger.log(JSON.stringify(pasteData));
+      } else if (pasteData) {
+        logger.log(prettyjson.render(pasteData));
+      } else if (!pasteData && !raw) {
+        logger.log('Good news — no pwnage found!');
+      }
+    })
+    .catch((err) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.error(err.message);
+    });
 };

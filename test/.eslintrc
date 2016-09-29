@@ -9,5 +9,17 @@
     "beforeEach": true,
     "afterEach": true,
     "after": true
+  },
+  "rules": {
+    "consistent-return": "off",
+    "global-require": "off",
+    "import/newline-after-import": "off",
+    "import/no-extraneous-dependencies": [
+      "error", {
+        "devDependencies": true,
+        "optionalDependencies": false
+    }],
+    "no-console": "off",
+    "no-underscore-dangle": "off"
   }
 }

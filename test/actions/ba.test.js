@@ -2,7 +2,7 @@ import commander from 'commander';
 import expect from 'expect.js';
 import mockery from 'mockery';
 import sinon from 'sinon';
-import {data} from '../setup';
+import { data } from '../setup';
 
 describe('action: ba', () => {
   const getBreachedAccountStub = sinon.stub();
@@ -12,7 +12,7 @@ describe('action: ba', () => {
   before(() => {
     mockery.enable({
       useCleanCache: true,
-      warnOnUnregistered: false
+      warnOnUnregistered: false,
     });
     mockery.registerMock('../api/getBreachedAccount', getBreachedAccountStub);
     ba = require('../../src/actions/ba');
@@ -32,9 +32,9 @@ describe('action: ba', () => {
   });
 
   it('should call getBreachedAccount when passed a non-empty string',
-      (done) => {
-        ba(data.notFound, command);
-        expect(getBreachedAccountStub.called).to.be(true);
-        done();
-      });
+    (done) => {
+      ba(data.notFound, command);
+      expect(getBreachedAccountStub.called).to.be(true);
+      done();
+    });
 });

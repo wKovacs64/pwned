@@ -14,24 +14,24 @@ export default (raw) => {
     spinner.start();
   }
   return Promise
-      .resolve(hibp.dataClasses())
-      .then((dataClasses) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        if (dataClasses.length && raw) {
-          logger.log(JSON.stringify(dataClasses));
-        } else if (dataClasses.length) {
-          logger.log(prettyjson.render(dataClasses));
-        } else if (!dataClasses.length && !raw) {
-          logger.log('No data classes found. This is unexpected - the remote ' +
-              'API may be having difficulties.');
-        }
-      })
-      .catch((err) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        logger.error(err.message);
-      });
+    .resolve(hibp.dataClasses())
+    .then((dataClasses) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      if (dataClasses.length && raw) {
+        logger.log(JSON.stringify(dataClasses));
+      } else if (dataClasses.length) {
+        logger.log(prettyjson.render(dataClasses));
+      } else if (!dataClasses.length && !raw) {
+        logger.log('No data classes found. This is unexpected - the remote ' +
+          'API may be having difficulties.');
+      }
+    })
+    .catch((err) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.error(err.message);
+    });
 };

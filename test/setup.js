@@ -1,7 +1,4 @@
-import {polyfill} from 'es6-promise';
-if (global.Promise === undefined) {
-  polyfill();
-}
+require('es6-promise').polyfill();
 
 export const data = {
   email: 'foo@bar.baz',
@@ -13,9 +10,11 @@ export const data = {
   notFound: 'baz',
   none: ' ',
   obj: {
-    foo: 'bar'
+    foo: 'bar',
   },
   objArray: [
-    {foo: 'bar'}
-  ]
+    { foo: 'bar' },
+  ],
 };
+
+export default data;

@@ -1,7 +1,7 @@
 import expect from 'expect.js';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
-import {data} from '../setup';
+import { data } from '../setup';
 
 /**
  * WARNING:

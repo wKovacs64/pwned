@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 /**
  * Default console logging wrapper to facilitate mocking/suppressing output
  * during tests.
@@ -14,5 +16,5 @@ export default {
   },
   warn: (...args) => {
     console.warn(...args);
-  }
+  },
 };

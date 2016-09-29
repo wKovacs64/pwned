@@ -8,9 +8,9 @@ import pa from '../actions/pa';
  */
 export default (program) => {
   program
-      .command('pa <email>')
-      .description('get all pastes for an account (email address)')
-      .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
-          'results found)')
-      .action(pa);
+    .command('pa <email>')
+    .description('get all pastes for an account (email address)')
+    .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
+      'results found)')
+    .action(pa);
 };

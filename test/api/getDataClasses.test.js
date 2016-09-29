@@ -3,25 +3,19 @@ import mockery from 'mockery';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
 import spinner from '../../src/utils/spinner';
-import {data} from '../setup';
+import { data } from '../setup';
 
 describe('api: getDataClasses', () => {
   const hibpMockFound = {
-    dataClasses: () => {
-      return Promise.resolve(data.objArray);
-    }
+    dataClasses: () => Promise.resolve(data.objArray),
   };
 
   const hibpMockNotFound = {
-    dataClasses: () => {
-      return Promise.resolve(data.emptyArray);
-    }
+    dataClasses: () => Promise.resolve(data.emptyArray),
   };
 
   const hibpMockError = {
-    dataClasses: () => {
-      return Promise.reject(new Error(data.errorMsg));
-    }
+    dataClasses: () => Promise.reject(new Error(data.errorMsg)),
   };
 
   let getDataClasses;
@@ -29,7 +23,7 @@ describe('api: getDataClasses', () => {
   before(() => {
     mockery.enable({
       useCleanCache: true,
-      warnOnUnregistered: false
+      warnOnUnregistered: false,
     });
     mockery.registerMock('../utils/logger', logger);
     mockery.registerMock('../utils/spinner', spinner);
@@ -80,33 +74,33 @@ describe('api: getDataClasses', () => {
     it('should call spinner.stop (found && !raw)', () => {
       expect(spinner.stop.called).to.be(false);
       return getDataClasses(false)
-          .then(() => {
-            expect(spinner.stop.called).to.be(true);
-          });
+        .then(() => {
+          expect(spinner.stop.called).to.be(true);
+        });
     });
 
     it('should not call spinner.stop (found && raw)', () => {
       expect(spinner.stop.called).to.be(false);
       return getDataClasses(true)
-          .then(() => {
-            expect(spinner.stop.called).to.be(false);
-          });
+        .then(() => {
+          expect(spinner.stop.called).to.be(false);
+        });
     });
 
     it('should call logger.log (found && !raw)', () => {
       expect(logger.log.called).to.be(false);
       return getDataClasses(false)
-          .then(() => {
-            expect(logger.log.callCount).to.be(1);
-          });
+        .then(() => {
+          expect(logger.log.callCount).to.be(1);
+        });
     });
 
     it('should call logger.log (found && raw)', () => {
       expect(logger.log.called).to.be(false);
       return getDataClasses(true)
-          .then(() => {
-            expect(logger.log.callCount).to.be(1);
-          });
+        .then(() => {
+          expect(logger.log.callCount).to.be(1);
+        });
     });
   });
 
@@ -136,33 +130,33 @@ describe('api: getDataClasses', () => {
     it('should call spinner.stop (notFound && !raw)', () => {
       expect(spinner.stop.called).to.be(false);
       return getDataClasses(false)
-          .then(() => {
-            expect(spinner.stop.called).to.be(true);
-          });
+        .then(() => {
+          expect(spinner.stop.called).to.be(true);
+        });
     });
 
     it('should not call spinner.stop (notFound && raw)', () => {
       expect(spinner.stop.called).to.be(false);
       return getDataClasses(true)
-          .then(() => {
-            expect(spinner.stop.called).to.be(false);
-          });
+        .then(() => {
+          expect(spinner.stop.called).to.be(false);
+        });
     });
 
     it('should call logger.log (notFound && !raw)', () => {
       expect(logger.log.called).to.be(false);
       return getDataClasses(false)
-          .then(() => {
-            expect(logger.log.callCount).to.be(1);
-          });
+        .then(() => {
+          expect(logger.log.callCount).to.be(1);
+        });
     });
 
     it('should not call logger.log (notFound && raw)', () => {
       expect(logger.log.called).to.be(false);
       return getDataClasses(true)
-          .then(() => {
-            expect(logger.log.called).to.be(false);
-          });
+        .then(() => {
+          expect(logger.log.called).to.be(false);
+        });
     });
   });
 
@@ -192,26 +186,26 @@ describe('api: getDataClasses', () => {
     it('should call spinner.stop (error && !raw)', () => {
       expect(spinner.stop.called).to.be(false);
       return getDataClasses(false)
-          .then(() => {
-            expect(spinner.stop.called).to.be(true);
-          });
+        .then(() => {
+          expect(spinner.stop.called).to.be(true);
+        });
     });
 
     it('should not call spinner.stop (error && raw)', () => {
       expect(spinner.stop.called).to.be(false);
       return getDataClasses(true)
-          .then(() => {
-            expect(spinner.stop.called).to.be(false);
-          });
+        .then(() => {
+          expect(spinner.stop.called).to.be(false);
+        });
     });
 
     it('should call logger.error (error)', () => {
       expect(logger.error.called).to.be(false);
       return getDataClasses(false)
-          .then(() => {
-            expect(logger.log.called).to.be(false);
-            expect(logger.error.called).to.be(true);
-          });
+        .then(() => {
+          expect(logger.log.called).to.be(false);
+          expect(logger.error.called).to.be(true);
+        });
     });
   });
 });

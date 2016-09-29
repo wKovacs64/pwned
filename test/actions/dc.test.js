@@ -11,7 +11,7 @@ describe('action: dc', () => {
   before(() => {
     mockery.enable({
       useCleanCache: true,
-      warnOnUnregistered: false
+      warnOnUnregistered: false,
     });
     mockery.registerMock('../api/getDataClasses', getDataClassesStub);
     dc = require('../../src/actions/dc');

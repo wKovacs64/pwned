@@ -3,7 +3,7 @@ import mockery from 'mockery';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
 import spinner from '../../src/utils/spinner';
-import {data} from '../setup';
+import { data } from '../setup';
 
 describe('api: getPastes', () => {
   const hibpMock = {
@@ -15,7 +15,7 @@ describe('api: getPastes', () => {
       } else if (email === data.error) {
         return Promise.reject(new Error(data.errorMsg));
       }
-    }
+    },
   };
 
   let getPastes;
@@ -23,7 +23,7 @@ describe('api: getPastes', () => {
   before(() => {
     mockery.enable({
       useCleanCache: true,
-      warnOnUnregistered: false
+      warnOnUnregistered: false,
     });
     mockery.registerMock('../utils/logger', logger);
     mockery.registerMock('../utils/spinner', spinner);
@@ -65,73 +65,73 @@ describe('api: getPastes', () => {
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop.called).to.be(false);
     return getPastes(data.found, false)
-        .then(() => {
-          expect(spinner.stop.called).to.be(true);
-        });
+      .then(() => {
+        expect(spinner.stop.called).to.be(true);
+      });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop.called).to.be(false);
     return getPastes(data.found, true)
-        .then(() => {
-          expect(spinner.stop.called).to.be(false);
-        });
+      .then(() => {
+        expect(spinner.stop.called).to.be(false);
+      });
   });
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log.called).to.be(false);
     return getPastes(data.found, false)
-        .then(() => {
-          expect(logger.log.callCount).to.be(1);
-        });
+      .then(() => {
+        expect(logger.log.callCount).to.be(1);
+      });
   });
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log.called).to.be(false);
     return getPastes(data.found, true)
-        .then(() => {
-          expect(logger.log.callCount).to.be(1);
-        });
+      .then(() => {
+        expect(logger.log.callCount).to.be(1);
+      });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log.called).to.be(false);
     return getPastes(data.notFound, false)
-        .then(() => {
-          expect(logger.log.callCount).to.be(1);
-        });
+      .then(() => {
+        expect(logger.log.callCount).to.be(1);
+      });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
     expect(logger.log.called).to.be(false);
     return getPastes(data.notFound, true)
-        .then(() => {
-          expect(logger.log.called).to.be(false);
-        });
+      .then(() => {
+        expect(logger.log.called).to.be(false);
+      });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop.called).to.be(false);
     return getPastes(data.error, false)
-        .then(() => {
-          expect(spinner.stop.called).to.be(true);
-        });
+      .then(() => {
+        expect(spinner.stop.called).to.be(true);
+      });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop.called).to.be(false);
     return getPastes(data.error, true)
-        .then(() => {
-          expect(spinner.stop.called).to.be(false);
-        });
+      .then(() => {
+        expect(spinner.stop.called).to.be(false);
+      });
   });
 
   it('should call logger.error (error)', () => {
     expect(logger.error.called).to.be(false);
     return getPastes(data.error, false)
-        .then(() => {
-          expect(logger.log.called).to.be(false);
-          expect(logger.error.called).to.be(true);
-        });
+      .then(() => {
+        expect(logger.log.called).to.be(false);
+        expect(logger.error.called).to.be(true);
+      });
   });
 });

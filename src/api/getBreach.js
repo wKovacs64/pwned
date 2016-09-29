@@ -15,23 +15,23 @@ export default (name, raw) => {
     spinner.start();
   }
   return Promise
-      .resolve(hibp.breach(name))
-      .then((breachData) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        if (breachData && raw) {
-          logger.log(JSON.stringify(breachData));
-        } else if (breachData) {
-          logger.log(prettyjson.render(breachData));
-        } else if (!breachData && !raw) {
-          logger.log('No breach found by that name.');
-        }
-      })
-      .catch((err) => {
-        if (!raw && process.stdout.isTTY) {
-          spinner.stop(true);
-        }
-        logger.error(err.message);
-      });
+    .resolve(hibp.breach(name))
+    .then((breachData) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      if (breachData && raw) {
+        logger.log(JSON.stringify(breachData));
+      } else if (breachData) {
+        logger.log(prettyjson.render(breachData));
+      } else if (!breachData && !raw) {
+        logger.log('No breach found by that name.');
+      }
+    })
+    .catch((err) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.error(err.message);
+    });
 };

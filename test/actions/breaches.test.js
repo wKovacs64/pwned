@@ -11,7 +11,7 @@ describe('action: breaches', () => {
   before(() => {
     mockery.enable({
       useCleanCache: true,
-      warnOnUnregistered: false
+      warnOnUnregistered: false,
     });
     mockery.registerMock('../api/getBreaches', getBreachesStub);
     breaches = require('../../src/actions/breaches');

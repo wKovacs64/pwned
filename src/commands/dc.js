@@ -8,8 +8,8 @@ import dc from '../actions/dc';
  */
 export default (program) => {
   program
-      .command('dc')
-      .description('get all data classes in the system')
-      .option('-r, --raw', 'output the raw JSON data')
-      .action(dc);
+    .command('dc')
+    .description('get all data classes in the system')
+    .option('-r, --raw', 'output the raw JSON data')
+    .action(dc);
 };

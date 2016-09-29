@@ -1,13 +1,12 @@
 {
-  "extends": "airbnb",
+  "extends": "airbnb-base/legacy",
+  "root": true,
   "rules": {
     "max-len": [
       "error",
       80,
       2
     ],
-    "valid-jsdoc": [
-      "error"
-    ]
+    "vars-on-top": "off"
   }
 }

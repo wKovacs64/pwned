@@ -8,10 +8,10 @@ import breaches from '../actions/breaches';
  */
 export default (program) => {
   program
-      .command('breaches')
-      .description('get all breaches in the system')
-      .option('-d, --domain-filter <domain>', 'filter breach data by domain')
-      .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
-          'results found)')
-      .action(breaches);
+    .command('breaches')
+    .description('get all breaches in the system')
+    .option('-d, --domain-filter <domain>', 'filter breach data by domain')
+    .option('-r, --raw', 'output the raw JSON data (or nothing, if no ' +
+      'results found)')
+    .action(breaches);
 };
