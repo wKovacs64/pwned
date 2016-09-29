@@ -49,14 +49,14 @@
     "es6-promise": "^3.3.1",
     "hibp": "^2.1.0",
     "prettyjson": "^1.1.3",
-    "source-map-support": "^0.4.2"
+    "source-map-support": "^0.4.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.14.0",
-    "babel-core": "^6.14.0",
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.16.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-istanbul": "^2.0.1",
-    "babel-preset-es2015": "^6.14.0",
+    "babel-plugin-istanbul": "^2.0.2",
+    "babel-preset-es2015": "^6.16.0",
     "coveralls": "^2.11.14",
     "cross-env": "^2.0.1",
     "eslint": "^3.6.1",
@@ -66,7 +66,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
     "expect.js": "^0.3.1",
-    "mocha": "^3.0.2",
+    "mocha": "^3.1.0",
     "mockery": "^1.7.0",
     "nyc": "^8.3.0",
     "rimraf": "^2.5.4",
