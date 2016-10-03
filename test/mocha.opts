@@ -1,5 +1,5 @@
 --require source-map-support/register
---require babel-core/register
+--require babel-register
 --recursive
 --slow 5000
 --timeout 15000
