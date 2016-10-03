@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 2.0.2 *(2016-10-03)*
+
+* Switched code style from SemiStandard to Airbnb
+* Improved/optimized tests
+* Updated dependencies
+
 ## Version 2.0.1 *(2016-08-07)*
 
 * Updated examples in README to reflect 2.0.0 changes
