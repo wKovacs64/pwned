@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-require('es6-promise').polyfill();
+require('es6-promise/auto');
 
 var program = require('commander');
 var pkg = require('../package.json');
