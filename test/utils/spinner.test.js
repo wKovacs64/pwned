@@ -1,4 +1,4 @@
-import expect from 'expect.js';
+import { expect } from 'chai';
 import spinner from '../../src/utils/spinner';
 
 describe('util: spinner', () => {

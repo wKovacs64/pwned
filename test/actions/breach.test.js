@@ -1,5 +1,5 @@
 import commander from 'commander';
-import expect from 'expect.js';
+import { expect } from 'chai';
 import mockery from 'mockery';
 import sinon from 'sinon';
 import { data } from '../setup';
@@ -27,13 +27,13 @@ describe('action: breach', () => {
   it('should call command help when passed an empty string', (done) => {
     const help = sinon.stub(command, 'help').returns();
     breach(data.none, command);
-    expect(help.called).to.be(true);
+    expect(help.called).to.be.true;
     done();
   });
 
   it('should call getBreach when passed a non-empty string', (done) => {
     breach(data.notFound, command);
-    expect(getBreachStub.called).to.be(true);
+    expect(getBreachStub.called).to.be.true;
     done();
   });
 });

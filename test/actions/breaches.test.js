@@ -1,5 +1,5 @@
 import commander from 'commander';
-import expect from 'expect.js';
+import { expect } from 'chai';
 import mockery from 'mockery';
 import sinon from 'sinon';
 
@@ -25,7 +25,7 @@ describe('action: breaches', () => {
 
   it('should call getBreaches', (done) => {
     breaches(command);
-    expect(getBreachesStub.called).to.be(true);
+    expect(getBreachesStub.called).to.be.true;
     done();
   });
 });

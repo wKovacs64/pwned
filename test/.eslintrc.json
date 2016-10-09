@@ -20,6 +20,7 @@
         "optionalDependencies": false
     }],
     "no-console": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "no-unused-expressions": "off"
   }
 }

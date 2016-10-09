@@ -1,4 +1,4 @@
-import expect from 'expect.js';
+import { expect } from 'chai';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
 import { data } from '../setup';
@@ -21,9 +21,9 @@ describe('util: logger', () => {
     expect(logger).to.have.property('error');
     expect(logger.error).to.be.a('function');
     sinon.stub(console, 'error');
-    expect(console.error.called).to.be(false);
+    expect(console.error.called).to.be.false;
     logger.error(data.message, data.obj);
-    expect(console.error.called).to.be(true);
+    expect(console.error.called).to.be.true;
     console.error.restore();
     done();
   });
@@ -32,9 +32,9 @@ describe('util: logger', () => {
     expect(logger).to.have.property('info');
     expect(logger.info).to.be.a('function');
     sinon.stub(console, 'info');
-    expect(console.info.called).to.be(false);
+    expect(console.info.called).to.be.false;
     logger.info(data.message, data.obj);
-    expect(console.info.called).to.be(true);
+    expect(console.info.called).to.be.true;
     console.info.restore();
     done();
   });
@@ -43,9 +43,9 @@ describe('util: logger', () => {
     expect(logger).to.have.property('log');
     expect(logger.log).to.be.a('function');
     sinon.stub(console, 'log');
-    expect(console.log.called).to.be(false);
+    expect(console.log.called).to.be.false;
     logger.log(data.message, data.obj);
-    expect(console.log.called).to.be(true);
+    expect(console.log.called).to.be.true;
     console.log.restore();
     done();
   });
@@ -54,9 +54,9 @@ describe('util: logger', () => {
     expect(logger).to.have.property('warn');
     expect(logger.warn).to.be.a('function');
     sinon.stub(console, 'warn');
-    expect(console.warn.called).to.be(false);
+    expect(console.warn.called).to.be.false;
     logger.warn(data.message, data.obj);
-    expect(console.warn.called).to.be(true);
+    expect(console.warn.called).to.be.true;
     console.warn.restore();
     done();
   });

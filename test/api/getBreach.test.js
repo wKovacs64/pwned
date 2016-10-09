@@ -1,4 +1,4 @@
-import expect from 'expect.js';
+import { expect } from 'chai';
 import mockery from 'mockery';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
@@ -52,86 +52,86 @@ describe('api: getBreach', () => {
 
   it('should call spinner.start (!raw)', (done) => {
     getBreach(data.found, false);
-    expect(spinner.start.called).to.be(true);
+    expect(spinner.start.called).to.be.true;
     done();
   });
 
   it('should not call spinner.start (raw)', (done) => {
     getBreach(data.found, true);
-    expect(spinner.start.called).to.be(false);
+    expect(spinner.start.called).to.be.false;
     done();
   });
 
   it('should call spinner.stop (non-error results, !raw)', () => {
-    expect(spinner.stop.called).to.be(false);
+    expect(spinner.stop.called).to.be.false;
     return getBreach(data.found, false)
       .then(() => {
-        expect(spinner.stop.called).to.be(true);
+        expect(spinner.stop.called).to.be.true;
       });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
-    expect(spinner.stop.called).to.be(false);
+    expect(spinner.stop.called).to.be.false;
     return getBreach(data.found, true)
       .then(() => {
-        expect(spinner.stop.called).to.be(false);
+        expect(spinner.stop.called).to.be.false;
       });
   });
 
   it('should call logger.log (found && !raw)', () => {
-    expect(logger.log.called).to.be(false);
+    expect(logger.log.called).to.be.false;
     return getBreach(data.found, false)
       .then(() => {
-        expect(logger.log.callCount).to.be(1);
+        expect(logger.log.callCount).to.equal(1);
       });
   });
 
   it('should call logger.log (found && raw)', () => {
-    expect(logger.log.called).to.be(false);
+    expect(logger.log.called).to.be.false;
     return getBreach(data.found, true)
       .then(() => {
-        expect(logger.log.callCount).to.be(1);
+        expect(logger.log.callCount).to.equal(1);
       });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
-    expect(logger.log.called).to.be(false);
+    expect(logger.log.called).to.be.false;
     return getBreach(data.notFound, false)
       .then(() => {
-        expect(logger.log.callCount).to.be(1);
+        expect(logger.log.callCount).to.equal(1);
       });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
-    expect(logger.log.called).to.be(false);
+    expect(logger.log.called).to.be.false;
     return getBreach(data.notFound, true)
       .then(() => {
-        expect(logger.log.called).to.be(false);
+        expect(logger.log.called).to.be.false;
       });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
-    expect(spinner.stop.called).to.be(false);
+    expect(spinner.stop.called).to.be.false;
     return getBreach(data.error, false)
       .then(() => {
-        expect(spinner.stop.called).to.be(true);
+        expect(spinner.stop.called).to.be.true;
       });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
-    expect(spinner.stop.called).to.be(false);
+    expect(spinner.stop.called).to.be.false;
     return getBreach(data.error, true)
       .then(() => {
-        expect(spinner.stop.called).to.be(false);
+        expect(spinner.stop.called).to.be.false;
       });
   });
 
   it('should call logger.error (error)', () => {
-    expect(logger.error.called).to.be(false);
+    expect(logger.error.called).to.be.false;
     return getBreach(data.error, false)
       .then(() => {
-        expect(logger.log.called).to.be(false);
-        expect(logger.error.called).to.be(true);
+        expect(logger.log.called).to.be.false;
+        expect(logger.error.called).to.be.true;
       });
   });
 });
