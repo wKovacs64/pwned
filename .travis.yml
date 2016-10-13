@@ -18,7 +18,7 @@ install:
   - yarn
 before_script:
   - nvm install stable
-  - yarn run lint
+  - npm run lint
   - nvm use $TRAVIS_NODE_VERSION
 script:
   - yarn test
