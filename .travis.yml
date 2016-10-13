@@ -1,5 +1,10 @@
 sudo: false
 language: node_js
+cache:
+  directories:
+    - $HOME/.npm
+    - $HOME/.yarn-cache
+    - node_modules
 node_js:
   - "0.10"
   - "0.12"
@@ -7,9 +12,15 @@ node_js:
   - "4"
   - "5"
   - "node"
+before_install:
+  - npm i -g yarn
+install:
+  - yarn
 before_script:
   - nvm install stable
-  - npm run lint
+  - yarn run lint
   - nvm use $TRAVIS_NODE_VERSION
+script:
+  - yarn test
 after_success:
   - "nyc report --reporter=text-lcov | coveralls"
