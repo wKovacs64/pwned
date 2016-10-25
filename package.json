@@ -38,7 +38,7 @@
   "bugs": {
     "url": "https://github.com/wKovacs64/pwned/issues"
   },
-  "homepage": "https://github.com/wKovacs64/pwned",
+  "homepage": "https://wkovacs64.github.io/pwned",
   "engines": {
     "iojs": "*",
     "node": ">= 0.10"
