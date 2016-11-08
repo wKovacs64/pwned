@@ -40,8 +40,7 @@
   },
   "homepage": "https://wkovacs64.github.io/pwned",
   "engines": {
-    "iojs": "*",
-    "node": ">= 0.10"
+    "node": ">= 4"
   },
   "dependencies": {
     "cli-spinner": "^0.2.5",
