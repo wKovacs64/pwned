@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 3.0.0 *(2016-11-08)*
+
+* Dropped support for Node < 4
+* Updated dependencies
+
 ## Version 2.0.2 *(2016-10-03)*
 
 * Switched code style from SemiStandard to Airbnb

@@ -1,6 +1,6 @@
 {
   "name": "pwned",
-  "version": "2.0.3-dev.0",
+  "version": "3.0.0",
   "description": "A command-line tool for querying the 'Have I been pwned?' service.",
   "keywords": [
     "haveibeenpwned",
