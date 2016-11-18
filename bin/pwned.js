@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-require('es6-promise/auto');
-
-var program = require('commander');
-var pkg = require('../package.json');
-var addCommands = require('../lib/commands');
+const program = require('commander');
+const pkg = require('../package.json');
+const addCommands = require('../lib/commands');
 
 // Begin command-line argument configuration
 program
@@ -15,9 +13,7 @@ program
 addCommands(program);
 
 // Display help and exit if unknown arguments are provided
-program.on('*', function showHelp() {
-  program.help();
-});
+program.on('*', () => program.help());
 
 // Initiate the parser
 program.parse(process.argv);

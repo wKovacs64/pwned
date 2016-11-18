@@ -1,5 +1,3 @@
-import 'es6-promise/auto';
-
 export const data = {
   email: 'foo@bar.baz',
   emptyArray: [],
