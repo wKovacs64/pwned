@@ -25,6 +25,7 @@
     "lib": "./lib"
   },
   "scripts": {
+    "build": "npm run compile",
     "clean": "rimraf ./lib ./coverage ./nyc_output",
     "compile": "babel src --out-dir lib --source-maps",
     "lint": "eslint bin src test",
