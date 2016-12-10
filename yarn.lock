@@ -155,11 +155,11 @@ aws4@^1.2.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.5.0.tgz#0a29ffb79c31c9e712eeb087e8e7a64b4a56d755"
 
-axios@^0.15.2:
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.15.2.tgz#496f50980b2ce1ad2e195af93c2d03b4d035e90d"
+axios@^0.15.3:
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.15.3.tgz#2c9d638b2e191a08ea1d6cc988eadd6ba5bdc053"
   dependencies:
-    follow-redirects "0.0.7"
+    follow-redirects "1.0.0"
 
 babel-cli@^6.18.0:
   version "6.18.0"
@@ -1083,9 +1083,9 @@ eslint-plugin-react@^6.8.0:
     doctrine "^1.2.2"
     jsx-ast-utils "^1.3.4"
 
-eslint@^3.11.1:
-  version "3.11.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.11.1.tgz#408be581041385cba947cd8d1cd2227782b55dbf"
+eslint@^3.12.0:
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.12.0.tgz#1dfa4ef0082e35feed90a0fb1f7996d1d426b249"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -1098,7 +1098,7 @@ eslint@^3.11.1:
     esutils "^2.0.2"
     file-entry-cache "^2.0.0"
     glob "^7.0.3"
-    globals "^9.2.0"
+    globals "^9.14.0"
     ignore "^3.2.0"
     imurmurhash "^0.1.4"
     inquirer "^0.12.0"
@@ -1245,12 +1245,11 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-follow-redirects@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-0.0.7.tgz#34b90bab2a911aa347571da90f22bd36ecd8a919"
+follow-redirects@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.0.0.tgz#8e34298cbd2e176f254effec75a1c78cc849fd37"
   dependencies:
     debug "^2.2.0"
-    stream-consume "^0.1.0"
 
 for-in@^0.1.5:
   version "0.1.6"
@@ -1402,9 +1401,9 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.0.6:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-globals@^9.0.0, globals@^9.2.0:
-  version "9.12.0"
-  resolved "https://registry.yarnpkg.com/globals/-/globals-9.12.0.tgz#992ce90828c3a55fa8f16fada177adb64664cf9d"
+globals@^9.0.0, globals@^9.14.0:
+  version "9.14.0"
+  resolved "https://registry.yarnpkg.com/globals/-/globals-9.14.0.tgz#8859936af0038741263053b39d0e76ca241e4034"
 
 globby@^5.0.0:
   version "5.0.0"
@@ -1481,12 +1480,12 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-hibp:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/hibp/-/hibp-3.0.0.tgz#0e6684146e9c61b1b520b01d6525598c940cb6f9"
+hibp@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/hibp/-/hibp-4.0.0.tgz#6ae117de55832359faaca531f94ef4a6efaab47a"
   dependencies:
-    axios "^0.15.2"
-    source-map-support "^0.4.5"
+    axios "^0.15.3"
+    source-map-support "^0.4.6"
 
 hoek@2.x.x:
   version "2.16.3"
@@ -2590,7 +2589,7 @@ sntp@1.x.x:
   dependencies:
     hoek "2.x.x"
 
-source-map-support@^0.4.2, source-map-support@^0.4.5, source-map-support@^0.4.6:
+source-map-support@^0.4.2, source-map-support@^0.4.6:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.6.tgz#32552aa64b458392a85eab3b0b5ee61527167aeb"
   dependencies:
@@ -2649,10 +2648,6 @@ sshpk@^1.7.0:
     jodid25519 "^1.0.0"
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
-
-stream-consume@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/stream-consume/-/stream-consume-0.1.0.tgz#a41ead1a6d6081ceb79f65b061901b6d8f3d1d0f"
 
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"
