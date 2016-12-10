@@ -29,7 +29,8 @@
     "clean": "rimraf ./lib ./coverage ./nyc_output",
     "compile": "babel src --out-dir lib --source-maps",
     "lint": "eslint bin src test",
-    "prepublish": "npm run clean && npm run compile",
+    "precompile": "npm run clean",
+    "prepublish": "npm run compile",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha"
   },
   "repository": {
