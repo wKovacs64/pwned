@@ -3,19 +3,19 @@ import mockery from 'mockery';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
 import spinner from '../../src/utils/spinner';
-import { data } from '../setup';
+import { OBJ_ARRAY, EMPTY_ARRAY, ERROR_MSG } from '../testData';
 
 describe('api: getDataClasses', () => {
   const hibpMockFound = {
-    dataClasses: () => Promise.resolve(data.objArray),
+    dataClasses: () => Promise.resolve(OBJ_ARRAY),
   };
 
   const hibpMockNotFound = {
-    dataClasses: () => Promise.resolve(data.emptyArray),
+    dataClasses: () => Promise.resolve(EMPTY_ARRAY),
   };
 
   const hibpMockError = {
-    dataClasses: () => Promise.reject(new Error(data.errorMsg)),
+    dataClasses: () => Promise.reject(new Error(ERROR_MSG)),
   };
 
   let getDataClasses;

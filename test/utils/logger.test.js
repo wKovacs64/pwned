@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
-import { data } from '../setup';
+import { OBJ, MESSAGE } from '../testData';
 
 /**
  * WARNING:
@@ -22,7 +22,7 @@ describe('util: logger', () => {
     expect(logger.error).to.be.a('function');
     sinon.stub(console, 'error');
     expect(console.error.called).to.be.false;
-    logger.error(data.message, data.obj);
+    logger.error(MESSAGE, OBJ);
     expect(console.error.called).to.be.true;
     console.error.restore();
     done();
@@ -33,7 +33,7 @@ describe('util: logger', () => {
     expect(logger.info).to.be.a('function');
     sinon.stub(console, 'info');
     expect(console.info.called).to.be.false;
-    logger.info(data.message, data.obj);
+    logger.info(MESSAGE, OBJ);
     expect(console.info.called).to.be.true;
     console.info.restore();
     done();
@@ -44,7 +44,7 @@ describe('util: logger', () => {
     expect(logger.log).to.be.a('function');
     sinon.stub(console, 'log');
     expect(console.log.called).to.be.false;
-    logger.log(data.message, data.obj);
+    logger.log(MESSAGE, OBJ);
     expect(console.log.called).to.be.true;
     console.log.restore();
     done();
@@ -55,7 +55,7 @@ describe('util: logger', () => {
     expect(logger.warn).to.be.a('function');
     sinon.stub(console, 'warn');
     expect(console.warn.called).to.be.false;
-    logger.warn(data.message, data.obj);
+    logger.warn(MESSAGE, OBJ);
     expect(console.warn.called).to.be.true;
     console.warn.restore();
     done();

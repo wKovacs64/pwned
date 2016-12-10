@@ -3,17 +3,23 @@ import mockery from 'mockery';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
 import spinner from '../../src/utils/spinner';
-import { data } from '../setup';
+import {
+  FOUND,
+  OBJ_ARRAY,
+  NOT_FOUND,
+  ERROR,
+  ERROR_MSG,
+} from '../testData';
 
 describe('api: getPastes', () => {
   const hibpMock = {
     pasteAccount: (email) => {
-      if (email === data.found) {
-        return Promise.resolve(data.objArray);
-      } else if (email === data.notFound) {
+      if (email === FOUND) {
+        return Promise.resolve(OBJ_ARRAY);
+      } else if (email === NOT_FOUND) {
         return Promise.resolve(null);
-      } else if (email === data.error) {
-        return Promise.reject(new Error(data.errorMsg));
+      } else if (email === ERROR) {
+        return Promise.reject(new Error(ERROR_MSG));
       }
     },
   };
@@ -51,20 +57,20 @@ describe('api: getPastes', () => {
   });
 
   it('should call spinner.start (!raw)', (done) => {
-    getPastes(data.found, false);
+    getPastes(FOUND, false);
     expect(spinner.start.called).to.be.true;
     done();
   });
 
   it('should not call spinner.start (raw)', (done) => {
-    getPastes(data.found, true);
+    getPastes(FOUND, true);
     expect(spinner.start.called).to.be.false;
     done();
   });
 
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPastes(data.found, false)
+    return getPastes(FOUND, false)
       .then(() => {
         expect(spinner.stop.called).to.be.true;
       });
@@ -72,7 +78,7 @@ describe('api: getPastes', () => {
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPastes(data.found, true)
+    return getPastes(FOUND, true)
       .then(() => {
         expect(spinner.stop.called).to.be.false;
       });
@@ -80,7 +86,7 @@ describe('api: getPastes', () => {
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPastes(data.found, false)
+    return getPastes(FOUND, false)
       .then(() => {
         expect(logger.log.callCount).to.equal(1);
       });
@@ -88,7 +94,7 @@ describe('api: getPastes', () => {
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPastes(data.found, true)
+    return getPastes(FOUND, true)
       .then(() => {
         expect(logger.log.callCount).to.equal(1);
       });
@@ -96,7 +102,7 @@ describe('api: getPastes', () => {
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPastes(data.notFound, false)
+    return getPastes(NOT_FOUND, false)
       .then(() => {
         expect(logger.log.callCount).to.equal(1);
       });
@@ -104,7 +110,7 @@ describe('api: getPastes', () => {
 
   it('should not call logger.log (notFound && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPastes(data.notFound, true)
+    return getPastes(NOT_FOUND, true)
       .then(() => {
         expect(logger.log.called).to.be.false;
       });
@@ -112,7 +118,7 @@ describe('api: getPastes', () => {
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPastes(data.error, false)
+    return getPastes(ERROR, false)
       .then(() => {
         expect(spinner.stop.called).to.be.true;
       });
@@ -120,7 +126,7 @@ describe('api: getPastes', () => {
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPastes(data.error, true)
+    return getPastes(ERROR, true)
       .then(() => {
         expect(spinner.stop.called).to.be.false;
       });
@@ -128,7 +134,7 @@ describe('api: getPastes', () => {
 
   it('should call logger.error (error)', () => {
     expect(logger.error.called).to.be.false;
-    return getPastes(data.error, false)
+    return getPastes(ERROR, false)
       .then(() => {
         expect(logger.log.called).to.be.false;
         expect(logger.error.called).to.be.true;

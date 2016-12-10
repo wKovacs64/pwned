@@ -3,17 +3,24 @@ import mockery from 'mockery';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
 import spinner from '../../src/utils/spinner';
-import { data } from '../setup';
+import {
+  FOUND,
+  OBJ_ARRAY,
+  NOT_FOUND,
+  EMPTY_ARRAY,
+  ERROR,
+  ERROR_MSG,
+} from '../testData';
 
 describe('api: getBreaches', () => {
   const hibpMock = {
     breaches: (options = {}) => {
-      if (options.domain === data.found) {
-        return Promise.resolve(data.objArray);
-      } else if (options.domain === data.notFound) {
-        return Promise.resolve(data.emptyArray);
-      } else if (options.domain === data.error) {
-        return Promise.reject(new Error(data.errorMsg));
+      if (options.domain === FOUND) {
+        return Promise.resolve(OBJ_ARRAY);
+      } else if (options.domain === NOT_FOUND) {
+        return Promise.resolve(EMPTY_ARRAY);
+      } else if (options.domain === ERROR) {
+        return Promise.reject(new Error(ERROR_MSG));
       }
     },
   };
@@ -51,20 +58,20 @@ describe('api: getBreaches', () => {
   });
 
   it('should call spinner.start (!raw)', (done) => {
-    getBreaches(data.found, false);
+    getBreaches(FOUND, false);
     expect(spinner.start.called).to.be.true;
     done();
   });
 
   it('should not call spinner.start (raw)', (done) => {
-    getBreaches(data.found, true);
+    getBreaches(FOUND, true);
     expect(spinner.start.called).to.be.false;
     done();
   });
 
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreaches(data.found, false)
+    return getBreaches(FOUND, false)
       .then(() => {
         expect(spinner.stop.called).to.be.true;
       });
@@ -72,7 +79,7 @@ describe('api: getBreaches', () => {
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreaches(data.found, true)
+    return getBreaches(FOUND, true)
       .then(() => {
         expect(spinner.stop.called).to.be.false;
       });
@@ -80,7 +87,7 @@ describe('api: getBreaches', () => {
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreaches(data.found, false)
+    return getBreaches(FOUND, false)
       .then(() => {
         expect(logger.log.callCount).to.equal(1);
       });
@@ -88,7 +95,7 @@ describe('api: getBreaches', () => {
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreaches(data.found, true)
+    return getBreaches(FOUND, true)
       .then(() => {
         expect(logger.log.callCount).to.equal(1);
       });
@@ -96,7 +103,7 @@ describe('api: getBreaches', () => {
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreaches(data.notFound, false)
+    return getBreaches(NOT_FOUND, false)
       .then(() => {
         expect(logger.log.callCount).to.equal(1);
       });
@@ -104,7 +111,7 @@ describe('api: getBreaches', () => {
 
   it('should not call logger.log (notFound && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreaches(data.notFound, true)
+    return getBreaches(NOT_FOUND, true)
       .then(() => {
         expect(logger.log.called).to.be.false;
       });
@@ -112,7 +119,7 @@ describe('api: getBreaches', () => {
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreaches(data.error, false)
+    return getBreaches(ERROR, false)
       .then(() => {
         expect(spinner.stop.called).to.be.true;
       });
@@ -120,7 +127,7 @@ describe('api: getBreaches', () => {
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreaches(data.error, true)
+    return getBreaches(ERROR, true)
       .then(() => {
         expect(spinner.stop.called).to.be.false;
       });
@@ -128,7 +135,7 @@ describe('api: getBreaches', () => {
 
   it('should call logger.error (error)', () => {
     expect(logger.error.called).to.be.false;
-    return getBreaches(data.error, false)
+    return getBreaches(ERROR, false)
       .then(() => {
         expect(logger.log.called).to.be.false;
         expect(logger.error.called).to.be.true;

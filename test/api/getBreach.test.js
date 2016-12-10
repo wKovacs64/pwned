@@ -3,17 +3,23 @@ import mockery from 'mockery';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
 import spinner from '../../src/utils/spinner';
-import { data } from '../setup';
+import {
+  FOUND,
+  OBJ,
+  NOT_FOUND,
+  ERROR,
+  ERROR_MSG,
+} from '../testData';
 
 describe('api: getBreach', () => {
   const hibpMock = {
     breach: (breachName) => {
-      if (breachName === data.found) {
-        return Promise.resolve(data.obj);
-      } else if (breachName === data.notFound) {
+      if (breachName === FOUND) {
+        return Promise.resolve(OBJ);
+      } else if (breachName === NOT_FOUND) {
         return Promise.resolve(null);
-      } else if (breachName === data.error) {
-        return Promise.reject(new Error(data.errorMsg));
+      } else if (breachName === ERROR) {
+        return Promise.reject(new Error(ERROR_MSG));
       }
     },
   };
@@ -51,20 +57,20 @@ describe('api: getBreach', () => {
   });
 
   it('should call spinner.start (!raw)', (done) => {
-    getBreach(data.found, false);
+    getBreach(FOUND, false);
     expect(spinner.start.called).to.be.true;
     done();
   });
 
   it('should not call spinner.start (raw)', (done) => {
-    getBreach(data.found, true);
+    getBreach(FOUND, true);
     expect(spinner.start.called).to.be.false;
     done();
   });
 
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreach(data.found, false)
+    return getBreach(FOUND, false)
       .then(() => {
         expect(spinner.stop.called).to.be.true;
       });
@@ -72,7 +78,7 @@ describe('api: getBreach', () => {
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreach(data.found, true)
+    return getBreach(FOUND, true)
       .then(() => {
         expect(spinner.stop.called).to.be.false;
       });
@@ -80,7 +86,7 @@ describe('api: getBreach', () => {
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreach(data.found, false)
+    return getBreach(FOUND, false)
       .then(() => {
         expect(logger.log.callCount).to.equal(1);
       });
@@ -88,7 +94,7 @@ describe('api: getBreach', () => {
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreach(data.found, true)
+    return getBreach(FOUND, true)
       .then(() => {
         expect(logger.log.callCount).to.equal(1);
       });
@@ -96,7 +102,7 @@ describe('api: getBreach', () => {
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreach(data.notFound, false)
+    return getBreach(NOT_FOUND, false)
       .then(() => {
         expect(logger.log.callCount).to.equal(1);
       });
@@ -104,7 +110,7 @@ describe('api: getBreach', () => {
 
   it('should not call logger.log (notFound && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreach(data.notFound, true)
+    return getBreach(NOT_FOUND, true)
       .then(() => {
         expect(logger.log.called).to.be.false;
       });
@@ -112,7 +118,7 @@ describe('api: getBreach', () => {
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreach(data.error, false)
+    return getBreach(ERROR, false)
       .then(() => {
         expect(spinner.stop.called).to.be.true;
       });
@@ -120,7 +126,7 @@ describe('api: getBreach', () => {
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreach(data.error, true)
+    return getBreach(ERROR, true)
       .then(() => {
         expect(spinner.stop.called).to.be.false;
       });
@@ -128,7 +134,7 @@ describe('api: getBreach', () => {
 
   it('should call logger.error (error)', () => {
     expect(logger.error.called).to.be.false;
-    return getBreach(data.error, false)
+    return getBreach(ERROR, false)
       .then(() => {
         expect(logger.log.called).to.be.false;
         expect(logger.error.called).to.be.true;

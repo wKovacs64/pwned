@@ -2,7 +2,7 @@ import commander from 'commander';
 import { expect } from 'chai';
 import mockery from 'mockery';
 import sinon from 'sinon';
-import { data } from '../setup';
+import { NONE, NOT_FOUND } from '../testData';
 
 describe('action: breach', () => {
   const getBreachStub = sinon.stub();
@@ -26,13 +26,13 @@ describe('action: breach', () => {
 
   it('should call command help when passed an empty string', (done) => {
     const help = sinon.stub(command, 'help').returns();
-    breach(data.none, command);
+    breach(NONE, command);
     expect(help.called).to.be.true;
     done();
   });
 
   it('should call getBreach when passed a non-empty string', (done) => {
-    breach(data.notFound, command);
+    breach(NOT_FOUND, command);
     expect(getBreachStub.called).to.be.true;
     done();
   });

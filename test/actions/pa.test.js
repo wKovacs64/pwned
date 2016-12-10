@@ -2,7 +2,7 @@ import commander from 'commander';
 import { expect } from 'chai';
 import mockery from 'mockery';
 import sinon from 'sinon';
-import { data } from '../setup';
+import { NONE, EMAIL } from '../testData';
 
 describe('action: pa', () => {
   const getPastesStub = sinon.stub();
@@ -26,13 +26,13 @@ describe('action: pa', () => {
 
   it('should call command help when passed an empty string', (done) => {
     const help = sinon.stub(command, 'help').returns();
-    pa(data.none, command);
+    pa(NONE, command);
     expect(help.called).to.be.true;
     done();
   });
 
   it('should call getPastes when passed a non-empty string', (done) => {
-    pa(data.email, command);
+    pa(EMAIL, command);
     expect(getPastesStub.called).to.be.true;
     done();
   });
