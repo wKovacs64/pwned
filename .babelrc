@@ -10,6 +10,13 @@
     "add-module-exports"
   ],
   "presets": [
-    "es2015"
+    [
+      "env",
+      {
+        "targets": {
+          "node": "4"
+        }
+      }
+    ]
   ]
 }
