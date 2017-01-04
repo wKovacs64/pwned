@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 3.0.1 *(2017-01-04)*
+
+* First release of 2017! :tada:
+* Removed leftover `es6-promise` dependency
+* Updated dependencies
+
 ## Version 3.0.0 *(2016-11-08)*
 
 * Dropped support for Node < 4
