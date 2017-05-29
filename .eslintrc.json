@@ -7,7 +7,14 @@
       2
     ],
     "valid-jsdoc": [
-      "error"
+      "error",
+      {
+        "prefer": {
+          "arg": "param",
+          "argument": "param",
+          "return": "returns"
+        }
+      }
     ]
   }
 }
