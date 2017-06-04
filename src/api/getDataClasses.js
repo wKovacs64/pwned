@@ -13,8 +13,7 @@ export default (raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise
-    .resolve(hibp.dataClasses())
+  return Promise.resolve(hibp.dataClasses())
     .then((dataClasses) => {
       if (!raw && process.stdout.isTTY) {
         spinner.stop(true);
@@ -24,8 +23,10 @@ export default (raw) => {
       } else if (dataClasses.length) {
         logger.log(prettyjson.render(dataClasses));
       } else if (!dataClasses.length && !raw) {
-        logger.log('No data classes found. This is unexpected - the remote ' +
-          'API may be having difficulties.');
+        logger.log(
+          'No data classes found. This is unexpected - the remote API may be ' +
+          'having difficulties.',
+        );
       }
     })
     .catch((err) => {

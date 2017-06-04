@@ -3,14 +3,7 @@ import mockery from 'mockery';
 import sinon from 'sinon';
 import logger from '../../src/utils/logger';
 import spinner from '../../src/utils/spinner';
-import {
-  FOUND,
-  OBJ,
-  NOT_FOUND,
-  ERROR,
-  ERROR_MSG,
-  NONE,
-} from '../testData';
+import { FOUND, OBJ, NOT_FOUND, ERROR, ERROR_MSG, NONE } from '../testData';
 
 describe('api: getBreachedAccount', () => {
   const hibpMock = {

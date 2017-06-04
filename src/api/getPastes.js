@@ -14,8 +14,7 @@ export default (email, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise
-    .resolve(hibp.pasteAccount(email))
+  return Promise.resolve(hibp.pasteAccount(email))
     .then((pasteData) => {
       if (!raw && process.stdout.isTTY) {
         spinner.stop(true);
