@@ -27,25 +27,26 @@ describe('api: getDataClasses', () => {
     });
     mockery.registerMock('../utils/logger', logger);
     mockery.registerMock('../utils/spinner', spinner);
-  });
-
-  after(() => {
-    mockery.deregisterAll();
-    mockery.disable();
-  });
-
-  beforeEach(() => {
     sinon.stub(logger, 'log');
     sinon.stub(logger, 'error');
     sinon.stub(spinner, 'start');
     sinon.stub(spinner, 'stop');
   });
 
-  afterEach(() => {
+  after(() => {
     logger.log.restore();
     logger.error.restore();
     spinner.start.restore();
     spinner.stop.restore();
+    mockery.deregisterAll();
+    mockery.disable();
+  });
+
+  afterEach(() => {
+    logger.log.reset();
+    logger.error.reset();
+    spinner.start.reset();
+    spinner.stop.reset();
   });
 
   describe('found', () => {
