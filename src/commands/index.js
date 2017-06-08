@@ -3,6 +3,7 @@ import breach from './breach';
 import breaches from './breaches';
 import dc from './dc';
 import pa from './pa';
+import search from './search';
 
 /**
  * Initializes all the commands.
@@ -16,4 +17,5 @@ export default (program) => {
   breaches(program);
   dc(program);
   pa(program);
+  search(program);
 };
