@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 3.1.1 *(2017-06-08)*
+
+* Updated README to include `search` command
+
 ## Version 3.1.0 *(2017-06-08)*
 
 * Added new `search` command to query breaches and pastes simultaneously (like
