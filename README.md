@@ -22,11 +22,12 @@ Usage: pwned [option | command]
 
 Commands:
 
-  ba [options] <account>   get all breaches for an account (username or email address)
-  breaches [options]       get all breaches in the system
-  breach [options] <name>  get a single breached site by breach name
-  dc [options]             get all data classes in the system
-  pa [options] <email>     get all pastes for an account (email address)
+  ba [options] <account>      get all breaches for an account (username or email address)
+  breaches [options]          get all breaches in the system
+  breach [options] <name>     get a single breached site by breach name
+  dc [options]                get all data classes in the system
+  pa [options] <email>        get all pastes for an account (email address)
+  search [options] <account>  search breaches and pastes for an account (username or email address)
 
 Each command has its own -h (--help) option.
 
@@ -124,6 +125,29 @@ $ pwned pa nobody@nowhere.com
   Title:      PayPalSucks Database 102k
   Date:       null
   EmailCount: 82071
+```
+
+Search both breaches and pastes for an account (truncating breach data):
+```
+$ pwned search nobody -t
+breaches:
+  -
+    Name: BattlefieldHeroes
+  -
+    Name: CannabisForum
+  -
+    Name: Forbes
+  -
+    Name: Gawker
+  -
+    Name: HackForums
+  -
+    Name: LoungeBoard
+  -
+    Name: PokemonCreed
+  -
+    Name: Win7Vista
+pastes:   null
 ```
 
 ## License
