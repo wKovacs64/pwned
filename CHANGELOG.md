@@ -1,5 +1,12 @@
 # Change Log
 
+## Version 3.1.0 *(2017-06-08)*
+
+* Added new `search` command to query breaches and pastes simultaneously (like
+  the search form on the [website][haveibeenpwned])
+* Optimized stub restores/resets in tests
+* Updated dependencies
+
 ## Version 3.0.1 *(2017-01-04)*
 
 * First release of 2017! :tada:
@@ -75,10 +82,12 @@
 ## Version 1.0.1 *(2016-04-10)*
 
 * Updated hibp to 1.0.2
-* Removed temporary hack for broken
-  '[breach](https://haveibeenpwned.com/API/v2#SingleBreach)' endpoint (moved to
+* Removed temporary hack for broken '[breach][singlebreach]' endpoint (moved to
   hibp)
 
 ## Version 1.0.0 *(2016-04-09)*
 
 * Initial release
+
+[haveibeenpwned]: https://haveibeenpwned.com
+[singlebreach]: https://haveibeenpwned.com/API/v2#SingleBreach
