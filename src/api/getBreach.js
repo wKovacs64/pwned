@@ -1,4 +1,4 @@
-import hibp from 'hibp';
+import { breach } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
@@ -14,7 +14,7 @@ export default (name, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(hibp.breach(name))
+  return Promise.resolve(breach(name))
     .then((breachData) => {
       if (!raw && process.stdout.isTTY) {
         spinner.stop(true);

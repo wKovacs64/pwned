@@ -1,4 +1,4 @@
-import hibp from 'hibp';
+import { search } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
@@ -7,7 +7,7 @@ export default (account, domain, truncate, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(hibp.search(account, { domain, truncate }))
+  return Promise.resolve(search(account, { domain, truncate }))
     .then((searchData) => {
       const foundData = !!(searchData.breaches || searchData.pastes);
       if (!raw && process.stdout.isTTY) {

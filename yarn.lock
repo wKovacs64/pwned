@@ -1009,13 +1009,7 @@ debug@2.6.0:
   dependencies:
     ms "0.7.2"
 
-debug@^2.2.0, debug@^2.4.5, debug@^2.6.3:
-  version "2.6.6"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.6.tgz#a9fa6fbe9ca43cf1e79f73b75c0189cbb7d6db5a"
-  dependencies:
-    ms "0.7.3"
-
-debug@^2.6.8:
+debug@^2.2.0, debug@^2.4.5, debug@^2.6.3, debug@^2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -1681,9 +1675,9 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-hibp@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/hibp/-/hibp-4.3.0.tgz#6420e65159e98f99222ee1101f7fbc4126f39a45"
+hibp@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/hibp/-/hibp-4.4.0.tgz#57ed87434f209fcc283e4e31220f6d07634af1f4"
   dependencies:
     axios "^0.16.2"
     source-map-support "^0.4.15"
@@ -2289,10 +2283,6 @@ ms@0.7.1:
 ms@0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.2.tgz#ae25cf2512b3885a1d95d7f037868d8431124765"
-
-ms@0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.3.tgz#708155a5e44e33f5fd0fc53e81d0d40a91be1fff"
 
 ms@2.0.0:
   version "2.0.0"

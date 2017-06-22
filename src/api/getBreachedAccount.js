@@ -1,4 +1,4 @@
-import hibp from 'hibp';
+import { breachedAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
@@ -18,7 +18,7 @@ export default (account, domain, truncate, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(hibp.breachedAccount(account, { domain, truncate }))
+  return Promise.resolve(breachedAccount(account, { domain, truncate }))
     .then((breachData) => {
       if (!raw && process.stdout.isTTY) {
         spinner.stop(true);

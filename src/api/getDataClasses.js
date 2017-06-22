@@ -1,4 +1,4 @@
-import hibp from 'hibp';
+import { dataClasses as getDataClasses } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
@@ -13,7 +13,7 @@ export default (raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(hibp.dataClasses())
+  return Promise.resolve(getDataClasses())
     .then((dataClasses) => {
       if (!raw && process.stdout.isTTY) {
         spinner.stop(true);

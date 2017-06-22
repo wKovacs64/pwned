@@ -1,4 +1,4 @@
-import hibp from 'hibp';
+import { pasteAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
@@ -14,7 +14,7 @@ export default (email, raw) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(hibp.pasteAccount(email))
+  return Promise.resolve(pasteAccount(email))
     .then((pasteData) => {
       if (!raw && process.stdout.isTTY) {
         spinner.stop(true);
