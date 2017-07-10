@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 3.1.2 *(2017-07-10)*
+
+* Removed deprecated `preferGlobal` field from package.json
+* Updated dependencies
+
 ## Version 3.1.1 *(2017-06-08)*
 
 * Updated README to include `search` command
