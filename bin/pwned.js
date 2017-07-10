@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const program = require('commander');
 const pkg = require('../package.json');
+// eslint-disable-next-line import/no-unresolved
 const addCommands = require('../lib/commands');
 
 // Begin command-line argument configuration
