@@ -10,6 +10,9 @@ module.*
 
 ## Installation
 
+Download and install [Node.js][nodejs], then install `pwned` globally using
+`npm`:
+
 ```shell
 npm install pwned -g
 ```
@@ -163,3 +166,4 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [troy]: http://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
+[nodejs]: https://nodejs.org/en/download/
