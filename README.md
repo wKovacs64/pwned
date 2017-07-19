@@ -1,3 +1,13 @@
+<a href="https://wkovacs64.github.io/pwned">
+  <img
+    alt="logo"
+    title="logo"
+    src="https://wkovacs64.github.io/pwned/logo.png"
+    align="right"
+    width="85"
+  />
+</a>
+
 # pwned
 
 *A command-line tool for querying [Troy Hunt][troy]'s
