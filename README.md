@@ -1,8 +1,8 @@
 # pwned
 
-*A command-line tool for querying [Troy Hunt](http://www.troyhunt.com/)'s
-[Have I been pwned?](https://haveibeenpwned.com/) service using the
-[hibp](https://github.com/wKovacs64/hibp) Node.js module.*
+*A command-line tool for querying [Troy Hunt][troy]'s
+[Have I been pwned?][haveibeenpwned] service using the [hibp][hibp] Node.js
+module.*
 
 [![npm Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
@@ -160,3 +160,6 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [travis-url]: https://travis-ci.org/wKovacs64/pwned
 [coveralls-image]: https://img.shields.io/coveralls/wKovacs64/pwned.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/github/wKovacs64/pwned
+[troy]: http://www.troyhunt.com
+[haveibeenpwned]: https://haveibeenpwned.com
+[hibp]: https://github.com/wKovacs64/hibp
