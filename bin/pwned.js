@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require('source-map-support/register');
 const program = require('commander');
 const pkg = require('../package.json');
 // eslint-disable-next-line import/no-unresolved
