@@ -3,7 +3,7 @@
 ## Version 3.2.0 *(2017-08-05)*
 
 * Added new `pw` command to check if a password has been exposed in a data
-  breach
+  breach (#3)
 * Enabled `source-map-support` in the entry point for easier debugging
 
 ## Version 3.1.2 *(2017-07-10)*
