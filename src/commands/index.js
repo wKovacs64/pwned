@@ -3,6 +3,7 @@ import breach from './breach';
 import breaches from './breaches';
 import dc from './dc';
 import pa from './pa';
+import pw from './pw';
 import search from './search';
 
 /**
@@ -17,5 +18,6 @@ export default (program) => {
   breaches(program);
   dc(program);
   pa(program);
+  pw(program);
   search(program);
 };
