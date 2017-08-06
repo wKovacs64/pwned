@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 3.2.0 *(2017-08-05)*
+
+* Added new `pw` command to check if a password has been exposed in a data
+  breach
+* Enabled `source-map-support` in the entry point for easier debugging
+
 ## Version 3.1.2 *(2017-07-10)*
 
 * Removed deprecated `preferGlobal` field from package.json
