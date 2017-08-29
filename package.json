@@ -51,26 +51,26 @@
     "commander": "^2.11.0",
     "hibp": "^5.2.0",
     "prettyjson": "^1.2.1",
-    "source-map-support": "^0.4.15"
+    "source-map-support": "^0.4.16"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-istanbul": "^4.1.4",
     "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.24.1",
+    "babel-register": "^6.26.0",
     "chai": "^4.1.1",
     "coveralls": "^2.13.1",
-    "cross-env": "^5.0.3",
-    "eslint": "^4.4.0",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.5.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-react": "^7.3.0",
     "mocha": "^3.5.0",
     "mockery": "^2.1.0",
     "nyc": "^11.1.0",
     "rimraf": "^2.6.1",
-    "sinon": "^3.0.0"
+    "sinon": "^3.2.1"
   }
 }
