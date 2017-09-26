@@ -175,6 +175,8 @@ pastes:   null
 
 This tool is distributed under the [MIT License](LICENSE.txt).
 
+[![Sponsor][sponsor-image]][sponsor-link]
+
 [npm-image]: https://img.shields.io/npm/v/pwned.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/pwned
 [travis-image]: https://img.shields.io/travis/wKovacs64/pwned.svg?style=flat-square
@@ -185,3 +187,5 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
 [nodejs]: https://nodejs.org/en/download/
+[sponsor-image]: https://app.codesponsor.io/embed/1Z34ZozRAhWZ8QKV42A2yt3r/wKovacs64/pwned.svg
+[sponsor-link]: https://app.codesponsor.io/link/1Z34ZozRAhWZ8QKV42A2yt3r/wKovacs64/pwned
