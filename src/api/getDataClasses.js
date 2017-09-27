@@ -25,7 +25,7 @@ export default (raw) => {
       } else if (!dataClasses.length && !raw) {
         logger.log(
           'No data classes found. This is unexpected - the remote API may be ' +
-          'having difficulties.',
+            'having difficulties.',
         );
       }
     })

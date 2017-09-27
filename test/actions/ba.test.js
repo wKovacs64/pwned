@@ -31,6 +31,7 @@ describe('action: ba', () => {
     done();
   });
 
+  // prettier-ignore
   it('should call getBreachedAccount when passed a non-empty string',
     (done) => {
       ba(NOT_FOUND, command);

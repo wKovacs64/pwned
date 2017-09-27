@@ -1,0 +1,23 @@
+{
+  "extends": "airbnb-base/legacy",
+  "rules": {
+    "max-len": [
+      "error",
+      80,
+      2
+    ],
+    "valid-jsdoc": [
+      "error",
+      {
+        "prefer": {
+          "arg": "param",
+          "argument": "param",
+          "return": "returns"
+        }
+      }
+    ]
+  },
+  "parserOptions": {
+    "ecmaVersion": 5
+  }
+}

@@ -72,74 +72,65 @@ describe('api: getBreaches', () => {
 
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreaches(FOUND, false)
-      .then(() => {
-        expect(spinner.stop.called).to.be.true;
-      });
+    return getBreaches(FOUND, false).then(() => {
+      expect(spinner.stop.called).to.be.true;
+    });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreaches(FOUND, true)
-      .then(() => {
-        expect(spinner.stop.called).to.be.false;
-      });
+    return getBreaches(FOUND, true).then(() => {
+      expect(spinner.stop.called).to.be.false;
+    });
   });
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreaches(FOUND, false)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getBreaches(FOUND, false).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreaches(FOUND, true)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getBreaches(FOUND, true).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreaches(NOT_FOUND, false)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getBreaches(NOT_FOUND, false).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreaches(NOT_FOUND, true)
-      .then(() => {
-        expect(logger.log.called).to.be.false;
-      });
+    return getBreaches(NOT_FOUND, true).then(() => {
+      expect(logger.log.called).to.be.false;
+    });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreaches(ERROR, false)
-      .then(() => {
-        expect(spinner.stop.called).to.be.true;
-      });
+    return getBreaches(ERROR, false).then(() => {
+      expect(spinner.stop.called).to.be.true;
+    });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreaches(ERROR, true)
-      .then(() => {
-        expect(spinner.stop.called).to.be.false;
-      });
+    return getBreaches(ERROR, true).then(() => {
+      expect(spinner.stop.called).to.be.false;
+    });
   });
 
   it('should call logger.error (error)', () => {
     expect(logger.error.called).to.be.false;
-    return getBreaches(ERROR, false)
-      .then(() => {
-        expect(logger.log.called).to.be.false;
-        expect(logger.error.called).to.be.true;
-      });
+    return getBreaches(ERROR, false).then(() => {
+      expect(logger.log.called).to.be.false;
+      expect(logger.error.called).to.be.true;
+    });
   });
 });

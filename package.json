@@ -30,6 +30,7 @@
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
     "clean": "rimraf lib coverage nyc_output",
+    "format": "prettier-eslint --write \"{bin,src,test}/**/*.js\"",
     "lint": "eslint bin src test",
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
@@ -70,6 +71,7 @@
     "mocha": "^3.5.3",
     "mockery": "^2.1.0",
     "nyc": "^11.2.1",
+    "prettier-eslint-cli": "^4.3.2",
     "rimraf": "^2.6.2",
     "sinon": "^4.0.0"
   }

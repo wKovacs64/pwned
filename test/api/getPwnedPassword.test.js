@@ -65,74 +65,65 @@ describe('api: getPwnedPassword', () => {
 
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPwnedPassword(NOT_FOUND, false, false)
-      .then(() => {
-        expect(spinner.stop.called).to.be.true;
-      });
+    return getPwnedPassword(NOT_FOUND, false, false).then(() => {
+      expect(spinner.stop.called).to.be.true;
+    });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPwnedPassword(NOT_FOUND, false, true)
-      .then(() => {
-        expect(spinner.stop.called).to.be.false;
-      });
+    return getPwnedPassword(NOT_FOUND, false, true).then(() => {
+      expect(spinner.stop.called).to.be.false;
+    });
   });
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPwnedPassword(FOUND, false, false)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getPwnedPassword(FOUND, false, false).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPwnedPassword(FOUND, false, true)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getPwnedPassword(FOUND, false, true).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPwnedPassword(NOT_FOUND, false, false)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getPwnedPassword(NOT_FOUND, false, false).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call logger.log (notFound && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPwnedPassword(NOT_FOUND, false, true)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getPwnedPassword(NOT_FOUND, false, true).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPwnedPassword(ERROR, false, false)
-      .then(() => {
-        expect(spinner.stop.called).to.be.true;
-      });
+    return getPwnedPassword(ERROR, false, false).then(() => {
+      expect(spinner.stop.called).to.be.true;
+    });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPwnedPassword(ERROR, false, true)
-      .then(() => {
-        expect(spinner.stop.called).to.be.false;
-      });
+    return getPwnedPassword(ERROR, false, true).then(() => {
+      expect(spinner.stop.called).to.be.false;
+    });
   });
 
   it('should call logger.error (error)', () => {
     expect(logger.error.called).to.be.false;
-    return getPwnedPassword(ERROR, false, false)
-      .then(() => {
-        expect(logger.log.called).to.be.false;
-        expect(logger.error.called).to.be.true;
-      });
+    return getPwnedPassword(ERROR, false, false).then(() => {
+      expect(logger.log.called).to.be.false;
+      expect(logger.error.called).to.be.true;
+    });
   });
 });

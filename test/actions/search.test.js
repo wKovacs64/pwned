@@ -31,10 +31,9 @@ describe('action: search', () => {
     done();
   });
 
-  it('should call search when passed a non-empty string',
-    (done) => {
-      search(NOT_FOUND, command);
-      expect(getSearchStub.called).to.be.true;
-      done();
-    });
+  it('should call search when passed a non-empty string', (done) => {
+    search(NOT_FOUND, command);
+    expect(getSearchStub.called).to.be.true;
+    done();
+  });
 });

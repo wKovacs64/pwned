@@ -65,74 +65,65 @@ describe('api: getBreachedAccount', () => {
 
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreachedAccount(NOT_FOUND, NONE, false, false)
-      .then(() => {
-        expect(spinner.stop.called).to.be.true;
-      });
+    return getBreachedAccount(NOT_FOUND, NONE, false, false).then(() => {
+      expect(spinner.stop.called).to.be.true;
+    });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreachedAccount(NOT_FOUND, NONE, false, true)
-      .then(() => {
-        expect(spinner.stop.called).to.be.false;
-      });
+    return getBreachedAccount(NOT_FOUND, NONE, false, true).then(() => {
+      expect(spinner.stop.called).to.be.false;
+    });
   });
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreachedAccount(FOUND, NONE, false, false)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getBreachedAccount(FOUND, NONE, false, false).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreachedAccount(FOUND, NONE, false, true)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getBreachedAccount(FOUND, NONE, false, true).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreachedAccount(NOT_FOUND, NONE, false, false)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getBreachedAccount(NOT_FOUND, NONE, false, false).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getBreachedAccount(NOT_FOUND, NONE, false, true)
-      .then(() => {
-        expect(logger.log.called).to.be.false;
-      });
+    return getBreachedAccount(NOT_FOUND, NONE, false, true).then(() => {
+      expect(logger.log.called).to.be.false;
+    });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreachedAccount(ERROR, NONE, false, false)
-      .then(() => {
-        expect(spinner.stop.called).to.be.true;
-      });
+    return getBreachedAccount(ERROR, NONE, false, false).then(() => {
+      expect(spinner.stop.called).to.be.true;
+    });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getBreachedAccount(ERROR, NONE, false, true)
-      .then(() => {
-        expect(spinner.stop.called).to.be.false;
-      });
+    return getBreachedAccount(ERROR, NONE, false, true).then(() => {
+      expect(spinner.stop.called).to.be.false;
+    });
   });
 
   it('should call logger.error (error)', () => {
     expect(logger.error.called).to.be.false;
-    return getBreachedAccount(ERROR, NONE, false, false)
-      .then(() => {
-        expect(logger.log.called).to.be.false;
-        expect(logger.error.called).to.be.true;
-      });
+    return getBreachedAccount(ERROR, NONE, false, false).then(() => {
+      expect(logger.log.called).to.be.false;
+      expect(logger.error.called).to.be.true;
+    });
   });
 });

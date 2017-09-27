@@ -9,9 +9,7 @@ import ba from '../actions/ba';
 export default program =>
   program
     .command('ba <account>')
-    .description(
-      'get all breaches for an account (username or email address)',
-    )
+    .description('get all breaches for an account (username or email address)')
     .option('-d, --domain-filter <domain>', 'filter breach data by domain')
     .option(
       '-r, --raw',

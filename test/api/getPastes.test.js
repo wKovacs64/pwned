@@ -65,74 +65,65 @@ describe('api: getPastes', () => {
 
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPastes(FOUND, false)
-      .then(() => {
-        expect(spinner.stop.called).to.be.true;
-      });
+    return getPastes(FOUND, false).then(() => {
+      expect(spinner.stop.called).to.be.true;
+    });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPastes(FOUND, true)
-      .then(() => {
-        expect(spinner.stop.called).to.be.false;
-      });
+    return getPastes(FOUND, true).then(() => {
+      expect(spinner.stop.called).to.be.false;
+    });
   });
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPastes(FOUND, false)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getPastes(FOUND, false).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPastes(FOUND, true)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getPastes(FOUND, true).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPastes(NOT_FOUND, false)
-      .then(() => {
-        expect(logger.log.callCount).to.equal(1);
-      });
+    return getPastes(NOT_FOUND, false).then(() => {
+      expect(logger.log.callCount).to.equal(1);
+    });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
     expect(logger.log.called).to.be.false;
-    return getPastes(NOT_FOUND, true)
-      .then(() => {
-        expect(logger.log.called).to.be.false;
-      });
+    return getPastes(NOT_FOUND, true).then(() => {
+      expect(logger.log.called).to.be.false;
+    });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPastes(ERROR, false)
-      .then(() => {
-        expect(spinner.stop.called).to.be.true;
-      });
+    return getPastes(ERROR, false).then(() => {
+      expect(spinner.stop.called).to.be.true;
+    });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop.called).to.be.false;
-    return getPastes(ERROR, true)
-      .then(() => {
-        expect(spinner.stop.called).to.be.false;
-      });
+    return getPastes(ERROR, true).then(() => {
+      expect(spinner.stop.called).to.be.false;
+    });
   });
 
   it('should call logger.error (error)', () => {
     expect(logger.error.called).to.be.false;
-    return getPastes(ERROR, false)
-      .then(() => {
-        expect(logger.log.called).to.be.false;
-        expect(logger.error.called).to.be.true;
-      });
+    return getPastes(ERROR, false).then(() => {
+      expect(logger.log.called).to.be.false;
+      expect(logger.error.called).to.be.true;
+    });
   });
 });
