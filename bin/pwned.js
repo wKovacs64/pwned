@@ -15,7 +15,7 @@ program
 addCommands(program);
 
 // Display help and exit if unknown arguments are provided
-program.on('*', () => program.help());
+program.on('command:*', () => program.help());
 
 // Initiate the parser
 program.parse(process.argv);
