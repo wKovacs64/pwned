@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
-    "clean": "rimraf lib coverage nyc_output",
+    "clean": "rimraf lib coverage .nyc_output",
     "format": "prettier-eslint --write \"{bin,src,test}/**/*.js\"",
     "lint": "eslint bin src test",
     "prebuild": "npm run clean",
