@@ -52,7 +52,7 @@
     "commander": "^2.11.0",
     "hibp": "^5.2.0",
     "prettyjson": "^1.2.1",
-    "source-map-support": "^0.4.18"
+    "source-map-support": "^0.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -61,17 +61,17 @@
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "coveralls": "^2.13.1",
+    "coveralls": "^3.0.0",
     "cross-env": "^5.0.5",
-    "eslint": "^4.7.2",
+    "eslint": "^4.8.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "^7.4.0",
-    "mocha": "^3.5.3",
+    "mocha": "^4.0.0",
     "mockery": "^2.1.0",
     "nyc": "^11.2.1",
-    "prettier-eslint-cli": "^4.3.2",
+    "prettier-eslint-cli": "^4.4.0",
     "rimraf": "^2.6.2",
     "sinon": "^4.0.0"
   }
