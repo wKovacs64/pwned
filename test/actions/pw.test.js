@@ -1,39 +1,18 @@
-import commander from 'commander';
-import { expect } from 'chai';
-import mockery from 'mockery';
-import sinon from 'sinon';
+import getPwnedPassword from '../../src/api/getPwnedPassword';
+import pw from '../../src/actions/pw';
 import { NONE, NOT_FOUND } from '../testData';
 
+jest.mock('../../src/api/getPwnedPassword', () => jest.fn());
+
 describe('action: pw', () => {
-  const getPwnedPasswordStub = sinon.stub();
-  let pw;
-  let command;
-
-  before(() => {
-    mockery.enable({
-      useCleanCache: true,
-      warnOnUnregistered: false,
-    });
-    mockery.registerMock('../api/getPwnedPassword', getPwnedPasswordStub);
-    pw = require('../../src/actions/pw');
-    command = new commander.Command('');
+  it('should call command help when passed an empty string', () => {
+    const help = jest.fn();
+    pw(NONE, { help });
+    expect(help.mock.calls.length).toBe(1);
   });
 
-  after(() => {
-    mockery.deregisterAll();
-    mockery.disable();
-  });
-
-  it('should call command help when passed an empty string', (done) => {
-    const help = sinon.stub(command, 'help').returns();
-    pw(NONE, command);
-    expect(help.called).to.be.true;
-    done();
-  });
-
-  it('should call getPwnedPassword when passed a non-empty string', (done) => {
-    pw(NOT_FOUND, command);
-    expect(getPwnedPasswordStub.called).to.be.true;
-    done();
+  it('should call getPwnedPassword when passed a non-empty string', () => {
+    pw(NOT_FOUND, {});
+    expect(getPwnedPassword.mock.calls.length).toBe(1);
   });
 });

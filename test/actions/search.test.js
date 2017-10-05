@@ -1,39 +1,18 @@
-import commander from 'commander';
-import { expect } from 'chai';
-import mockery from 'mockery';
-import sinon from 'sinon';
+import getSearch from '../../src/api/getSearch';
+import search from '../../src/actions/search';
 import { NONE, NOT_FOUND } from '../testData';
 
+jest.mock('../../src/api/getSearch', () => jest.fn());
+
 describe('action: search', () => {
-  const getSearchStub = sinon.stub();
-  let search;
-  let command;
-
-  before(() => {
-    mockery.enable({
-      useCleanCache: true,
-      warnOnUnregistered: false,
-    });
-    mockery.registerMock('../api/getSearch', getSearchStub);
-    search = require('../../src/actions/search');
-    command = new commander.Command('');
+  it('should call command help when passed an empty string', () => {
+    const help = jest.fn();
+    search(NONE, { help });
+    expect(help.mock.calls.length).toBe(1);
   });
 
-  after(() => {
-    mockery.deregisterAll();
-    mockery.disable();
-  });
-
-  it('should call command help when passed an empty string', (done) => {
-    const help = sinon.stub(command, 'help').returns();
-    search(NONE, command);
-    expect(help.called).to.be.true;
-    done();
-  });
-
-  it('should call search when passed a non-empty string', (done) => {
-    search(NOT_FOUND, command);
-    expect(getSearchStub.called).to.be.true;
-    done();
+  it('should call search when passed a non-empty string', () => {
+    search(NOT_FOUND, {});
+    expect(getSearch.mock.calls.length).toBe(1);
   });
 });

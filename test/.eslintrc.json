@@ -1,13 +1,10 @@
 {
   "env": {
-    "mocha": true
+    "jest": true
   },
   "rules": {
     "consistent-return": "off",
-    "global-require": "off",
-    "import/newline-after-import": "off",
     "no-console": "off",
-    "no-underscore-dangle": "off",
-    "no-unused-expressions": "off"
+    "no-underscore-dangle": "off"
   }
 }

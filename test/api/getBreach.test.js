@@ -1,13 +1,15 @@
-import { expect } from 'chai';
-import mockery from 'mockery';
-import sinon from 'sinon';
+import * as hibp from 'hibp';
 import logger from '../../src/utils/logger';
 import spinner from '../../src/utils/spinner';
+import getBreach from '../../src/api/getBreach';
 import { FOUND, OBJ, NOT_FOUND, ERROR, ERROR_MSG } from '../testData';
 
+jest.mock('../../src/utils/logger');
+jest.mock('../../src/utils/spinner');
+
 describe('api: getBreach', () => {
-  const hibpMock = {
-    breach: (breachName) => {
+  beforeAll(() => {
+    hibp.breach = (breachName) => {
       if (breachName === FOUND) {
         return Promise.resolve(OBJ);
       } else if (breachName === NOT_FOUND) {
@@ -15,115 +17,88 @@ describe('api: getBreach', () => {
       } else if (breachName === ERROR) {
         return Promise.reject(new Error(ERROR_MSG));
       }
-    },
-  };
-
-  let getBreach;
-
-  before(() => {
-    mockery.enable({
-      useCleanCache: true,
-      warnOnUnregistered: false,
-    });
-    mockery.registerMock('../utils/logger', logger);
-    mockery.registerMock('../utils/spinner', spinner);
-    mockery.registerMock('hibp', hibpMock);
-    getBreach = require('../../src/api/getBreach');
-    sinon.stub(logger, 'log');
-    sinon.stub(logger, 'error');
-    sinon.stub(spinner, 'start');
-    sinon.stub(spinner, 'stop');
+    };
   });
 
-  after(() => {
-    logger.log.restore();
-    logger.error.restore();
-    spinner.start.restore();
-    spinner.stop.restore();
-    mockery.deregisterAll();
-    mockery.disable();
+  beforeEach(() => {
+    // global clearMocks Jest config option doesn't work on nested mocks
+    logger.log.mockClear();
+    logger.error.mockClear();
+    spinner.start.mockClear();
+    spinner.stop.mockClear();
   });
 
-  afterEach(() => {
-    logger.log.reset();
-    logger.error.reset();
-    spinner.start.reset();
-    spinner.stop.reset();
-  });
-
-  it('should call spinner.start (!raw)', (done) => {
+  it('should call spinner.start (!raw)', () => {
     getBreach(FOUND, false);
-    expect(spinner.start.called).to.be.true;
-    done();
+    expect(spinner.start.mock.calls.length).toBe(1);
   });
 
-  it('should not call spinner.start (raw)', (done) => {
+  it('should not call spinner.start (raw)', () => {
     getBreach(FOUND, true);
-    expect(spinner.start.called).to.be.false;
-    done();
+    expect(spinner.start.mock.calls.length).toBe(0);
   });
 
   it('should call spinner.stop (non-error results, !raw)', () => {
-    expect(spinner.stop.called).to.be.false;
+    expect(spinner.stop.mock.calls.length).toBe(0);
     return getBreach(FOUND, false).then(() => {
-      expect(spinner.stop.called).to.be.true;
+      expect(spinner.stop.mock.calls.length).toBe(1);
     });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
-    expect(spinner.stop.called).to.be.false;
+    expect(spinner.stop.mock.calls.length).toBe(0);
     return getBreach(FOUND, true).then(() => {
-      expect(spinner.stop.called).to.be.false;
+      expect(spinner.stop.mock.calls.length).toBe(0);
     });
   });
 
   it('should call logger.log (found && !raw)', () => {
-    expect(logger.log.called).to.be.false;
+    expect(logger.log.mock.calls.length).toBe(0);
     return getBreach(FOUND, false).then(() => {
-      expect(logger.log.callCount).to.equal(1);
+      expect(logger.log.mock.calls.length).toBe(1);
     });
   });
 
   it('should call logger.log (found && raw)', () => {
-    expect(logger.log.called).to.be.false;
+    expect(logger.log.mock.calls.length).toBe(0);
     return getBreach(FOUND, true).then(() => {
-      expect(logger.log.callCount).to.equal(1);
+      expect(logger.log.mock.calls.length).toBe(1);
     });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
-    expect(logger.log.called).to.be.false;
+    expect(logger.log.mock.calls.length).toBe(0);
     return getBreach(NOT_FOUND, false).then(() => {
-      expect(logger.log.callCount).to.equal(1);
+      expect(logger.log.mock.calls.length).toBe(1);
     });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
-    expect(logger.log.called).to.be.false;
+    expect(logger.log.mock.calls.length).toBe(0);
     return getBreach(NOT_FOUND, true).then(() => {
-      expect(logger.log.called).to.be.false;
+      expect(logger.log.mock.calls.length).toBe(0);
     });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
-    expect(spinner.stop.called).to.be.false;
+    expect(spinner.stop.mock.calls.length).toBe(0);
     return getBreach(ERROR, false).then(() => {
-      expect(spinner.stop.called).to.be.true;
+      expect(spinner.stop.mock.calls.length).toBe(1);
     });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
-    expect(spinner.stop.called).to.be.false;
+    expect(spinner.stop.mock.calls.length).toBe(0);
     return getBreach(ERROR, true).then(() => {
-      expect(spinner.stop.called).to.be.false;
+      expect(spinner.stop.mock.calls.length).toBe(0);
     });
   });
 
   it('should call logger.error (error)', () => {
-    expect(logger.error.called).to.be.false;
+    expect(logger.error.mock.calls.length).toBe(0);
     return getBreach(ERROR, false).then(() => {
-      expect(logger.log.called).to.be.false;
-      expect(logger.error.called).to.be.true;
+      expect(logger.log.mock.calls.length).toBe(0);
+      expect(logger.error.mock.calls.length).toBe(1);
     });
   });
 });

@@ -1,31 +1,11 @@
-import commander from 'commander';
-import { expect } from 'chai';
-import mockery from 'mockery';
-import sinon from 'sinon';
+import getDataClasses from '../../src/api/getDataClasses';
+import dc from '../../src/actions/dc';
+
+jest.mock('../../src/api/getDataClasses', () => jest.fn());
 
 describe('action: dc', () => {
-  const getDataClassesStub = sinon.stub();
-  let dc;
-  let command;
-
-  before(() => {
-    mockery.enable({
-      useCleanCache: true,
-      warnOnUnregistered: false,
-    });
-    mockery.registerMock('../api/getDataClasses', getDataClassesStub);
-    dc = require('../../src/actions/dc');
-    command = new commander.Command('');
-  });
-
-  after(() => {
-    mockery.deregisterAll();
-    mockery.disable();
-  });
-
-  it('should call getDataClasses', (done) => {
-    dc(command);
-    expect(getDataClassesStub.called).to.be.true;
-    done();
+  it('should call getDataClasses', () => {
+    dc({});
+    expect(getDataClasses.mock.calls.length).toBe(1);
   });
 });
