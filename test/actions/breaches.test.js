@@ -1,31 +1,11 @@
-import commander from 'commander';
-import { expect } from 'chai';
-import mockery from 'mockery';
-import sinon from 'sinon';
+import getBreaches from '../../src/api/getBreaches';
+import breaches from '../../src/actions/breaches';
+
+jest.mock('../../src/api/getBreaches', () => jest.fn());
 
 describe('action: breaches', () => {
-  const getBreachesStub = sinon.stub();
-  let breaches;
-  let command;
-
-  before(() => {
-    mockery.enable({
-      useCleanCache: true,
-      warnOnUnregistered: false,
-    });
-    mockery.registerMock('../api/getBreaches', getBreachesStub);
-    breaches = require('../../src/actions/breaches');
-    command = new commander.Command('');
-  });
-
-  after(() => {
-    mockery.deregisterAll();
-    mockery.disable();
-  });
-
-  it('should call getBreaches', (done) => {
-    breaches(command);
-    expect(getBreachesStub.called).to.be.true;
-    done();
+  it('should call getBreaches', () => {
+    breaches({});
+    expect(getBreaches.mock.calls.length).toBe(1);
   });
 });

@@ -1,5 +1,3 @@
-import { expect } from 'chai';
-import sinon from 'sinon';
 import logger from '../../src/utils/logger';
 import { OBJ, MESSAGE } from '../testData';
 
@@ -12,52 +10,55 @@ import { OBJ, MESSAGE } from '../testData';
  */
 
 describe('util: logger', () => {
-  it('should return an object', (done) => {
-    expect(logger).to.be.an('object');
-    done();
+  afterEach(() => {
+    // Restore any console functions that were mocked
+    if (typeof console.error.mockRestore === 'function') {
+      console.error.mockRestore();
+    }
+    if (typeof console.info.mockRestore === 'function') {
+      console.info.mockRestore();
+    }
+    if (typeof console.log.mockRestore === 'function') {
+      console.log.mockRestore();
+    }
+    if (typeof console.warn.mockRestore === 'function') {
+      console.warn.mockRestore();
+    }
   });
 
-  it('should have an "error" function which calls console.error', (done) => {
-    expect(logger).to.have.property('error');
-    expect(logger.error).to.be.a('function');
-    sinon.stub(console, 'error');
-    expect(console.error.called).to.be.false;
+  it('should have an "error" function which calls console.error', () => {
+    expect(logger).toHaveProperty('error');
+    expect(typeof logger.error).toBe('function');
+    console.error = jest.fn();
+    expect(console.error.mock.calls.length).toBe(0);
     logger.error(MESSAGE, OBJ);
-    expect(console.error.called).to.be.true;
-    console.error.restore();
-    done();
+    expect(console.error.mock.calls.length).toBe(1);
   });
 
-  it('should have an "info" function which calls console.info', (done) => {
-    expect(logger).to.have.property('info');
-    expect(logger.info).to.be.a('function');
-    sinon.stub(console, 'info');
-    expect(console.info.called).to.be.false;
+  it('should have an "info" function which calls console.info', () => {
+    expect(logger).toHaveProperty('info');
+    expect(typeof logger.info).toBe('function');
+    console.info = jest.fn();
+    expect(console.info.mock.calls.length).toBe(0);
     logger.info(MESSAGE, OBJ);
-    expect(console.info.called).to.be.true;
-    console.info.restore();
-    done();
+    expect(console.info.mock.calls.length).toBe(1);
   });
 
-  it('should have a "log" function which calls console.log', (done) => {
-    expect(logger).to.have.property('log');
-    expect(logger.log).to.be.a('function');
-    sinon.stub(console, 'log');
-    expect(console.log.called).to.be.false;
+  it('should have an "log" function which calls console.log', () => {
+    expect(logger).toHaveProperty('log');
+    expect(typeof logger.log).toBe('function');
+    console.log = jest.fn();
+    expect(console.log.mock.calls.length).toBe(0);
     logger.log(MESSAGE, OBJ);
-    expect(console.log.called).to.be.true;
-    console.log.restore();
-    done();
+    expect(console.log.mock.calls.length).toBe(1);
   });
 
-  it('should have a "warn" function which calls console.warn', (done) => {
-    expect(logger).to.have.property('warn');
-    expect(logger.warn).to.be.a('function');
-    sinon.stub(console, 'warn');
-    expect(console.warn.called).to.be.false;
+  it('should have an "warn" function which calls console.warn', () => {
+    expect(logger).toHaveProperty('warn');
+    expect(typeof logger.warn).toBe('function');
+    console.warn = jest.fn();
+    expect(console.warn.mock.calls.length).toBe(0);
     logger.warn(MESSAGE, OBJ);
-    expect(console.warn.called).to.be.true;
-    console.warn.restore();
-    done();
+    expect(console.warn.mock.calls.length).toBe(1);
   });
 });

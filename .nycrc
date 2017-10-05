@@ -1,7 +1,0 @@
-{
-  "include": [
-    "src/**/*.js"
-  ],
-  "sourceMap": false,
-  "instrument": false
-}

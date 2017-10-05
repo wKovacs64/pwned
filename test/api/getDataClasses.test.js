@@ -1,200 +1,143 @@
-import { expect } from 'chai';
-import mockery from 'mockery';
-import sinon from 'sinon';
+import * as hibp from 'hibp';
 import logger from '../../src/utils/logger';
 import spinner from '../../src/utils/spinner';
+import getDataClasses from '../../src/api/getDataClasses';
 import { OBJ_ARRAY, EMPTY_ARRAY, ERROR_MSG } from '../testData';
 
+jest.mock('../../src/utils/logger');
+jest.mock('../../src/utils/spinner');
+
 describe('api: getDataClasses', () => {
-  const hibpMockFound = {
-    dataClasses: () => Promise.resolve(OBJ_ARRAY),
-  };
-
-  const hibpMockNotFound = {
-    dataClasses: () => Promise.resolve(EMPTY_ARRAY),
-  };
-
-  const hibpMockError = {
-    dataClasses: () => Promise.reject(new Error(ERROR_MSG)),
-  };
-
-  let getDataClasses;
-
-  before(() => {
-    mockery.enable({
-      useCleanCache: true,
-      warnOnUnregistered: false,
-    });
-    mockery.registerMock('../utils/logger', logger);
-    mockery.registerMock('../utils/spinner', spinner);
-    sinon.stub(logger, 'log');
-    sinon.stub(logger, 'error');
-    sinon.stub(spinner, 'start');
-    sinon.stub(spinner, 'stop');
-  });
-
-  after(() => {
-    logger.log.restore();
-    logger.error.restore();
-    spinner.start.restore();
-    spinner.stop.restore();
-    mockery.deregisterAll();
-    mockery.disable();
-  });
-
-  afterEach(() => {
-    logger.log.reset();
-    logger.error.reset();
-    spinner.start.reset();
-    spinner.stop.reset();
+  beforeEach(() => {
+    // global clearMocks Jest config option doesn't work on nested mocks
+    logger.log.mockClear();
+    logger.error.mockClear();
+    spinner.start.mockClear();
+    spinner.stop.mockClear();
   });
 
   describe('found', () => {
-    before(() => {
-      mockery.resetCache();
-      mockery.registerMock('hibp', hibpMockFound);
-      getDataClasses = require('../../src/api/getDataClasses');
+    beforeAll(() => {
+      hibp.dataClasses = () => Promise.resolve(OBJ_ARRAY);
     });
 
-    after(() => {
-      mockery.deregisterMock('hibp');
-    });
-
-    it('should call spinner.start (found && !raw)', (done) => {
+    it('should call spinner.start (found && !raw)', () => {
       getDataClasses(false);
-      expect(spinner.start.called).to.be.true;
-      done();
+      expect(spinner.start.mock.calls.length).toBe(1);
     });
 
-    it('should not call spinner.start (found && raw)', (done) => {
+    it('should not call spinner.start (found && raw)', () => {
       getDataClasses(true);
-      expect(spinner.start.called).to.be.false;
-      done();
+      expect(spinner.start.mock.calls.length).toBe(0);
     });
 
     it('should call spinner.stop (found && !raw)', () => {
-      expect(spinner.stop.called).to.be.false;
+      expect(spinner.stop.mock.calls.length).toBe(0);
       return getDataClasses(false).then(() => {
-        expect(spinner.stop.called).to.be.true;
+        expect(spinner.stop.mock.calls.length).toBe(1);
       });
     });
 
     it('should not call spinner.stop (found && raw)', () => {
-      expect(spinner.stop.called).to.be.false;
+      expect(spinner.stop.mock.calls.length).toBe(0);
       return getDataClasses(true).then(() => {
-        expect(spinner.stop.called).to.be.false;
+        expect(spinner.stop.mock.calls.length).toBe(0);
       });
     });
 
     it('should call logger.log (found && !raw)', () => {
-      expect(logger.log.called).to.be.false;
+      expect(logger.log.mock.calls.length).toBe(0);
       return getDataClasses(false).then(() => {
-        expect(logger.log.callCount).to.equal(1);
+        expect(logger.log.mock.calls.length).toBe(1);
       });
     });
 
     it('should call logger.log (found && raw)', () => {
-      expect(logger.log.called).to.be.false;
+      expect(logger.log.mock.calls.length).toBe(0);
       return getDataClasses(true).then(() => {
-        expect(logger.log.callCount).to.equal(1);
+        expect(logger.log.mock.calls.length).toBe(1);
       });
     });
   });
 
   describe('not found', () => {
-    before(() => {
-      mockery.resetCache();
-      mockery.registerMock('hibp', hibpMockNotFound);
-      getDataClasses = require('../../src/api/getDataClasses');
+    beforeAll(() => {
+      hibp.dataClasses = () => Promise.resolve(EMPTY_ARRAY);
     });
 
-    after(() => {
-      mockery.deregisterMock('hibp');
-    });
-
-    it('should call spinner.start (notFound && !raw)', (done) => {
+    it('should call spinner.start (notFound && !raw)', () => {
       getDataClasses(false);
-      expect(spinner.start.called).to.be.true;
-      done();
+      expect(spinner.start.mock.calls.length).toBe(1);
     });
 
-    it('should not call spinner.start (notFound && raw)', (done) => {
+    it('should not call spinner.start (notFound && raw)', () => {
       getDataClasses(true);
-      expect(spinner.start.called).to.be.false;
-      done();
+      expect(spinner.start.mock.calls.length).toBe(0);
     });
 
     it('should call spinner.stop (notFound && !raw)', () => {
-      expect(spinner.stop.called).to.be.false;
+      expect(spinner.stop.mock.calls.length).toBe(0);
       return getDataClasses(false).then(() => {
-        expect(spinner.stop.called).to.be.true;
+        expect(spinner.stop.mock.calls.length).toBe(1);
       });
     });
 
     it('should not call spinner.stop (notFound && raw)', () => {
-      expect(spinner.stop.called).to.be.false;
+      expect(spinner.stop.mock.calls.length).toBe(0);
       return getDataClasses(true).then(() => {
-        expect(spinner.stop.called).to.be.false;
+        expect(spinner.stop.mock.calls.length).toBe(0);
       });
     });
 
     it('should call logger.log (notFound && !raw)', () => {
-      expect(logger.log.called).to.be.false;
+      expect(logger.log.mock.calls.length).toBe(0);
       return getDataClasses(false).then(() => {
-        expect(logger.log.callCount).to.equal(1);
+        expect(logger.log.mock.calls.length).toBe(1);
       });
     });
 
     it('should not call logger.log (notFound && raw)', () => {
-      expect(logger.log.called).to.be.false;
+      expect(logger.log.mock.calls.length).toBe(0);
       return getDataClasses(true).then(() => {
-        expect(logger.log.called).to.be.false;
+        expect(logger.log.mock.calls.length).toBe(0);
       });
     });
   });
 
   describe('error', () => {
-    before(() => {
-      mockery.resetCache();
-      mockery.registerMock('hibp', hibpMockError);
-      getDataClasses = require('../../src/api/getDataClasses');
+    beforeAll(() => {
+      hibp.dataClasses = () => Promise.reject(new Error(ERROR_MSG));
     });
 
-    after(() => {
-      mockery.deregisterMock('hibp');
-    });
-
-    it('should call spinner.start (error && !raw)', (done) => {
+    it('should call spinner.start (error && !raw)', () => {
       getDataClasses(false);
-      expect(spinner.start.called).to.be.true;
-      done();
+      expect(spinner.start.mock.calls.length).toBe(1);
     });
 
-    it('should not call spinner.start (error && raw)', (done) => {
+    it('should not call spinner.start (error && raw)', () => {
       getDataClasses(true);
-      expect(spinner.start.called).to.be.false;
-      done();
+      expect(spinner.start.mock.calls.length).toBe(0);
     });
 
     it('should call spinner.stop (error && !raw)', () => {
-      expect(spinner.stop.called).to.be.false;
+      expect(spinner.stop.mock.calls.length).toBe(0);
       return getDataClasses(false).then(() => {
-        expect(spinner.stop.called).to.be.true;
+        expect(spinner.stop.mock.calls.length).toBe(1);
       });
     });
 
     it('should not call spinner.stop (error && raw)', () => {
-      expect(spinner.stop.called).to.be.false;
+      expect(spinner.stop.mock.calls.length).toBe(0);
       return getDataClasses(true).then(() => {
-        expect(spinner.stop.called).to.be.false;
+        expect(spinner.stop.mock.calls.length).toBe(0);
       });
     });
 
     it('should call logger.error (error)', () => {
-      expect(logger.error.called).to.be.false;
+      expect(logger.error.mock.calls.length).toBe(0);
       return getDataClasses(false).then(() => {
-        expect(logger.log.called).to.be.false;
-        expect(logger.error.called).to.be.true;
+        expect(logger.log.mock.calls.length).toBe(0);
+        expect(logger.error.mock.calls.length).toBe(1);
       });
     });
   });
