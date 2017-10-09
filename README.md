@@ -179,10 +179,10 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 
 [npm-image]: https://img.shields.io/npm/v/pwned.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/pwned
-[travis-image]: https://img.shields.io/travis/wKovacs64/pwned.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/wKovacs64/pwned.svg?style=flat-square&branch=master
 [travis-url]: https://travis-ci.org/wKovacs64/pwned
-[coveralls-image]: https://img.shields.io/coveralls/wKovacs64/pwned.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/github/wKovacs64/pwned
+[coveralls-image]: https://img.shields.io/coveralls/wKovacs64/pwned.svg?style=flat-square&branch=master
+[coveralls-url]: https://coveralls.io/github/wKovacs64/pwned?branch=master
 [troy]: http://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
