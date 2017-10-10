@@ -6,6 +6,6 @@ jest.mock('../../src/api/getDataClasses', () => jest.fn());
 describe('action: dc', () => {
   it('should call getDataClasses', () => {
     dc({});
-    expect(getDataClasses.mock.calls.length).toBe(1);
+    expect(getDataClasses).toHaveBeenCalledTimes(1);
   });
 });

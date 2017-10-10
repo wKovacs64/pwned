@@ -30,75 +30,75 @@ describe('api: getPwnedPassword', () => {
 
   it('should call spinner.start (!raw)', () => {
     getPwnedPassword(NOT_FOUND, false, false);
-    expect(spinner.start.mock.calls.length).toBe(1);
+    expect(spinner.start).toHaveBeenCalledTimes(1);
   });
 
   it('should not call spinner.start (raw)', () => {
     getPwnedPassword(NOT_FOUND, false, true);
-    expect(spinner.start.mock.calls.length).toBe(0);
+    expect(spinner.start).toHaveBeenCalledTimes(0);
   });
 
   it('should call spinner.stop (non-error results, !raw)', () => {
-    expect(spinner.stop.mock.calls.length).toBe(0);
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
     return getPwnedPassword(NOT_FOUND, false, false).then(() => {
-      expect(spinner.stop.mock.calls.length).toBe(1);
+      expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
-    expect(spinner.stop.mock.calls.length).toBe(0);
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
     return getPwnedPassword(NOT_FOUND, false, true).then(() => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call logger.log (found && !raw)', () => {
-    expect(logger.log.mock.calls.length).toBe(0);
+    expect(logger.log).toHaveBeenCalledTimes(0);
     return getPwnedPassword(FOUND, false, false).then(() => {
-      expect(logger.log.mock.calls.length).toBe(1);
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call logger.log (found && raw)', () => {
-    expect(logger.log.mock.calls.length).toBe(0);
+    expect(logger.log).toHaveBeenCalledTimes(0);
     return getPwnedPassword(FOUND, false, true).then(() => {
-      expect(logger.log.mock.calls.length).toBe(1);
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
-    expect(logger.log.mock.calls.length).toBe(0);
+    expect(logger.log).toHaveBeenCalledTimes(0);
     return getPwnedPassword(NOT_FOUND, false, false).then(() => {
-      expect(logger.log.mock.calls.length).toBe(1);
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call logger.log (notFound && raw)', () => {
-    expect(logger.log.mock.calls.length).toBe(0);
+    expect(logger.log).toHaveBeenCalledTimes(0);
     return getPwnedPassword(NOT_FOUND, false, true).then(() => {
-      expect(logger.log.mock.calls.length).toBe(1);
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
-    expect(spinner.stop.mock.calls.length).toBe(0);
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
     return getPwnedPassword(ERROR, false, false).then(() => {
-      expect(spinner.stop.mock.calls.length).toBe(1);
+      expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
-    expect(spinner.stop.mock.calls.length).toBe(0);
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
     return getPwnedPassword(ERROR, false, true).then(() => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call logger.error (error)', () => {
-    expect(logger.error.mock.calls.length).toBe(0);
+    expect(logger.error).toHaveBeenCalledTimes(0);
     return getPwnedPassword(ERROR, false, false).then(() => {
-      expect(logger.log.mock.calls.length).toBe(0);
-      expect(logger.error.mock.calls.length).toBe(1);
+      expect(logger.log).toHaveBeenCalledTimes(0);
+      expect(logger.error).toHaveBeenCalledTimes(1);
     });
   });
 });

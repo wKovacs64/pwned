@@ -23,39 +23,39 @@ describe('api: getDataClasses', () => {
 
     it('should call spinner.start (found && !raw)', () => {
       getDataClasses(false);
-      expect(spinner.start.mock.calls.length).toBe(1);
+      expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
     it('should not call spinner.start (found && raw)', () => {
       getDataClasses(true);
-      expect(spinner.start.mock.calls.length).toBe(0);
+      expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
     it('should call spinner.stop (found && !raw)', () => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
       return getDataClasses(false).then(() => {
-        expect(spinner.stop.mock.calls.length).toBe(1);
+        expect(spinner.stop).toHaveBeenCalledTimes(1);
       });
     });
 
     it('should not call spinner.stop (found && raw)', () => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
       return getDataClasses(true).then(() => {
-        expect(spinner.stop.mock.calls.length).toBe(0);
+        expect(spinner.stop).toHaveBeenCalledTimes(0);
       });
     });
 
     it('should call logger.log (found && !raw)', () => {
-      expect(logger.log.mock.calls.length).toBe(0);
+      expect(logger.log).toHaveBeenCalledTimes(0);
       return getDataClasses(false).then(() => {
-        expect(logger.log.mock.calls.length).toBe(1);
+        expect(logger.log).toHaveBeenCalledTimes(1);
       });
     });
 
     it('should call logger.log (found && raw)', () => {
-      expect(logger.log.mock.calls.length).toBe(0);
+      expect(logger.log).toHaveBeenCalledTimes(0);
       return getDataClasses(true).then(() => {
-        expect(logger.log.mock.calls.length).toBe(1);
+        expect(logger.log).toHaveBeenCalledTimes(1);
       });
     });
   });
@@ -67,39 +67,39 @@ describe('api: getDataClasses', () => {
 
     it('should call spinner.start (notFound && !raw)', () => {
       getDataClasses(false);
-      expect(spinner.start.mock.calls.length).toBe(1);
+      expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
     it('should not call spinner.start (notFound && raw)', () => {
       getDataClasses(true);
-      expect(spinner.start.mock.calls.length).toBe(0);
+      expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
     it('should call spinner.stop (notFound && !raw)', () => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
       return getDataClasses(false).then(() => {
-        expect(spinner.stop.mock.calls.length).toBe(1);
+        expect(spinner.stop).toHaveBeenCalledTimes(1);
       });
     });
 
     it('should not call spinner.stop (notFound && raw)', () => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
       return getDataClasses(true).then(() => {
-        expect(spinner.stop.mock.calls.length).toBe(0);
+        expect(spinner.stop).toHaveBeenCalledTimes(0);
       });
     });
 
     it('should call logger.log (notFound && !raw)', () => {
-      expect(logger.log.mock.calls.length).toBe(0);
+      expect(logger.log).toHaveBeenCalledTimes(0);
       return getDataClasses(false).then(() => {
-        expect(logger.log.mock.calls.length).toBe(1);
+        expect(logger.log).toHaveBeenCalledTimes(1);
       });
     });
 
     it('should not call logger.log (notFound && raw)', () => {
-      expect(logger.log.mock.calls.length).toBe(0);
+      expect(logger.log).toHaveBeenCalledTimes(0);
       return getDataClasses(true).then(() => {
-        expect(logger.log.mock.calls.length).toBe(0);
+        expect(logger.log).toHaveBeenCalledTimes(0);
       });
     });
   });
@@ -111,33 +111,33 @@ describe('api: getDataClasses', () => {
 
     it('should call spinner.start (error && !raw)', () => {
       getDataClasses(false);
-      expect(spinner.start.mock.calls.length).toBe(1);
+      expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
     it('should not call spinner.start (error && raw)', () => {
       getDataClasses(true);
-      expect(spinner.start.mock.calls.length).toBe(0);
+      expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
     it('should call spinner.stop (error && !raw)', () => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
       return getDataClasses(false).then(() => {
-        expect(spinner.stop.mock.calls.length).toBe(1);
+        expect(spinner.stop).toHaveBeenCalledTimes(1);
       });
     });
 
     it('should not call spinner.stop (error && raw)', () => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
       return getDataClasses(true).then(() => {
-        expect(spinner.stop.mock.calls.length).toBe(0);
+        expect(spinner.stop).toHaveBeenCalledTimes(0);
       });
     });
 
     it('should call logger.error (error)', () => {
-      expect(logger.error.mock.calls.length).toBe(0);
+      expect(logger.error).toHaveBeenCalledTimes(0);
       return getDataClasses(false).then(() => {
-        expect(logger.log.mock.calls.length).toBe(0);
-        expect(logger.error.mock.calls.length).toBe(1);
+        expect(logger.log).toHaveBeenCalledTimes(0);
+        expect(logger.error).toHaveBeenCalledTimes(1);
       });
     });
   });

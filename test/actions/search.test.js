@@ -8,11 +8,11 @@ describe('action: search', () => {
   it('should call command help when passed an empty string', () => {
     const help = jest.fn();
     search(NONE, { help });
-    expect(help.mock.calls.length).toBe(1);
+    expect(help).toHaveBeenCalledTimes(1);
   });
 
   it('should call search when passed a non-empty string', () => {
     search(NOT_FOUND, {});
-    expect(getSearch.mock.calls.length).toBe(1);
+    expect(getSearch).toHaveBeenCalledTimes(1);
   });
 });

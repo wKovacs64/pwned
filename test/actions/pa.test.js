@@ -8,11 +8,11 @@ describe('action: pa', () => {
   it('should call command help when passed an empty string', () => {
     const help = jest.fn();
     pa(NONE, { help });
-    expect(help.mock.calls.length).toBe(1);
+    expect(help).toHaveBeenCalledTimes(1);
   });
 
   it('should call getPastes when passed a non-empty string', () => {
     pa(EMAIL, {});
-    expect(getPastes.mock.calls.length).toBe(1);
+    expect(getPastes).toHaveBeenCalledTimes(1);
   });
 });

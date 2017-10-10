@@ -8,11 +8,11 @@ describe('action: ba', () => {
   it('should call command help when passed an empty string', () => {
     const help = jest.fn();
     ba(NONE, { help });
-    expect(help.mock.calls.length).toBe(1);
+    expect(help).toHaveBeenCalledTimes(1);
   });
 
   it('should call getBreachedAccount when passed a non-empty string', () => {
     ba(NOT_FOUND, {});
-    expect(getBreachedAccount.mock.calls.length).toBe(1);
+    expect(getBreachedAccount).toHaveBeenCalledTimes(1);
   });
 });

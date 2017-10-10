@@ -8,11 +8,11 @@ describe('action: breach', () => {
   it('should call command help when passed an empty string', () => {
     const help = jest.fn();
     breach(NONE, { help });
-    expect(help.mock.calls.length).toBe(1);
+    expect(help).toHaveBeenCalledTimes(1);
   });
 
   it('should call getBreach when passed a non-empty string', () => {
     breach(NOT_FOUND, {});
-    expect(getBreach.mock.calls.length).toBe(1);
+    expect(getBreach).toHaveBeenCalledTimes(1);
   });
 });

@@ -37,75 +37,75 @@ describe('api: getBreaches', () => {
 
   it('should call spinner.start (!raw)', () => {
     getBreaches(FOUND, false);
-    expect(spinner.start.mock.calls.length).toBe(1);
+    expect(spinner.start).toHaveBeenCalledTimes(1);
   });
 
   it('should not call spinner.start (raw)', () => {
     getBreaches(FOUND, true);
-    expect(spinner.start.mock.calls.length).toBe(0);
+    expect(spinner.start).toHaveBeenCalledTimes(0);
   });
 
   it('should call spinner.stop (non-error results, !raw)', () => {
-    expect(spinner.stop.mock.calls.length).toBe(0);
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
     return getBreaches(FOUND, false).then(() => {
-      expect(spinner.stop.mock.calls.length).toBe(1);
+      expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
-    expect(spinner.stop.mock.calls.length).toBe(0);
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
     return getBreaches(FOUND, true).then(() => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call logger.log (found && !raw)', () => {
-    expect(logger.log.mock.calls.length).toBe(0);
+    expect(logger.log).toHaveBeenCalledTimes(0);
     return getBreaches(FOUND, false).then(() => {
-      expect(logger.log.mock.calls.length).toBe(1);
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call logger.log (found && raw)', () => {
-    expect(logger.log.mock.calls.length).toBe(0);
+    expect(logger.log).toHaveBeenCalledTimes(0);
     return getBreaches(FOUND, true).then(() => {
-      expect(logger.log.mock.calls.length).toBe(1);
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
-    expect(logger.log.mock.calls.length).toBe(0);
+    expect(logger.log).toHaveBeenCalledTimes(0);
     return getBreaches(NOT_FOUND, false).then(() => {
-      expect(logger.log.mock.calls.length).toBe(1);
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
-    expect(logger.log.mock.calls.length).toBe(0);
+    expect(logger.log).toHaveBeenCalledTimes(0);
     return getBreaches(NOT_FOUND, true).then(() => {
-      expect(logger.log.mock.calls.length).toBe(0);
+      expect(logger.log).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
-    expect(spinner.stop.mock.calls.length).toBe(0);
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
     return getBreaches(ERROR, false).then(() => {
-      expect(spinner.stop.mock.calls.length).toBe(1);
+      expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
-    expect(spinner.stop.mock.calls.length).toBe(0);
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
     return getBreaches(ERROR, true).then(() => {
-      expect(spinner.stop.mock.calls.length).toBe(0);
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call logger.error (error)', () => {
-    expect(logger.error.mock.calls.length).toBe(0);
+    expect(logger.error).toHaveBeenCalledTimes(0);
     return getBreaches(ERROR, false).then(() => {
-      expect(logger.log.mock.calls.length).toBe(0);
-      expect(logger.error.mock.calls.length).toBe(1);
+      expect(logger.log).toHaveBeenCalledTimes(0);
+      expect(logger.error).toHaveBeenCalledTimes(1);
     });
   });
 });
