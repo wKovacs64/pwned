@@ -3,7 +3,7 @@ require('source-map-support/register');
 const program = require('commander');
 const pkg = require('../package.json');
 // eslint-disable-next-line import/no-unresolved
-const addCommands = require('../lib/commands');
+const addCommands = require('../lib/commands').default;
 
 // Begin command-line argument configuration
 program
