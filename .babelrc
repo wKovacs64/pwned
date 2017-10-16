@@ -1,11 +1,4 @@
 {
-  "env": {
-    "test": {
-      "plugins": [
-        "istanbul"
-      ]
-    }
-  },
   "plugins": [
     "add-module-exports"
   ],

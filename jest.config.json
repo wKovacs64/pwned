@@ -1,9 +1,9 @@
 {
   "clearMocks": true,
-  "collectCoverageFrom": [
-    "/src/**/*.js"
-  ],
   "coverageDirectory": "coverage",
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/test/"
+  ],
   "coverageReporters": [
     "html",
     "json",
