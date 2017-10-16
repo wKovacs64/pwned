@@ -1175,9 +1175,9 @@ coveralls@^3.0.0:
     minimist "^1.2.0"
     request "^2.79.0"
 
-cross-env@^5.0.5:
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.0.5.tgz#4383d364d9660873dd185b398af3bfef5efffef3"
+cross-env@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.1.0.tgz#1f12d6b3777d5847dcf9cf39fbee3c6a76dd5058"
   dependencies:
     cross-spawn "^5.1.0"
     is-windows "^1.0.0"
@@ -1384,17 +1384,17 @@ escodegen@^1.6.1:
   optionalDependencies:
     source-map "~0.5.6"
 
-eslint-config-airbnb-base@^12.0.2:
-  version "12.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-12.0.2.tgz#45fea317d71b8f1da323c730f3a8471988757793"
+eslint-config-airbnb-base@^12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-12.1.0.tgz#386441e54a12ccd957b0a92564a4bafebd747944"
   dependencies:
     eslint-restricted-globals "^0.1.1"
 
-eslint-config-airbnb@^16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-16.0.0.tgz#21e81476ab7f5f27c1a900ff415cac9e1e12f3ed"
+eslint-config-airbnb@^16.1.0:
+  version "16.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-16.1.0.tgz#2546bfb02cc9fe92284bf1723ccf2e87bc45ca46"
   dependencies:
-    eslint-config-airbnb-base "^12.0.2"
+    eslint-config-airbnb-base "^12.1.0"
 
 eslint-import-resolver-node@^0.3.1:
   version "0.3.1"
