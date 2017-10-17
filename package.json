@@ -20,9 +20,7 @@
   "contributors": [],
   "license": "MIT",
   "main": "bin/pwned.js",
-  "bin": {
-    "pwned": "./bin/pwned.js"
-  },
+  "bin": "bin/pwned.js",
   "directories": {
     "bin": "./bin",
     "lib": "./lib"
