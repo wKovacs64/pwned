@@ -5,20 +5,21 @@ import spinner from '../utils/spinner';
 export const command = 'pw <password>';
 export const desc =
   'check a password (plain text or SHA1 hash) for public exposure';
-export const builder = {
-  s: {
-    alias: 'sha1',
-    describe: 'password itself is a SHA1 hash (so hash it again)',
-    type: 'boolean',
-    default: false,
-  },
-  r: {
-    alias: 'raw',
-    describe: 'disable the console spinner',
-    type: 'boolean',
-    default: false,
-  },
-};
+export const builder /* istanbul ignore next */ = yargs =>
+  yargs
+    .usage('Usage: $0 pw <password> [options]')
+    .option('s', {
+      alias: 'sha1',
+      describe: 'password itself is a SHA1 hash (so hash it again)',
+      type: 'boolean',
+      default: false,
+    })
+    .option('r', {
+      alias: 'raw',
+      describe: 'disable the console spinner',
+      type: 'boolean',
+      default: false,
+    });
 
 /**
  * Fetches the pwned status for the given password, indicating whether or not it

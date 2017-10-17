@@ -5,20 +5,21 @@ import spinner from '../utils/spinner';
 
 export const command = 'breaches';
 export const desc = 'get all breaches in the system';
-export const builder = {
-  d: {
-    alias: 'domain-filter',
-    describe: 'filter breach data by domain',
-    type: 'string',
-    default: '',
-  },
-  r: {
-    alias: 'raw',
-    describe: 'output the raw JSON data (or nothing, if no results found)',
-    type: 'boolean',
-    default: false,
-  },
-};
+export const builder /* istanbul ignore next */ = yargs =>
+  yargs
+    .usage('Usage: $0 breaches [options]')
+    .option('d', {
+      alias: 'domain-filter',
+      describe: 'filter breach data by domain',
+      type: 'string',
+      default: '',
+    })
+    .option('r', {
+      alias: 'raw',
+      describe: 'output the raw JSON data (or nothing, if no results found)',
+      type: 'boolean',
+      default: false,
+    });
 
 /**
  * Fetches and outputs all breached sites in the system.

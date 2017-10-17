@@ -5,14 +5,13 @@ import spinner from '../utils/spinner';
 
 export const command = 'pa <email>';
 export const desc = 'get all pastes for an account (email address)';
-export const builder = {
-  r: {
+export const builder /* istanbul ignore next */ = yargs =>
+  yargs.usage('Usage: $0 pa <email> [options]').option('r', {
     alias: 'raw',
     describe: 'output the raw JSON data (or nothing, if no results found)',
     type: 'boolean',
     default: false,
-  },
-};
+  });
 
 /**
  * Fetches and outputs all pastes for an account (email address).

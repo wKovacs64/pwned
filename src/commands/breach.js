@@ -5,14 +5,13 @@ import spinner from '../utils/spinner';
 
 export const command = 'breach <name>';
 export const desc = 'get a single breached site by breach name';
-export const builder = {
-  r: {
+export const builder /* istanbul ignore next */ = yargs =>
+  yargs.usage('Usage: $0 breach <name> [options]').option('r', {
     alias: 'raw',
     describe: 'output the raw JSON data (or nothing, if no results found)',
     type: 'boolean',
     default: false,
-  },
-};
+  });
 
 /**
  * Fetches and outputs breach data for a single site by breach name.

@@ -5,14 +5,13 @@ import spinner from '../utils/spinner';
 
 export const command = 'dc';
 export const desc = 'get all data classes in the system';
-export const builder = {
-  r: {
+export const builder /* istanbul ignore next */ = yargs =>
+  yargs.usage('Usage: $0 [options]').option('r', {
     alias: 'raw',
     describe: 'output the raw JSON data',
     type: 'boolean',
     default: false,
-  },
-};
+  });
 
 /**
  * Fetches and outputs all data classes in the system.

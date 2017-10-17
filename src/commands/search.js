@@ -6,26 +6,27 @@ import spinner from '../utils/spinner';
 export const command = 'search <account|email>';
 export const desc =
   'search breaches and pastes for an account (username or email address)';
-export const builder = {
-  d: {
-    alias: 'domain-filter',
-    describe: 'filter breach data by domain',
-    type: 'string',
-    default: '',
-  },
-  t: {
-    alias: 'truncate',
-    describe: 'truncate data to just the name of each breach',
-    type: 'boolean',
-    default: false,
-  },
-  r: {
-    alias: 'raw',
-    describe: 'output the raw JSON data (or nothing, if no results found)',
-    type: 'boolean',
-    default: false,
-  },
-};
+export const builder /* istanbul ignore next */ = yargs =>
+  yargs
+    .usage('Usage: $0 search <account|email> [options]')
+    .option('d', {
+      alias: 'domain-filter',
+      describe: 'filter breach data by domain',
+      type: 'string',
+      default: '',
+    })
+    .option('t', {
+      alias: 'truncate',
+      describe: 'truncate data to just the name of each breach',
+      type: 'boolean',
+      default: false,
+    })
+    .option('r', {
+      alias: 'raw',
+      describe: 'output the raw JSON data (or nothing, if no results found)',
+      type: 'boolean',
+      default: false,
+    });
 
 export const handler = ({ account, domain, truncate, raw }) => {
   if (!raw && process.stdout.isTTY) {
