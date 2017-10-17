@@ -19,7 +19,8 @@ export const builder /* istanbul ignore next */ = yargs =>
       describe: 'disable the console spinner',
       type: 'boolean',
       default: false,
-    });
+    }).epilogue(`Description:
+  ${desc}`);
 
 /**
  * Fetches the pwned status for the given password, indicating whether or not it

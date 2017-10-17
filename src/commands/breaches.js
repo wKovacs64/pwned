@@ -19,7 +19,8 @@ export const builder /* istanbul ignore next */ = yargs =>
       describe: 'output the raw JSON data (or nothing, if no results found)',
       type: 'boolean',
       default: false,
-    });
+    }).epilogue(`Description:
+  ${desc}`);
 
 /**
  * Fetches and outputs all breached sites in the system.

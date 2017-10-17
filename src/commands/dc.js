@@ -11,7 +11,8 @@ export const builder /* istanbul ignore next */ = yargs =>
     describe: 'output the raw JSON data',
     type: 'boolean',
     default: false,
-  });
+  }).epilogue(`Description:
+  ${desc}`);
 
 /**
  * Fetches and outputs all data classes in the system.

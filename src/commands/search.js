@@ -26,7 +26,9 @@ export const builder /* istanbul ignore next */ = yargs =>
       describe: 'output the raw JSON data (or nothing, if no results found)',
       type: 'boolean',
       default: false,
-    });
+    })
+    .epilogue(`Description:
+  ${desc}`);
 
 export const handler = ({ account, domain, truncate, raw }) => {
   if (!raw && process.stdout.isTTY) {
