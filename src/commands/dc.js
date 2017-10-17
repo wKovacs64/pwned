@@ -25,7 +25,8 @@ export const builder /* istanbul ignore next */ = yargs =>
 /**
  * Fetches and outputs all data classes in the system.
  *
- * @param {boolean} [raw] output the raw JSON data (default: false)
+ * @param {Object} argv the parsed argv object
+ * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
 export const handler = ({ raw }) => {

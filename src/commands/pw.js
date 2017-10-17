@@ -46,9 +46,11 @@ export const builder /* istanbul ignore next */ = yargs =>
  * a hash, you can override the auto detection behavior by setting the isAHash
  * option to true.
  *
- * @param {string} password a password (plain text string or SHA1 hash)
- * @param {boolean} [sha1] the pre-hashed password is a hash (default: false)
- * @param {boolean} [raw] disable the console spinner (default: false)
+ * @param {Object} argv the parsed argv object
+ * @param {string} argv.password a password (plain text string or SHA1 hash)
+ * @param {boolean} [argv.sha1] the pre-hashed password is a hash (default:
+ * false)
+ * @param {boolean} [argv.raw] disable the console spinner (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
 export const handler = ({ password, sha1: isAHash, raw }) => {

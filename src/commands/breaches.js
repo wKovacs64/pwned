@@ -30,9 +30,10 @@ export const builder /* istanbul ignore next */ = yargs =>
 /**
  * Fetches and outputs all breached sites in the system.
  *
- * @param {string} [domainFilter] a domain by which to filter the results
+ * @param {Object} argv the parsed argv object
+ * @param {string} [argv.domainFilter] a domain by which to filter the results
  * (default: all domains)
- * @param {boolean} [raw] output the raw JSON data (default: false)
+ * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
 export const handler = ({ domainFilter: domain, raw }) => {

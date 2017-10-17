@@ -47,12 +47,13 @@ export const builder /* istanbul ignore next */ = yargs =>
 /**
  * Fetches and outputs breach data for the specified account.
  *
- * @param {string} account a username or email address
- * @param {string} [domainFilter] a domain by which to filter the results
+ * @param {Object} argv the parsed argv object
+ * @param {string} argv.account a username or email address
+ * @param {string} [argv.domainFilter] a domain by which to filter the results
  * (default: all domains)
- * @param {boolean} [truncate] truncate the results to only include the name of
- * each breach (default: false)
- * @param {boolean} [raw] output the raw JSON data (default: false)
+ * @param {boolean} [argv.truncate] truncate the results to only include the
+ * name of each breach (default: false)
+ * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
 export const handler = ({ account, domainFilter: domain, truncate, raw }) => {

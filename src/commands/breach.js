@@ -34,8 +34,9 @@ export const builder /* istanbul ignore next */ = yargs =>
 /**
  * Fetches and outputs breach data for a single site by breach name.
  *
- * @param {string} name the name of a breach in the system
- * @param {boolean} [raw] output the raw JSON data (default: false)
+ * @param {Object} argv the parsed argv object
+ * @param {string} argv.name the name of a breach in the system
+ * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
 export const handler = ({ name, raw }) => {

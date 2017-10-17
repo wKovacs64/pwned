@@ -44,6 +44,18 @@ export const builder /* istanbul ignore next */ = yargs =>
     .group(['d', 't', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
+/**
+ * Fetches and outputs breach and paste data for the specified account.
+ *
+ * @param {Object} argv the parsed argv object
+ * @param {string} argv.account a username or email address
+ * @param {string} [argv.domainFilter] a domain by which to filter the results
+ * (default: all domains)
+ * @param {boolean} [argv.truncate] truncate the results to only include the
+ * name of each breach (default: false)
+ * @param {boolean} [argv.raw] output the raw JSON data (default: false)
+ * @returns {Promise} the resulting Promise where output is rendered
+ */
 export const handler = ({ account, domainFilter: domain, truncate, raw }) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
