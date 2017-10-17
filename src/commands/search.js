@@ -44,7 +44,7 @@ export const builder /* istanbul ignore next */ = yargs =>
     .group(['d', 't', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
-export const handler = ({ account, domain, truncate, raw }) => {
+export const handler = ({ account, domainFilter: domain, truncate, raw }) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }

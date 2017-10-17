@@ -30,12 +30,12 @@ export const builder /* istanbul ignore next */ = yargs =>
 /**
  * Fetches and outputs all breached sites in the system.
  *
- * @param {string} [domain] a domain by which to filter the results (default:
- * all domains)
+ * @param {string} [domainFilter] a domain by which to filter the results
+ * (default: all domains)
  * @param {boolean} [raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
-export const handler = ({ domain, raw }) => {
+export const handler = ({ domainFilter: domain, raw }) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }

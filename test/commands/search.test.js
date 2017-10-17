@@ -29,12 +29,22 @@ describe('command: search', () => {
   });
 
   it('should call spinner.start (!raw)', () => {
-    search({ account: NOT_FOUND, domain: NONE, truncate: false, raw: false });
+    search({
+      account: NOT_FOUND,
+      domainFilter: NONE,
+      truncate: false,
+      raw: false,
+    });
     expect(spinner.start).toHaveBeenCalledTimes(1);
   });
 
   it('should not call spinner.start (raw)', () => {
-    search({ account: NOT_FOUND, domain: NONE, truncate: false, raw: true });
+    search({
+      account: NOT_FOUND,
+      domainFilter: NONE,
+      truncate: false,
+      raw: true,
+    });
     expect(spinner.start).toHaveBeenCalledTimes(0);
   });
 
@@ -42,7 +52,7 @@ describe('command: search', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
     return search({
       account: NOT_FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {
@@ -54,7 +64,7 @@ describe('command: search', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
     return search({
       account: NOT_FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: true,
     }).then(() => {
@@ -66,7 +76,7 @@ describe('command: search', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
     return search({
       account: FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {
@@ -78,7 +88,7 @@ describe('command: search', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
     return search({
       account: FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: true,
     }).then(() => {
@@ -90,7 +100,7 @@ describe('command: search', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
     return search({
       account: NOT_FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {
@@ -102,7 +112,7 @@ describe('command: search', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
     return search({
       account: NOT_FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: true,
     }).then(() => {
@@ -114,7 +124,7 @@ describe('command: search', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
     return search({
       account: ERROR,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {
@@ -126,7 +136,7 @@ describe('command: search', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
     return search({
       account: ERROR,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: true,
     }).then(() => {
@@ -138,7 +148,7 @@ describe('command: search', () => {
     expect(logger.error).toHaveBeenCalledTimes(0);
     return search({
       account: ERROR,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {

@@ -29,12 +29,12 @@ describe('command: ba', () => {
   });
 
   it('should call spinner.start (!raw)', () => {
-    ba({ account: NOT_FOUND, domain: NONE, truncate: false, raw: false });
+    ba({ account: NOT_FOUND, domainFilter: NONE, truncate: false, raw: false });
     expect(spinner.start).toHaveBeenCalledTimes(1);
   });
 
   it('should not call spinner.start (raw)', () => {
-    ba({ account: NOT_FOUND, domain: NONE, truncate: false, raw: true });
+    ba({ account: NOT_FOUND, domainFilter: NONE, truncate: false, raw: true });
     expect(spinner.start).toHaveBeenCalledTimes(0);
   });
 
@@ -42,7 +42,7 @@ describe('command: ba', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
     return ba({
       account: NOT_FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {
@@ -54,7 +54,7 @@ describe('command: ba', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
     return ba({
       account: NOT_FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: true,
     }).then(() => {
@@ -66,7 +66,7 @@ describe('command: ba', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
     return ba({
       account: FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {
@@ -78,7 +78,7 @@ describe('command: ba', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
     return ba({
       account: FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: true,
     }).then(() => {
@@ -90,7 +90,7 @@ describe('command: ba', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
     return ba({
       account: NOT_FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {
@@ -102,7 +102,7 @@ describe('command: ba', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
     return ba({
       account: NOT_FOUND,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: true,
     }).then(() => {
@@ -114,7 +114,7 @@ describe('command: ba', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
     return ba({
       account: ERROR,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {
@@ -126,7 +126,7 @@ describe('command: ba', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
     return ba({
       account: ERROR,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: true,
     }).then(() => {
@@ -138,7 +138,7 @@ describe('command: ba', () => {
     expect(logger.error).toHaveBeenCalledTimes(0);
     return ba({
       account: ERROR,
-      domain: NONE,
+      domainFilter: NONE,
       truncate: false,
       raw: false,
     }).then(() => {

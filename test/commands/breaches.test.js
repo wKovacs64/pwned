@@ -36,74 +36,74 @@ describe('command: breaches', () => {
   });
 
   it('should call spinner.start (!raw)', () => {
-    breaches({ domain: FOUND, raw: false });
+    breaches({ domainFilter: FOUND, raw: false });
     expect(spinner.start).toHaveBeenCalledTimes(1);
   });
 
   it('should not call spinner.start (raw)', () => {
-    breaches({ domain: FOUND, raw: true });
+    breaches({ domainFilter: FOUND, raw: true });
     expect(spinner.start).toHaveBeenCalledTimes(0);
   });
 
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return breaches({ domain: FOUND, raw: false }).then(() => {
+    return breaches({ domainFilter: FOUND, raw: false }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return breaches({ domain: FOUND, raw: true }).then(() => {
+    return breaches({ domainFilter: FOUND, raw: true }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
-    return breaches({ domain: FOUND, raw: false }).then(() => {
+    return breaches({ domainFilter: FOUND, raw: false }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
-    return breaches({ domain: FOUND, raw: true }).then(() => {
+    return breaches({ domainFilter: FOUND, raw: true }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
-    return breaches({ domain: NOT_FOUND, raw: false }).then(() => {
+    return breaches({ domainFilter: NOT_FOUND, raw: false }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
-    return breaches({ domain: NOT_FOUND, raw: true }).then(() => {
+    return breaches({ domainFilter: NOT_FOUND, raw: true }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return breaches({ domain: ERROR, raw: false }).then(() => {
+    return breaches({ domainFilter: ERROR, raw: false }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return breaches({ domain: ERROR, raw: true }).then(() => {
+    return breaches({ domainFilter: ERROR, raw: true }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call logger.error (error)', () => {
     expect(logger.error).toHaveBeenCalledTimes(0);
-    return breaches({ domain: ERROR, raw: false }).then(() => {
+    return breaches({ domainFilter: ERROR, raw: false }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(0);
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
