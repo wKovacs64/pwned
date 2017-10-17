@@ -17,7 +17,6 @@ export const builder /* istanbul ignore next */ = yargs =>
       alias: 'domain-filter',
       describe: 'filter breach data by domain',
       type: 'string',
-      default: '',
     })
     .option('r', {
       alias: 'raw',
