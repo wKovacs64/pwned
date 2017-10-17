@@ -3,12 +3,27 @@ import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
-export const command = 'ba <account>';
-export const desc =
+export const command = 'ba <account|email>';
+export const describe =
   'get all breaches for an account (username or email address)';
+const usage = `Usage: $0 ba <account|email> [options]
+
+Description:
+  ${describe}`;
+
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .usage('Usage: $0 ba <account> [options]')
+    .usage(usage)
+    .positional('account', {
+      alias: 'email',
+      type: 'string',
+    })
+    .check((argv) => {
+      if (!argv.account.length) {
+        throw new Error('The account argument must not be empty.');
+      }
+      return true;
+    })
     .option('d', {
       alias: 'domain-filter',
       describe: 'filter breach data by domain',
@@ -27,8 +42,8 @@ export const builder /* istanbul ignore next */ = yargs =>
       type: 'boolean',
       default: false,
     })
-    .epilogue(`Description:
-  ${desc}`);
+    .group(['d', 't', 'r'], 'Command Options:')
+    .group(['h', 'v'], 'Global Options:');
 
 /**
  * Fetches and outputs breach data for the specified account.

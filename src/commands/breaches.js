@@ -4,10 +4,15 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'breaches';
-export const desc = 'get all breaches in the system';
+export const describe = 'get all breaches in the system';
+const usage = `Usage: $0 breaches [options]
+
+Description:
+  ${describe}`;
+
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .usage('Usage: $0 breaches [options]')
+    .usage(usage)
     .option('d', {
       alias: 'domain-filter',
       describe: 'filter breach data by domain',
@@ -19,8 +24,9 @@ export const builder /* istanbul ignore next */ = yargs =>
       describe: 'output the raw JSON data (or nothing, if no results found)',
       type: 'boolean',
       default: false,
-    }).epilogue(`Description:
-  ${desc}`);
+    })
+    .group(['d', 'r'], 'Command Options:')
+    .group(['h', 'v'], 'Global Options:');
 
 /**
  * Fetches and outputs all breached sites in the system.

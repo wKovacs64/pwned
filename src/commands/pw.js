@@ -3,11 +3,25 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'pw <password>';
-export const desc =
+export const describe =
   'check a password (plain text or SHA1 hash) for public exposure';
+const usage = `Usage: $0 pw <password> [options]
+
+Description:
+  ${describe}`;
+
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .usage('Usage: $0 pw <password> [options]')
+    .usage(usage)
+    .positional('password', {
+      type: 'string',
+    })
+    .check((argv) => {
+      if (!argv.password.length) {
+        throw new Error('The password argument must not be empty.');
+      }
+      return true;
+    })
     .option('s', {
       alias: 'sha1',
       describe: 'password itself is a SHA1 hash (so hash it again)',
@@ -19,8 +33,9 @@ export const builder /* istanbul ignore next */ = yargs =>
       describe: 'disable the console spinner',
       type: 'boolean',
       default: false,
-    }).epilogue(`Description:
-  ${desc}`);
+    })
+    .group(['s', 'r'], 'Command Options:')
+    .group(['h', 'v'], 'Global Options:');
 
 /**
  * Fetches the pwned status for the given password, indicating whether or not it

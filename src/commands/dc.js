@@ -4,15 +4,23 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'dc';
-export const desc = 'get all data classes in the system';
+export const describe = 'get all data classes in the system';
+const usage = `Usage: $0 dc [options]
+
+Description:
+  ${describe}`;
+
 export const builder /* istanbul ignore next */ = yargs =>
-  yargs.usage('Usage: $0 [options]').option('r', {
-    alias: 'raw',
-    describe: 'output the raw JSON data',
-    type: 'boolean',
-    default: false,
-  }).epilogue(`Description:
-  ${desc}`);
+  yargs
+    .usage(usage)
+    .option('r', {
+      alias: 'raw',
+      describe: 'output the raw JSON data',
+      type: 'boolean',
+      default: false,
+    })
+    .group(['r'], 'Command Options:')
+    .group(['h', 'v'], 'Global Options:');
 
 /**
  * Fetches and outputs all data classes in the system.

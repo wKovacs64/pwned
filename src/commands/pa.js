@@ -4,15 +4,32 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'pa <email>';
-export const desc = 'get all pastes for an account (email address)';
+export const describe = 'get all pastes for an account (email address)';
+const usage = `Usage: $0 pa <email> [options]
+
+Description:
+  ${describe}`;
+
 export const builder /* istanbul ignore next */ = yargs =>
-  yargs.usage('Usage: $0 pa <email> [options]').option('r', {
-    alias: 'raw',
-    describe: 'output the raw JSON data (or nothing, if no results found)',
-    type: 'boolean',
-    default: false,
-  }).epilogue(`Description:
-  ${desc}`);
+  yargs
+    .usage(usage)
+    .positional('email', {
+      type: 'string',
+    })
+    .check((argv) => {
+      if (!argv.email.length) {
+        throw new Error('The email argument must not be empty.');
+      }
+      return true;
+    })
+    .option('r', {
+      alias: 'raw',
+      describe: 'output the raw JSON data (or nothing, if no results found)',
+      type: 'boolean',
+      default: false,
+    })
+    .group(['r'], 'Command Options:')
+    .group(['h', 'v'], 'Global Options:');
 
 /**
  * Fetches and outputs all pastes for an account (email address).

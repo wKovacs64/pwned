@@ -4,15 +4,32 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'breach <name>';
-export const desc = 'get a single breached site by breach name';
+export const describe = 'get a single breached site by breach name';
+const usage = `Usage: $0 breach <name> [options]
+
+Description:
+  ${describe}`;
+
 export const builder /* istanbul ignore next */ = yargs =>
-  yargs.usage('Usage: $0 breach <name> [options]').option('r', {
-    alias: 'raw',
-    describe: 'output the raw JSON data (or nothing, if no results found)',
-    type: 'boolean',
-    default: false,
-  }).epilogue(`Description:
-  ${desc}`);
+  yargs
+    .usage(usage)
+    .positional('name', {
+      type: 'string',
+    })
+    .check((argv) => {
+      if (!argv.name.length) {
+        throw new Error('The name argument must not be empty.');
+      }
+      return true;
+    })
+    .option('r', {
+      alias: 'raw',
+      describe: 'output the raw JSON data (or nothing, if no results found)',
+      type: 'boolean',
+      default: false,
+    })
+    .group(['r'], 'Command Options:')
+    .group(['h', 'v'], 'Global Options:');
 
 /**
  * Fetches and outputs breach data for a single site by breach name.
