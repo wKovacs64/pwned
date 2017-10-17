@@ -1,14 +1,49 @@
-import dc from '../actions/dc';
+import { dataClasses } from 'hibp';
+import prettyjson from 'prettyjson';
+import logger from '../utils/logger';
+import spinner from '../utils/spinner';
+
+export const command = 'dc';
+export const describe = 'get all data classes in the system';
+export const builder = {
+  r: {
+    alias: 'raw',
+    describe: 'output the raw JSON data',
+    type: 'boolean',
+    default: false,
+  },
+};
 
 /**
- * Initializes the 'dc' command.
+ * Fetches and outputs all data classes in the system.
  *
- * @param {Object} program the Commander instance
- * @returns {undefined}
+ * @param {boolean} [raw] output the raw JSON data (default: false)
+ * @returns {Promise} the resulting Promise where output is rendered
  */
-export default program =>
-  program
-    .command('dc')
-    .description('get all data classes in the system')
-    .option('-r, --raw', 'output the raw JSON data')
-    .action(dc);
+export const handler = ({ raw }) => {
+  if (!raw && process.stdout.isTTY) {
+    spinner.start();
+  }
+  return Promise.resolve(dataClasses())
+    .then((allDataClasses) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      if (allDataClasses.length && raw) {
+        logger.log(JSON.stringify(allDataClasses));
+      } else if (allDataClasses.length) {
+        logger.log(prettyjson.render(allDataClasses));
+      } else if (!allDataClasses.length && !raw) {
+        logger.log(
+          'No data classes found. This is unexpected - the remote API may be ' +
+            'having difficulties.',
+        );
+      }
+    })
+    .catch((err) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.error(err.message);
+    });
+};

@@ -1,24 +1,54 @@
-import search from '../actions/search';
+import { search } from 'hibp';
+import prettyjson from 'prettyjson';
+import logger from '../utils/logger';
+import spinner from '../utils/spinner';
 
-/**
- * Initializes the 'search' command.
- *
- * @param {Object} program the Commander instance
- * @returns {undefined}
- */
-export default program =>
-  program
-    .command('search <account>')
-    .description(
-      'search breaches and pastes for an account (username or email address)',
-    )
-    .option('-d, --domain-filter <domain>', 'filter breach data by domain')
-    .option(
-      '-r, --raw',
-      'output the raw JSON data (or nothing, if no results found)',
-    )
-    .option(
-      '-t, --truncate',
-      'truncate breach data to just the name of each breach',
-    )
-    .action(search);
+export const command = 'search <account|email>';
+export const describe =
+  'search breaches and pastes for an account (username or email address)';
+export const builder = {
+  d: {
+    alias: 'domain-filter',
+    describe: 'filter breach data by domain',
+    type: 'string',
+    default: '',
+  },
+  t: {
+    alias: 'truncate',
+    describe: 'truncate data to just the name of each breach',
+    type: 'boolean',
+    default: false,
+  },
+  r: {
+    alias: 'raw',
+    describe: 'output the raw JSON data (or nothing, if no results found)',
+    type: 'boolean',
+    default: false,
+  },
+};
+
+export const handler = ({ account, domain, truncate, raw }) => {
+  if (!raw && process.stdout.isTTY) {
+    spinner.start();
+  }
+  return Promise.resolve(search(account, { domain, truncate }))
+    .then((searchData) => {
+      const foundData = !!(searchData.breaches || searchData.pastes);
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      if (foundData && raw) {
+        logger.log(JSON.stringify(searchData));
+      } else if (foundData) {
+        logger.log(prettyjson.render(searchData));
+      } else if (!foundData && !raw) {
+        logger.log('Good news — no pwnage found!');
+      }
+    })
+    .catch((err) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.error(err.message);
+    });
+};

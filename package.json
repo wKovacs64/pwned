@@ -51,10 +51,10 @@
   },
   "dependencies": {
     "cli-spinner": "^0.2.6",
-    "commander": "^2.11.0",
     "hibp": "^5.2.0",
     "prettyjson": "^1.2.1",
-    "source-map-support": "^0.5.0"
+    "source-map-support": "^0.5.0",
+    "yargs": "^10.0.0-alpha.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

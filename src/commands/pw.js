@@ -1,17 +1,54 @@
-import pw from '../actions/pw';
+import { pwnedPassword } from 'hibp';
+import logger from '../utils/logger';
+import spinner from '../utils/spinner';
+
+export const command = 'pw <password>';
+export const describe =
+  'check a password (plain text or SHA1 hash) for public exposure';
+export const builder = {
+  s: {
+    alias: 'sha1',
+    describe: 'password itself is a SHA1 hash (so hash it again)',
+    type: 'boolean',
+    default: false,
+  },
+  r: {
+    alias: 'raw',
+    describe: 'disable the console spinner',
+    type: 'boolean',
+    default: false,
+  },
+};
 
 /**
- * Initializes the 'pw' command.
+ * Fetches the pwned status for the given password, indicating whether or not it
+ * has been previously exposed in a breach. Passwords can be plain text or a
+ * SHA1 hash. The remote API will automatically attempt to discern between the
+ * two, but in the case where the password you wish to check is actually a
+ * plain text string containing a hash and you don't want the API to treat it as
+ * a hash, you can override the auto detection behavior by setting the isAHash
+ * option to true.
  *
- * @param {Object} program the Commander instance
- * @returns {undefined}
+ * @param {string} password a password (plain text string or SHA1 hash)
+ * @param {boolean} [sha1] the pre-hashed password is a hash (default: false)
+ * @param {boolean} [raw] disable the console spinner (default: false)
+ * @returns {Promise} the resulting Promise where output is rendered
  */
-export default program =>
-  program
-    .command('pw <password>')
-    .description(
-      'check a password (plain text or SHA1 hash) for public exposure',
-    )
-    .option('-s, --sha1', 'password itself is a SHA1 hash (so hash it again)')
-    .option('-r, --raw', 'disable the console spinner')
-    .action(pw);
+export const handler = ({ password, sha1: isAHash, raw }) => {
+  if (!raw && process.stdout.isTTY) {
+    spinner.start();
+  }
+  return Promise.resolve(pwnedPassword(password, { isAHash }))
+    .then((isPwned) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.log(isPwned ? 'Oh no — pwned!' : 'Good news — no pwnage found!');
+    })
+    .catch((err) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.error(err.message);
+    });
+};
