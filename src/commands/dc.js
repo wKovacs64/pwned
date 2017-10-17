@@ -4,7 +4,7 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'dc';
-export const describe = 'get all data classes in the system';
+export const desc = 'get all data classes in the system';
 export const builder = {
   r: {
     alias: 'raw',

@@ -4,7 +4,7 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'ba <account>';
-export const describe =
+export const desc =
   'get all breaches for an account (username or email address)';
 export const builder = {
   d: {

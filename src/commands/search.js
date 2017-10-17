@@ -4,7 +4,7 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'search <account|email>';
-export const describe =
+export const desc =
   'search breaches and pastes for an account (username or email address)';
 export const builder = {
   d: {

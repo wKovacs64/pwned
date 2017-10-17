@@ -3,7 +3,7 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'pw <password>';
-export const describe =
+export const desc =
   'check a password (plain text or SHA1 hash) for public exposure';
 export const builder = {
   s: {

@@ -4,7 +4,7 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'breach <name>';
-export const describe = 'get a single breached site by breach name';
+export const desc = 'get a single breached site by breach name';
 export const builder = {
   r: {
     alias: 'raw',

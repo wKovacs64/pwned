@@ -4,7 +4,7 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'pa <email>';
-export const describe = 'get all pastes for an account (email address)';
+export const desc = 'get all pastes for an account (email address)';
 export const builder = {
   r: {
     alias: 'raw',

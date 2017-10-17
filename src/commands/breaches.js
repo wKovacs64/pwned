@@ -4,7 +4,7 @@ import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
 export const command = 'breaches';
-export const describe = 'get all breaches in the system';
+export const desc = 'get all breaches in the system';
 export const builder = {
   d: {
     alias: 'domain-filter',
