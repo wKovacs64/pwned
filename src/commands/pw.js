@@ -5,14 +5,9 @@ import spinner from '../utils/spinner';
 export const command = 'pw <password>';
 export const describe =
   'check a password (plain text or SHA1 hash) for public exposure';
-const usage = `Usage: $0 pw <password> [options]
-
-Description:
-  ${describe}`;
 
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .usage(usage)
     .positional('password', {
       type: 'string',
     })

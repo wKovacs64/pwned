@@ -5,14 +5,9 @@ import spinner from '../utils/spinner';
 
 export const command = 'breaches';
 export const describe = 'get all breaches in the system';
-const usage = `Usage: $0 breaches [options]
-
-Description:
-  ${describe}`;
 
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .usage(usage)
     .option('d', {
       alias: 'domain-filter',
       describe: 'filter breach data by domain',

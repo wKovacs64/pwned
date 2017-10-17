@@ -6,14 +6,9 @@ import spinner from '../utils/spinner';
 export const command = 'search <account|email>';
 export const describe =
   'search breaches and pastes for an account (username or email address)';
-const usage = `Usage: $0 search <account|email> [options]
-
-Description:
-  ${describe}`;
 
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .usage(usage)
     .positional('account', {
       alias: 'email',
       type: 'string',

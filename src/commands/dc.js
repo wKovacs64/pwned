@@ -5,14 +5,9 @@ import spinner from '../utils/spinner';
 
 export const command = 'dc';
 export const describe = 'get all data classes in the system';
-const usage = `Usage: $0 dc [options]
-
-Description:
-  ${describe}`;
 
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .usage(usage)
     .option('r', {
       alias: 'raw',
       describe: 'output the raw JSON data',

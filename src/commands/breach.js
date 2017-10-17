@@ -5,14 +5,9 @@ import spinner from '../utils/spinner';
 
 export const command = 'breach <name>';
 export const describe = 'get a single breached site by breach name';
-const usage = `Usage: $0 breach <name> [options]
-
-Description:
-  ${describe}`;
 
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .usage(usage)
     .positional('name', {
       type: 'string',
     })

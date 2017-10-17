@@ -5,14 +5,9 @@ import spinner from '../utils/spinner';
 
 export const command = 'pa <email>';
 export const describe = 'get all pastes for an account (email address)';
-const usage = `Usage: $0 pa <email> [options]
-
-Description:
-  ${describe}`;
 
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .usage(usage)
     .positional('email', {
       type: 'string',
     })
