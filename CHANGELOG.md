@@ -1,5 +1,12 @@
 # Change Log
 
+## Version 3.2.1 *(2017-10-17)*
+
+* Fixed displaying help on unknown command (#4)
+* Replaced testing toolchain with jest (#5)
+* Removed Babel plugins
+* Updated dependencies
+
 ## Version 3.2.0 *(2017-08-05)*
 
 * Added new `pw` command to check if a password has been exposed in a data
