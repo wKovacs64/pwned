@@ -1,18 +1,57 @@
-import breaches from '../actions/breaches';
+import { breaches } from 'hibp';
+import prettyjson from 'prettyjson';
+import logger from '../utils/logger';
+import spinner from '../utils/spinner';
+
+export const command = 'breaches';
+export const describe = 'get all breaches in the system';
+
+export const builder /* istanbul ignore next */ = yargs =>
+  yargs
+    .option('d', {
+      alias: 'domain-filter',
+      describe: 'filter breach data by domain',
+      type: 'string',
+    })
+    .option('r', {
+      alias: 'raw',
+      describe: 'output the raw JSON data (or nothing, if no results found)',
+      type: 'boolean',
+      default: false,
+    })
+    .group(['d', 'r'], 'Command Options:')
+    .group(['h', 'v'], 'Global Options:');
 
 /**
- * Initializes the 'breaches' command.
+ * Fetches and outputs all breached sites in the system.
  *
- * @param {Object} program the Commander instance
- * @returns {undefined}
+ * @param {Object} argv the parsed argv object
+ * @param {string} [argv.domainFilter] a domain by which to filter the results
+ * (default: all domains)
+ * @param {boolean} [argv.raw] output the raw JSON data (default: false)
+ * @returns {Promise} the resulting Promise where output is rendered
  */
-export default program =>
-  program
-    .command('breaches')
-    .description('get all breaches in the system')
-    .option('-d, --domain-filter <domain>', 'filter breach data by domain')
-    .option(
-      '-r, --raw',
-      'output the raw JSON data (or nothing, if no results found)',
-    )
-    .action(breaches);
+export const handler = ({ domainFilter: domain, raw }) => {
+  if (!raw && process.stdout.isTTY) {
+    spinner.start();
+  }
+  return Promise.resolve(breaches({ domain }))
+    .then((breachData) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      if (breachData.length && raw) {
+        logger.log(JSON.stringify(breachData));
+      } else if (breachData.length) {
+        logger.log(prettyjson.render(breachData));
+      } else if (!breachData.length && !raw) {
+        logger.log('No breaches found.');
+      }
+    })
+    .catch((err) => {
+      if (!raw && process.stdout.isTTY) {
+        spinner.stop(true);
+      }
+      logger.error(err.message);
+    });
+};

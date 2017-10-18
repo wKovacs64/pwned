@@ -6,16 +6,7 @@
       80,
       2
     ],
-    "valid-jsdoc": [
-      "error",
-      {
-        "prefer": {
-          "arg": "param",
-          "argument": "param",
-          "return": "returns"
-        }
-      }
-    ]
+    "no-unused-expressions": "off"
   },
   "parserOptions": {
     "ecmaVersion": 5
