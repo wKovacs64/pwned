@@ -30,26 +30,20 @@ npm install pwned -g
 ## Usage
 
 ```
-Usage: pwned [option | command]
-
-Each command has its own -h (--help) option.
-
-
-Options:
-
-  -v, --version  output the version number
-  -h, --help     output usage information
-
+pwned <command>
 
 Commands:
+  pwned ba <account|email>      get all breaches for an account (username or email address)
+  pwned breach <name>           get a single breached site by breach name
+  pwned breaches                get all breaches in the system
+  pwned dc                      get all data classes in the system
+  pwned pa <email>              get all pastes for an account (email address)
+  pwned pw <password>           check a password (plain text or SHA1 hash) for public exposure
+  pwned search <account|email>  search breaches and pastes for an account (username or email address)
 
-  ba [options] <account>      get all breaches for an account (username or email address)
-  breach [options] <name>     get a single breached site by breach name
-  breaches [options]          get all breaches in the system
-  dc [options]                get all data classes in the system
-  pa [options] <email>        get all pastes for an account (email address)
-  pw [options] <password>     check a password (plain text or SHA1 hash) for public exposure
-  search [options] <account>  search breaches and pastes for an account (username or email address)
+Options:
+  -h, --help     Show help                                                                           [boolean]
+  -v, --version  Show version number                                                                 [boolean]
 ```
 
 #### Examples
@@ -64,23 +58,26 @@ Get all breaches in the system, filtering results to just the 'adobe.com' domain
 ```
 $ pwned breaches -d adobe.com
 -
-  Title:       Adobe
-  Name:        Adobe
-  Domain:      adobe.com
-  BreachDate:  2013-10-04
-  AddedDate:   2013-12-04T00:00:00Z
-  PwnCount:    152445165
-  Description: In October 2013, 153 million Adobe accounts were breached with each containing an internal ID, username, email, <em>encrypted</em> password and a password hint in plain text. The password cryptography was poorly done and <a href="http://stricture-group.com/files/adobe-top100.txt" target="_blank">many were quickly resolved back to plain text</a>. The unencrypted hints also <a href="http://www.troyhunt.com/2013/11/adobe-credentials-and-serious.html" target="_blank">disclosed much about the passwords</a> adding further to the risk that hundreds of millions of Adobe customers already faced.
+  Title:        Adobe
+  Name:         Adobe
+  Domain:       adobe.com
+  BreachDate:   2013-10-04
+  AddedDate:    2013-12-04T00:00:00Z
+  ModifiedDate: 2013-12-04T00:00:00Z
+  PwnCount:     152445165
+  Description:  In October 2013, 153 million Adobe accounts were breached with each containing an internal ID, username, email, <em>encrypted</em> password and a password hint in plain text. The password cryptography was poorly done and <a href="http://stricture-group.com/files/adobe-top100.txt" target="_blank" rel="noopener">many were quickly resolved back to plain text</a>. The unencrypted hints also <a href="http://www.troyhunt.com/2013/11/adobe-credentials-and-serious.html" target="_blank" rel="noopener">disclosed much about the passwords</a> adding further to the risk that hundreds of millions of Adobe customers already faced.
   DataClasses:
     - Email addresses
     - Password hints
     - Passwords
     - Usernames
-  IsVerified:  true
-  IsSensitive: false
-  IsActive:    true
-  IsRetired:   false
-  LogoType:    svg
+  IsVerified:   true
+  IsFabricated: false
+  IsSensitive:  false
+  IsActive:     true
+  IsRetired:    false
+  IsSpamList:   false
+  LogoType:     svg
 ```
 
 Get a single breached site by breach name:
@@ -92,12 +89,18 @@ No breach found by that name.
 Get all the data classes in the system, returning raw JSON results for external/chained consumption:
 ```
 $ pwned dc --raw
-["Account balances","Age groups","Astrological signs","Avatars","Bank account numbers","Banking PINs","Beauty ratings","Biometric data","Car ownership statuses","Career levels","Chat logs","Credit cards","Customer feedback","Customer interactions","Dates of birth","Device information","Device usage tracking data","Drinking habits","Drug habits","Education levels","Email addresses","Email messages","Employers","Ethnicities","Family members' names","Family plans","Financial transactions","Fitness levels","Genders","Geographic locations","Government issued IDs","Historical passwords","Home ownership statuses","Homepage URLs","Income levels","Instant messenger identities","IP addresses","Job titles","MAC addresses","Marital statuses","Names","Nicknames","Parenting plans","Partial credit card data","Passport numbers","Password hints","Passwords","Payment histories","Personal descriptions","Personal interests","Phone numbers","Physical addresses","Physical attributes","Political views","Private messages","Purchases","Races","Recovery email addresses","Relationship statuses","Religions","Reward program balances","Salutations","Security questions and answers","Sexual fetishes","Sexual orientations","Smoking habits","SMS messages","Social connections","Spoken languages","Time zones","Travel habits","User agent details","User statuses","User website URLs","Usernames","Website activity","Work habits","Years of birth"]
+["Account balances","Age groups","Ages","Astrological signs","Auth tokens","Avatars","Bank account numbers","Banking PINs","Beauty ratings","Biometric data","Browser user agent details","Buying preferences","Car ownership statuses","Career levels","Charitable donations","Chat logs","Credit card CVV","Credit cards","Credit status information","Customer feedback","Customer interactions","Dates of birth","Deceased date","Deceased statuses","Device information","Device usage tracking data","Drinking habits","Drug habits","Eating habits","Education levels","Email addresses","Email messages","Employers","Ethnicities","Family members' names","Family plans","Family structure","Financial investments","Financial transactions","Fitness levels","Genders","Geographic locations","Government issued IDs","Health insurance information","Historical passwords","Home ownership statuses","Homepage URLs","Income levels","Instant messenger identities","IP addresses","Job titles","MAC addresses","Marital statuses","Names","Nationalities","Net worths","Nicknames","Parenting plans","Partial credit card data","Passport numbers","Password hints","Passwords","Payment histories","Payment methods","Personal descriptions","Personal health data","Personal interests","Phone numbers","Physical addresses","Physical attributes","Political donations","Political views","Private messages","Professional skills","Purchases","Purchasing habits","Races","Recovery email addresses","Relationship statuses","Religions","Reward program balances","Salutations","Security questions and answers","Sexual fetishes","Sexual orientations","Smoking habits","SMS messages","Social connections","Spoken languages","Support tickets","Survey results","Time zones","Travel habits","User statuses","User website URLs","Usernames","Utility bills","Vehicle details","Website activity","Work habits","Years of birth","Years of professional experience"]
 ```
 
 Get all pastes for an email address:
 ```
 $ pwned pa nobody@nowhere.com
+-
+  Source:     Pastebin
+  Id:         suPshHZ1
+  Title:      null
+  Date:       2017-09-06T03:41:33Z
+  EmailCount: 20444
 -
   Source:     Pastebin
   Id:         xyb8vavK
@@ -140,6 +143,12 @@ $ pwned pa nobody@nowhere.com
   Title:      PayPalSucks Database 102k
   Date:       null
   EmailCount: 82071
+-
+  Source:     AdHocUrl
+  Id:         http://balockae.online/files/BlackMarketReloaded_users.sql
+  Title:      balockae.online
+  Date:       null
+  EmailCount: 10547
 ```
 
 Check a password to see if it has been exposed in a data breach:
