@@ -39,11 +39,12 @@ Commands:
   pwned dc                      get all data classes in the system
   pwned pa <email>              get all pastes for an account (email address)
   pwned pw <password>           check a password (plain text or SHA1 hash) for public exposure
-  pwned search <account|email>  search breaches and pastes for an account (username or email address)
+  pwned search <account|email>  search breaches and pastes for an account (username or email
+                                address)
 
 Options:
-  -h, --help     Show help                                                                           [boolean]
-  -v, --version  Show version number                                                                 [boolean]
+  -h, --help     Show help                                                                 [boolean]
+  -v, --version  Show version number                                                       [boolean]
 ```
 
 #### Examples

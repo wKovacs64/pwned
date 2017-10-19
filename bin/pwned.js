@@ -7,6 +7,6 @@ yargs
   .commandDir(path.join(__dirname, '..', 'lib', 'commands'))
   .demandCommand()
   .strict()
-  .wrap(Math.min(110, yargs.terminalWidth()))
+  .wrap(Math.min(100, yargs.terminalWidth()))
   .alias('h', 'help')
   .alias('v', 'version').argv;
