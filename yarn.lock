@@ -4366,9 +4366,9 @@ yargs@8.0.2:
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
 
-yargs@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-10.0.0.tgz#212f981412b470c7a3588034caba90deb9952b33"
+yargs@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-10.0.1.tgz#abaa3d29ffec1bef4d15fe4c7fb57f4cf90919fc"
   dependencies:
     cliui "^3.2.0"
     decamelize "^1.1.1"
