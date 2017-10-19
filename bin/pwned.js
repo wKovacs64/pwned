@@ -6,6 +6,7 @@ const yargs = require('yargs');
 yargs
   .commandDir(path.join(__dirname, '..', 'lib', 'commands'))
   .demandCommand()
+  .recommendCommands()
   .strict()
   .wrap(Math.min(100, yargs.terminalWidth()))
   .alias('h', 'help')
