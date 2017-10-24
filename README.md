@@ -27,6 +27,12 @@ Download and install [Node.js][nodejs], then install `pwned` globally using
 npm install pwned -g
 ```
 
+Alternatively, you can run it on-demand using the [`npx`][npx] package runner:
+
+```shell
+npx pwned
+```
+
 ## Usage
 
 ```
@@ -197,5 +203,6 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
 [nodejs]: https://nodejs.org/en/download/
+[npx]: https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
 [sponsor-image]: https://app.codesponsor.io/embed/1Z34ZozRAhWZ8QKV42A2yt3r/wKovacs64/pwned.svg
 [sponsor-link]: https://app.codesponsor.io/link/1Z34ZozRAhWZ8QKV42A2yt3r/wKovacs64/pwned
