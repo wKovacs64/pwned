@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 4.0.0 *(2017-10-24)*
+
+* Migrated from commander to yargs (#6) :skull:
+* Added command suggestions if no matching command is found
+
 ## Version 3.2.1 *(2017-10-17)*
 
 * Fixed displaying help on unknown command (#4)
