@@ -1,11 +1,11 @@
 import * as hibp from 'hibp';
-import logger from '../../src/utils/logger';
-import spinner from '../../src/utils/spinner';
-import { handler as dc } from '../../src/commands/dc';
-import { OBJ_ARRAY, EMPTY_ARRAY, ERROR_MSG } from '../testData';
+import { OBJ_ARRAY, EMPTY_ARRAY, ERROR_MSG } from '../../testData';
+import logger from '../utils/logger';
+import spinner from '../utils/spinner';
+import { handler as dc } from './dc';
 
-jest.mock('../../src/utils/logger');
-jest.mock('../../src/utils/spinner');
+jest.mock('../utils/logger');
+jest.mock('../utils/spinner');
 
 describe('command: dc', () => {
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('command: dc', () => {
 
   describe('found', () => {
     beforeAll(() => {
-      hibp.dataClasses = () => Promise.resolve(OBJ_ARRAY);
+      hibp.dataClasses = async () => OBJ_ARRAY;
     });
 
     it('should call spinner.start (found && !raw)', () => {

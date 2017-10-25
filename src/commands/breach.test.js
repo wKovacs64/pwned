@@ -1,22 +1,23 @@
 import * as hibp from 'hibp';
-import logger from '../../src/utils/logger';
-import spinner from '../../src/utils/spinner';
-import { handler as breach } from '../../src/commands/breach';
-import { FOUND, OBJ, NOT_FOUND, ERROR, ERROR_MSG } from '../testData';
+import { FOUND, OBJ, NOT_FOUND, ERROR, ERROR_MSG } from '../../testData';
+import logger from '../utils/logger';
+import spinner from '../utils/spinner';
+import { handler as breach } from './breach';
 
-jest.mock('../../src/utils/logger');
-jest.mock('../../src/utils/spinner');
+jest.mock('../utils/logger');
+jest.mock('../utils/spinner');
 
 describe('command: breach', () => {
   beforeAll(() => {
-    hibp.breach = (breachName) => {
+    hibp.breach = async (breachName) => {
       if (breachName === FOUND) {
-        return Promise.resolve(OBJ);
+        return OBJ;
       } else if (breachName === NOT_FOUND) {
-        return Promise.resolve(null);
+        return null;
       } else if (breachName === ERROR) {
-        return Promise.reject(new Error(ERROR_MSG));
+        throw new Error(ERROR_MSG);
       }
+      throw new Error('Unexpected input!');
     };
   });
 

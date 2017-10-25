@@ -1,5 +1,7 @@
-import logger from '../../src/utils/logger';
-import { OBJ, MESSAGE } from '../testData';
+/* eslint-disable no-console */
+
+import { OBJ, MESSAGE } from '../../testData';
+import logger from './logger';
 
 /**
  * WARNING:

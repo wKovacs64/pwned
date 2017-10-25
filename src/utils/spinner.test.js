@@ -1,4 +1,4 @@
-import spinner from '../../src/utils/spinner';
+import spinner from './spinner';
 
 describe('util: spinner', () => {
   it('should return an object with "start" and "stop" functions', () => {

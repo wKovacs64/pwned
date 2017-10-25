@@ -1,22 +1,23 @@
 import * as hibp from 'hibp';
-import logger from '../../src/utils/logger';
-import spinner from '../../src/utils/spinner';
-import { handler as pa } from '../../src/commands/pa';
-import { FOUND, OBJ_ARRAY, NOT_FOUND, ERROR, ERROR_MSG } from '../testData';
+import { FOUND, OBJ, NOT_FOUND, ERROR, ERROR_MSG, NONE } from '../../testData';
+import logger from '../utils/logger';
+import spinner from '../utils/spinner';
+import { handler as ba } from './ba';
 
-jest.mock('../../src/utils/logger');
-jest.mock('../../src/utils/spinner');
+jest.mock('../utils/logger');
+jest.mock('../utils/spinner');
 
-describe('command: pa', () => {
+describe('command: ba', () => {
   beforeAll(() => {
-    hibp.pasteAccount = (email) => {
-      if (email === FOUND) {
-        return Promise.resolve(OBJ_ARRAY);
-      } else if (email === NOT_FOUND) {
-        return Promise.resolve(null);
-      } else if (email === ERROR) {
-        return Promise.reject(new Error(ERROR_MSG));
+    hibp.breachedAccount = async (account) => {
+      if (account === FOUND) {
+        return OBJ;
+      } else if (account === NOT_FOUND) {
+        return null;
+      } else if (account === ERROR) {
+        throw new Error(ERROR_MSG);
       }
+      throw new Error('Unexpected input!');
     };
   });
 
@@ -29,74 +30,119 @@ describe('command: pa', () => {
   });
 
   it('should call spinner.start (!raw)', () => {
-    pa({ email: FOUND, raw: false });
+    ba({ account: NOT_FOUND, domainFilter: NONE, truncate: false, raw: false });
     expect(spinner.start).toHaveBeenCalledTimes(1);
   });
 
   it('should not call spinner.start (raw)', () => {
-    pa({ email: FOUND, raw: true });
+    ba({ account: NOT_FOUND, domainFilter: NONE, truncate: false, raw: true });
     expect(spinner.start).toHaveBeenCalledTimes(0);
   });
 
   it('should call spinner.stop (non-error results, !raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pa({ email: FOUND, raw: false }).then(() => {
+    return ba({
+      account: NOT_FOUND,
+      domainFilter: NONE,
+      truncate: false,
+      raw: false,
+    }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call spinner.stop (non-error results, raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pa({ email: FOUND, raw: true }).then(() => {
+    return ba({
+      account: NOT_FOUND,
+      domainFilter: NONE,
+      truncate: false,
+      raw: true,
+    }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call logger.log (found && !raw)', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
-    return pa({ email: FOUND, raw: false }).then(() => {
+    return ba({
+      account: FOUND,
+      domainFilter: NONE,
+      truncate: false,
+      raw: false,
+    }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call logger.log (found && raw)', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
-    return pa({ email: FOUND, raw: true }).then(() => {
+    return ba({
+      account: FOUND,
+      domainFilter: NONE,
+      truncate: false,
+      raw: true,
+    }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should call logger.log (notFound && !raw)', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
-    return pa({ email: NOT_FOUND, raw: false }).then(() => {
+    return ba({
+      account: NOT_FOUND,
+      domainFilter: NONE,
+      truncate: false,
+      raw: false,
+    }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call logger.log (notFound && raw)', () => {
     expect(logger.log).toHaveBeenCalledTimes(0);
-    return pa({ email: NOT_FOUND, raw: true }).then(() => {
+    return ba({
+      account: NOT_FOUND,
+      domainFilter: NONE,
+      truncate: false,
+      raw: true,
+    }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pa({ email: ERROR, raw: false }).then(() => {
+    return ba({
+      account: ERROR,
+      domainFilter: NONE,
+      truncate: false,
+      raw: false,
+    }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pa({ email: ERROR, raw: true }).then(() => {
+    return ba({
+      account: ERROR,
+      domainFilter: NONE,
+      truncate: false,
+      raw: true,
+    }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call logger.error (error)', () => {
     expect(logger.error).toHaveBeenCalledTimes(0);
-    return pa({ email: ERROR, raw: false }).then(() => {
+    return ba({
+      account: ERROR,
+      domainFilter: NONE,
+      truncate: false,
+      raw: false,
+    }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(0);
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
