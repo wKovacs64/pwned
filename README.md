@@ -191,7 +191,11 @@ pastes:   null
 
 This tool is distributed under the [MIT License](LICENSE.txt).
 
+---
+
 [![Sponsor][sponsor-image]][sponsor-link]
+
+---
 
 [npm-image]: https://img.shields.io/npm/v/pwned.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/pwned
