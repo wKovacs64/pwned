@@ -34,27 +34,27 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
-export const handler = ({ name, raw }) => {
+export const handler = async ({ name, raw }) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(breach(name))
-    .then((breachData) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      if (breachData && raw) {
-        logger.log(JSON.stringify(breachData));
-      } else if (breachData) {
-        logger.log(prettyjson.render(breachData));
-      } else if (!breachData && !raw) {
-        logger.log('No breach found by that name.');
-      }
-    })
-    .catch((err) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      logger.error(err.message);
-    });
+
+  try {
+    const breachData = await breach(name);
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    if (breachData && raw) {
+      logger.log(JSON.stringify(breachData));
+    } else if (breachData) {
+      logger.log(prettyjson.render(breachData));
+    } else if (!breachData && !raw) {
+      logger.log('No breach found by that name.');
+    }
+  } catch (err) {
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    logger.error(err.message);
+  }
 };

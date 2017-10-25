@@ -31,27 +31,27 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
-export const handler = ({ domainFilter: domain, raw }) => {
+export const handler = async ({ domainFilter: domain, raw }) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(breaches({ domain }))
-    .then((breachData) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      if (breachData.length && raw) {
-        logger.log(JSON.stringify(breachData));
-      } else if (breachData.length) {
-        logger.log(prettyjson.render(breachData));
-      } else if (!breachData.length && !raw) {
-        logger.log('No breaches found.');
-      }
-    })
-    .catch((err) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      logger.error(err.message);
-    });
+
+  try {
+    const breachData = await breaches({ domain });
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    if (breachData.length && raw) {
+      logger.log(JSON.stringify(breachData));
+    } else if (breachData.length) {
+      logger.log(prettyjson.render(breachData));
+    } else if (!breachData.length && !raw) {
+      logger.log('No breaches found.');
+    }
+  } catch (err) {
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    logger.error(err.message);
+  }
 };

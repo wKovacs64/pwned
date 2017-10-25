@@ -48,21 +48,21 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @param {boolean} [argv.raw] disable the console spinner (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
-export const handler = ({ password, sha1: isAHash, raw }) => {
+export const handler = async ({ password, sha1: isAHash, raw }) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(pwnedPassword(password, { isAHash }))
-    .then((isPwned) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      logger.log(isPwned ? 'Oh no — pwned!' : 'Good news — no pwnage found!');
-    })
-    .catch((err) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      logger.error(err.message);
-    });
+
+  try {
+    const isPwned = await pwnedPassword(password, { isAHash });
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    logger.log(isPwned ? 'Oh no — pwned!' : 'Good news — no pwnage found!');
+  } catch (err) {
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    logger.error(err.message);
+  }
 };

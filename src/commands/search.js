@@ -51,28 +51,33 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
-export const handler = ({ account, domainFilter: domain, truncate, raw }) => {
+export const handler = async ({
+  account,
+  domainFilter: domain,
+  truncate,
+  raw,
+}) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(search(account, { domain, truncate }))
-    .then((searchData) => {
-      const foundData = !!(searchData.breaches || searchData.pastes);
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      if (foundData && raw) {
-        logger.log(JSON.stringify(searchData));
-      } else if (foundData) {
-        logger.log(prettyjson.render(searchData));
-      } else if (!foundData && !raw) {
-        logger.log('Good news — no pwnage found!');
-      }
-    })
-    .catch((err) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      logger.error(err.message);
-    });
+
+  try {
+    const searchData = await search(account, { domain, truncate });
+    const foundData = !!(searchData.breaches || searchData.pastes);
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    if (foundData && raw) {
+      logger.log(JSON.stringify(searchData));
+    } else if (foundData) {
+      logger.log(prettyjson.render(searchData));
+    } else if (!foundData && !raw) {
+      logger.log('Good news — no pwnage found!');
+    }
+  } catch (err) {
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    logger.error(err.message);
+  }
 };

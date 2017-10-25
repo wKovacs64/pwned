@@ -51,27 +51,35 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
-export const handler = ({ account, domainFilter: domain, truncate, raw }) => {
+export const handler = async ({
+  account,
+  domainFilter: domain,
+  truncate,
+  raw,
+}) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(breachedAccount(account.trim(), { domain, truncate }))
-    .then((breachData) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      if (breachData && raw) {
-        logger.log(JSON.stringify(breachData));
-      } else if (breachData) {
-        logger.log(prettyjson.render(breachData));
-      } else if (!breachData && !raw) {
-        logger.log('Good news — no pwnage found!');
-      }
-    })
-    .catch((err) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      logger.error(err.message);
+
+  try {
+    const breachData = await breachedAccount(account.trim(), {
+      domain,
+      truncate,
     });
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    if (breachData && raw) {
+      logger.log(JSON.stringify(breachData));
+    } else if (breachData) {
+      logger.log(prettyjson.render(breachData));
+    } else if (!breachData && !raw) {
+      logger.log('Good news — no pwnage found!');
+    }
+  } catch (err) {
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    logger.error(err.message);
+  }
 };

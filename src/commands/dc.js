@@ -24,30 +24,30 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
-export const handler = ({ raw }) => {
+export const handler = async ({ raw }) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
-  return Promise.resolve(dataClasses())
-    .then((allDataClasses) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      if (allDataClasses.length && raw) {
-        logger.log(JSON.stringify(allDataClasses));
-      } else if (allDataClasses.length) {
-        logger.log(prettyjson.render(allDataClasses));
-      } else if (!allDataClasses.length && !raw) {
-        logger.log(
-          'No data classes found. This is unexpected - the remote API may be ' +
-            'having difficulties.',
-        );
-      }
-    })
-    .catch((err) => {
-      if (!raw && process.stdout.isTTY) {
-        spinner.stop(true);
-      }
-      logger.error(err.message);
-    });
+
+  try {
+    const dataClassesData = await dataClasses();
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    if (dataClassesData.length && raw) {
+      logger.log(JSON.stringify(dataClassesData));
+    } else if (dataClassesData.length) {
+      logger.log(prettyjson.render(dataClassesData));
+    } else if (!dataClassesData.length && !raw) {
+      logger.log(
+        'No data classes found. This is unexpected - the remote API may be ' +
+          'having difficulties.',
+      );
+    }
+  } catch (err) {
+    if (!raw && process.stdout.isTTY) {
+      spinner.stop(true);
+    }
+    logger.error(err.message);
+  }
 };
