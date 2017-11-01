@@ -48,7 +48,7 @@
     "node": ">= 4"
   },
   "dependencies": {
-    "cli-spinner": "^0.2.6",
+    "cli-spinner": "^0.2.7",
     "hibp": "^5.2.0",
     "prettyjson": "^1.2.1",
     "source-map-support": "^0.5.0",
@@ -59,8 +59,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "coveralls": "^3.0.0",
-    "cross-env": "^5.1.0",
-    "eslint": "^4.9.0",
+    "cross-env": "^5.1.1",
+    "eslint": "^4.10.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "6.0.2",
