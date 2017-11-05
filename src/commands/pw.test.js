@@ -9,7 +9,7 @@ jest.mock('../utils/spinner');
 
 describe('command: pw', () => {
   beforeAll(() => {
-    hibp.pwnedPassword = async (password) => {
+    hibp.pwnedPassword = async password => {
       if (password === FOUND) {
         return true;
       } else if (password === NOT_FOUND) {

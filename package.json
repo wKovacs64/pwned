@@ -1,7 +1,8 @@
 {
   "name": "pwned",
   "version": "4.0.1-dev.0",
-  "description": "A command-line tool for querying the 'Have I been pwned?' service.",
+  "description":
+    "A command-line tool for querying the 'Have I been pwned?' service.",
   "keywords": [
     "haveibeenpwned",
     "hibp",
@@ -28,7 +29,7 @@
   "scripts": {
     "build": "babel src --out-dir lib --source-maps --ignore \"**/*.test.js\"",
     "clean": "rimraf lib coverage",
-    "format": "prettier-eslint --write \"{bin,src}/**/*.js\"",
+    "format": "prettier --write \"{bin,src}/**/*.js\"",
     "lint": "eslint bin src",
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
@@ -61,12 +62,11 @@
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.1",
     "eslint": "^4.10.0",
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "6.0.2",
-    "eslint-plugin-react": "^7.4.0",
     "jest": "^21.2.1",
-    "prettier-eslint-cli": "^4.4.0",
+    "prettier": "^1.7.4",
     "rimraf": "^2.6.2"
   }
 }

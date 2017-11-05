@@ -11,7 +11,7 @@ export const builder /* istanbul ignore next */ = yargs =>
     .positional('password', {
       type: 'string',
     })
-    .check((argv) => {
+    .check(argv => {
       if (!argv.password.length) {
         throw new Error('The password argument must not be empty.');
       }

@@ -13,7 +13,7 @@ export const builder /* istanbul ignore next */ = yargs =>
       alias: 'email',
       type: 'string',
     })
-    .check((argv) => {
+    .check(argv => {
       if (!argv.account.length) {
         throw new Error('The account argument must not be empty.');
       }

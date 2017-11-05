@@ -2,15 +2,8 @@
   "env": {
     "jest": true
   },
-  "extends": "airbnb",
+  "extends": ["airbnb-base", "prettier"],
   "rules": {
-    "function-paren-newline": "off",
-    "max-len": [
-      "error",
-      80,
-      2
-    ],
-    "object-curly-newline": "off",
     "valid-jsdoc": [
       "error",
       {

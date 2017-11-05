@@ -9,7 +9,7 @@ jest.mock('../utils/spinner');
 
 describe('command: ba', () => {
   beforeAll(() => {
-    hibp.breachedAccount = async (account) => {
+    hibp.breachedAccount = async account => {
       if (account === FOUND) {
         return OBJ;
       } else if (account === NOT_FOUND) {

@@ -9,7 +9,7 @@ jest.mock('../utils/spinner');
 
 describe('command: pa', () => {
   beforeAll(() => {
-    hibp.pasteAccount = async (email) => {
+    hibp.pasteAccount = async email => {
       if (email === FOUND) {
         return OBJ_ARRAY;
       } else if (email === NOT_FOUND) {

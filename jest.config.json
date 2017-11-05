@@ -1,14 +1,7 @@
 {
   "clearMocks": true,
   "coverageDirectory": "coverage",
-  "coveragePathIgnorePatterns": [
-    "<rootDir>/testData"
-  ],
-  "coverageReporters": [
-    "html",
-    "json",
-    "lcov",
-    "text"
-  ],
+  "coveragePathIgnorePatterns": ["<rootDir>/testData"],
+  "coverageReporters": ["html", "json", "lcov", "text"],
   "testEnvironment": "node"
 }

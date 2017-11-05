@@ -11,7 +11,7 @@ export const builder /* istanbul ignore next */ = yargs =>
     .positional('name', {
       type: 'string',
     })
-    .check((argv) => {
+    .check(argv => {
       if (!argv.name.length) {
         throw new Error('The name argument must not be empty.');
       }

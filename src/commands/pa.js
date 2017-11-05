@@ -11,7 +11,7 @@ export const builder /* istanbul ignore next */ = yargs =>
     .positional('email', {
       type: 'string',
     })
-    .check((argv) => {
+    .check(argv => {
       if (!argv.email.length) {
         throw new Error('The email argument must not be empty.');
       }
