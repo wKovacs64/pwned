@@ -16,7 +16,7 @@ module.*
 
 [![npm Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
-[![Code Coverage][coveralls-image]][coveralls-url]
+[![Code Coverage][coverage-image]][coverage-url]
 
 ## Installation
 
@@ -201,8 +201,8 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [npm-url]: https://www.npmjs.com/package/pwned
 [travis-image]: https://img.shields.io/travis/wKovacs64/pwned.svg?style=flat-square&branch=master
 [travis-url]: https://travis-ci.org/wKovacs64/pwned
-[coveralls-image]: https://img.shields.io/coveralls/wKovacs64/pwned.svg?style=flat-square&branch=master
-[coveralls-url]: https://coveralls.io/github/wKovacs64/pwned?branch=master
+[coverage-image]: https://img.shields.io/codecov/c/github/wKovacs64/pwned/master.svg?style=flat-square
+[coverage-url]: https://codecov.io/github/wKovacs64/pwned?branch=master
 [troy]: http://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
