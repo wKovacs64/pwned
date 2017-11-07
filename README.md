@@ -202,7 +202,7 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [travis-image]: https://img.shields.io/travis/wKovacs64/pwned.svg?style=flat-square&branch=master
 [travis-url]: https://travis-ci.org/wKovacs64/pwned
 [coverage-image]: https://img.shields.io/codecov/c/github/wKovacs64/pwned/master.svg?style=flat-square
-[coverage-url]: https://codecov.io/github/wKovacs64/pwned?branch=master
+[coverage-url]: https://codecov.io/github/wKovacs64/pwned
 [troy]: http://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
