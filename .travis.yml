@@ -12,4 +12,4 @@ script:
   - yarn lint
   - yarn test:coverage --no-cache
 after_success:
-  - codecov
+  - "coveralls < coverage/lcov.info"
