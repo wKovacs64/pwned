@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "cli-spinner": "^0.2.7",
-    "hibp": "^5.2.0",
+    "hibp": "^5.2.2",
     "prettyjson": "^1.2.1",
     "source-map-support": "^0.5.0",
     "yargs": "^10.0.3"
@@ -65,7 +65,7 @@
     "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-import": "^2.8.0",
     "jest": "^21.2.1",
-    "prettier": "^1.7.4",
+    "prettier": "^1.8.1",
     "rimraf": "^2.6.2"
   }
 }
