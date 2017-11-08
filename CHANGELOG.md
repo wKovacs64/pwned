@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 4.0.1 *(2017-11-08)*
+
+* Internal maintenance
+
 ## Version 4.0.0 *(2017-10-24)*
 
 * Migrated from commander to yargs (#6) :skull:
