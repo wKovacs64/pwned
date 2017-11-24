@@ -1,11 +1,7 @@
 {
   "extends": "airbnb-base/legacy",
   "rules": {
-    "max-len": [
-      "error",
-      80,
-      2
-    ],
+    "max-len": ["error", 80, 2],
     "no-unused-expressions": "off"
   },
   "parserOptions": {

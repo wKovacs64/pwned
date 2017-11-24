@@ -19,8 +19,8 @@
 6. `git tag vX.Y.Z` (where X.Y.Z is the new version)
 7. `git push origin master --tags`
 8. `git checkout develop`
-9. Update the version in `package.json` to the next dev version in the
-   `develop` branch.
+9. Update the version in `package.json` to the next dev version in the `develop`
+   branch.
 
         semver -i prerelease --preid dev 1.0.1 # 1.0.2-dev.0
 

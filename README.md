@@ -10,12 +10,10 @@
 
 # pwned
 
-*A command-line tool for querying [Troy Hunt][troy]'s
-[Have I been pwned?][haveibeenpwned] service using the [hibp][hibp] Node.js
-module.*
+_A command-line tool for querying [Troy Hunt][troy]'s [Have I been
+pwned?][haveibeenpwned] service using the [hibp][hibp] Node.js module._
 
-[![npm Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+[![npm Version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 [![Code Coverage][coverage-image]][coverage-url]
 
 ## Installation
@@ -56,12 +54,15 @@ Options:
 #### Examples
 
 Get all breaches for an account:
+
 ```
 $ pwned ba pleasebeclean@fingerscrossed.tld
 Good news — no pwnage found!
 ```
 
-Get all breaches in the system, filtering results to just the 'adobe.com' domain:
+Get all breaches in the system, filtering results to just the 'adobe.com'
+domain:
+
 ```
 $ pwned breaches -d adobe.com
 -
@@ -88,18 +89,22 @@ $ pwned breaches -d adobe.com
 ```
 
 Get a single breached site by breach name:
+
 ```
 $ pwned breach MyCompany
 No breach found by that name.
 ```
 
-Get all the data classes in the system, returning raw JSON results for external/chained consumption:
+Get all the data classes in the system, returning raw JSON results for
+external/chained consumption:
+
 ```
 $ pwned dc --raw
 ["Account balances","Age groups","Ages","Astrological signs","Auth tokens","Avatars","Bank account numbers","Banking PINs","Beauty ratings","Biometric data","Browser user agent details","Buying preferences","Car ownership statuses","Career levels","Charitable donations","Chat logs","Credit card CVV","Credit cards","Credit status information","Customer feedback","Customer interactions","Dates of birth","Deceased date","Deceased statuses","Device information","Device usage tracking data","Drinking habits","Drug habits","Eating habits","Education levels","Email addresses","Email messages","Employers","Ethnicities","Family members' names","Family plans","Family structure","Financial investments","Financial transactions","Fitness levels","Genders","Geographic locations","Government issued IDs","Health insurance information","Historical passwords","Home ownership statuses","Homepage URLs","Income levels","Instant messenger identities","IP addresses","Job titles","MAC addresses","Marital statuses","Names","Nationalities","Net worths","Nicknames","Parenting plans","Partial credit card data","Passport numbers","Password hints","Passwords","Payment histories","Payment methods","Personal descriptions","Personal health data","Personal interests","Phone numbers","Physical addresses","Physical attributes","Political donations","Political views","Private messages","Professional skills","Purchases","Purchasing habits","Races","Recovery email addresses","Relationship statuses","Religions","Reward program balances","Salutations","Security questions and answers","Sexual fetishes","Sexual orientations","Smoking habits","SMS messages","Social connections","Spoken languages","Support tickets","Survey results","Time zones","Travel habits","User statuses","User website URLs","Usernames","Utility bills","Vehicle details","Website activity","Work habits","Years of birth","Years of professional experience"]
 ```
 
 Get all pastes for an email address:
+
 ```
 $ pwned pa nobody@nowhere.com
 -
@@ -159,12 +164,14 @@ $ pwned pa nobody@nowhere.com
 ```
 
 Check a password to see if it has been exposed in a data breach:
+
 ```
 $ pwned pw Password1234
 Oh no — pwned!
 ```
 
 Search both breaches and pastes for an account (truncating breach data):
+
 ```
 $ pwned search nobody -t
 breaches:

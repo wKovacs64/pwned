@@ -28,7 +28,7 @@
   "scripts": {
     "build": "babel src --out-dir lib --source-maps --ignore \"**/*.test.js\"",
     "clean": "rimraf lib coverage",
-    "format": "prettier --write \"**/*.js\"",
+    "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
