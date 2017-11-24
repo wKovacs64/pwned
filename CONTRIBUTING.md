@@ -5,13 +5,13 @@ the repository and sending a merge request.
 
 When submitting code, please make every effort to follow existing conventions
 and style in order to keep the code as readable as possible. This project
-adheres to the [Airbnb](https://github.com/airbnb/javascript) code style, with a
-few modifications:
+roughly adheres to the [Airbnb][airbnb] code style (particularly for linting)
+and is formatted using [prettier][prettier].
 
-* Avoid lines longer than **80** characters
-* Valid JSDoc comments are required (where provided)
-
-If adding new functionality, please be sure to include the appropriate tests
-as well. All tests must pass before a merge can be accepted.
+If adding new functionality, please be sure to include the appropriate tests as
+well. All tests must pass before a merge can be accepted.
 
 Thank you.
+
+[airbnb]: https://github.com/airbnb/javascript
+[prettier]: https://prettier.io
