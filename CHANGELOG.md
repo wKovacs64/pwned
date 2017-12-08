@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 4.0.3 _(2017-12-07)_
+
+* Updated `hibp` to avoid Chromium download when running with `npx`
+
 ## Version 4.0.2 _(2017-12-07)_
 
 * Fixed `regeneratorRuntime is not defined` error :scream:
