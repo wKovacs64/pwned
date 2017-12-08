@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 4.0.2 _(2017-12-07)_
+
+* Fixed `regeneratorRuntime is not defined` error :scream:
+* Reformated some documentation files
+* Updated dependencies
+
 ## Version 4.0.1 _(2017-11-08)_
 
 * Internal maintenance
