@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 require('source-map-support/register');
+require('babel-polyfill');
 const path = require('path');
 const yargs = require('yargs');
 

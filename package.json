@@ -48,6 +48,7 @@
     "node": ">= 4"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "cli-spinner": "^0.2.7",
     "hibp": "^5.2.4",
     "prettyjson": "^1.2.1",
