@@ -31,10 +31,22 @@
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
     "prebuild": "npm run clean",
+    "precommit": "lint-staged",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
     "test": "cross-env NODE_ENV=test jest --config jest.config.json",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -65,7 +77,9 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
+    "husky": "^0.14.3",
     "jest": "^21.2.1",
+    "lint-staged": "^6.1.0",
     "prettier": "^1.10.2",
     "rimraf": "^2.6.2"
   }
