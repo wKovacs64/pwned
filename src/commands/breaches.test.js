@@ -6,7 +6,8 @@ import {
   EMPTY_ARRAY,
   ERROR,
   ERROR_MSG,
-} from '../../test/fixtures';
+  // eslint-disable-next-line import/no-unresolved, import/extensions
+} from 'fixtures';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import { handler as breaches } from './breaches';
