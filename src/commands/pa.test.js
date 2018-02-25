@@ -1,5 +1,11 @@
 import * as hibp from 'hibp';
-import { FOUND, OBJ_ARRAY, NOT_FOUND, ERROR, ERROR_MSG } from '../../testData';
+import {
+  FOUND,
+  OBJ_ARRAY,
+  NOT_FOUND,
+  ERROR,
+  ERROR_MSG,
+} from '../../test/fixtures';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import { handler as pa } from './pa';

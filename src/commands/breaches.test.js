@@ -6,7 +6,7 @@ import {
   EMPTY_ARRAY,
   ERROR,
   ERROR_MSG,
-} from '../../testData';
+} from '../../test/fixtures';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import { handler as breaches } from './breaches';

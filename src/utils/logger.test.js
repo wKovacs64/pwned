@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import { OBJ, MESSAGE } from '../../testData';
+import { OBJ, MESSAGE } from '../../test/fixtures';
 import logger from './logger';
 
 /**
