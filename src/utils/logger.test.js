@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 
-// eslint-disable-next-line import/no-unresolved, import/extensions
-import { OBJ, MESSAGE } from 'fixtures';
+import { OBJ, MESSAGE } from '../../test/fixtures';
 import logger from './logger';
 
 /**

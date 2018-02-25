@@ -1,6 +1,5 @@
 import * as hibp from 'hibp';
-// eslint-disable-next-line import/no-unresolved, import/extensions
-import { FOUND, OBJ, NOT_FOUND, ERROR, ERROR_MSG } from 'fixtures';
+import { FOUND, OBJ, NOT_FOUND, ERROR, ERROR_MSG } from '../../test/fixtures';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import { handler as breach } from './breach';

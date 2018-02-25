@@ -6,8 +6,7 @@ import {
   PREFIX_ERROR,
   ERROR,
   ERROR_MSG,
-  // eslint-disable-next-line import/no-unresolved, import/extensions
-} from 'fixtures';
+} from '../../test/fixtures';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import { handler as pw } from './pw';
