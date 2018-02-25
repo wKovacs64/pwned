@@ -1,20 +1,21 @@
+import hasha from 'hasha';
 import { pwnedPasswordRange } from 'hibp';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
-export const command = 'pwr <prefix>';
+export const command = 'pwr <password>';
 export const describe =
-  'check a password (by 5-character SHA-1 hash prefix) for public exposure ' +
-  'without submitting the password (https://goo.gl/YAgLHg)';
+  'securely check a password for public exposure (password will not be ' +
+  'transmitted over the network)';
 
 export const builder /* istanbul ignore next */ = yargs =>
   yargs
-    .positional('prefix', {
+    .positional('password', {
       type: 'string',
     })
     .check(argv => {
-      if (!(argv.prefix.length && argv.prefix.length === 5)) {
-        throw new Error('The prefix argument must be 5 characters.');
+      if (!argv.password.length) {
+        throw new Error('The password argument must not be empty.');
       }
       return true;
     })
@@ -28,7 +29,8 @@ export const builder /* istanbul ignore next */ = yargs =>
     .group(['h', 'v'], 'Global Options:');
 
 /**
- * Fetches the SHA-1 suffixes for the given 5-character SHA-1 prefix.
+ * Fetches the pwned status for the given password, indicating whether or not it
+ * has been previously exposed in a breach.
  *
  * When a password hash with the same first 5 characters is found in the Pwned
  * Passwords repository, the API will respond with the suffix of every hash
@@ -38,21 +40,23 @@ export const builder /* istanbul ignore next */ = yargs =>
  * does not exist in the data set.
  *
  * @param {Object} argv the parsed argv object
- * @param {string} argv.prefix a 5-character SHA-1 hash prefix
+ * @param {string} argv.password a password (plain text)
  * @param {boolean} [argv.raw] disable the console spinner (default: false)
  * @returns {Promise} the resulting Promise where output is rendered
  */
-export const handler = async ({ prefix, raw }) => {
+export const handler = async ({ password, raw }) => {
   if (!raw && process.stdout.isTTY) {
     spinner.start();
   }
 
   try {
-    const suffixes = await pwnedPasswordRange(prefix);
+    const hash = hasha(password, { algorithm: 'sha1' }).toUpperCase();
+    const suffixes = await pwnedPasswordRange(hash.slice(0, 5));
     if (!raw && process.stdout.isTTY) {
       spinner.stop(true);
     }
-    logger.log(suffixes);
+    const isPwned = suffixes.includes(hash.slice(5));
+    logger.log(isPwned ? 'Oh no — pwned!' : 'Good news — no pwnage found!');
   } catch (err) {
     if (!raw && process.stdout.isTTY) {
       spinner.stop(true);
