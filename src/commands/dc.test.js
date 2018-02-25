@@ -8,17 +8,9 @@ jest.mock('../utils/logger');
 jest.mock('../utils/spinner');
 
 describe('command: dc', () => {
-  beforeEach(() => {
-    // global clearMocks Jest config option doesn't work on nested mocks
-    logger.log.mockClear();
-    logger.error.mockClear();
-    spinner.start.mockClear();
-    spinner.stop.mockClear();
-  });
-
   describe('found', () => {
     beforeAll(() => {
-      hibp.dataClasses = async () => OBJ_ARRAY;
+      hibp.dataClasses.mockImplementation(async () => OBJ_ARRAY);
     });
 
     it('should call spinner.start (found && !raw)', () => {
@@ -62,7 +54,7 @@ describe('command: dc', () => {
 
   describe('not found', () => {
     beforeAll(() => {
-      hibp.dataClasses = () => Promise.resolve(EMPTY_ARRAY);
+      hibp.dataClasses.mockImplementation(() => Promise.resolve(EMPTY_ARRAY));
     });
 
     it('should call spinner.start (notFound && !raw)', () => {
@@ -106,7 +98,9 @@ describe('command: dc', () => {
 
   describe('error', () => {
     beforeAll(() => {
-      hibp.dataClasses = () => Promise.reject(new Error(ERROR_MSG));
+      hibp.dataClasses.mockImplementation(() =>
+        Promise.reject(new Error(ERROR_MSG)),
+      );
     });
 
     it('should call spinner.start (error && !raw)', () => {

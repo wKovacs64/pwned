@@ -16,7 +16,7 @@ jest.mock('../utils/spinner');
 
 describe('command: breaches', () => {
   beforeAll(() => {
-    hibp.breaches = async (options = {}) => {
+    hibp.breaches.mockImplementation(async (options = {}) => {
       if (options.domain === FOUND) {
         return OBJ_ARRAY;
       } else if (options.domain === NOT_FOUND) {
@@ -25,15 +25,7 @@ describe('command: breaches', () => {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');
-    };
-  });
-
-  beforeEach(() => {
-    // global clearMocks Jest config option doesn't work on nested mocks
-    logger.log.mockClear();
-    logger.error.mockClear();
-    spinner.start.mockClear();
-    spinner.stop.mockClear();
+    });
   });
 
   it('should call spinner.start (!raw)', () => {
