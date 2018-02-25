@@ -42,7 +42,7 @@ Commands:
   pwned breaches                get all breaches in the system
   pwned dc                      get all data classes in the system
   pwned pa <email>              get all pastes for an account (email address)
-  pwned pw <password>           check a password (plain text or SHA1 hash) for public exposure
+  pwned pw <password>           securely check a password for public exposure
   pwned search <account|email>  search breaches and pastes for an account (username or email
                                 address)
 
@@ -163,7 +163,8 @@ $ pwned pa nobody@nowhere.com
   EmailCount: 10547
 ```
 
-Check a password to see if it has been exposed in a data breach:
+[Securely][search-by-range] check a password to see if it has been exposed in a
+data breach:
 
 ```
 $ pwned pw Password1234
@@ -209,3 +210,4 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [hibp]: https://github.com/wKovacs64/hibp
 [nodejs]: https://nodejs.org/en/download/
 [npx]: https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
+[search-by-range]: https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange
