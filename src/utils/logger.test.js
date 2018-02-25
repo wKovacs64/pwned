@@ -14,16 +14,16 @@ import logger from './logger';
 describe('util: logger', () => {
   afterEach(() => {
     // Restore any console functions that were mocked
-    if (typeof console.error.mockRestore === 'function') {
+    if (jest.isMockFunction(console.error)) {
       console.error.mockRestore();
     }
-    if (typeof console.info.mockRestore === 'function') {
+    if (jest.isMockFunction(console.info)) {
       console.info.mockRestore();
     }
-    if (typeof console.log.mockRestore === 'function') {
+    if (jest.isMockFunction(console.log)) {
       console.log.mockRestore();
     }
-    if (typeof console.warn.mockRestore === 'function') {
+    if (jest.isMockFunction(console.warn)) {
       console.warn.mockRestore();
     }
   });
