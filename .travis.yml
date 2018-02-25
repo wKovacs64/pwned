@@ -10,6 +10,6 @@ node_js:
   - "node"
 script:
   - yarn lint
-  - yarn test:coverage --no-cache
+  - yarn test:coverage --no-cache --runInBand
 after_success:
   - "coveralls < coverage/lcov.info"
