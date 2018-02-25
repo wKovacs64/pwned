@@ -4,6 +4,7 @@ import { stripIndents } from 'common-tags';
 export const EMAIL = 'foo@bar.baz';
 export const EMPTY_ARRAY = [];
 export const ERROR = 'foo';
+export const PREFIX_ERROR = '0BEEC'; // 'foo'
 export const ERROR_MSG = 'Set sail for fail!';
 export const FOUND = 'bar';
 export const MESSAGE = 'Wubba lubba dub dub!';

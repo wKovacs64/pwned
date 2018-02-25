@@ -1,5 +1,12 @@
 import * as hibp from 'hibp';
-import { FOUND, NOT_FOUND, SUFFIXES, ERROR, ERROR_MSG } from '../../testData';
+import {
+  FOUND,
+  NOT_FOUND,
+  SUFFIXES,
+  PREFIX_ERROR,
+  ERROR,
+  ERROR_MSG,
+} from '../../testData';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import { handler as pw } from './pw';
@@ -10,9 +17,9 @@ jest.mock('../utils/spinner');
 describe('command: pw', () => {
   beforeAll(() => {
     hibp.pwnedPasswordRange.mockImplementation(async prefix => {
-      if (prefix !== ERROR) {
+      if (prefix !== PREFIX_ERROR) {
         return SUFFIXES;
-      } else if (prefix === ERROR) {
+      } else if (prefix === PREFIX_ERROR) {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');
@@ -73,21 +80,21 @@ describe('command: pw', () => {
 
   it('should call spinner.stop (error && !raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pw({ prefix: ERROR, raw: false }).then(() => {
+    return pw({ password: ERROR, raw: false }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should not call spinner.stop (error && raw)', () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pw({ prefix: ERROR, raw: true }).then(() => {
+    return pw({ password: ERROR, raw: true }).then(() => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
   });
 
   it('should call logger.error (error)', () => {
     expect(logger.error).toHaveBeenCalledTimes(0);
-    return pw({ prefix: ERROR, raw: false }).then(() => {
+    return pw({ password: ERROR, raw: false }).then(() => {
       expect(logger.log).toHaveBeenCalledTimes(0);
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
