@@ -1,5 +1,20 @@
 # Change Log
 
+## Version 5.0.0 _(2018-02-25)_
+
+* Refactored `pw` command to be secure by default (#8). Passwords will no longer
+  be sent over the network. Instead, the first 5 characters of the SHA-1 hash of
+  the password will be sent, and the list of suffixes that match the submitted
+  prefix will be returned. `pwned` will then search the range of suffixes for
+  the suffix from your hash. If a match is found, the password has been
+  compromised in a breach.
+
+##### Breaking Changes:
+
+* The `pw` command no longer takes the `-s` (`--sha1`) option. Instead, all
+  passwords will be taken literally and hashed. This is due to a remote API
+  endpoint change which no longer performs automatic hash detection.
+
 ## Version 4.0.3 _(2017-12-07)_
 
 * Updated `hibp` to avoid Chromium download when running with `npx`
