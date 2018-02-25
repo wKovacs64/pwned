@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 require('source-map-support/register');
-require('@babel/polyfill');
 const path = require('path');
 const yargs = require('yargs');
 
+// eslint-disable-next-line no-unused-expressions
 yargs
   .commandDir(path.join(__dirname, '..', 'lib', 'commands'))
   .demandCommand()
