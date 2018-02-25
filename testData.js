@@ -8,3 +8,4 @@ export const NOT_FOUND = 'baz';
 export const NONE = ' ';
 export const OBJ = { foo: 'bar ' };
 export const OBJ_ARRAY = [OBJ];
+export const PREFIX = '21BD1';
