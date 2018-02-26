@@ -26,77 +26,69 @@ describe('command: pw', () => {
     });
   });
 
-  it('should call spinner.start (!raw)', () => {
-    pw({ password: FOUND, raw: false });
+  it('should call spinner.start (!raw)', async () => {
+    expect(spinner.start).toHaveBeenCalledTimes(0);
+    await pw({ password: FOUND, raw: false });
     expect(spinner.start).toHaveBeenCalledTimes(1);
   });
 
-  it('should not call spinner.start (raw)', () => {
-    pw({ password: FOUND, raw: true });
+  it('should not call spinner.start (raw)', async () => {
+    await pw({ password: FOUND, raw: true });
     expect(spinner.start).toHaveBeenCalledTimes(0);
   });
 
-  it('should call spinner.stop (non-error results, !raw)', () => {
+  it('should call spinner.stop (non-error results, !raw)', async () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pw({ password: FOUND, raw: false }).then(() => {
-      expect(spinner.stop).toHaveBeenCalledTimes(1);
-    });
+    await pw({ password: FOUND, raw: false });
+    expect(spinner.stop).toHaveBeenCalledTimes(1);
   });
 
-  it('should not call spinner.stop (non-error results, raw)', () => {
+  it('should not call spinner.stop (non-error results, raw)', async () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pw({ password: FOUND, raw: true }).then(() => {
-      expect(spinner.stop).toHaveBeenCalledTimes(0);
-    });
-  });
-
-  it('should call logger.log (found && !raw)', () => {
-    expect(logger.log).toHaveBeenCalledTimes(0);
-    return pw({ password: FOUND, raw: false }).then(() => {
-      expect(logger.log).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  it('should call logger.log (found && raw)', () => {
-    expect(logger.log).toHaveBeenCalledTimes(0);
-    return pw({ password: FOUND, raw: true }).then(() => {
-      expect(logger.log).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  it('should call logger.log (notFound && !raw)', () => {
-    expect(logger.log).toHaveBeenCalledTimes(0);
-    return pw({ password: NOT_FOUND, raw: false }).then(() => {
-      expect(logger.log).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  it('should call logger.log (notFound && raw)', () => {
-    expect(logger.log).toHaveBeenCalledTimes(0);
-    return pw({ password: NOT_FOUND, raw: true }).then(() => {
-      expect(logger.log).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  it('should call spinner.stop (error && !raw)', () => {
+    await pw({ password: FOUND, raw: true });
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pw({ password: ERROR, raw: false }).then(() => {
-      expect(spinner.stop).toHaveBeenCalledTimes(1);
-    });
   });
 
-  it('should not call spinner.stop (error && raw)', () => {
+  it('should call logger.log (found && !raw)', async () => {
+    expect(logger.log).toHaveBeenCalledTimes(0);
+    await pw({ password: FOUND, raw: false });
+    expect(logger.log).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call logger.log (found && raw)', async () => {
+    expect(logger.log).toHaveBeenCalledTimes(0);
+    await pw({ password: FOUND, raw: true });
+    expect(logger.log).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call logger.log (notFound && !raw)', async () => {
+    expect(logger.log).toHaveBeenCalledTimes(0);
+    await pw({ password: NOT_FOUND, raw: false });
+    expect(logger.log).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call logger.log (notFound && raw)', async () => {
+    expect(logger.log).toHaveBeenCalledTimes(0);
+    await pw({ password: NOT_FOUND, raw: true });
+    expect(logger.log).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call spinner.stop (error && !raw)', async () => {
     expect(spinner.stop).toHaveBeenCalledTimes(0);
-    return pw({ password: ERROR, raw: true }).then(() => {
-      expect(spinner.stop).toHaveBeenCalledTimes(0);
-    });
+    await pw({ password: ERROR, raw: false });
+    expect(spinner.stop).toHaveBeenCalledTimes(1);
   });
 
-  it('should call logger.error (error)', () => {
+  it('should not call spinner.stop (error && raw)', async () => {
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
+    await pw({ password: ERROR, raw: true });
+    expect(spinner.stop).toHaveBeenCalledTimes(0);
+  });
+
+  it('should call logger.error (error)', async () => {
     expect(logger.error).toHaveBeenCalledTimes(0);
-    return pw({ password: ERROR, raw: false }).then(() => {
-      expect(logger.log).toHaveBeenCalledTimes(0);
-      expect(logger.error).toHaveBeenCalledTimes(1);
-    });
+    await pw({ password: ERROR, raw: false });
+    expect(logger.log).toHaveBeenCalledTimes(0);
+    expect(logger.error).toHaveBeenCalledTimes(1);
   });
 });

@@ -13,42 +13,39 @@ describe('command: dc', () => {
       hibp.dataClasses.mockImplementation(async () => OBJ_ARRAY);
     });
 
-    it('should call spinner.start (found && !raw)', () => {
-      dc({ raw: false });
+    it('should call spinner.start (found && !raw)', async () => {
+      expect(spinner.start).toHaveBeenCalledTimes(0);
+      await dc({ raw: false });
       expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call spinner.start (found && raw)', () => {
-      dc({ raw: true });
+    it('should not call spinner.start (found && raw)', async () => {
+      await dc({ raw: true });
       expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
-    it('should call spinner.stop (found && !raw)', () => {
+    it('should call spinner.stop (found && !raw)', async () => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
-      return dc({ raw: false }).then(() => {
-        expect(spinner.stop).toHaveBeenCalledTimes(1);
-      });
+      await dc({ raw: false });
+      expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call spinner.stop (found && raw)', () => {
+    it('should not call spinner.stop (found && raw)', async () => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
-      return dc({ raw: true }).then(() => {
-        expect(spinner.stop).toHaveBeenCalledTimes(0);
-      });
+      await dc({ raw: true });
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
 
-    it('should call logger.log (found && !raw)', () => {
+    it('should call logger.log (found && !raw)', async () => {
       expect(logger.log).toHaveBeenCalledTimes(0);
-      return dc({ raw: false }).then(() => {
-        expect(logger.log).toHaveBeenCalledTimes(1);
-      });
+      await dc({ raw: false });
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
-    it('should call logger.log (found && raw)', () => {
+    it('should call logger.log (found && raw)', async () => {
       expect(logger.log).toHaveBeenCalledTimes(0);
-      return dc({ raw: true }).then(() => {
-        expect(logger.log).toHaveBeenCalledTimes(1);
-      });
+      await dc({ raw: true });
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -57,42 +54,38 @@ describe('command: dc', () => {
       hibp.dataClasses.mockImplementation(() => Promise.resolve(EMPTY_ARRAY));
     });
 
-    it('should call spinner.start (notFound && !raw)', () => {
-      dc({ raw: false });
+    it('should call spinner.start (notFound && !raw)', async () => {
+      await dc({ raw: false });
       expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call spinner.start (notFound && raw)', () => {
-      dc({ raw: true });
+    it('should not call spinner.start (notFound && raw)', async () => {
+      await dc({ raw: true });
       expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
-    it('should call spinner.stop (notFound && !raw)', () => {
+    it('should call spinner.stop (notFound && !raw)', async () => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
-      return dc({ raw: false }).then(() => {
-        expect(spinner.stop).toHaveBeenCalledTimes(1);
-      });
+      await dc({ raw: false });
+      expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call spinner.stop (notFound && raw)', () => {
+    it('should not call spinner.stop (notFound && raw)', async () => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
-      return dc({ raw: true }).then(() => {
-        expect(spinner.stop).toHaveBeenCalledTimes(0);
-      });
+      await dc({ raw: true });
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
 
-    it('should call logger.log (notFound && !raw)', () => {
+    it('should call logger.log (notFound && !raw)', async () => {
       expect(logger.log).toHaveBeenCalledTimes(0);
-      return dc({ raw: false }).then(() => {
-        expect(logger.log).toHaveBeenCalledTimes(1);
-      });
+      await dc({ raw: false });
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call logger.log (notFound && raw)', () => {
+    it('should not call logger.log (notFound && raw)', async () => {
       expect(logger.log).toHaveBeenCalledTimes(0);
-      return dc({ raw: true }).then(() => {
-        expect(logger.log).toHaveBeenCalledTimes(0);
-      });
+      await dc({ raw: true });
+      expect(logger.log).toHaveBeenCalledTimes(0);
     });
   });
 
@@ -103,36 +96,33 @@ describe('command: dc', () => {
       );
     });
 
-    it('should call spinner.start (error && !raw)', () => {
-      dc({ raw: false });
+    it('should call spinner.start (error && !raw)', async () => {
+      await dc({ raw: false });
       expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call spinner.start (error && raw)', () => {
-      dc({ raw: true });
+    it('should not call spinner.start (error && raw)', async () => {
+      await dc({ raw: true });
       expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
-    it('should call spinner.stop (error && !raw)', () => {
+    it('should call spinner.stop (error && !raw)', async () => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
-      return dc({ raw: false }).then(() => {
-        expect(spinner.stop).toHaveBeenCalledTimes(1);
-      });
+      await dc({ raw: false });
+      expect(spinner.stop).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call spinner.stop (error && raw)', () => {
+    it('should not call spinner.stop (error && raw)', async () => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
-      return dc({ raw: true }).then(() => {
-        expect(spinner.stop).toHaveBeenCalledTimes(0);
-      });
+      await dc({ raw: true });
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
     });
 
-    it('should call logger.error (error)', () => {
+    it('should call logger.error (error)', async () => {
       expect(logger.error).toHaveBeenCalledTimes(0);
-      return dc({ raw: false }).then(() => {
-        expect(logger.log).toHaveBeenCalledTimes(0);
-        expect(logger.error).toHaveBeenCalledTimes(1);
-      });
+      await dc({ raw: false });
+      expect(logger.log).toHaveBeenCalledTimes(0);
+      expect(logger.error).toHaveBeenCalledTimes(1);
     });
   });
 });
