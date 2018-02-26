@@ -1,10 +1,12 @@
-.babelrc
+.babelrc.js
 .editorconfig
+.eslintignore
 .eslintrc.json
 .gitattributes
 .gitignore
 .idea
 .npmignore
+.prettierignore
 .prettierrc
 .travis.yml
 coverage
