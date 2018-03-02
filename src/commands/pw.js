@@ -1,4 +1,4 @@
-import hasha from 'hasha';
+import sha1 from 'js-sha1';
 import { pwnedPasswordRange } from 'hibp';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
@@ -48,7 +48,7 @@ export const handler = async ({ password, raw }) => {
   }
 
   try {
-    const hash = hasha(password, { algorithm: 'sha1' }).toUpperCase();
+    const hash = sha1(password).toUpperCase();
     const suffixes = await pwnedPasswordRange(hash.slice(0, 5));
     if (!raw && process.stdout.isTTY) {
       spinner.stop(true);
