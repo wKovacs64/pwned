@@ -1,12 +1,5 @@
 import * as hibp from 'hibp';
-import {
-  FOUND,
-  NOT_FOUND,
-  SUFFIXES,
-  PREFIX_ERROR,
-  ERROR,
-  ERROR_MSG,
-} from '../../test/fixtures';
+import { FOUND, NOT_FOUND, ERROR, ERROR_MSG } from '../../test/fixtures';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import { handler as pw } from './pw';
@@ -16,10 +9,12 @@ jest.mock('../utils/spinner');
 
 describe('command: pw', () => {
   beforeAll(() => {
-    hibp.pwnedPasswordRange.mockImplementation(async prefix => {
-      if (prefix !== PREFIX_ERROR) {
-        return SUFFIXES;
-      } else if (prefix === PREFIX_ERROR) {
+    hibp.pwnedPassword.mockImplementation(async password => {
+      if (password === FOUND) {
+        return 3;
+      } else if (password === NOT_FOUND) {
+        return 0;
+      } else if (password === ERROR) {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');

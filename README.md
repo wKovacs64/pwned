@@ -168,7 +168,7 @@ data breach:
 
 ```
 $ pwned pw Password1234
-Oh no — pwned!
+Oh no — pwned 3360 times!
 ```
 
 Search both breaches and pastes for an account (truncating breach data):

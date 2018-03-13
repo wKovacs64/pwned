@@ -1277,12 +1277,6 @@ commander@^2.9.0:
   dependencies:
     graceful-readlink ">= 1.0.0"
 
-common-tags@^1.7.2:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/common-tags/-/common-tags-1.7.2.tgz#24d9768c63d253a56ecff93845b44b4df1d52771"
-  dependencies:
-    babel-runtime "^6.26.0"
-
 component-emitter@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
@@ -2290,11 +2284,12 @@ hawk@~6.0.2:
     hoek "4.x.x"
     sntp "2.x.x"
 
-hibp@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/hibp/-/hibp-6.0.0.tgz#eb8fa1d06572e45ef0e8470403d9bff363d299bb"
+hibp@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/hibp/-/hibp-7.0.0.tgz#ab5a8fcbf702c89a5527c78747c3b6aca6fd4c54"
   dependencies:
     axios "^0.18.0"
+    js-sha1 "^0.6.0"
 
 hoek@2.x.x:
   version "2.16.3"

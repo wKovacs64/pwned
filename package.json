@@ -61,8 +61,7 @@
   },
   "dependencies": {
     "cli-spinner": "^0.2.8",
-    "hibp": "^6.0.0",
-    "js-sha1": "^0.6.0",
+    "hibp": "^7.0.0",
     "prettyjson": "^1.2.1",
     "source-map-support": "^0.5.3",
     "yargs": "^11.0.0"
@@ -73,7 +72,6 @@
     "@babel/preset-env": "^7.0.0-beta.40",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^22.4.1",
-    "common-tags": "^1.7.2",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.4",
     "eslint": "^4.18.2",

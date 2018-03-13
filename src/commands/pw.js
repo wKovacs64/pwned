@@ -1,5 +1,4 @@
-import sha1 from 'js-sha1';
-import { pwnedPasswordRange } from 'hibp';
+import { pwnedPassword } from 'hibp';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 
@@ -27,15 +26,8 @@ export const builder /* istanbul ignore next */ = yargs =>
     .group(['h', 'v'], 'Global Options:');
 
 /**
- * Fetches the pwned status for the given password, indicating whether or not it
- * has been previously exposed in a breach.
- *
- * When a password hash with the same first 5 characters is found in the Pwned
- * Passwords repository, the API will respond with the suffix of every hash
- * beginning with the specified prefix, followed by a count of how many times it
- * appears in the data set. The API consumer can then search the results of the
- * response for the presence of their source hash and if not found, the password
- * does not exist in the data set.
+ * Securely fetches the number of times the given password has been exposed in a
+ * breach.
  *
  * @param {Object} argv the parsed argv object
  * @param {string} argv.password a password (plain text)
@@ -48,13 +40,15 @@ export const handler = async ({ password, raw }) => {
   }
 
   try {
-    const hash = sha1(password).toUpperCase();
-    const suffixes = await pwnedPasswordRange(hash.slice(0, 5));
+    const pwnCount = await pwnedPassword(password);
     if (!raw && process.stdout.isTTY) {
       spinner.stop(true);
     }
-    const isPwned = suffixes.includes(hash.slice(5));
-    logger.log(isPwned ? 'Oh no — pwned!' : 'Good news — no pwnage found!');
+    logger.log(
+      pwnCount
+        ? `Oh no — pwned ${pwnCount} times!`
+        : 'Good news — no pwnage found!',
+    );
   } catch (err) {
     if (!raw && process.stdout.isTTY) {
       spinner.stop(true);
