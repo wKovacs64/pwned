@@ -1,5 +1,16 @@
 # Change Log
 
+## Version 6.0.0 _(2018-03-13)_
+
+* Upgraded `hibp` to v7 which handles password hashing and suffix processing,
+  removing this logic from `pwned`.
+* The `pw` command now includes a count in the output, indicating how many times
+  the given password was exposed in a breach.
+
+##### Breaking Changes:
+
+* Dropped support for Node < 6
+
 ## Version 5.0.0 _(2018-02-25)_
 
 * Refactored `pw` command to be secure by default (#8). Passwords will no longer
