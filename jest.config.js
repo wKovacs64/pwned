@@ -1,0 +1,7 @@
+module.exports = {
+  clearMocks: true,
+  coverageDirectory: 'coverage',
+  coveragePathIgnorePatterns: ['<rootDir>/test'],
+  coverageReporters: ['html', 'json', 'lcov', 'text'],
+  testEnvironment: 'node',
+};
