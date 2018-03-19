@@ -1,7 +1,7 @@
 .babelrc.js
 .editorconfig
 .eslintignore
-.eslintrc.json
+.eslintrc.js
 .gitattributes
 .gitignore
 .idea
@@ -10,7 +10,7 @@
 .prettierrc
 .travis.yml
 coverage
-jest.config.json
+jest.config.js
 renovate.json
 src
 test
