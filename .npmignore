@@ -11,6 +11,7 @@
 .travis.yml
 coverage
 jest.config.json
+renovate.json
 src
 test
 yarn-error.log
