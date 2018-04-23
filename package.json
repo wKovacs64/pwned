@@ -67,9 +67,9 @@
     "yargs": "^11.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.45",
-    "@babel/core": "7.0.0-beta.45",
-    "@babel/preset-env": "7.0.0-beta.45",
+    "@babel/cli": "7.0.0-beta.46",
+    "@babel/core": "7.0.0-beta.46",
+    "@babel/preset-env": "7.0.0-beta.46",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.0.0-beta.1",
     "coveralls": "3.0.0",
