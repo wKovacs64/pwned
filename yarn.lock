@@ -881,12 +881,12 @@ babel-helpers@^6.24.1:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-jest@23.0.0-beta.1:
-  version "23.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-23.0.0-beta.1.tgz#430328d6bbdfd7cd6e8772cef4a1059d382e6fb3"
+babel-jest@23.0.0-beta.2:
+  version "23.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-23.0.0-beta.2.tgz#28cf51795170bd8022b3d8e2819774a20ad6e3ac"
   dependencies:
     babel-plugin-istanbul "^4.1.6"
-    babel-preset-jest "^23.0.0-beta.1"
+    babel-preset-jest "^23.0.0-beta.2"
 
 babel-jest@^22.4.3:
   version "22.4.3"
@@ -922,9 +922,9 @@ babel-plugin-jest-hoist@^22.4.3:
   version "22.4.3"
   resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-22.4.3.tgz#7d8bcccadc2667f96a0dcc6afe1891875ee6c14a"
 
-babel-plugin-jest-hoist@^23.0.0-beta.1:
-  version "23.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-23.0.0-beta.1.tgz#d0a96a2b0cc84856b2633aa8741fc79bfe1a7663"
+babel-plugin-jest-hoist@^23.0.0-beta.2:
+  version "23.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-23.0.0-beta.2.tgz#4a9373dab43d53de42c5da0b1aff95cf24a71b93"
 
 babel-plugin-syntax-object-rest-spread@^6.13.0:
   version "6.13.0"
@@ -937,11 +937,11 @@ babel-preset-jest@^22.4.3:
     babel-plugin-jest-hoist "^22.4.3"
     babel-plugin-syntax-object-rest-spread "^6.13.0"
 
-babel-preset-jest@^23.0.0-beta.1:
-  version "23.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-23.0.0-beta.1.tgz#446310974fa9a774b11a403380fe1d44d8021a20"
+babel-preset-jest@^23.0.0-beta.2:
+  version "23.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-23.0.0-beta.2.tgz#d76091615e21ecb733b6400cb63c71cd12ed47ac"
   dependencies:
-    babel-plugin-jest-hoist "^23.0.0-beta.1"
+    babel-plugin-jest-hoist "^23.0.0-beta.2"
     babel-plugin-syntax-object-rest-spread "^6.13.0"
 
 babel-register@^6.26.0:
