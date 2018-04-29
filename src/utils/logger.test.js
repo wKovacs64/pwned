@@ -1,15 +1,6 @@
 /* eslint-disable no-console */
-
 import { OBJ, MESSAGE } from '../../test/fixtures';
 import logger from './logger';
-
-/**
- * WARNING:
- *
- * Test output is lost temporarily while console functions are stubbed, so check
- * here first if tests fail and there's no output containing the failed
- * assertion.
- */
 
 describe('util: logger', () => {
   afterEach(() => {
