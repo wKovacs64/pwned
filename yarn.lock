@@ -881,12 +881,12 @@ babel-helpers@^6.24.1:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-jest@23.0.0-charlie.0:
-  version "23.0.0-charlie.0"
-  resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-23.0.0-charlie.0.tgz#607b05339d0f6703172220b5fb5b59fedac140d4"
+babel-jest@23.0.0-charlie.1:
+  version "23.0.0-charlie.1"
+  resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-23.0.0-charlie.1.tgz#275dc7da10420b0da7df54e11e5b21a3daa3581a"
   dependencies:
     babel-plugin-istanbul "^4.1.6"
-    babel-preset-jest "^23.0.0-charlie.0"
+    babel-preset-jest "^23.0.0-charlie.1"
 
 babel-jest@^22.4.3:
   version "22.4.3"
@@ -922,9 +922,9 @@ babel-plugin-jest-hoist@^22.4.3:
   version "22.4.3"
   resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-22.4.3.tgz#7d8bcccadc2667f96a0dcc6afe1891875ee6c14a"
 
-babel-plugin-jest-hoist@^23.0.0-charlie.0:
-  version "23.0.0-charlie.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-23.0.0-charlie.0.tgz#c92075712b0f6e96ba4c2b5741488a76a377cccd"
+babel-plugin-jest-hoist@^23.0.0-charlie.1:
+  version "23.0.0-charlie.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-23.0.0-charlie.1.tgz#2a6d15cb609443158d61eb01ca63ed08edd2c46b"
 
 babel-plugin-syntax-object-rest-spread@^6.13.0:
   version "6.13.0"
@@ -937,11 +937,11 @@ babel-preset-jest@^22.4.3:
     babel-plugin-jest-hoist "^22.4.3"
     babel-plugin-syntax-object-rest-spread "^6.13.0"
 
-babel-preset-jest@^23.0.0-charlie.0:
-  version "23.0.0-charlie.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-23.0.0-charlie.0.tgz#76791f04d45fadcd001106436a2de691679e0776"
+babel-preset-jest@^23.0.0-charlie.1:
+  version "23.0.0-charlie.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-23.0.0-charlie.1.tgz#188ac3695737c1f8e76b1737e3064d2d8c783141"
   dependencies:
-    babel-plugin-jest-hoist "^23.0.0-charlie.0"
+    babel-plugin-jest-hoist "^23.0.0-charlie.1"
     babel-plugin-syntax-object-rest-spread "^6.13.0"
 
 babel-register@^6.26.0:
