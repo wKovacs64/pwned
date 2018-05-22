@@ -1,57 +1,32 @@
 /* eslint-disable no-console */
-import { OBJ, MESSAGE } from '../../test/fixtures';
+import { loggerFns, OBJ, MESSAGE } from '../../test/fixtures';
 import logger from './logger';
 
 describe('util: logger', () => {
-  afterEach(() => {
-    // Restore any console functions that were mocked
-    if (jest.isMockFunction(console.error)) {
-      console.error.mockRestore();
-    }
-    if (jest.isMockFunction(console.info)) {
-      console.info.mockRestore();
-    }
-    if (jest.isMockFunction(console.log)) {
-      console.log.mockRestore();
-    }
-    if (jest.isMockFunction(console.warn)) {
-      console.warn.mockRestore();
-    }
+  it('returns an object with all the expected methods', () => {
+    expect(logger).toEqual(
+      expect.objectContaining(
+        loggerFns.reduce(
+          (obj, fn) => ({
+            ...obj,
+            [fn]: expect.any(Function),
+          }),
+          {},
+        ),
+      ),
+    );
   });
 
-  it('should have an "error" function which calls console.error', () => {
-    expect(logger).toHaveProperty('error');
-    expect(typeof logger.error).toBe('function');
-    console.error = jest.fn();
-    expect(console.error).toHaveBeenCalledTimes(0);
-    logger.error(MESSAGE, OBJ);
-    expect(console.error).toHaveBeenCalledTimes(1);
-  });
-
-  it('should have an "info" function which calls console.info', () => {
-    expect(logger).toHaveProperty('info');
-    expect(typeof logger.info).toBe('function');
-    console.info = jest.fn();
-    expect(console.info).toHaveBeenCalledTimes(0);
-    logger.info(MESSAGE, OBJ);
-    expect(console.info).toHaveBeenCalledTimes(1);
-  });
-
-  it('should have an "log" function which calls console.log', () => {
-    expect(logger).toHaveProperty('log');
-    expect(typeof logger.log).toBe('function');
-    console.log = jest.fn();
-    expect(console.log).toHaveBeenCalledTimes(0);
-    logger.log(MESSAGE, OBJ);
-    expect(console.log).toHaveBeenCalledTimes(1);
-  });
-
-  it('should have an "warn" function which calls console.warn', () => {
-    expect(logger).toHaveProperty('warn');
-    expect(typeof logger.warn).toBe('function');
-    console.warn = jest.fn();
-    expect(console.warn).toHaveBeenCalledTimes(0);
-    logger.warn(MESSAGE, OBJ);
-    expect(console.warn).toHaveBeenCalledTimes(1);
+  it('calls the corresponding console functions with the same arguments', () => {
+    const args = [MESSAGE, OBJ];
+    loggerFns.forEach(fn => {
+      const orig = console[fn];
+      console[fn] = jest.fn();
+      expect(console[fn]).toHaveBeenCalledTimes(0);
+      logger[fn](...args);
+      expect(console[fn]).toHaveBeenCalledTimes(1);
+      expect(console[fn]).toHaveBeenCalledWith(...args);
+      console[fn] = orig;
+    });
   });
 });

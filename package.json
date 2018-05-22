@@ -60,8 +60,8 @@
     "node": ">= 6.4.0"
   },
   "dependencies": {
-    "cli-spinner": "^0.2.8",
     "hibp": "^7.0.0",
+    "ora": "2.1.0",
     "prettyjson": "^1.2.1",
     "source-map-support": "^0.5.4",
     "yargs": "^11.0.0"

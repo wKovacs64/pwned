@@ -35,26 +35,25 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @returns {Promise} the resulting Promise where output is rendered
  */
 export const handler = async ({ email, raw }) => {
-  if (!raw && process.stdout.isTTY) {
+  if (!raw) {
     spinner.start();
   }
 
   try {
     const pasteData = await pasteAccount(email);
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
-    }
     if (pasteData && raw) {
       logger.log(JSON.stringify(pasteData));
     } else if (pasteData) {
+      spinner.stop();
       logger.log(prettyjson.render(pasteData));
     } else if (!pasteData && !raw) {
-      logger.log('Good news — no pwnage found!');
+      spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err) {
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
+    if (!raw) {
+      spinner.fail(err.message);
+    } else {
+      logger.error(err.message);
     }
-    logger.error(err.message);
   }
 };

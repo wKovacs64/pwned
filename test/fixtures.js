@@ -1,3 +1,6 @@
+export const spinnerFns = ['start', 'stop', 'succeed', 'warn', 'fail'];
+export const loggerFns = ['info', 'log', 'warn', 'error'];
+
 export const EMAIL = 'foo@bar.baz';
 export const EMPTY_ARRAY = [];
 export const ERROR = 'foo';

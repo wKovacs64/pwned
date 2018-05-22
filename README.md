@@ -57,7 +57,7 @@ Get all breaches for an account:
 
 ```
 $ pwned ba pleasebeclean@fingerscrossed.tld
-Good news — no pwnage found!
+✔ Good news — no pwnage found!
 ```
 
 Get all breaches in the system, filtering results to just the 'adobe.com'
@@ -92,7 +92,7 @@ Get a single breached site by breach name:
 
 ```
 $ pwned breach MyCompany
-No breach found by that name.
+✔ No breach found by that name.
 ```
 
 Get all the data classes in the system, returning raw JSON results for
@@ -174,7 +174,7 @@ data breach:
 
 ```
 $ pwned pw Password1234
-Oh no — pwned 3360 times!
+⚠ Oh no — pwned 3360 times!
 ```
 
 Search both breaches and pastes for an account (truncating breach data):

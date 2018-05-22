@@ -32,26 +32,25 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @returns {Promise} the resulting Promise where output is rendered
  */
 export const handler = async ({ domainFilter: domain, raw }) => {
-  if (!raw && process.stdout.isTTY) {
+  if (!raw) {
     spinner.start();
   }
 
   try {
     const breachData = await breaches({ domain });
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
-    }
     if (breachData.length && raw) {
       logger.log(JSON.stringify(breachData));
     } else if (breachData.length) {
+      spinner.stop();
       logger.log(prettyjson.render(breachData));
     } else if (!breachData.length && !raw) {
-      logger.log('No breaches found.');
+      spinner.succeed('No breaches found.');
     }
   } catch (err) {
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
+    if (!raw) {
+      spinner.fail(err.message);
+    } else {
+      logger.error(err.message);
     }
-    logger.error(err.message);
   }
 };
