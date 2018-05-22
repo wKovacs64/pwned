@@ -1,12 +1,18 @@
+import { spinnerFns } from '../../test/fixtures';
 import spinner from './spinner';
 
 describe('util: spinner', () => {
-  it('should return an object with "start" and "stop" functions', () => {
+  it('returns an object with all the expected methods', () => {
     expect(spinner).toEqual(
-      expect.objectContaining({
-        start: expect.any(Function),
-        stop: expect.any(Function),
-      }),
+      expect.objectContaining(
+        spinnerFns.reduce(
+          (obj, fn) => ({
+            ...obj,
+            [fn]: expect.any(Function),
+          }),
+          {},
+        ),
+      ),
     );
   });
 });

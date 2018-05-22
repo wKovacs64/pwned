@@ -35,24 +35,32 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @returns {Promise} the resulting Promise where output is rendered
  */
 export const handler = async ({ password, raw }) => {
-  if (!raw && process.stdout.isTTY) {
+  if (!raw) {
     spinner.start();
   }
 
   try {
     const pwnCount = await pwnedPassword(password);
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
+    if (pwnCount) {
+      const pwnedMessage = `Oh no — pwned ${pwnCount} times!`;
+      if (!raw) {
+        spinner.warn(pwnedMessage);
+      } else {
+        logger.log(pwnedMessage);
+      }
+    } else {
+      const successMessage = 'Good news — no pwnage found!';
+      if (!raw) {
+        spinner.succeed(successMessage);
+      } else {
+        logger.log(successMessage);
+      }
     }
-    logger.log(
-      pwnCount
-        ? `Oh no — pwned ${pwnCount} times!`
-        : 'Good news — no pwnage found!',
-    );
   } catch (err) {
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
+    if (!raw) {
+      spinner.fail(err.message);
+    } else {
+      logger.error(err.message);
     }
-    logger.error(err.message);
   }
 };

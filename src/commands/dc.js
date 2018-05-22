@@ -25,29 +25,27 @@ export const builder /* istanbul ignore next */ = yargs =>
  * @returns {Promise} the resulting Promise where output is rendered
  */
 export const handler = async ({ raw }) => {
-  if (!raw && process.stdout.isTTY) {
+  if (!raw) {
     spinner.start();
   }
 
   try {
     const dataClassesData = await dataClasses();
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
-    }
     if (dataClassesData.length && raw) {
       logger.log(JSON.stringify(dataClassesData));
     } else if (dataClassesData.length) {
+      spinner.stop();
       logger.log(prettyjson.render(dataClassesData));
     } else if (!dataClassesData.length && !raw) {
-      logger.log(
-        'No data classes found. This is unexpected - the remote API may be ' +
-          'having difficulties.',
+      throw new Error(
+        'No data classes found. This is unexpected - the remote API may be having difficulties.',
       );
     }
   } catch (err) {
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
+    if (!raw) {
+      spinner.fail(err.message);
+    } else {
+      logger.error(err.message);
     }
-    logger.error(err.message);
   }
 };

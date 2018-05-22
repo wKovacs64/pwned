@@ -1,6 +1,8 @@
-import { Spinner } from 'cli-spinner';
+import ora from 'ora';
 
-const spinner = new Spinner('Fetching data... %s');
-spinner.setSpinnerString('|/-\\');
+const spinner = ora({
+  spinner: 'dots',
+  text: 'Fetching data...',
+});
 
 export default spinner;

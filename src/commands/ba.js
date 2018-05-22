@@ -57,7 +57,7 @@ export const handler = async ({
   truncate,
   raw,
 }) => {
-  if (!raw && process.stdout.isTTY) {
+  if (!raw) {
     spinner.start();
   }
 
@@ -66,20 +66,19 @@ export const handler = async ({
       domain,
       truncate,
     });
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
-    }
     if (breachData && raw) {
       logger.log(JSON.stringify(breachData));
     } else if (breachData) {
+      spinner.stop();
       logger.log(prettyjson.render(breachData));
     } else if (!breachData && !raw) {
-      logger.log('Good news — no pwnage found!');
+      spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err) {
-    if (!raw && process.stdout.isTTY) {
-      spinner.stop(true);
+    if (!raw) {
+      spinner.fail(err.message);
+    } else {
+      logger.error(err.message);
     }
-    logger.error(err.message);
   }
 };
