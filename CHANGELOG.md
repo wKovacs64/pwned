@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 6.1.0 _(2018-05-23)_
+
+* Made the progress spinner animation a little more fun and added status emojis
+  (✔, ⚠, ✖) to some output ([#11][11])
+
 ## Version 6.0.0 _(2018-03-13)_
 
 * Upgraded `hibp` to v7 which handles password hashing and suffix processing,
@@ -160,3 +165,4 @@
 
 [haveibeenpwned]: https://haveibeenpwned.com
 [singlebreach]: https://haveibeenpwned.com/API/v2#SingleBreach
+[11]: https://github.com/wKovacs64/pwned/pull/11
