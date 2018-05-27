@@ -8,6 +8,8 @@ node_js:
   - "6"
   - "8"
   - "node"
+install:
+  - yarn install --frozen-lockfile
 script:
   - yarn lint
   - yarn test:coverage --no-cache --runInBand
