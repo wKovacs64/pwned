@@ -21,9 +21,11 @@ describe('command: ba', () => {
     hibp.breachedAccount.mockImplementation(async account => {
       if (account === FOUND) {
         return OBJ;
-      } else if (account === NOT_FOUND) {
+      }
+      if (account === NOT_FOUND) {
         return null;
-      } else if (account === ERROR) {
+      }
+      if (account === ERROR) {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');

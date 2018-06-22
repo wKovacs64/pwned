@@ -21,9 +21,11 @@ describe('command: search', () => {
     hibp.search.mockImplementation(async account => {
       if (account === FOUND) {
         return { breaches: OBJ, pastes: null };
-      } else if (account === NOT_FOUND) {
+      }
+      if (account === NOT_FOUND) {
         return { breaches: null, pastes: null };
-      } else if (account === ERROR) {
+      }
+      if (account === ERROR) {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');

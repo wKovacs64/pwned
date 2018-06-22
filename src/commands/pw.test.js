@@ -19,9 +19,11 @@ describe('command: pw', () => {
     hibp.pwnedPassword.mockImplementation(async password => {
       if (password === FOUND) {
         return 3;
-      } else if (password === NOT_FOUND) {
+      }
+      if (password === NOT_FOUND) {
         return 0;
-      } else if (password === ERROR) {
+      }
+      if (password === ERROR) {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');

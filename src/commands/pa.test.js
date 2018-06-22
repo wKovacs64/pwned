@@ -20,9 +20,11 @@ describe('command: pa', () => {
     hibp.pasteAccount.mockImplementation(async email => {
       if (email === FOUND) {
         return OBJ_ARRAY;
-      } else if (email === NOT_FOUND) {
+      }
+      if (email === NOT_FOUND) {
         return null;
-      } else if (email === ERROR) {
+      }
+      if (email === ERROR) {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');
