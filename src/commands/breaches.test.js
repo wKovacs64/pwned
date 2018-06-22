@@ -21,9 +21,11 @@ describe('command: breaches', () => {
     hibp.breaches.mockImplementation(async (options = {}) => {
       if (options.domain === FOUND) {
         return OBJ_ARRAY;
-      } else if (options.domain === NOT_FOUND) {
+      }
+      if (options.domain === NOT_FOUND) {
         return EMPTY_ARRAY;
-      } else if (options.domain === ERROR) {
+      }
+      if (options.domain === ERROR) {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');

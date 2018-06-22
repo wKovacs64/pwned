@@ -20,9 +20,11 @@ describe('command: breach', () => {
     hibp.breach.mockImplementation(async breachName => {
       if (breachName === FOUND) {
         return OBJ;
-      } else if (breachName === NOT_FOUND) {
+      }
+      if (breachName === NOT_FOUND) {
         return null;
-      } else if (breachName === ERROR) {
+      }
+      if (breachName === ERROR) {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');
