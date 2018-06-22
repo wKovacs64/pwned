@@ -207,13 +207,17 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 
 [npm-image]: https://img.shields.io/npm/v/pwned.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/pwned
-[travis-image]: https://img.shields.io/travis/wKovacs64/pwned.svg?style=flat-square&branch=master
+[travis-image]:
+  https://img.shields.io/travis/wKovacs64/pwned.svg?style=flat-square&branch=master
 [travis-url]: https://travis-ci.org/wKovacs64/pwned
-[coverage-image]: https://img.shields.io/coveralls/wKovacs64/pwned.svg?style=flat-square&branch=master
+[coverage-image]:
+  https://img.shields.io/coveralls/wKovacs64/pwned.svg?style=flat-square&branch=master
 [coverage-url]: https://coveralls.io/github/wKovacs64/pwned?branch=master
 [troy]: http://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
 [nodejs]: https://nodejs.org/en/download/
-[npx]: https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
-[search-by-range]: https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange
+[npx]:
+  https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
+[search-by-range]:
+  https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange
