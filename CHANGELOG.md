@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 6.1.1 _(2018-06-26)_
+
+- Updated dependencies (includes fix for `Forbidden` errors from `hibp@7.1.3`)
+
 ## Version 6.1.0 _(2018-05-23)_
 
 - Made the progress spinner animation a little more fun and added status emojis
