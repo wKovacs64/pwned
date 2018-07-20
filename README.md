@@ -213,7 +213,7 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [coverage-image]:
   https://img.shields.io/coveralls/wKovacs64/pwned.svg?style=flat-square&branch=master
 [coverage-url]: https://coveralls.io/github/wKovacs64/pwned?branch=master
-[troy]: http://www.troyhunt.com
+[troy]: https://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
 [nodejs]: https://nodejs.org/en/download/
