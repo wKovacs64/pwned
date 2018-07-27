@@ -71,7 +71,7 @@
     "@babel/core": "7.0.0-beta.54",
     "@babel/preset-env": "7.0.0-beta.54",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "23.4.0",
+    "babel-jest": "23.4.2",
     "coveralls": "3.0.2",
     "cross-env": "5.2.0",
     "eslint": "5.2.0",
@@ -79,7 +79,7 @@
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-import": "2.13.0",
     "husky": "0.14.3",
-    "jest": "23.4.1",
+    "jest": "23.4.2",
     "lint-staged": "7.2.0",
     "prettier": "1.13.7",
     "rimraf": "2.6.2"
