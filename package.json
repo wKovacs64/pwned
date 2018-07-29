@@ -28,7 +28,7 @@
   "scripts": {
     "build": "babel src --out-dir lib --source-maps --ignore \"**/*.test.js\",\"**/__mocks__/\"",
     "clean": "rimraf lib coverage",
-    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "format": "prettier --write \"**/*.{js,json,md,yml}\"",
     "lint": "eslint .",
     "prebuild": "npm run clean",
     "precommit": "lint-staged",
@@ -43,7 +43,7 @@
       "eslint --fix",
       "git add"
     ],
-    "*.{json,md}": [
+    "*.{json,md,yml}": [
       "prettier --write",
       "git add"
     ]
