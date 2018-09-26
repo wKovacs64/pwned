@@ -31,7 +31,6 @@
     "format": "prettier --write \"**/*.{js,json,md,yml}\"",
     "lint": "eslint .",
     "prebuild": "npm run clean",
-    "precommit": "lint-staged",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
     "test": "cross-env NODE_ENV=test jest",
     "test:coverage": "npm run test -- --coverage",
