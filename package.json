@@ -36,17 +36,6 @@
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{json,md,yml}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/wKovacs64/pwned.git"
