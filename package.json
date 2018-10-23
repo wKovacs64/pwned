@@ -25,6 +25,10 @@
     "bin": "./bin",
     "lib": "./lib"
   },
+  "files": [
+    "bin",
+    "lib"
+  ],
   "scripts": {
     "build": "babel src --out-dir lib --source-maps --ignore \"**/*.test.js\",\"**/__mocks__/\"",
     "clean": "rimraf lib coverage",
