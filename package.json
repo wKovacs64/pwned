@@ -72,7 +72,7 @@
     "eslint-plugin-import": "2.14.0",
     "husky": "1.1.2",
     "jest": "23.6.0",
-    "lint-staged": "8.0.0",
+    "lint-staged": "8.0.2",
     "prettier": "1.14.3",
     "rimraf": "2.6.2"
   }
