@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 6.1.2 _(2018-12-20)_
+
+- Moved coverage reports from Coveralls to Codecov ([#24][24])
+- Moved CI from Travis to Circle ([#25][25])
+
 ## Version 6.1.1 _(2018-06-26)_
 
 - Updated dependencies (includes fix for `Forbidden` errors from `hibp@7.1.3`)
@@ -170,3 +175,5 @@
 [haveibeenpwned]: https://haveibeenpwned.com
 [singlebreach]: https://haveibeenpwned.com/API/v2#SingleBreach
 [11]: https://github.com/wKovacs64/pwned/pull/11
+[24]: https://github.com/wKovacs64/pwned/pull/24
+[25]: https://github.com/wKovacs64/pwned/pull/25
