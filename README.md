@@ -13,7 +13,7 @@
 _A command-line tool for querying [Troy Hunt][troy]'s [Have I been
 pwned?][haveibeenpwned] service using the [hibp][hibp] Node.js module._
 
-[![npm Version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+[![npm Version][npm-image]][npm-url] [![Build Status][ci-image]][ci-url]
 [![Code Coverage][coverage-image]][coverage-url]
 
 ## Installation
@@ -207,9 +207,9 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 
 [npm-image]: https://img.shields.io/npm/v/pwned.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/pwned
-[travis-image]:
-  https://img.shields.io/travis/wKovacs64/pwned.svg?style=flat-square&branch=master
-[travis-url]: https://travis-ci.org/wKovacs64/pwned
+[ci-image]:
+  https://img.shields.io/circleci/project/github/wKovacs64/pwned/master.svg?style=flat-square
+[ci-url]: https://circleci.com/gh/wKovacs64/pwned
 [coverage-image]:
   https://img.shields.io/codecov/c/github/wKovacs64/pwned/master.svg?style=flat-square
 [coverage-url]: https://codecov.io/gh/wKovacs64/pwned/branch/master
