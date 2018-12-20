@@ -13,4 +13,4 @@ script:
   - yarn lint
   - yarn test:coverage --no-cache --runInBand
 after_success:
-  - 'coveralls < coverage/lcov.info'
+  - codecov
