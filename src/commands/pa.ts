@@ -1,3 +1,4 @@
+import { Argv, Omit } from 'yargs';
 import { pasteAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
@@ -6,7 +7,16 @@ import spinner from '../utils/spinner';
 export const command = 'pa <email>';
 export const describe = 'get all pastes for an account (email address)';
 
-export const builder /* istanbul ignore next */ = yargs =>
+interface PaArgvOptions {
+  email: string;
+  r?: boolean;
+}
+
+type PaBuilder = Argv<Omit<PaArgvOptions, 'r'> & { r: boolean }>;
+
+export const builder /* istanbul ignore next */ = (
+  yargs: Argv<PaArgvOptions>,
+): PaBuilder =>
   yargs
     .positional('email', {
       type: 'string',
@@ -26,15 +36,22 @@ export const builder /* istanbul ignore next */ = yargs =>
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
+interface PaHandlerOptions {
+  email: string;
+  raw?: boolean;
+}
 /**
  * Fetches and outputs all pastes for an account (email address).
  *
- * @param {Object} argv the parsed argv object
+ * @param {object} argv the parsed argv object
  * @param {string} argv.email the email address to query
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
- * @returns {Promise} the resulting Promise where output is rendered
+ * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({ email, raw }) => {
+export const handler = async ({
+  email,
+  raw,
+}: PaHandlerOptions): Promise<void> => {
   if (!raw) {
     spinner.start();
   }

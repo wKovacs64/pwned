@@ -1,10 +1,18 @@
 /* eslint-disable no-console */
+export type LoggerFunction = (message?: any, ...args: any[]) => void;
+
+export interface Logger {
+  error: LoggerFunction;
+  info: LoggerFunction;
+  log: LoggerFunction;
+  warn: LoggerFunction;
+}
 
 /**
  * Default console logging wrapper to facilitate mocking/suppressing output
  * during tests.
  */
-export default {
+const logger: Logger = {
   error: (...args) => {
     console.error(...args);
   },
@@ -18,3 +26,5 @@ export default {
     console.warn(...args);
   },
 };
+
+export default logger;

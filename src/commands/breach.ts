@@ -1,3 +1,4 @@
+import { Argv, Omit } from 'yargs';
 import { breach } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
@@ -6,7 +7,16 @@ import spinner from '../utils/spinner';
 export const command = 'breach <name>';
 export const describe = 'get a single breached site by breach name';
 
-export const builder /* istanbul ignore next */ = yargs =>
+interface BreachArgvOptions {
+  name: string;
+  r?: boolean;
+}
+
+type BreachBuilder = Argv<Omit<BreachArgvOptions, 'r'> & { r: boolean }>;
+
+export const builder /* istanbul ignore next */ = (
+  yargs: Argv<BreachArgvOptions>,
+): BreachBuilder =>
   yargs
     .positional('name', {
       type: 'string',
@@ -26,15 +36,23 @@ export const builder /* istanbul ignore next */ = yargs =>
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
+interface BreachHandlerOptions {
+  name: string;
+  raw?: boolean;
+}
+
 /**
  * Fetches and outputs breach data for a single site by breach name.
  *
- * @param {Object} argv the parsed argv object
+ * @param {object} argv the parsed argv object
  * @param {string} argv.name the name of a breach in the system
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
- * @returns {Promise} the resulting Promise where output is rendered
+ * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({ name, raw }) => {
+export const handler = async ({
+  name,
+  raw,
+}: BreachHandlerOptions): Promise<void> => {
   if (!raw) {
     spinner.start();
   }
