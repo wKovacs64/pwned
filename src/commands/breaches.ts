@@ -1,3 +1,4 @@
+import { Argv, Omit } from 'yargs';
 import { breaches } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
@@ -6,7 +7,20 @@ import spinner from '../utils/spinner';
 export const command = 'breaches';
 export const describe = 'get all breaches in the system';
 
-export const builder /* istanbul ignore next */ = yargs =>
+interface BreachesArgvOptions {
+  d?: string;
+  r?: boolean;
+}
+
+type BreachesBuilder = Argv<
+  Omit<Omit<BreachesArgvOptions, 'd'> & { d: string | undefined }, 'r'> & {
+    r: boolean;
+  }
+>;
+
+export const builder /* istanbul ignore next */ = (
+  yargs: Argv<BreachesArgvOptions>,
+): BreachesBuilder =>
   yargs
     .option('d', {
       alias: 'domain-filter',
@@ -22,16 +36,24 @@ export const builder /* istanbul ignore next */ = yargs =>
     .group(['d', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
+interface BreachesHandlerOptions {
+  domainFilter?: string;
+  raw?: boolean;
+}
+
 /**
  * Fetches and outputs all breached sites in the system.
  *
- * @param {Object} argv the parsed argv object
+ * @param {object} argv the parsed argv object
  * @param {string} [argv.domainFilter] a domain by which to filter the results
  * (default: all domains)
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
- * @returns {Promise} the resulting Promise where output is rendered
+ * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({ domainFilter: domain, raw }) => {
+export const handler = async ({
+  domainFilter: domain,
+  raw,
+}: BreachesHandlerOptions): Promise<void> => {
   if (!raw) {
     spinner.start();
   }

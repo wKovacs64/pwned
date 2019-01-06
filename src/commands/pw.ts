@@ -1,3 +1,4 @@
+import { Argv, Omit } from 'yargs';
 import { pwnedPassword } from 'hibp';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
@@ -5,7 +6,16 @@ import spinner from '../utils/spinner';
 export const command = 'pw <password>';
 export const describe = 'securely check a password for public exposure';
 
-export const builder /* istanbul ignore next */ = yargs =>
+interface PwArgvOptions {
+  password: string;
+  r?: boolean;
+}
+
+type PwBuilder = Argv<Omit<PwArgvOptions, 'r'> & { r: boolean }>;
+
+export const builder /* istanbul ignore next */ = (
+  yargs: Argv<PwArgvOptions>,
+): PwBuilder =>
   yargs
     .positional('password', {
       type: 'string',
@@ -25,16 +35,24 @@ export const builder /* istanbul ignore next */ = yargs =>
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
+interface PwHandlerOptions {
+  password: string;
+  raw?: boolean;
+}
+
 /**
  * Securely fetches the number of times the given password has been exposed in a
  * breach.
  *
- * @param {Object} argv the parsed argv object
+ * @param {object} argv the parsed argv object
  * @param {string} argv.password a password (plain text)
  * @param {boolean} [argv.raw] disable the console spinner (default: false)
- * @returns {Promise} the resulting Promise where output is rendered
+ * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({ password, raw }) => {
+export const handler = async ({
+  password,
+  raw,
+}: PwHandlerOptions): Promise<void> => {
   if (!raw) {
     spinner.start();
   }

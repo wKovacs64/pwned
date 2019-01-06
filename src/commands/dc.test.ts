@@ -1,4 +1,4 @@
-import * as hibp from 'hibp';
+import * as origHibp from 'hibp';
 import {
   spinnerFns,
   loggerFns,
@@ -6,12 +6,20 @@ import {
   EMPTY_ARRAY,
   ERROR_MSG,
 } from '../../test/fixtures';
-import logger from '../utils/logger';
-import spinner from '../utils/spinner';
+import mockLogger, { Logger, LoggerFunction } from '../utils/logger';
+import mockSpinner from '../utils/spinner';
 import { handler as dc } from './dc';
 
 jest.mock('../utils/logger');
 jest.mock('../utils/spinner');
+
+const hibp = origHibp as jest.Mocked<typeof origHibp>;
+const logger = mockLogger as Logger & {
+  [key: string]: jest.Mocked<LoggerFunction>;
+};
+const spinner = mockSpinner as typeof mockSpinner & {
+  [key: string]: jest.Mock;
+};
 
 describe('command: dc', () => {
   describe('normal output (default)', () => {

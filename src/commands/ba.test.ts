@@ -1,29 +1,39 @@
-import * as hibp from 'hibp';
+import * as origHibp from 'hibp';
 import {
   spinnerFns,
   loggerFns,
   FOUND,
+  OBJ,
   NOT_FOUND,
   ERROR,
   ERROR_MSG,
+  NONE,
 } from '../../test/fixtures';
-import logger from '../utils/logger';
-import spinner from '../utils/spinner';
-import { handler as pw } from './pw';
+import mockLogger, { Logger, LoggerFunction } from '../utils/logger';
+import mockSpinner from '../utils/spinner';
+import { handler as ba } from './ba';
 
 jest.mock('../utils/logger');
 jest.mock('../utils/spinner');
 
-describe('command: pw', () => {
+const hibp = origHibp as jest.Mocked<typeof origHibp>;
+const logger = mockLogger as Logger & {
+  [key: string]: jest.Mocked<LoggerFunction>;
+};
+const spinner = mockSpinner as typeof mockSpinner & {
+  [key: string]: jest.Mock;
+};
+
+describe('command: ba', () => {
   beforeAll(() => {
-    hibp.pwnedPassword.mockImplementation(async password => {
-      if (password === FOUND) {
-        return 3;
+    hibp.breachedAccount.mockImplementation(async account => {
+      if (account === FOUND) {
+        return OBJ;
       }
-      if (password === NOT_FOUND) {
-        return 0;
+      if (account === NOT_FOUND) {
+        return null;
       }
-      if (password === ERROR) {
+      if (account === ERROR) {
         throw new Error(ERROR_MSG);
       }
       throw new Error('Unexpected input!');
@@ -33,22 +43,37 @@ describe('command: pw', () => {
   describe('normal output (default)', () => {
     it('calls spinner.start', async () => {
       expect(spinner.start).toHaveBeenCalledTimes(0);
-      await pw({ password: FOUND, raw: false });
+      await ba({
+        account: NOT_FOUND,
+        domainFilter: NONE,
+        truncate: false,
+        raw: false,
+      });
       expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
-    it('with data: only calls spinner.warn', async () => {
-      expect(spinner.warn).toHaveBeenCalledTimes(0);
+    it('with data: calls spinner.stop and logger.log', async () => {
+      expect(spinner.stop).toHaveBeenCalledTimes(0);
       expect(logger.log).toHaveBeenCalledTimes(0);
-      await pw({ password: FOUND, raw: false });
-      expect(spinner.warn).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      await ba({
+        account: FOUND,
+        domainFilter: NONE,
+        truncate: false,
+        raw: false,
+      });
+      expect(spinner.stop).toHaveBeenCalledTimes(1);
+      expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
     it('without data: only calls spinner.succeed', async () => {
       expect(spinner.succeed).toHaveBeenCalledTimes(0);
       loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
-      await pw({ password: NOT_FOUND, raw: false });
+      await ba({
+        account: NOT_FOUND,
+        domainFilter: NONE,
+        truncate: false,
+        raw: false,
+      });
       expect(spinner.succeed).toHaveBeenCalledTimes(1);
       loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
@@ -56,7 +81,12 @@ describe('command: pw', () => {
     it('on error: only calls spinner.fail', async () => {
       expect(spinner.fail).toHaveBeenCalledTimes(0);
       loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
-      await pw({ password: ERROR, raw: false });
+      await ba({
+        account: ERROR,
+        domainFilter: NONE,
+        truncate: false,
+        raw: false,
+      });
       expect(spinner.fail).toHaveBeenCalledTimes(1);
       loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
@@ -65,30 +95,50 @@ describe('command: pw', () => {
   describe('raw mode', () => {
     it('does not call spinner.start', async () => {
       expect(spinner.start).toHaveBeenCalledTimes(0);
-      await pw({ password: FOUND, raw: true });
+      await ba({
+        account: NOT_FOUND,
+        domainFilter: NONE,
+        truncate: false,
+        raw: true,
+      });
       expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
     it('with data: only calls logger.log', async () => {
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
-      await pw({ password: FOUND, raw: true });
+      await ba({
+        account: FOUND,
+        domainFilter: NONE,
+        truncate: false,
+        raw: true,
+      });
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
-    it('without data: only calls logger.log', async () => {
+    it('without data: does not call any spinner or logger methods', async () => {
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
-      await pw({ password: NOT_FOUND, raw: true });
+      await ba({
+        account: NOT_FOUND,
+        domainFilter: NONE,
+        truncate: false,
+        raw: true,
+      });
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
-      expect(logger.log).toHaveBeenCalledTimes(1);
+      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
     it('on error: only calls logger.error', async () => {
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);
-      await pw({ password: ERROR, raw: true });
+      await ba({
+        account: ERROR,
+        domainFilter: NONE,
+        truncate: false,
+        raw: true,
+      });
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
