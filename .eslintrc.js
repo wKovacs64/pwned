@@ -2,7 +2,7 @@ module.exports = {
   env: {
     jest: true,
   },
-  extends: ['airbnb-base', 'prettier'],
+  extends: ['airbnb-base', 'prettier', 'prettier/typescript'],
   parser: 'eslint-plugin-typescript/parser',
   plugins: ['typescript'],
   rules: {
@@ -43,7 +43,6 @@ module.exports = {
         'typescript/no-var-requires': 'error',
         'typescript/prefer-interface': 'error',
         'typescript/prefer-namespace-keyword': 'error',
-        'typescript/type-annotation-spacing': 'error',
       },
     },
   ],
