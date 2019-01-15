@@ -1833,10 +1833,10 @@ eslint-plugin-import@2.14.0:
     read-pkg-up "^2.0.0"
     resolve "^1.6.0"
 
-eslint-plugin-typescript@1.0.0-rc.2:
-  version "1.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-typescript/-/eslint-plugin-typescript-1.0.0-rc.2.tgz#f6262e22627bdf7e1876716c0825353fca24e642"
-  integrity sha512-q/F2EOSPDeGgIwqZ5MgQmOpbhQjkuW7ko3M0fsXJ/2DUarG+ASfE9L1xzyfDtCMV3nFXd5EtypEnNawInXmpLg==
+eslint-plugin-typescript@1.0.0-rc.3:
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-typescript/-/eslint-plugin-typescript-1.0.0-rc.3.tgz#aa5359248dc6172ee261bc6574b5b540573e9b67"
+  integrity sha512-urXH7sKqRkFLcDj6dP3tvQALfWIRGn8J8Kg9dYSoavXvy62FxfUv6JgjDAHQZudi9fSRQpEZA/LqdJXDOwKHPA==
   dependencies:
     requireindex "^1.2.0"
     typescript-eslint-parser "21.0.2"
