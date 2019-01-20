@@ -676,6 +676,31 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
+"@typescript-eslint/eslint-plugin@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-0.2.1.tgz#a0ba945929ddc05503755f112fc153d51fde9963"
+  integrity sha512-ketjy9UJP5tvYovio/SOQFkkTAD2PMC1IcM8WxvGAVgDFQ8khzPeD1aHMDNH6sAdBahFCqnpnJ+t/b8UjuTfow==
+  dependencies:
+    "@typescript-eslint/parser" "0.2.1"
+    requireindex "^1.2.0"
+
+"@typescript-eslint/parser@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-0.2.1.tgz#1fef98c0d5058b9e73ec2ee55d2eae7a8b4f0d13"
+  integrity sha512-RTrqxoSNU5QYAxa4K7FjdO5mbdSRizHhUrWxkPg2anKzM9bRYZEsA5OhwNFNhTX00nvwA+wCuXD2Lr6qq+UkYA==
+  dependencies:
+    "@typescript-eslint/typescript-estree" "0.2.1"
+    eslint-scope "^4.0.0"
+    eslint-visitor-keys "^1.0.0"
+
+"@typescript-eslint/typescript-estree@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-0.2.1.tgz#980e81467adedbdba8873c9d8e567b1008480c6c"
+  integrity sha512-+9O1L+ApcOxmGSALa7jyDVVRx8vlbIDTMmRCND7sC4XqFUvpfVspSh+0XJrQuljLVBwrPCjWN4cKDNrGqT6xOw==
+  dependencies:
+    lodash.unescape "4.0.1"
+    semver "5.5.0"
+
 abab@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.0.tgz#aba0ab4c5eee2d4c79d3487d85450fb2376ebb0f"
@@ -1859,14 +1884,6 @@ eslint-plugin-import@2.14.0:
     minimatch "^3.0.3"
     read-pkg-up "^2.0.0"
     resolve "^1.6.0"
-
-eslint-plugin-typescript@1.0.0-rc.3:
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-typescript/-/eslint-plugin-typescript-1.0.0-rc.3.tgz#aa5359248dc6172ee261bc6574b5b540573e9b67"
-  integrity sha512-urXH7sKqRkFLcDj6dP3tvQALfWIRGn8J8Kg9dYSoavXvy62FxfUv6JgjDAHQZudi9fSRQpEZA/LqdJXDOwKHPA==
-  dependencies:
-    requireindex "^1.2.0"
-    typescript-eslint-parser "21.0.2"
 
 eslint-restricted-globals@^0.1.1:
   version "0.1.1"
@@ -5543,23 +5560,6 @@ type-check@~0.3.2:
   integrity sha1-WITKtRLPHTVeP7eE8wgEsrUg23I=
   dependencies:
     prelude-ls "~1.1.2"
-
-typescript-eslint-parser@21.0.2:
-  version "21.0.2"
-  resolved "https://registry.yarnpkg.com/typescript-eslint-parser/-/typescript-eslint-parser-21.0.2.tgz#270af10e4724528677fbcf34ea495284bec3a894"
-  integrity sha512-u+pj4RVJBr4eTzj0n5npoXD/oRthvfUCjSKndhNI714MG0mQq2DJw5WP7qmonRNIFgmZuvdDOH3BHm9iOjIAfg==
-  dependencies:
-    eslint-scope "^4.0.0"
-    eslint-visitor-keys "^1.0.0"
-    typescript-estree "5.3.0"
-
-typescript-estree@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/typescript-estree/-/typescript-estree-5.3.0.tgz#fb6c977b5e21073eb16cbdc0338a7f752da99ff5"
-  integrity sha512-Vu0KmYdSCkpae+J48wsFC1ti19Hq3Wi/lODUaE+uesc3gzqhWbZ5itWbsjylLVbjNW4K41RqDzSfnaYNbmEiMQ==
-  dependencies:
-    lodash.unescape "4.0.1"
-    semver "5.5.0"
 
 typescript@3.2.4:
   version "3.2.4"
