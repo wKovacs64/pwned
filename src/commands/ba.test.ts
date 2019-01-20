@@ -46,6 +46,7 @@ describe('command: ba', () => {
       await ba({
         account: NOT_FOUND,
         domainFilter: NONE,
+        includeUnverified: false,
         truncate: false,
         raw: false,
       });
@@ -58,6 +59,7 @@ describe('command: ba', () => {
       await ba({
         account: FOUND,
         domainFilter: NONE,
+        includeUnverified: false,
         truncate: false,
         raw: false,
       });
@@ -71,6 +73,7 @@ describe('command: ba', () => {
       await ba({
         account: NOT_FOUND,
         domainFilter: NONE,
+        includeUnverified: false,
         truncate: false,
         raw: false,
       });
@@ -84,6 +87,7 @@ describe('command: ba', () => {
       await ba({
         account: ERROR,
         domainFilter: NONE,
+        includeUnverified: false,
         truncate: false,
         raw: false,
       });
@@ -98,6 +102,7 @@ describe('command: ba', () => {
       await ba({
         account: NOT_FOUND,
         domainFilter: NONE,
+        includeUnverified: false,
         truncate: false,
         raw: true,
       });
@@ -110,6 +115,7 @@ describe('command: ba', () => {
       await ba({
         account: FOUND,
         domainFilter: NONE,
+        includeUnverified: false,
         truncate: false,
         raw: true,
       });
@@ -123,6 +129,7 @@ describe('command: ba', () => {
       await ba({
         account: NOT_FOUND,
         domainFilter: NONE,
+        includeUnverified: false,
         truncate: false,
         raw: true,
       });
@@ -136,6 +143,7 @@ describe('command: ba', () => {
       await ba({
         account: ERROR,
         domainFilter: NONE,
+        includeUnverified: false,
         truncate: false,
         raw: true,
       });

@@ -11,17 +11,30 @@ export const describe =
 interface BaArgvOptions {
   account: string;
   d?: string;
+  i?: boolean;
   t?: boolean;
   r?: boolean;
 }
 
 type BaBuilder = Argv<
   Omit<
-    Omit<Omit<BaArgvOptions, 'd'> & { d: string | undefined }, 't'> & {
+    Omit<
+      Omit<
+        Omit<BaArgvOptions, 'd'> & {
+          d: string | undefined;
+        },
+        'i'
+      > & {
+        i: boolean;
+      },
+      't'
+    > & {
       t: boolean;
     },
     'r'
-  > & { r: boolean }
+  > & {
+    r: boolean;
+  }
 >;
 
 export const builder /* istanbul ignore next */ = (
@@ -43,6 +56,12 @@ export const builder /* istanbul ignore next */ = (
       describe: 'filter breach data by domain',
       type: 'string',
     })
+    .option('i', {
+      alias: 'include-unverified',
+      describe: 'include unverified breaches in the results',
+      type: 'boolean',
+      default: false,
+    })
     .option('t', {
       alias: 'truncate',
       describe: 'truncate data to just the name of each breach',
@@ -55,12 +74,13 @@ export const builder /* istanbul ignore next */ = (
       type: 'boolean',
       default: false,
     })
-    .group(['d', 't', 'r'], 'Command Options:')
+    .group(['d', 'i', 't', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
 interface BaHandlerOptions {
   account: string;
   domainFilter?: string;
+  includeUnverified?: boolean;
   truncate?: boolean;
   raw?: boolean;
 }
@@ -72,6 +92,8 @@ interface BaHandlerOptions {
  * @param {string} argv.account a username or email address
  * @param {string} [argv.domainFilter] a domain by which to filter the results
  * (default: all domains)
+ * @param {boolean} [argv.includeUnverified] include "unverified" breaches in
+ * the results (by default, only verified breaches are included)
  * @param {boolean} [argv.truncate] truncate the results to only include the
  * name of each breach (default: false)
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
@@ -80,6 +102,7 @@ interface BaHandlerOptions {
 export const handler = async ({
   account,
   domainFilter: domain,
+  includeUnverified,
   truncate,
   raw,
 }: BaHandlerOptions): Promise<void> => {
@@ -90,6 +113,7 @@ export const handler = async ({
   try {
     const breachData = await breachedAccount(account.trim(), {
       domain,
+      includeUnverified,
       truncate,
     });
     if (breachData && raw) {
