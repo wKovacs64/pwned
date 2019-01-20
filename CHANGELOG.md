@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 6.2.0 _(2019-01-19)_
+
+- Added `-i`/`--include-unverified` option to `ba` command to include
+  "unverified" breaches in the results
+- Converted to TypeScript ([#26][26])
+
 ## Version 6.1.2 _(2018-12-20)_
 
 - Moved coverage reports from Coveralls to Codecov ([#24][24])
@@ -177,3 +183,4 @@
 [11]: https://github.com/wKovacs64/pwned/pull/11
 [24]: https://github.com/wKovacs64/pwned/pull/24
 [25]: https://github.com/wKovacs64/pwned/pull/25
+[26]: https://github.com/wKovacs64/pwned/pull/26
