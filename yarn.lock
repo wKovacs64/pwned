@@ -2535,10 +2535,10 @@ has@^1.0.1, has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hibp@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/hibp/-/hibp-7.3.0.tgz#555af151e43c2b55dee2bbc2c76a3c90d2574753"
-  integrity sha512-rMaYNfErVzPEDtpwveMFtP+nVinFWFRS/uTlc8ok0oaHSOiQpOxOaIXfn2jxr6woJQI1HaROkPED2xyuiOYgmg==
+hibp@^7.4.0:
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/hibp/-/hibp-7.4.0.tgz#3ff2686c543aafb7f7ed7b5b6f3dab647b1e5e1e"
+  integrity sha512-b90nhX7QdWPtMqeOkq8yDpcsSrz6lpdgkdD1hMe3LUQaBpf2c7ZXNLjD+yhEd3aHrBi05ehyTVbhBU0Z+HCBYQ==
   dependencies:
     axios "^0.18.0"
     jssha "^2.3.1"
