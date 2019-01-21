@@ -68,7 +68,7 @@
     "@types/ora": "3.0.0",
     "@types/prettyjson": "0.0.28",
     "@types/yargs": "12.0.5",
-    "@typescript-eslint/eslint-plugin": "0.2.1",
+    "@typescript-eslint/eslint-plugin": "1.0.0",
     "@typescript-eslint/parser": "0.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
