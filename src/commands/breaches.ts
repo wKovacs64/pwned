@@ -20,19 +20,19 @@ interface BreachesHandlerOptions {
 export const builder: CommandBuilder<
   BreachesArgvOptions,
   BreachesHandlerOptions
-> /* istanbul ignore next */ = (yargs): Argv /* <BreachesHandlerOptions> */ =>
+> /* istanbul ignore next */ = (yargs): Argv<BreachesHandlerOptions> =>
   yargs
     .option('d', {
-      alias: 'domain-filter',
       describe: 'filter breach data by domain',
       type: 'string',
     })
+    .alias('d', 'domain-filter')
     .option('r', {
-      alias: 'raw',
       describe: 'output the raw JSON data (or nothing, if no results found)',
       type: 'boolean',
       default: false,
     })
+    .alias('r', 'raw')
     .group(['d', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 

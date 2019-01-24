@@ -18,14 +18,14 @@ interface DcHandlerOptions {
 export const builder: CommandBuilder<
   DcArgvOptions,
   DcHandlerOptions
-> /* istanbul ignore next */ = (yargs): Argv /* <DcHandlerOptions> */ =>
+> /* istanbul ignore next */ = (yargs): Argv<DcHandlerOptions> =>
   yargs
     .option('r', {
-      alias: 'raw',
       describe: 'output the raw JSON data',
       type: 'boolean',
       default: false,
     })
+    .alias('r', 'raw')
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
