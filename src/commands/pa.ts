@@ -1,4 +1,4 @@
-import { Argv, Omit } from 'yargs';
+import { Argv, CommandBuilder } from 'yargs';
 import { pasteAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
@@ -12,11 +12,15 @@ interface PaArgvOptions {
   r?: boolean;
 }
 
-type PaBuilder = Argv<Omit<PaArgvOptions, 'r'> & { r: boolean }>;
+interface PaHandlerOptions {
+  email: string;
+  raw?: boolean;
+}
 
-export const builder /* istanbul ignore next */ = (
-  yargs: Argv<PaArgvOptions>,
-): PaBuilder =>
+export const builder: CommandBuilder<
+  PaArgvOptions,
+  PaHandlerOptions
+> /* istanbul ignore next */ = (yargs): Argv<PaHandlerOptions> =>
   yargs
     .positional('email', {
       type: 'string',
@@ -36,10 +40,6 @@ export const builder /* istanbul ignore next */ = (
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
-interface PaHandlerOptions {
-  email: string;
-  raw?: boolean;
-}
 /**
  * Fetches and outputs all pastes for an account (email address).
  *

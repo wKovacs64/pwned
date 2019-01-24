@@ -1,4 +1,4 @@
-import { Argv, Omit } from 'yargs';
+import { Argv, CommandBuilder } from 'yargs';
 import { breaches } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
@@ -12,15 +12,15 @@ interface BreachesArgvOptions {
   r?: boolean;
 }
 
-type BreachesBuilder = Argv<
-  Omit<Omit<BreachesArgvOptions, 'd'> & { d: string | undefined }, 'r'> & {
-    r: boolean;
-  }
->;
+interface BreachesHandlerOptions {
+  domainFilter?: string;
+  raw?: boolean;
+}
 
-export const builder /* istanbul ignore next */ = (
-  yargs: Argv<BreachesArgvOptions>,
-): BreachesBuilder =>
+export const builder: CommandBuilder<
+  BreachesArgvOptions,
+  BreachesHandlerOptions
+> /* istanbul ignore next */ = (yargs): Argv /* <BreachesHandlerOptions> */ =>
   yargs
     .option('d', {
       alias: 'domain-filter',
@@ -35,11 +35,6 @@ export const builder /* istanbul ignore next */ = (
     })
     .group(['d', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
-
-interface BreachesHandlerOptions {
-  domainFilter?: string;
-  raw?: boolean;
-}
 
 /**
  * Fetches and outputs all breached sites in the system.

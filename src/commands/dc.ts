@@ -1,4 +1,4 @@
-import { Argv, Omit } from 'yargs';
+import { Argv, CommandBuilder } from 'yargs';
 import { dataClasses } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
@@ -11,11 +11,14 @@ interface DcArgvOptions {
   r?: boolean;
 }
 
-type DcBuilder = Argv<Omit<DcArgvOptions, 'r'> & { r: boolean }>;
+interface DcHandlerOptions {
+  raw?: boolean;
+}
 
-export const builder /* istanbul ignore next */ = (
-  yargs: Argv<DcArgvOptions>,
-): DcBuilder =>
+export const builder: CommandBuilder<
+  DcArgvOptions,
+  DcHandlerOptions
+> /* istanbul ignore next */ = (yargs): Argv /* <DcHandlerOptions> */ =>
   yargs
     .option('r', {
       alias: 'raw',
@@ -25,10 +28,6 @@ export const builder /* istanbul ignore next */ = (
     })
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
-
-interface DcHandlerOptions {
-  raw?: boolean;
-}
 
 /**
  * Fetches and outputs all data classes in the system.

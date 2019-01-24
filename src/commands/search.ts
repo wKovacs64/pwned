@@ -1,4 +1,4 @@
-import { Argv, Omit } from 'yargs';
+import { Argv, CommandBuilder } from 'yargs';
 import { search } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
@@ -15,18 +15,17 @@ interface SearchArgvOptions {
   r?: boolean;
 }
 
-type SearchBuilder = Argv<
-  Omit<
-    Omit<Omit<SearchArgvOptions, 'd'> & { d: string | undefined }, 't'> & {
-      t: boolean;
-    },
-    'r'
-  > & { r: boolean }
->;
+interface SearchHandlerOptions {
+  account: string;
+  domainFilter?: string;
+  truncate?: boolean;
+  raw?: boolean;
+}
 
-export const builder /* istanbul ignore next */ = (
-  yargs: Argv<SearchArgvOptions>,
-): SearchBuilder =>
+export const builder: CommandBuilder<
+  SearchArgvOptions,
+  SearchHandlerOptions
+> /* istanbul ignore next */ = (yargs): Argv<SearchHandlerOptions> =>
   yargs
     .positional('account', {
       alias: 'email',
@@ -58,12 +57,6 @@ export const builder /* istanbul ignore next */ = (
     .group(['d', 't', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 
-interface SearchHandlerOptions {
-  account: string;
-  domainFilter?: string;
-  truncate?: boolean;
-  raw?: boolean;
-}
 /**
  * Fetches and outputs breach and paste data for the specified account.
  *

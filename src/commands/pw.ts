@@ -1,4 +1,4 @@
-import { Argv, Omit } from 'yargs';
+import { Argv, CommandBuilder } from 'yargs';
 import { pwnedPassword } from 'hibp';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
@@ -11,11 +11,17 @@ interface PwArgvOptions {
   r?: boolean;
 }
 
-type PwBuilder = Argv<Omit<PwArgvOptions, 'r'> & { r: boolean }>;
+interface PwHandlerOptions {
+  password: string;
+  raw?: boolean;
+}
 
-export const builder /* istanbul ignore next */ = (
+export const builder: CommandBuilder<
+  PwArgvOptions,
+  PwHandlerOptions
+> /* istanbul ignore next */ = (
   yargs: Argv<PwArgvOptions>,
-): PwBuilder =>
+): Argv<PwHandlerOptions> =>
   yargs
     .positional('password', {
       type: 'string',
@@ -34,11 +40,6 @@ export const builder /* istanbul ignore next */ = (
     })
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
-
-interface PwHandlerOptions {
-  password: string;
-  raw?: boolean;
-}
 
 /**
  * Securely fetches the number of times the given password has been exposed in a

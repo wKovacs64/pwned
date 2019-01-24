@@ -1,4 +1,4 @@
-import { Argv, Omit } from 'yargs';
+import { Argv, CommandBuilder } from 'yargs';
 import { breachedAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
@@ -16,30 +16,18 @@ interface BaArgvOptions {
   r?: boolean;
 }
 
-type BaBuilder = Argv<
-  Omit<
-    Omit<
-      Omit<
-        Omit<BaArgvOptions, 'd'> & {
-          d: string | undefined;
-        },
-        'i'
-      > & {
-        i: boolean;
-      },
-      't'
-    > & {
-      t: boolean;
-    },
-    'r'
-  > & {
-    r: boolean;
-  }
->;
+interface BaHandlerOptions {
+  account: string;
+  domainFilter?: string;
+  includeUnverified?: boolean;
+  truncate?: boolean;
+  raw?: boolean;
+}
 
-export const builder /* istanbul ignore next */ = (
-  yargs: Argv<BaArgvOptions>,
-): BaBuilder =>
+export const builder: CommandBuilder<
+  BaArgvOptions,
+  BaHandlerOptions
+> /* istanbul ignore next */ = (yargs): Argv<BaHandlerOptions> =>
   yargs
     .positional('account', {
       alias: 'email',
@@ -76,14 +64,6 @@ export const builder /* istanbul ignore next */ = (
     })
     .group(['d', 'i', 't', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
-
-interface BaHandlerOptions {
-  account: string;
-  domainFilter?: string;
-  includeUnverified?: boolean;
-  truncate?: boolean;
-  raw?: boolean;
-}
 
 /**
  * Fetches and outputs breach data for the specified account.

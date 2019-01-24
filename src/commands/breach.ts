@@ -1,4 +1,4 @@
-import { Argv, Omit } from 'yargs';
+import { Argv, CommandBuilder } from 'yargs';
 import { breach } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
@@ -12,11 +12,15 @@ interface BreachArgvOptions {
   r?: boolean;
 }
 
-type BreachBuilder = Argv<Omit<BreachArgvOptions, 'r'> & { r: boolean }>;
+interface BreachHandlerOptions {
+  name: string;
+  raw?: boolean;
+}
 
-export const builder /* istanbul ignore next */ = (
-  yargs: Argv<BreachArgvOptions>,
-): BreachBuilder =>
+export const builder: CommandBuilder<
+  BreachArgvOptions,
+  BreachHandlerOptions
+> /* istanbul ignore next */ = (yargs): Argv<BreachHandlerOptions> =>
   yargs
     .positional('name', {
       type: 'string',
@@ -35,11 +39,6 @@ export const builder /* istanbul ignore next */ = (
     })
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
-
-interface BreachHandlerOptions {
-  name: string;
-  raw?: boolean;
-}
 
 /**
  * Fetches and outputs breach data for a single site by breach name.
