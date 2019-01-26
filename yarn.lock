@@ -715,10 +715,10 @@
   resolved "https://registry.yarnpkg.com/@types/prettyjson/-/prettyjson-0.0.28.tgz#131a890ded6421b1b545f4510a4aeabc6d465275"
   integrity sha1-ExqJDe1kIbG1RfRRCkrqvG1GUnU=
 
-"@types/yargs@12.0.5":
-  version "12.0.5"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
-  integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
+"@types/yargs@12.0.8":
+  version "12.0.8"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
+  integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
 "@typescript-eslint/eslint-plugin@1.1.0":
   version "1.1.0"
