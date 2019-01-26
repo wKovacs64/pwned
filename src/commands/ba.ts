@@ -33,6 +33,7 @@ export const builder: CommandBuilder<
       alias: 'email',
       type: 'string',
     })
+    .demandOption('account')
     .check(argv => {
       if (!argv.account.length) {
         throw new Error('The account argument must not be empty.');
