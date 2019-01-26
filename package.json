@@ -70,7 +70,6 @@
     "@types/yargs": "12.0.5",
     "@typescript-eslint/eslint-plugin": "1.1.0",
     "@typescript-eslint/parser": "1.1.0",
-    "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.0.0",
     "codecov": "3.1.0",
     "cross-env": "5.2.0",
