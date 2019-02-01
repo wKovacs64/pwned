@@ -68,7 +68,7 @@
     "@types/ora": "3.0.0",
     "@types/prettyjson": "0.0.28",
     "@types/yargs": "12.0.8",
-    "@wkovacs64/eslint-config": "1.0.1",
+    "@wkovacs64/eslint-config": "2.0.0",
     "babel-jest": "24.0.0",
     "codecov": "3.1.0",
     "cross-env": "5.2.0",
