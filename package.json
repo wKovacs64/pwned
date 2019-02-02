@@ -37,7 +37,8 @@
     "lint": "eslint --ext \".js,.ts\" .",
     "prebuild": "npm run --silent clean",
     "prepublishOnly": "npm-run-all --silent --sequential lint check-types test build",
-    "test": "cross-env NODE_ENV=test jest"
+    "test": "cross-env NODE_ENV=test jest",
+    "validate": "npm-run-all --silent --parallel lint check-types"
   },
   "repository": {
     "type": "git",

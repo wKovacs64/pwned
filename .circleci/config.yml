@@ -21,7 +21,6 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache
-      - run: yarn lint
-      - run: yarn check-types
+      - run: yarn validate
       - run: yarn test --coverage --no-cache --runInBand
       - run: ./node_modules/.bin/codecov
