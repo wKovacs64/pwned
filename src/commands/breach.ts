@@ -3,6 +3,7 @@ import { breach } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
+import userAgent from '../utils/ua';
 
 export const command = 'breach <name>';
 export const describe = 'get a single breached site by breach name';
@@ -58,7 +59,7 @@ export const handler = async ({
   }
 
   try {
-    const breachData = await breach(name);
+    const breachData = await breach(name, { userAgent });
     if (breachData && raw) {
       logger.log(JSON.stringify(breachData));
     } else if (breachData) {

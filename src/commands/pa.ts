@@ -3,6 +3,7 @@ import { pasteAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
+import userAgent from '../utils/ua';
 
 export const command = 'pa <email>';
 export const describe = 'get all pastes for an account (email address)';
@@ -58,7 +59,7 @@ export const handler = async ({
   }
 
   try {
-    const pasteData = await pasteAccount(email);
+    const pasteData = await pasteAccount(email, { userAgent });
     if (pasteData && raw) {
       logger.log(JSON.stringify(pasteData));
     } else if (pasteData) {

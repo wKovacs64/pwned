@@ -3,6 +3,7 @@ import { dataClasses } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
+import userAgent from '../utils/ua';
 
 export const command = 'dc';
 export const describe = 'get all data classes in the system';
@@ -42,7 +43,7 @@ export const handler = async ({ raw }: DcHandlerOptions): Promise<void> => {
   }
 
   try {
-    const dataClassesData = await dataClasses();
+    const dataClassesData = await dataClasses({ userAgent });
     if (Array.isArray(dataClassesData) && dataClassesData.length) {
       if (raw) {
         logger.log(JSON.stringify(dataClassesData));

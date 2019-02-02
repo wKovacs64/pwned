@@ -3,6 +3,7 @@ import { search } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
+import userAgent from '../utils/ua';
 
 export const command = 'search <account|email>';
 export const describe =
@@ -81,7 +82,7 @@ export const handler = async ({
   }
 
   try {
-    const searchData = await search(account, { domain, truncate });
+    const searchData = await search(account, { domain, truncate, userAgent });
     const foundData = !!(searchData.breaches || searchData.pastes);
     if (foundData && raw) {
       logger.log(JSON.stringify(searchData));

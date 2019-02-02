@@ -3,6 +3,7 @@ import { breachedAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
+import userAgent from '../utils/ua';
 
 export const command = 'ba <account|email>';
 export const describe =
@@ -96,6 +97,7 @@ export const handler = async ({
       domain,
       includeUnverified,
       truncate,
+      userAgent,
     });
     if (breachData && raw) {
       logger.log(JSON.stringify(breachData));

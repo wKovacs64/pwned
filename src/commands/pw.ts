@@ -2,6 +2,7 @@ import { Argv, CommandBuilder } from 'yargs';
 import { pwnedPassword } from 'hibp';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
+import userAgent from '../utils/ua';
 
 export const command = 'pw <password>';
 export const describe = 'securely check a password for public exposure';
@@ -60,7 +61,7 @@ export const handler = async ({
   }
 
   try {
-    const pwnCount = await pwnedPassword(password);
+    const pwnCount = await pwnedPassword(password, { userAgent });
     if (pwnCount) {
       const pwnedMessage = `Oh no — pwned ${pwnCount} times!`;
       if (!raw) {
