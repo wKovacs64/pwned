@@ -51,7 +51,7 @@
     "node": ">= 6.4.0"
   },
   "dependencies": {
-    "hibp": "^7.4.0",
+    "hibp": "^7.5.0",
     "ora": "^3.0.0",
     "prettyjson": "^1.2.1",
     "source-map-support": "^0.5.10",

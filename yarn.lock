@@ -2476,10 +2476,10 @@ has@^1.0.1, has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hibp@^7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/hibp/-/hibp-7.4.0.tgz#3ff2686c543aafb7f7ed7b5b6f3dab647b1e5e1e"
-  integrity sha512-b90nhX7QdWPtMqeOkq8yDpcsSrz6lpdgkdD1hMe3LUQaBpf2c7ZXNLjD+yhEd3aHrBi05ehyTVbhBU0Z+HCBYQ==
+hibp@^7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/hibp/-/hibp-7.5.0.tgz#7215142c897de54eb6db8b261b400d28d7e46cd8"
+  integrity sha512-THviAzVcu45GB7QJD371tm8MGmRtg2/14FWwvZIYgs/osGeTgdQ6gZ0sfpxZUiLz0x+LymNvVzu8w/ZwXh6ohQ==
   dependencies:
     axios "^0.18.0"
     jssha "^2.3.1"
