@@ -32,6 +32,7 @@ describe('util: logger', () => {
     const args = [MESSAGE, OBJ];
     loggerFns.forEach(fn => {
       const orig = indexableConsole[fn];
+      // eslint-disable-next-line jest/prefer-spy-on
       indexableConsole[fn] = jest.fn();
       expect(indexableConsole[fn]).toHaveBeenCalledTimes(0);
       indexableLogger[fn](...args);
