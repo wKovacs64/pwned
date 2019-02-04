@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 6.3.0 _(2019-02-04)_
+
+- Specified a custom `User-Agent` to explicitly identify ourselves to the
+  `haveibeenpwned.com` API ([9185536d][9185536d])
+
 ## Version 6.2.0 _(2019-01-19)_
 
 - Added `-i`/`--include-unverified` option to `ba` command to include
@@ -184,3 +189,5 @@
 [24]: https://github.com/wKovacs64/pwned/pull/24
 [25]: https://github.com/wKovacs64/pwned/pull/25
 [26]: https://github.com/wKovacs64/pwned/pull/26
+[9185536d]:
+  https://github.com/wKovacs64/pwned/commit/9185536d1d33c34c6d45a55d0a78f837612371cb
