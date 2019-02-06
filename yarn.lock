@@ -763,10 +763,10 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@wkovacs64/eslint-config@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config/-/eslint-config-2.1.0.tgz#996bf1786d9a199d583cfcc653bd9bee5819d393"
-  integrity sha512-mmIcFAR9jaXRcLlFiyNXKMaAVho2s1G4GAqh2OG9FHMEHybtKkh4GNoYh2+mYV1W1RIMHxWHNciHxyG1s64BrQ==
+"@wkovacs64/eslint-config@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config/-/eslint-config-3.0.0.tgz#64bd336984a6034f050d7a91fafc04243b5cc12b"
+  integrity sha512-CPPaYW5qG5Iqsk24VKp1SAKUKvL4oFtUM3OKn0JYdAURibmQ+44RRPellMhjxLWNU/lAiw7HCK+UxmkdmKkZ1g==
 
 abab@^2.0.0:
   version "2.0.0"
