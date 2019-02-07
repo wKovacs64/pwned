@@ -763,17 +763,17 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@wkovacs64/eslint-config-ts@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-ts/-/eslint-config-ts-1.0.0.tgz#68b2feb62ba21b5bbde851ff61bf9384f83c0586"
-  integrity sha512-Rg9tOT0ee8zEgcCOz36P/owhQMUBm0LaPmuO3mqY+c99i2e7G2QXpM3hUgN7WJ4G8gt8eA9/MUyPXB+HOseCdA==
+"@wkovacs64/eslint-config-ts@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-ts/-/eslint-config-ts-1.0.2.tgz#264f50266c12a41dfa527efffc6657f031531c88"
+  integrity sha512-8yhn3Q4eMMwo+bik+GQWJQ7SgPJs/gdU22w+GNMc8EitHPyUzcF2FmY8+LVpLV9x3T1H8XPS+156fgSweQ9AXA==
   dependencies:
-    "@wkovacs64/eslint-config" "3.0.0"
+    "@wkovacs64/eslint-config" "3.0.1"
 
-"@wkovacs64/eslint-config@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config/-/eslint-config-3.0.0.tgz#64bd336984a6034f050d7a91fafc04243b5cc12b"
-  integrity sha512-CPPaYW5qG5Iqsk24VKp1SAKUKvL4oFtUM3OKn0JYdAURibmQ+44RRPellMhjxLWNU/lAiw7HCK+UxmkdmKkZ1g==
+"@wkovacs64/eslint-config@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config/-/eslint-config-3.0.1.tgz#ca02f9a4e5fc6bf2a9914e65fccb25e988e9d987"
+  integrity sha512-p/foRthdwaQEkFGdPbMnX/k108CGBg+v+/sm5w3wNtRcz79qL1vAvuMyS6rFuayuvKN8Lb44iBmWg8GbrWecNQ==
 
 abab@^2.0.0:
   version "2.0.0"
