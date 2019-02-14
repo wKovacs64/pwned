@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { loggerFns, OBJ, MESSAGE } from '../../test/fixtures';
+import { loggerFns } from '../../test/fixtures';
 import logger, { Logger, LoggerFunction } from './logger';
 
 type IndexableConsole = typeof console & {
@@ -29,7 +29,7 @@ describe('util: logger', () => {
   });
 
   it('calls the corresponding console functions with the same arguments', () => {
-    const args = [MESSAGE, OBJ];
+    const args = ['Wubba lubba dub dub!', { param: 'value' }];
     loggerFns.forEach(fn => {
       const orig = indexableConsole[fn];
       // eslint-disable-next-line jest/prefer-spy-on

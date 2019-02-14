@@ -3,7 +3,7 @@ import {
   spinnerFns,
   loggerFns,
   FOUND,
-  OBJ,
+  BREACH,
   NOT_FOUND,
   ERROR,
   ERROR_MSG,
@@ -27,7 +27,7 @@ describe('command: breach', () => {
   beforeAll(() => {
     hibp.breach.mockImplementation(async breachName => {
       if (breachName === FOUND) {
-        return OBJ;
+        return BREACH;
       }
       if (breachName === NOT_FOUND) {
         return null;
