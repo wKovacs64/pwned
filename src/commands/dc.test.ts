@@ -2,7 +2,7 @@ import * as origHibp from 'hibp';
 import {
   spinnerFns,
   loggerFns,
-  OBJ_ARRAY,
+  DATA_CLASSES,
   EMPTY_ARRAY,
   ERROR_MSG,
 } from '../../test/fixtures';
@@ -32,7 +32,7 @@ describe('command: dc', () => {
     it('with data: calls spinner.stop and logger.log', async () => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
       expect(logger.log).toHaveBeenCalledTimes(0);
-      hibp.dataClasses.mockImplementationOnce(async () => OBJ_ARRAY);
+      hibp.dataClasses.mockImplementationOnce(async () => DATA_CLASSES);
       await dc({ raw: false });
       expect(spinner.stop).toHaveBeenCalledTimes(1);
       expect(logger.log).toHaveBeenCalledTimes(1);
@@ -71,7 +71,7 @@ describe('command: dc', () => {
     it('with data: only calls logger.log', async () => {
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
-      hibp.dataClasses.mockImplementationOnce(async () => OBJ_ARRAY);
+      hibp.dataClasses.mockImplementationOnce(async () => DATA_CLASSES);
       await dc({ raw: true });
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);

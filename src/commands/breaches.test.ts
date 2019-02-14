@@ -3,7 +3,7 @@ import {
   spinnerFns,
   loggerFns,
   FOUND,
-  OBJ_ARRAY,
+  BREACHES,
   NOT_FOUND,
   EMPTY_ARRAY,
   ERROR,
@@ -28,7 +28,7 @@ describe('command: breaches', () => {
   beforeAll(() => {
     hibp.breaches.mockImplementation(async (options = {}) => {
       if (options.domain === FOUND) {
-        return OBJ_ARRAY;
+        return BREACHES;
       }
       if (options.domain === NOT_FOUND) {
         return EMPTY_ARRAY;

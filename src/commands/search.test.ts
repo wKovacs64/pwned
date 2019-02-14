@@ -3,7 +3,7 @@ import {
   spinnerFns,
   loggerFns,
   FOUND,
-  OBJ,
+  BREACHES,
   NOT_FOUND,
   ERROR,
   ERROR_MSG,
@@ -28,7 +28,7 @@ describe('command: search', () => {
   beforeAll(() => {
     hibp.search.mockImplementation(async account => {
       if (account === FOUND) {
-        return { breaches: OBJ, pastes: null };
+        return { breaches: BREACHES, pastes: null };
       }
       if (account === NOT_FOUND) {
         return { breaches: null, pastes: null };

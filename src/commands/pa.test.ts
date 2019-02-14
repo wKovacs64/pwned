@@ -3,7 +3,7 @@ import {
   spinnerFns,
   loggerFns,
   FOUND,
-  OBJ_ARRAY,
+  PASTES,
   NOT_FOUND,
   ERROR,
   ERROR_MSG,
@@ -27,7 +27,7 @@ describe('command: pa', () => {
   beforeAll(() => {
     hibp.pasteAccount.mockImplementation(async email => {
       if (email === FOUND) {
-        return OBJ_ARRAY;
+        return PASTES;
       }
       if (email === NOT_FOUND) {
         return null;

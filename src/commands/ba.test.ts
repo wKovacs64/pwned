@@ -3,7 +3,7 @@ import {
   spinnerFns,
   loggerFns,
   FOUND,
-  OBJ,
+  BREACHES,
   NOT_FOUND,
   ERROR,
   ERROR_MSG,
@@ -28,7 +28,7 @@ describe('command: ba', () => {
   beforeAll(() => {
     hibp.breachedAccount.mockImplementation(async account => {
       if (account === FOUND) {
-        return OBJ;
+        return BREACHES;
       }
       if (account === NOT_FOUND) {
         return null;
