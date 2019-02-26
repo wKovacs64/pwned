@@ -64,7 +64,7 @@
     "@babel/parser": "7.3.4",
     "@babel/preset-env": "7.3.4",
     "@babel/preset-typescript": "7.3.3",
-    "@types/jest": "24.0.8",
+    "@types/jest": "24.0.9",
     "@types/node": "10.12.27",
     "@types/ora": "3.0.0",
     "@types/prettyjson": "0.0.28",
