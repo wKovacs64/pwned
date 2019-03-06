@@ -65,7 +65,7 @@
     "@babel/preset-env": "7.3.4",
     "@babel/preset-typescript": "7.3.3",
     "@types/jest": "24.0.9",
-    "@types/node": "10.12.29",
+    "@types/node": "10.12.30",
     "@types/ora": "3.1.0",
     "@types/prettyjson": "0.0.28",
     "@types/yargs": "12.0.9",
