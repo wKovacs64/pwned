@@ -1,6 +1,6 @@
 {
   "name": "pwned",
-  "version": "6.3.1-dev.0",
+  "version": "0.0.0-semantically-released",
   "description": "A command-line tool for querying the 'Have I been pwned?' service.",
   "keywords": [
     "haveibeenpwned",
@@ -33,12 +33,22 @@
     "build": "babel src --extensions .js,.ts --out-dir lib --source-maps --ignore \"**/*.test.ts\",\"**/*.test.js\",\"**/__mocks__/\"",
     "check-types": "tsc",
     "clean": "rimraf lib coverage",
-    "format": "prettier --write \"**/*.{js,ts,json,md,yml}\"",
-    "lint": "eslint --ext \".js,.ts\" .",
+    "cm": "git-cz",
+    "format": "prettier --write \"**/*.{js,ts,tsx,html,json,md,yml,yaml}\"",
+    "lint": "eslint --ext \".js,.ts,.tsx\" .",
     "prebuild": "npm run --silent clean",
     "prepublishOnly": "npm-run-all --silent --sequential lint check-types test build",
     "test": "cross-env NODE_ENV=test jest",
     "validate": "npm-run-all --silent --parallel lint check-types"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -64,6 +74,8 @@
     "@babel/parser": "7.3.4",
     "@babel/preset-env": "7.3.4",
     "@babel/preset-typescript": "7.3.3",
+    "@commitlint/cli": "7.5.2",
+    "@commitlint/config-conventional": "7.5.0",
     "@types/jest": "24.0.11",
     "@types/node": "10.14.1",
     "@types/ora": "3.1.0",
@@ -73,7 +85,9 @@
     "@wkovacs64/eslint-config-ts": "2.0.0",
     "babel-jest": "24.5.0",
     "codecov": "3.2.0",
+    "commitizen": "3.0.7",
     "cross-env": "5.2.0",
+    "cz-conventional-changelog": "2.1.0",
     "eslint": "5.15.2",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-jest": "22.4.1",
@@ -83,6 +97,7 @@
     "npm-run-all": "4.1.5",
     "prettier": "1.16.4",
     "rimraf": "2.6.3",
+    "semantic-release": "15.13.3",
     "typescript": "3.3.3333"
   }
 }

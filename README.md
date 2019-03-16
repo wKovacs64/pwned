@@ -15,6 +15,7 @@ pwned?][haveibeenpwned] service using the [hibp][hibp] Node.js module._
 
 [![npm Version][npm-image]][npm-url] [![Build Status][ci-image]][ci-url]
 [![Code Coverage][coverage-image]][coverage-url]
+[![semantic-release][semantic-release-image]][semantic-release-url]
 
 ## Installation
 
@@ -213,6 +214,9 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [coverage-image]:
   https://img.shields.io/codecov/c/github/wKovacs64/pwned/master.svg?style=flat-square
 [coverage-url]: https://codecov.io/gh/wKovacs64/pwned/branch/master
+[semantic-release-image]:
+  https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square
+[semantic-release-url]: https://github.com/semantic-release/semantic-release
 [troy]: https://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp

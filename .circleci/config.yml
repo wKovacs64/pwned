@@ -23,4 +23,5 @@ jobs:
             - ~/.cache
       - run: yarn validate
       - run: yarn test --coverage --no-cache --runInBand
-      - run: ./node_modules/.bin/codecov
+      - run: yarn codecov
+      - run: yarn semantic-release

@@ -1,31 +1,40 @@
 # Change Log
 
-## Version 6.3.0 _(2019-02-04)_
+The changelog is automatically updated using
+[semantic-release](https://github.com/semantic-release/semantic-release). You
+can see it on the [releases page](../../releases).
+
+---
+
+<details>
+<summary>Historical Change Log</summary>
+
+#### Version 6.3.0 _(2019-02-04)_
 
 - Specified a custom `User-Agent` to explicitly identify ourselves to the
   `haveibeenpwned.com` API ([9185536d][9185536d])
 
-## Version 6.2.0 _(2019-01-19)_
+#### Version 6.2.0 _(2019-01-19)_
 
 - Added `-i`/`--include-unverified` option to `ba` command to include
   "unverified" breaches in the results
 - Converted to TypeScript ([#26][26])
 
-## Version 6.1.2 _(2018-12-20)_
+#### Version 6.1.2 _(2018-12-20)_
 
 - Moved coverage reports from Coveralls to Codecov ([#24][24])
 - Moved CI from Travis to Circle ([#25][25])
 
-## Version 6.1.1 _(2018-06-26)_
+#### Version 6.1.1 _(2018-06-26)_
 
 - Updated dependencies (includes fix for `Forbidden` errors from `hibp@7.1.3`)
 
-## Version 6.1.0 _(2018-05-23)_
+#### Version 6.1.0 _(2018-05-23)_
 
 - Made the progress spinner animation a little more fun and added status emojis
   (✔, ⚠, ✖) to some output ([#11][11])
 
-## Version 6.0.0 _(2018-03-13)_
+#### Version 6.0.0 _(2018-03-13)_
 
 - Upgraded `hibp` to v7 which handles password hashing and suffix processing,
   removing this logic from `pwned`.
@@ -36,7 +45,7 @@
 
 - Dropped support for Node < 6
 
-## Version 5.0.0 _(2018-02-25)_
+#### Version 5.0.0 _(2018-02-25)_
 
 - Refactored `pw` command to be secure by default (#8). Passwords will no longer
   be sent over the network. Instead, the first 5 characters of the SHA-1 hash of
@@ -51,76 +60,76 @@
   passwords will be taken literally and hashed. This is due to a remote API
   endpoint change which no longer performs automatic hash detection.
 
-## Version 4.0.3 _(2017-12-07)_
+#### Version 4.0.3 _(2017-12-07)_
 
 - Updated `hibp` to avoid Chromium download when running with `npx`
 
-## Version 4.0.2 _(2017-12-07)_
+#### Version 4.0.2 _(2017-12-07)_
 
 - Fixed `regeneratorRuntime is not defined` error :scream:
 - Reformated some documentation files
 - Updated dependencies
 
-## Version 4.0.1 _(2017-11-08)_
+#### Version 4.0.1 _(2017-11-08)_
 
 - Internal maintenance
 
-## Version 4.0.0 _(2017-10-24)_
+#### Version 4.0.0 _(2017-10-24)_
 
 - Migrated from commander to yargs (#6) :skull:
 - Added command suggestions if no matching command is found
 
-## Version 3.2.1 _(2017-10-17)_
+#### Version 3.2.1 _(2017-10-17)_
 
 - Fixed displaying help on unknown command (#4)
 - Replaced testing toolchain with jest (#5)
 - Removed Babel plugins
 - Updated dependencies
 
-## Version 3.2.0 _(2017-08-05)_
+#### Version 3.2.0 _(2017-08-05)_
 
 - Added new `pw` command to check if a password has been exposed in a data
   breach (#3)
 - Enabled `source-map-support` in the entry point for easier debugging
 
-## Version 3.1.2 _(2017-07-10)_
+#### Version 3.1.2 _(2017-07-10)_
 
 - Removed deprecated `preferGlobal` field from package.json
 - Updated dependencies
 
-## Version 3.1.1 _(2017-06-08)_
+#### Version 3.1.1 _(2017-06-08)_
 
 - Updated README to include `search` command
 
-## Version 3.1.0 _(2017-06-08)_
+#### Version 3.1.0 _(2017-06-08)_
 
 - Added new `search` command to query breaches and pastes simultaneously (like
   the search form on the [website][haveibeenpwned])
 - Optimized stub restores/resets in tests
 - Updated dependencies
 
-## Version 3.0.1 _(2017-01-04)_
+#### Version 3.0.1 _(2017-01-04)_
 
 - First release of 2017! :tada:
 - Removed leftover `es6-promise` dependency
 - Updated dependencies
 
-## Version 3.0.0 _(2016-11-08)_
+#### Version 3.0.0 _(2016-11-08)_
 
 - Dropped support for Node < 4
 - Updated dependencies
 
-## Version 2.0.2 _(2016-10-03)_
+#### Version 2.0.2 _(2016-10-03)_
 
 - Switched code style from SemiStandard to Airbnb
 - Improved/optimized tests
 - Updated dependencies
 
-## Version 2.0.1 _(2016-08-07)_
+#### Version 2.0.1 _(2016-08-07)_
 
 - Updated examples in README to reflect 2.0.0 changes
 
-## Version 2.0.0 _(2016-08-07)_
+#### Version 2.0.0 _(2016-08-07)_
 
 - Removed spinner output when command completes
 
@@ -141,47 +150,49 @@
 - Added tests
 - Updated dependencies
 
-## Version 1.0.8 _(2016-07-21)_
+#### Version 1.0.8 _(2016-07-21)_
 
 - Normalized command behavior (suppress output for empty results in raw mode)
 - Fixed usage output for unknown or missing commands
 - Restructured project
 - Updated dependencies
 
-## Version 1.0.7 _(2016-06-28)_
+#### Version 1.0.7 _(2016-06-28)_
 
 - Increased visibility in npm search
 - Minor improvements to development environment
 
-## Version 1.0.6 _(2016-04-29)_
+#### Version 1.0.6 _(2016-04-29)_
 
 - Fixed grammar typo in usage information
 
-## Version 1.0.5 _(2016-04-22)_
+#### Version 1.0.5 _(2016-04-22)_
 
 - Updated dependencies
 
-## Version 1.0.4 _(2016-04-12)_
+#### Version 1.0.4 _(2016-04-12)_
 
 - Updated hibp to 1.0.4
 
-## Version 1.0.3 _(2016-04-12)_
+#### Version 1.0.3 _(2016-04-12)_
 
 - Skipped (to bring version in line with hibp dependency)
 
-## Version 1.0.2 _(2016-04-10)_
+#### Version 1.0.2 _(2016-04-10)_
 
 - Updated hibp to 1.0.3
 
-## Version 1.0.1 _(2016-04-10)_
+#### Version 1.0.1 _(2016-04-10)_
 
 - Updated hibp to 1.0.2
 - Removed temporary hack for broken '[breach][singlebreach]' endpoint (moved to
   hibp)
 
-## Version 1.0.0 _(2016-04-09)_
+#### Version 1.0.0 _(2016-04-09)_
 
 - Initial release
+
+</details>
 
 [haveibeenpwned]: https://haveibeenpwned.com
 [singlebreach]: https://haveibeenpwned.com/API/v2#SingleBreach
