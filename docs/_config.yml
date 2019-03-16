@@ -1,0 +1,8 @@
+title: pwned
+description: A command-line tool for querying the 'Have I been pwned?' service.
+google_analytics:
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
