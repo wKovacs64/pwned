@@ -59,7 +59,7 @@
   },
   "homepage": "https://wkovacs64.github.io/pwned",
   "engines": {
-    "node": ">= 6.4.0"
+    "node": ">= 8"
   },
   "dependencies": {
     "hibp": "^7.5.0",
