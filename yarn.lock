@@ -1288,10 +1288,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/prettyjson@0.0.28":
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/@types/prettyjson/-/prettyjson-0.0.28.tgz#131a890ded6421b1b545f4510a4aeabc6d465275"
-  integrity sha1-ExqJDe1kIbG1RfRRCkrqvG1GUnU=
+"@types/prettyjson@0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/prettyjson/-/prettyjson-0.0.29.tgz#3d9176d583e1839aa5c83b088487003652ce38ff"
+  integrity sha512-Zu4jAKE46yc6R8JrVkCBWbXhs18dUgI/JlbID4jziFgUBgEdAHxFekR5TlEnk9phHdGE80QlCznRBaxlk0rl7w==
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
