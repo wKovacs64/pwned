@@ -81,7 +81,7 @@
     "@types/ora": "3.1.0",
     "@types/prettyjson": "0.0.29",
     "@types/yargs": "12.0.11",
-    "@typescript-eslint/eslint-plugin": "1.5.0",
+    "@typescript-eslint/eslint-plugin": "1.6.0",
     "@wkovacs64/eslint-config-ts": "2.0.0",
     "babel-jest": "24.6.0",
     "codecov": "3.2.0",
