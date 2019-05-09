@@ -74,7 +74,7 @@
     "@babel/parser": "7.4.4",
     "@babel/preset-env": "7.4.4",
     "@babel/preset-typescript": "7.3.3",
-    "@commitlint/cli": "7.6.0",
+    "@commitlint/cli": "7.6.1",
     "@commitlint/config-conventional": "7.6.0",
     "@types/jest": "24.0.12",
     "@types/node": "10.14.6",
