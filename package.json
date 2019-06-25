@@ -97,7 +97,7 @@
     "npm-run-all": "4.1.5",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
-    "semantic-release": "15.13.16",
+    "semantic-release": "15.13.17",
     "typescript": "3.5.2"
   }
 }
