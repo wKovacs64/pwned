@@ -83,6 +83,7 @@
     "@types/yargs": "13.0.0",
     "@typescript-eslint/eslint-plugin": "1.11.0",
     "@wkovacs64/eslint-config-ts": "3.0.3",
+    "@wkovacs64/prettier-config": "1.0.2",
     "babel-jest": "24.8.0",
     "codecov": "3.5.0",
     "commitizen": "3.1.1",
