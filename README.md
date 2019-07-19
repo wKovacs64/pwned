@@ -32,12 +32,22 @@ Alternatively, you can run it on-demand using the [`npx`][npx] package runner:
 npx pwned
 ```
 
+## Protected Commands
+
+On July 18th, 2019, the haveibeenpwned.com API moved several services behind
+authentication, requiring an API key. See [Troy's blog post][api-key-blog-post]
+for rationale and a full explanation. In order to use some of `pwned` commands
+(e.g. `ba`, `pa`, and `search`), you will need to [get an API key][get-api-key]
+and run `pwned apiKey <your-key>` to configure `pwned`. The other commands do
+not require an API key and you may use them without obtaining one.
+
 ## Usage
 
 ```
 pwned <command>
 
 Commands:
+  pwned apiKey <key>            set the API key to be used for authenticated requests
   pwned ba <account|email>      get all breaches for an account (username or email address)
   pwned breach <name>           get a single breached site by breach name
   pwned breaches                get all breaches in the system
@@ -225,3 +235,6 @@ This tool is distributed under the [MIT License](LICENSE.txt).
   https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
 [search-by-range]:
   https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange
+[api-key-blog-post]:
+  https://www.troyhunt.com/authentication-and-the-have-i-been-pwned-api/
+[get-api-key]: https://haveibeenpwned.com/API/Key
