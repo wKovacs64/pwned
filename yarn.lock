@@ -4222,10 +4222,10 @@ has@^1.0.1, has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hibp@^7.5.2:
-  version "7.5.2"
-  resolved "https://registry.yarnpkg.com/hibp/-/hibp-7.5.2.tgz#f36b509141f5f4214cfac97bdad4eebacf486f3b"
-  integrity sha512-ikKMgiQX4AASt880h7YMkQW/pfOBd+wy904r62/7laCT9881cIiBGNle6Sy6Tx0uaUZ3vkV7AcIQYo6kyvpNiA==
+hibp@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/hibp/-/hibp-8.0.0.tgz#608bbb0f5083a35fc7dacc064bf888e386d66c7d"
+  integrity sha512-/6TPI/XjkAv2mIQzG0PlB+HDUdd5Tn6LHG+5aDelPcXYT9+bTMmQeVomsl6HzhmuvDdCNigZMF+MJanHyW1UgQ==
   dependencies:
     axios "^0.19.0"
     jssha "^2.3.1"
