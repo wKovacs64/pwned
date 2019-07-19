@@ -1,6 +1,9 @@
 import { Argv, CommandBuilder } from 'yargs';
 import { pasteAccount } from 'hibp';
 import prettyjson from 'prettyjson';
+import { oneLine } from 'common-tags';
+import config from '../utils/config';
+import translateApiError from '../utils/translateApiError';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import userAgent from '../utils/ua';
@@ -40,7 +43,10 @@ export const builder: CommandBuilder<
       default: false,
     })
     .group(['r'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:');
+    .group(['h', 'v'], 'Global Options:').epilog(oneLine`
+      🔑 This command requires an API key. Make sure you've run the "apiKey"
+      command first.
+    `);
 
 /**
  * Fetches and outputs all pastes for an account (email address).
@@ -59,7 +65,10 @@ export const handler = async ({
   }
 
   try {
-    const pasteData = await pasteAccount(email, { userAgent });
+    const pasteData = await pasteAccount(email, {
+      apiKey: config.get('apiKey'),
+      userAgent,
+    });
     if (pasteData && raw) {
       logger.log(JSON.stringify(pasteData));
     } else if (pasteData) {
@@ -69,10 +78,11 @@ export const handler = async ({
       spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err) {
+    const errMsg = translateApiError(err.message);
     if (!raw) {
-      spinner.fail(err.message);
+      spinner.fail(errMsg);
     } else {
-      logger.error(err.message);
+      logger.error(errMsg);
     }
   }
 };

@@ -1,6 +1,9 @@
 import { Argv, CommandBuilder } from 'yargs';
 import { breachedAccount } from 'hibp';
 import prettyjson from 'prettyjson';
+import { oneLine } from 'common-tags';
+import config from '../utils/config';
+import translateApiError from '../utils/translateApiError';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import userAgent from '../utils/ua';
@@ -65,7 +68,10 @@ export const builder: CommandBuilder<
       default: false,
     })
     .group(['d', 'i', 't', 'r'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:');
+    .group(['h', 'v'], 'Global Options:').epilog(oneLine`
+      🔑 This command requires an API key. Make sure you've run the "apiKey"
+      command first.
+    `);
 
 /**
  * Fetches and outputs breach data for the specified account.
@@ -94,6 +100,7 @@ export const handler = async ({
 
   try {
     const breachData = await breachedAccount(account.trim(), {
+      apiKey: config.get('apiKey'),
       domain,
       includeUnverified,
       truncate,
@@ -108,10 +115,11 @@ export const handler = async ({
       spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err) {
+    const errMsg = translateApiError(err.message);
     if (!raw) {
-      spinner.fail(err.message);
+      spinner.fail(errMsg);
     } else {
-      logger.error(err.message);
+      logger.error(errMsg);
     }
   }
 };
