@@ -62,6 +62,8 @@
     "node": ">= 8"
   },
   "dependencies": {
+    "common-tags": "^1.8.0",
+    "conf": "^5.0.0",
     "hibp": "^8.0.0",
     "ora": "^3.4.0",
     "prettyjson": "^1.2.1",
@@ -76,6 +78,7 @@
     "@babel/preset-typescript": "7.3.3",
     "@commitlint/cli": "8.1.0",
     "@commitlint/config-conventional": "8.1.0",
+    "@types/common-tags": "1.8.0",
     "@types/jest": "24.0.15",
     "@types/node": "12.6.8",
     "@types/ora": "3.2.0",

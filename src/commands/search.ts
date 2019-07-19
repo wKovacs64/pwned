@@ -1,6 +1,9 @@
 import { Argv, CommandBuilder } from 'yargs';
 import { search } from 'hibp';
 import prettyjson from 'prettyjson';
+import { oneLine } from 'common-tags';
+import config from '../utils/config';
+import translateApiError from '../utils/translateApiError';
 import logger from '../utils/logger';
 import spinner from '../utils/spinner';
 import userAgent from '../utils/ua';
@@ -48,7 +51,7 @@ export const builder: CommandBuilder<
       alias: 'truncate',
       describe: 'truncate data to just the name of each breach',
       type: 'boolean',
-      default: false,
+      default: true,
     })
     .option('r', {
       alias: 'raw',
@@ -57,7 +60,10 @@ export const builder: CommandBuilder<
       default: false,
     })
     .group(['d', 't', 'r'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:');
+    .group(['h', 'v'], 'Global Options:').epilog(oneLine`
+      🔑 This command requires an API key. Make sure you've run the "apiKey"
+      command first.
+    `);
 
 /**
  * Fetches and outputs breach and paste data for the specified account.
@@ -67,7 +73,7 @@ export const builder: CommandBuilder<
  * @param {string} [argv.domainFilter] a domain by which to filter the results
  * (default: all domains)
  * @param {boolean} [argv.truncate] truncate the results to only include the
- * name of each breach (default: false)
+ * name of each breach (default: true)
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
@@ -82,7 +88,12 @@ export const handler = async ({
   }
 
   try {
-    const searchData = await search(account, { domain, truncate, userAgent });
+    const searchData = await search(account, {
+      apiKey: config.get('apiKey'),
+      domain,
+      truncate,
+      userAgent,
+    });
     const foundData = !!(searchData.breaches || searchData.pastes);
     if (foundData && raw) {
       logger.log(JSON.stringify(searchData));
@@ -93,10 +104,11 @@ export const handler = async ({
       spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err) {
+    const errMsg = translateApiError(err.message);
     if (!raw) {
-      spinner.fail(err.message);
+      spinner.fail(errMsg);
     } else {
-      logger.error(err.message);
+      logger.error(errMsg);
     }
   }
 };
