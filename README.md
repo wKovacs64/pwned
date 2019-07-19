@@ -191,7 +191,7 @@ $ pwned pw Password1234
 Search both breaches and pastes for an account (truncating breach data):
 
 ```
-$ pwned search nobody -t
+$ pwned search nobody
 breaches:
   -
     Name: BattlefieldHeroes

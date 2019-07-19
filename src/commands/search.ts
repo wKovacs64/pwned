@@ -51,7 +51,7 @@ export const builder: CommandBuilder<
       alias: 'truncate',
       describe: 'truncate data to just the name of each breach',
       type: 'boolean',
-      default: false,
+      default: true,
     })
     .option('r', {
       alias: 'raw',
@@ -73,7 +73,7 @@ export const builder: CommandBuilder<
  * @param {string} [argv.domainFilter] a domain by which to filter the results
  * (default: all domains)
  * @param {boolean} [argv.truncate] truncate the results to only include the
- * name of each breach (default: false)
+ * name of each breach (default: true)
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
