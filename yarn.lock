@@ -942,7 +942,7 @@
     babel-runtime "^6.23.0"
     lodash "4.17.14"
 
-"@commitlint/load@^8.1.0":
+"@commitlint/load@>6.1.1", "@commitlint/load@^8.1.0":
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-8.1.0.tgz#63b72ae5bb9152b8fa5b17c5428053032a9a49c8"
   integrity sha512-ra02Dvmd7Gp1+uFLzTY3yGOpHjPzl5T9wYg/xrtPJNiOWXvQ0Mw7THw+ucd1M5iLUWjvdavv2N87YDRc428wHg==
@@ -2857,6 +2857,20 @@ cz-conventional-changelog@2.1.0:
     longest "^1.0.1"
     right-pad "^1.0.1"
     word-wrap "^1.0.3"
+
+cz-conventional-changelog@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/cz-conventional-changelog/-/cz-conventional-changelog-3.0.0.tgz#a510abf86418b739c12a3deb65c26c2d5d5ad0c0"
+  integrity sha512-d6yoDVs00HLXhq1EwRNLk1jUb+0TkTW4mGP7hHMQjDnkNFpLmJdte2Hqd4K34yYt3QZGQ9WPKW2e5tjMxvFsLA==
+  dependencies:
+    chalk "^2.4.1"
+    conventional-commit-types "^2.0.0"
+    lodash.map "^4.5.1"
+    longest "^1.0.1"
+    right-pad "^1.0.1"
+    word-wrap "^1.0.3"
+  optionalDependencies:
+    "@commitlint/load" ">6.1.1"
 
 dargs@^4.0.1:
   version "4.1.0"
