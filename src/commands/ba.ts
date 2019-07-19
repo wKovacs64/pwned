@@ -53,7 +53,7 @@ export const builder: CommandBuilder<
       alias: 'include-unverified',
       describe: 'include unverified breaches in the results',
       type: 'boolean',
-      default: false,
+      default: true,
     })
     .option('t', {
       alias: 'truncate',
@@ -81,7 +81,7 @@ export const builder: CommandBuilder<
  * @param {string} [argv.domainFilter] a domain by which to filter the results
  * (default: all domains)
  * @param {boolean} [argv.includeUnverified] include "unverified" breaches in
- * the results (by default, only verified breaches are included)
+ * the results (default: true)
  * @param {boolean} [argv.truncate] truncate the results to only include the
  * name of each breach (default: true)
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
