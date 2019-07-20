@@ -1509,23 +1509,23 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@wkovacs64/eslint-config-ts@3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-ts/-/eslint-config-ts-3.0.3.tgz#224557ab880c133f51c868d87c7d4a545af3fbc2"
-  integrity sha512-scyP5PvS1fsg/bCxjvF3Un21g6bU9q2ZVQJpjCR9WZ8bE4qSfsmLwrPsiJWqUpJgKwKPCnYVEomfPmMxKYR6yA==
+"@wkovacs64/eslint-config-ts@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-ts/-/eslint-config-ts-4.0.0.tgz#3994b2abe10a675b98bfcdf5ee6e6ec86e9af7f5"
+  integrity sha512-6UXrqZ1UYOwEco5MvNSJJjzWEpTuH/KWngup0R76CncAfinnGpsF4HXayF5hIs7d+KA5otuf3Cmvczhu6bWd9g==
   dependencies:
     "@typescript-eslint/parser" "^1.11.0"
-    "@wkovacs64/eslint-config" "^5.0.0"
+    "@wkovacs64/eslint-config" "^6.0.0"
     eslint-config-prettier "^6.0.0"
 
-"@wkovacs64/eslint-config@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config/-/eslint-config-5.0.0.tgz#b4793c6902e5f151cde9617a332cccecac3124f0"
-  integrity sha512-9VOKN1lLJJvPbRLam3ViUEA9alA1hXrBI+r3PGib7xcElJDokzmD0/D8dWGV/fbdhmKoSBB+x6h/udQmAPCZ0A==
+"@wkovacs64/eslint-config@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config/-/eslint-config-6.0.0.tgz#e7c97e3050f119889b9d6e855ec3c11f99dd9ed8"
+  integrity sha512-+KK2aa2XYLeqx2hIiWVjiz21tq3BHoJ4S9Bej3GcgbDjbDklHpprmEUDJGnLMCmO/ma14gFv9GBr54ZY8XIn3w==
   dependencies:
     babel-eslint "^10.0.1"
     eslint-config-airbnb-base "^13.1.0"
-    eslint-config-prettier "^5.0.0"
+    eslint-config-prettier "^6.0.0"
 
 "@wkovacs64/prettier-config@1.0.2":
   version "1.0.2"
@@ -3327,13 +3327,6 @@ eslint-config-airbnb-base@^13.1.0:
     eslint-restricted-globals "^0.1.1"
     object.assign "^4.1.0"
     object.entries "^1.0.4"
-
-eslint-config-prettier@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-5.0.0.tgz#f7a94b2b8ae7cbf25842c36fa96c6d32cd0a697c"
-  integrity sha512-c17Aqiz5e8LEqoc/QPmYnaxQFAHTx2KlCZBPxXXjEMmNchOLnV/7j0HoPZuC+rL/tDC9bazUYOKJW9bOhftI/w==
-  dependencies:
-    get-stdin "^6.0.0"
 
 eslint-config-prettier@^6.0.0:
   version "6.0.0"
