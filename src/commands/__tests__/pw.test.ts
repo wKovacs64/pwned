@@ -6,13 +6,13 @@ import {
   NOT_FOUND,
   ERROR,
   ERROR_MSG,
-} from '../../test/fixtures';
-import mockLogger, { Logger, LoggerFunction } from '../utils/logger';
-import mockSpinner from '../utils/spinner';
-import { handler as pw } from './pw';
+} from '../../../test/fixtures';
+import mockLogger, { Logger, LoggerFunction } from '../../utils/logger';
+import mockSpinner from '../../utils/spinner';
+import { handler as pw } from '../pw';
 
-jest.mock('../utils/logger');
-jest.mock('../utils/spinner');
+jest.mock('../../utils/logger');
+jest.mock('../../utils/spinner');
 
 const hibp = origHibp as jest.Mocked<typeof origHibp>;
 const logger = mockLogger as Logger & {
