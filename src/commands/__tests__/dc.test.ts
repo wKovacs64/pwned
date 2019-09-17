@@ -1,4 +1,4 @@
-import * as origHibp from 'hibp';
+import * as hibp from 'hibp';
 import {
   spinnerFns,
   loggerFns,
@@ -14,7 +14,7 @@ jest.mock('hibp');
 jest.mock('../../utils/logger');
 jest.mock('../../utils/spinner');
 
-const hibp = origHibp as jest.Mocked<typeof origHibp>;
+const mockHibp = hibp as jest.Mocked<typeof hibp>;
 const logger = mockLogger as Logger & {
   [key: string]: jest.Mocked<LoggerFunction>;
 };
@@ -33,7 +33,7 @@ describe('command: dc', () => {
     it('with data: calls spinner.stop and logger.log', async () => {
       expect(spinner.stop).toHaveBeenCalledTimes(0);
       expect(logger.log).toHaveBeenCalledTimes(0);
-      hibp.dataClasses.mockImplementationOnce(async () => DATA_CLASSES);
+      mockHibp.dataClasses.mockImplementationOnce(async () => DATA_CLASSES);
       await dc({ raw: false });
       expect(spinner.stop).toHaveBeenCalledTimes(1);
       expect(logger.log).toHaveBeenCalledTimes(1);
@@ -42,7 +42,7 @@ describe('command: dc', () => {
     it('without data: only calls spinner.fail', async () => {
       expect(spinner.fail).toHaveBeenCalledTimes(0);
       loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
-      hibp.dataClasses.mockImplementationOnce(() =>
+      mockHibp.dataClasses.mockImplementationOnce(() =>
         Promise.resolve(EMPTY_ARRAY),
       );
       await dc({ raw: false });
@@ -53,7 +53,7 @@ describe('command: dc', () => {
     it('on error: only calls spinner.fail', async () => {
       expect(spinner.fail).toHaveBeenCalledTimes(0);
       loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
-      hibp.dataClasses.mockImplementationOnce(() =>
+      mockHibp.dataClasses.mockImplementationOnce(() =>
         Promise.reject(new Error(ERROR_MSG)),
       );
       await dc({ raw: false });
@@ -72,7 +72,7 @@ describe('command: dc', () => {
     it('with data: only calls logger.log', async () => {
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
-      hibp.dataClasses.mockImplementationOnce(async () => DATA_CLASSES);
+      mockHibp.dataClasses.mockImplementationOnce(async () => DATA_CLASSES);
       await dc({ raw: true });
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
@@ -81,7 +81,7 @@ describe('command: dc', () => {
     it('without data: does not call any spinner or logger methods', async () => {
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);
-      hibp.dataClasses.mockImplementationOnce(() =>
+      mockHibp.dataClasses.mockImplementationOnce(() =>
         Promise.resolve(EMPTY_ARRAY),
       );
       await dc({ raw: true });
@@ -92,7 +92,7 @@ describe('command: dc', () => {
     it('on error: only calls logger.error', async () => {
       spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);
-      hibp.dataClasses.mockImplementationOnce(() =>
+      mockHibp.dataClasses.mockImplementationOnce(() =>
         Promise.reject(new Error(ERROR_MSG)),
       );
       await dc({ raw: true });

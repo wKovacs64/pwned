@@ -1,4 +1,4 @@
-import * as origHibp from 'hibp';
+import * as hibp from 'hibp';
 import {
   spinnerFns,
   loggerFns,
@@ -16,7 +16,7 @@ jest.mock('hibp');
 jest.mock('../../utils/logger');
 jest.mock('../../utils/spinner');
 
-const hibp = origHibp as jest.Mocked<typeof origHibp>;
+const mockHibp = hibp as jest.Mocked<typeof hibp>;
 const logger = mockLogger as Logger & {
   [key: string]: jest.Mocked<LoggerFunction>;
 };
@@ -26,7 +26,7 @@ const spinner = mockSpinner as typeof mockSpinner & {
 
 describe('command: pa', () => {
   beforeAll(() => {
-    hibp.pasteAccount.mockImplementation(async email => {
+    mockHibp.pasteAccount.mockImplementation(async email => {
       if (email === FOUND) {
         return PASTES;
       }
