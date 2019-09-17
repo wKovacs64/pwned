@@ -88,7 +88,7 @@
     "babel-jest": "24.9.0",
     "codecov": "3.5.0",
     "commitizen": "4.0.3",
-    "cross-env": "5.2.1",
+    "cross-env": "6.0.0",
     "cz-conventional-changelog": "3.0.2",
     "eslint": "6.4.0",
     "eslint-plugin-wkovacs64": "2.0.3",
