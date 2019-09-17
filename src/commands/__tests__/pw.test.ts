@@ -11,6 +11,7 @@ import mockLogger, { Logger, LoggerFunction } from '../../utils/logger';
 import mockSpinner from '../../utils/spinner';
 import { handler as pw } from '../pw';
 
+jest.mock('hibp');
 jest.mock('../../utils/logger');
 jest.mock('../../utils/spinner');
 
