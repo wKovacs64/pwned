@@ -99,6 +99,6 @@
     "prettier": "1.19.1",
     "rimraf": "3.0.0",
     "semantic-release": "15.13.31",
-    "typescript": "3.7.2"
+    "typescript": "3.7.3"
   }
 }
