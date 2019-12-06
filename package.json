@@ -71,10 +71,10 @@
     "yargs": "^15.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.7.4",
-    "@babel/core": "7.7.4",
-    "@babel/parser": "7.7.4",
-    "@babel/preset-env": "7.7.4",
+    "@babel/cli": "7.7.5",
+    "@babel/core": "7.7.5",
+    "@babel/parser": "7.7.5",
+    "@babel/preset-env": "7.7.5",
     "@babel/preset-typescript": "7.7.4",
     "@commitlint/cli": "8.2.0",
     "@commitlint/config-conventional": "8.2.0",
