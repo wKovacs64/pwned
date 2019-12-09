@@ -80,7 +80,7 @@
     "@commitlint/config-conventional": "8.2.0",
     "@types/common-tags": "1.8.0",
     "@types/jest": "24.0.23",
-    "@types/node": "12.12.14",
+    "@types/node": "12.12.15",
     "@types/ora": "3.2.0",
     "@types/prettyjson": "0.0.29",
     "@types/yargs": "13.0.3",
