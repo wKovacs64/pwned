@@ -83,7 +83,7 @@
     "@types/node": "12.12.24",
     "@types/ora": "3.2.0",
     "@types/prettyjson": "0.0.29",
-    "@types/yargs": "13.0.5",
+    "@types/yargs": "15.0.0",
     "@wkovacs64/prettier-config": "1.0.2",
     "babel-jest": "24.9.0",
     "codecov": "3.6.1",
