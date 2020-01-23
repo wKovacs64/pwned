@@ -86,7 +86,7 @@
     "@types/yargs": "15.0.1",
     "@wkovacs64/prettier-config": "1.0.2",
     "babel-jest": "25.1.0",
-    "codecov": "3.6.1",
+    "codecov": "3.6.2",
     "commitizen": "4.0.3",
     "cross-env": "6.0.3",
     "cz-conventional-changelog": "3.0.2",
