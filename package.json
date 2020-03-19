@@ -59,7 +59,7 @@
   },
   "homepage": "https://wkovacs64.github.io/pwned",
   "engines": {
-    "node": ">= 8"
+    "node": ">= 10"
   },
   "dependencies": {
     "common-tags": "^1.8.0",
