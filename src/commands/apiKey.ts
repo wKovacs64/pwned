@@ -21,7 +21,7 @@ export const builder: CommandBuilder<
   yargs
     .positional('key', { type: 'string' })
     .demandOption('key')
-    .check(argv => {
+    .check((argv) => {
       if (!argv.key.length) {
         throw new Error('The key argument must not be empty.');
       }

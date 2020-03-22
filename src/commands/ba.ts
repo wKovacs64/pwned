@@ -38,7 +38,7 @@ export const builder: CommandBuilder<
       type: 'string',
     })
     .demandOption('account')
-    .check(argv => {
+    .check((argv) => {
       if (!argv.account.length) {
         throw new Error('The account argument must not be empty.');
       }

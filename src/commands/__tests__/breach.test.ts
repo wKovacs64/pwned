@@ -26,7 +26,7 @@ const spinner = mockSpinner as typeof mockSpinner & {
 
 describe('command: breach', () => {
   beforeAll(() => {
-    mockHibp.breach.mockImplementation(async breachName => {
+    mockHibp.breach.mockImplementation(async (breachName) => {
       if (breachName === FOUND) {
         return BREACH;
       }
@@ -57,18 +57,18 @@ describe('command: breach', () => {
 
     it('without data: only calls spinner.succeed', async () => {
       expect(spinner.succeed).toHaveBeenCalledTimes(0);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await breach({ name: NOT_FOUND, raw: false });
       expect(spinner.succeed).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
     it('on error: only calls spinner.fail', async () => {
       expect(spinner.fail).toHaveBeenCalledTimes(0);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await breach({ name: ERROR, raw: false });
       expect(spinner.fail).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
   });
 
@@ -80,23 +80,23 @@ describe('command: breach', () => {
     });
 
     it('with data: only calls logger.log', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
       await breach({ name: FOUND, raw: true });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
     it('without data: does not call any spinner or logger methods', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await breach({ name: NOT_FOUND, raw: true });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
     it('on error: only calls logger.error', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);
       await breach({ name: ERROR, raw: true });
       expect(logger.error).toHaveBeenCalledTimes(1);

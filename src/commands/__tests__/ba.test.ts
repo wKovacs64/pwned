@@ -27,7 +27,7 @@ const spinner = mockSpinner as typeof mockSpinner & {
 
 describe('command: ba', () => {
   beforeAll(() => {
-    mockHibp.breachedAccount.mockImplementation(async account => {
+    mockHibp.breachedAccount.mockImplementation(async (account) => {
       if (account === FOUND) {
         return BREACHES;
       }
@@ -70,7 +70,7 @@ describe('command: ba', () => {
 
     it('without data: only calls spinner.succeed', async () => {
       expect(spinner.succeed).toHaveBeenCalledTimes(0);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await ba({
         account: NOT_FOUND,
         domainFilter: NONE,
@@ -79,12 +79,12 @@ describe('command: ba', () => {
         raw: false,
       });
       expect(spinner.succeed).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
     it('on error: only calls spinner.fail', async () => {
       expect(spinner.fail).toHaveBeenCalledTimes(0);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await ba({
         account: ERROR,
         domainFilter: NONE,
@@ -93,7 +93,7 @@ describe('command: ba', () => {
         raw: false,
       });
       expect(spinner.fail).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
   });
 
@@ -111,7 +111,7 @@ describe('command: ba', () => {
     });
 
     it('with data: only calls logger.log', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
       await ba({
         account: FOUND,
@@ -120,13 +120,13 @@ describe('command: ba', () => {
         truncate: false,
         raw: true,
       });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
     it('without data: does not call any spinner or logger methods', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await ba({
         account: NOT_FOUND,
         domainFilter: NONE,
@@ -134,12 +134,12 @@ describe('command: ba', () => {
         truncate: false,
         raw: true,
       });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
     it('on error: only calls logger.error', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);
       await ba({
         account: ERROR,
@@ -148,7 +148,7 @@ describe('command: ba', () => {
         truncate: false,
         raw: true,
       });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
   });

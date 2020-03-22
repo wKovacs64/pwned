@@ -58,18 +58,18 @@ describe('command: breaches', () => {
 
     it('without data: only calls spinner.succeed', async () => {
       expect(spinner.succeed).toHaveBeenCalledTimes(0);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await breaches({ domainFilter: NOT_FOUND, raw: false });
       expect(spinner.succeed).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
     it('on error: only calls spinner.fail', async () => {
       expect(spinner.fail).toHaveBeenCalledTimes(0);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await breaches({ domainFilter: ERROR, raw: false });
       expect(spinner.fail).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
   });
 
@@ -81,26 +81,26 @@ describe('command: breaches', () => {
     });
 
     it('with data: only calls logger.log', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
       await breaches({ domainFilter: FOUND, raw: true });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
     it('without data: does not call any spinner or logger methods', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await breaches({ domainFilter: NOT_FOUND, raw: true });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
     it('on error: only calls logger.error', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);
       await breaches({ domainFilter: ERROR, raw: true });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
   });
