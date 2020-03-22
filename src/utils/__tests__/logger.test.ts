@@ -30,7 +30,7 @@ describe('util: logger', () => {
 
   it('calls the corresponding console functions with the same arguments', () => {
     const args = ['Wubba lubba dub dub!', { param: 'value' }];
-    loggerFns.forEach(fn => {
+    loggerFns.forEach((fn) => {
       const orig = indexableConsole[fn];
       // eslint-disable-next-line jest/prefer-spy-on
       indexableConsole[fn] = jest.fn();

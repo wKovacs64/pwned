@@ -28,7 +28,7 @@ export const builder: CommandBuilder<
       type: 'string',
     })
     .demand('password')
-    .check(argv => {
+    .check((argv) => {
       if (!argv.password.length) {
         throw new Error('The password argument must not be empty.');
       }

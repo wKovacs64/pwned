@@ -27,7 +27,7 @@ export const builder: CommandBuilder<
       type: 'string',
     })
     .demandOption('name')
-    .check(argv => {
+    .check((argv) => {
       if (!argv.name.length) {
         throw new Error('The name argument must not be empty.');
       }

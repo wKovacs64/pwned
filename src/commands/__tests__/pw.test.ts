@@ -25,7 +25,7 @@ const spinner = mockSpinner as typeof mockSpinner & {
 
 describe('command: pw', () => {
   beforeAll(() => {
-    mockHibp.pwnedPassword.mockImplementation(async password => {
+    mockHibp.pwnedPassword.mockImplementation(async (password) => {
       if (password === FOUND) {
         return 3;
       }
@@ -51,23 +51,23 @@ describe('command: pw', () => {
       expect(logger.log).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND, raw: false });
       expect(spinner.warn).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
     it('without data: only calls spinner.succeed', async () => {
       expect(spinner.succeed).toHaveBeenCalledTimes(0);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await pw({ password: NOT_FOUND, raw: false });
       expect(spinner.succeed).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
     it('on error: only calls spinner.fail', async () => {
       expect(spinner.fail).toHaveBeenCalledTimes(0);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await pw({ password: ERROR, raw: false });
       expect(spinner.fail).toHaveBeenCalledTimes(1);
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
   });
 
@@ -79,26 +79,26 @@ describe('command: pw', () => {
     });
 
     it('with data: only calls logger.log', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND, raw: true });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
     it('without data: only calls logger.log', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
-      loggerFns.forEach(fn => expect(logger[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await pw({ password: NOT_FOUND, raw: true });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
     it('on error: only calls logger.error', async () => {
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);
       await pw({ password: ERROR, raw: true });
-      spinnerFns.forEach(fn => expect(spinner[fn]).toHaveBeenCalledTimes(0));
+      spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
   });
