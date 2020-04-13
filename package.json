@@ -84,7 +84,7 @@
     "@types/ora": "3.2.0",
     "@types/prettyjson": "0.0.29",
     "@types/yargs": "15.0.4",
-    "@wkovacs64/prettier-config": "2.0.0",
+    "@wkovacs64/prettier-config": "3.0.0",
     "babel-jest": "25.3.0",
     "codecov": "3.6.5",
     "commitizen": "4.0.4",
