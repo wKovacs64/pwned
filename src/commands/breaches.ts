@@ -1,9 +1,7 @@
 import { Argv, CommandBuilder } from 'yargs';
 import { breaches } from 'hibp';
 import prettyjson from 'prettyjson';
-import logger from '../utils/logger';
-import spinner from '../utils/spinner';
-import userAgent from '../utils/ua';
+import { logger, spinner, userAgent } from '../utils';
 
 export const command = 'breaches';
 export const describe = 'get all breaches in the system';

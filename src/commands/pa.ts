@@ -2,11 +2,8 @@ import { Argv, CommandBuilder } from 'yargs';
 import { pasteAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
-import config from '../utils/config';
-import translateApiError from '../utils/translateApiError';
-import logger from '../utils/logger';
-import spinner from '../utils/spinner';
-import userAgent from '../utils/ua';
+import { config } from '../config';
+import { logger, spinner, translateApiError, userAgent } from '../utils';
 
 export const command = 'pa <email>';
 export const describe = 'get all pastes for an account (email address)';
