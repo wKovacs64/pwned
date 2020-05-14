@@ -12,7 +12,7 @@ export interface Logger {
  * Default console logging wrapper to facilitate mocking/suppressing output
  * during tests.
  */
-const logger: Logger = {
+export const logger: Logger = {
   error: (...args) => {
     console.error(...args);
   },
@@ -26,5 +26,3 @@ const logger: Logger = {
     console.warn(...args);
   },
 };
-
-export default logger;

@@ -1,6 +1,6 @@
 import { oneLine } from 'common-tags';
 
-const translateApiError = (originalMessage: string): string => {
+export const translateApiError = (originalMessage: string): string => {
   const errMsg = /hibp-api-key/.test(originalMessage)
     ? oneLine`
         Access denied due to invalid or missing API key. Please obtain an API
@@ -11,5 +11,3 @@ const translateApiError = (originalMessage: string): string => {
 
   return errMsg;
 };
-
-export default translateApiError;

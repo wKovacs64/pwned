@@ -9,13 +9,16 @@ import {
   ERROR_MSG,
   NONE,
 } from '../../../test/fixtures';
-import mockLogger, { Logger, LoggerFunction } from '../../utils/logger';
-import mockSpinner from '../../utils/spinner';
+import {
+  logger as mockLogger,
+  spinner as mockSpinner,
+  Logger,
+  LoggerFunction,
+} from '../../utils';
 import { handler as ba } from '../ba';
 
 jest.mock('hibp');
-jest.mock('../../utils/logger');
-jest.mock('../../utils/spinner');
+jest.mock('../../utils');
 
 const mockHibp = hibp as jest.Mocked<typeof hibp>;
 const logger = mockLogger as Logger & {

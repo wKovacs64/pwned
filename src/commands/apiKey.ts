@@ -1,7 +1,7 @@
 import { Argv, CommandBuilder } from 'yargs';
 import { oneLine } from 'common-tags';
-import config from '../utils/config';
-import logger from '../utils/logger';
+import { config } from '../config';
+import { logger } from '../utils';
 
 export const command = 'apiKey <key>';
 export const describe = 'set the API key to be used for authenticated requests';
