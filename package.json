@@ -79,7 +79,7 @@
     "@commitlint/cli": "9.0.1",
     "@commitlint/config-conventional": "9.0.1",
     "@types/common-tags": "1.8.0",
-    "@types/jest": "26.0.2",
+    "@types/jest": "26.0.3",
     "@types/node": "12.12.47",
     "@types/ora": "3.2.0",
     "@types/prettyjson": "0.0.29",
