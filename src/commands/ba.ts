@@ -1,4 +1,4 @@
-import { Argv, CommandBuilder } from 'yargs';
+import { Argv } from 'yargs';
 import { breachedAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
@@ -25,11 +25,9 @@ interface BaHandlerOptions {
   raw?: boolean;
 }
 
-export const builder: CommandBuilder<
-  BaArgvOptions,
-  BaHandlerOptions
-> /* istanbul ignore next */ = (yargs): Argv<BaHandlerOptions> =>
-  yargs
+/* istanbul ignore next */
+export function builder(yargs: Argv<BaArgvOptions>): Argv<BaHandlerOptions> {
+  return yargs
     .positional('account', {
       alias: 'email',
       type: 'string',
@@ -69,6 +67,7 @@ export const builder: CommandBuilder<
       🔑 This command requires an API key. Make sure you've run the "apiKey"
       command first.
     `);
+}
 
 /**
  * Fetches and outputs breach data for the specified account.
@@ -84,13 +83,13 @@ export const builder: CommandBuilder<
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({
+export async function handler({
   account,
   domainFilter: domain,
   includeUnverified,
   truncate,
   raw,
-}: BaHandlerOptions): Promise<void> => {
+}: BaHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -119,4 +118,4 @@ export const handler = async ({
       logger.error(errMsg);
     }
   }
-};
+}

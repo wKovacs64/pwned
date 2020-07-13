@@ -1,4 +1,4 @@
-import { Argv, CommandBuilder } from 'yargs';
+import { Argv } from 'yargs';
 import { pasteAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
@@ -18,11 +18,9 @@ interface PaHandlerOptions {
   raw?: boolean;
 }
 
-export const builder: CommandBuilder<
-  PaArgvOptions,
-  PaHandlerOptions
-> /* istanbul ignore next */ = (yargs): Argv<PaHandlerOptions> =>
-  yargs
+/* istanbul ignore next */
+export function builder(yargs: Argv<PaArgvOptions>): Argv<PaHandlerOptions> {
+  return yargs
     .positional('email', {
       type: 'string',
     })
@@ -44,6 +42,7 @@ export const builder: CommandBuilder<
       🔑 This command requires an API key. Make sure you've run the "apiKey"
       command first.
     `);
+}
 
 /**
  * Fetches and outputs all pastes for an account (email address).
@@ -53,10 +52,7 @@ export const builder: CommandBuilder<
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({
-  email,
-  raw,
-}: PaHandlerOptions): Promise<void> => {
+export async function handler({ email, raw }: PaHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -82,4 +78,4 @@ export const handler = async ({
       logger.error(errMsg);
     }
   }
-};
+}

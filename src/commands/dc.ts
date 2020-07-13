@@ -1,4 +1,4 @@
-import { Argv, CommandBuilder } from 'yargs';
+import { Argv } from 'yargs';
 import { dataClasses } from 'hibp';
 import prettyjson from 'prettyjson';
 import { logger, spinner, userAgent } from '../utils';
@@ -14,11 +14,9 @@ interface DcHandlerOptions {
   raw?: boolean;
 }
 
-export const builder: CommandBuilder<
-  DcArgvOptions,
-  DcHandlerOptions
-> /* istanbul ignore next */ = (yargs): Argv<DcHandlerOptions> =>
-  yargs
+/* istanbul ignore next */
+export function builder(yargs: Argv<DcArgvOptions>): Argv<DcHandlerOptions> {
+  return yargs
     .option('r', {
       describe: 'output the raw JSON data',
       type: 'boolean',
@@ -27,6 +25,7 @@ export const builder: CommandBuilder<
     .alias('r', 'raw')
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
+}
 
 /**
  * Fetches and outputs all data classes in the system.
@@ -35,7 +34,7 @@ export const builder: CommandBuilder<
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({ raw }: DcHandlerOptions): Promise<void> => {
+export async function handler({ raw }: DcHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -61,4 +60,4 @@ export const handler = async ({ raw }: DcHandlerOptions): Promise<void> => {
       logger.error(err.message);
     }
   }
-};
+}

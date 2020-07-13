@@ -1,4 +1,4 @@
-import { Argv, CommandBuilder } from 'yargs';
+import { Argv } from 'yargs';
 import { oneLine } from 'common-tags';
 import { config } from '../config';
 import { logger } from '../utils';
@@ -14,11 +14,11 @@ interface ApiKeyHandlerOptions {
   key: string;
 }
 
-export const builder: CommandBuilder<
-  ApiKeyArgvOptions,
-  ApiKeyHandlerOptions
-> /* istanbul ignore next */ = (yargs): Argv<ApiKeyHandlerOptions> =>
-  yargs
+/* istanbul ignore next */
+export function builder(
+  yargs: Argv<ApiKeyArgvOptions>,
+): Argv<ApiKeyHandlerOptions> {
+  return yargs
     .positional('key', { type: 'string' })
     .demandOption('key')
     .check((argv) => {
@@ -31,6 +31,7 @@ export const builder: CommandBuilder<
       Please obtain an API key from https://haveibeenpwned.com/API/Key and then
       run "pwned apiKey <key>" to configure pwned.
     `);
+}
 
 /**
  * Stores the user's specified API key to be used for future requests to
@@ -40,7 +41,7 @@ export const builder: CommandBuilder<
  * @param {string} argv.key the user's API key
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({ key }: ApiKeyHandlerOptions): Promise<void> => {
+export async function handler({ key }: ApiKeyHandlerOptions): Promise<void> {
   try {
     config.set('apiKey', key);
     if (config.get('apiKey') === key) {
@@ -57,4 +58,4 @@ export const handler = async ({ key }: ApiKeyHandlerOptions): Promise<void> => {
   } catch (err) {
     logger.error(err.message);
   }
-};
+}
