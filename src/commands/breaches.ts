@@ -1,4 +1,4 @@
-import { Argv, CommandBuilder } from 'yargs';
+import { Argv } from 'yargs';
 import { breaches } from 'hibp';
 import prettyjson from 'prettyjson';
 import { logger, spinner, userAgent } from '../utils';
@@ -16,11 +16,11 @@ interface BreachesHandlerOptions {
   raw?: boolean;
 }
 
-export const builder: CommandBuilder<
-  BreachesArgvOptions,
-  BreachesHandlerOptions
-> /* istanbul ignore next */ = (yargs): Argv<BreachesHandlerOptions> =>
-  yargs
+/* istanbul ignore next */
+export function builder(
+  yargs: Argv<BreachesArgvOptions>,
+): Argv<BreachesHandlerOptions> {
+  return yargs
     .option('d', {
       describe: 'filter breach data by domain',
       type: 'string',
@@ -34,6 +34,7 @@ export const builder: CommandBuilder<
     .alias('r', 'raw')
     .group(['d', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
+}
 
 /**
  * Fetches and outputs all breached sites in the system.
@@ -44,10 +45,10 @@ export const builder: CommandBuilder<
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({
+export async function handler({
   domainFilter: domain,
   raw,
-}: BreachesHandlerOptions): Promise<void> => {
+}: BreachesHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -69,4 +70,4 @@ export const handler = async ({
       logger.error(err.message);
     }
   }
-};
+}

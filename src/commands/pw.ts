@@ -1,4 +1,4 @@
-import { Argv, CommandBuilder } from 'yargs';
+import { Argv } from 'yargs';
 import { pwnedPassword } from 'hibp';
 import { logger, spinner, userAgent } from '../utils';
 
@@ -15,13 +15,9 @@ interface PwHandlerOptions {
   raw?: boolean;
 }
 
-export const builder: CommandBuilder<
-  PwArgvOptions,
-  PwHandlerOptions
-> /* istanbul ignore next */ = (
-  yargs: Argv<PwArgvOptions>,
-): Argv<PwHandlerOptions> =>
-  yargs
+/* istanbul ignore next */
+export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
+  return yargs
     .positional('password', {
       type: 'string',
     })
@@ -40,6 +36,7 @@ export const builder: CommandBuilder<
     })
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
+}
 
 /**
  * Securely fetches the number of times the given password has been exposed in a
@@ -50,10 +47,10 @@ export const builder: CommandBuilder<
  * @param {boolean} [argv.raw] disable the console spinner (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({
+export async function handler({
   password,
   raw,
-}: PwHandlerOptions): Promise<void> => {
+}: PwHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -82,4 +79,4 @@ export const handler = async ({
       logger.error(err.message);
     }
   }
-};
+}

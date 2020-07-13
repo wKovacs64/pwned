@@ -1,4 +1,4 @@
-import { Argv, CommandBuilder } from 'yargs';
+import { Argv } from 'yargs';
 import { breach } from 'hibp';
 import prettyjson from 'prettyjson';
 import { logger, spinner, userAgent } from '../utils';
@@ -16,11 +16,11 @@ interface BreachHandlerOptions {
   raw?: boolean;
 }
 
-export const builder: CommandBuilder<
-  BreachArgvOptions,
-  BreachHandlerOptions
-> /* istanbul ignore next */ = (yargs): Argv<BreachHandlerOptions> =>
-  yargs
+/* istanbul ignore next */
+export function builder(
+  yargs: Argv<BreachArgvOptions>,
+): Argv<BreachHandlerOptions> {
+  return yargs
     .positional('name', {
       type: 'string',
     })
@@ -39,6 +39,7 @@ export const builder: CommandBuilder<
     })
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
+}
 
 /**
  * Fetches and outputs breach data for a single site by breach name.
@@ -48,10 +49,10 @@ export const builder: CommandBuilder<
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({
+export async function handler({
   name,
   raw,
-}: BreachHandlerOptions): Promise<void> => {
+}: BreachHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -73,4 +74,4 @@ export const handler = async ({
       logger.error(err.message);
     }
   }
-};
+}

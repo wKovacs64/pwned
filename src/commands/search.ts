@@ -1,4 +1,4 @@
-import { Argv, CommandBuilder } from 'yargs';
+import { Argv } from 'yargs';
 import { search } from 'hibp';
 import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
@@ -23,11 +23,11 @@ interface SearchHandlerOptions {
   raw?: boolean;
 }
 
-export const builder: CommandBuilder<
-  SearchArgvOptions,
-  SearchHandlerOptions
-> /* istanbul ignore next */ = (yargs): Argv<SearchHandlerOptions> =>
-  yargs
+/* istanbul ignore next */
+export function builder(
+  yargs: Argv<SearchArgvOptions>,
+): Argv<SearchHandlerOptions> {
+  return yargs
     .positional('account', {
       alias: 'email',
       type: 'string',
@@ -61,6 +61,7 @@ export const builder: CommandBuilder<
       🔑 This command requires an API key. Make sure you've run the "apiKey"
       command first.
     `);
+}
 
 /**
  * Fetches and outputs breach and paste data for the specified account.
@@ -74,12 +75,12 @@ export const builder: CommandBuilder<
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export const handler = async ({
+export async function handler({
   account,
   domainFilter: domain,
   truncate,
   raw,
-}: SearchHandlerOptions): Promise<void> => {
+}: SearchHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -108,4 +109,4 @@ export const handler = async ({
       logger.error(errMsg);
     }
   }
-};
+}
