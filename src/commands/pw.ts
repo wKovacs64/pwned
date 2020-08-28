@@ -72,11 +72,14 @@ export async function handler({
         logger.log(successMessage);
       }
     }
-  } catch (err) {
-    if (!raw) {
-      spinner.fail(err.message);
-    } else {
-      logger.error(err.message);
+  } catch (err: unknown) {
+    /* istanbul ignore else */
+    if (err instanceof Error) {
+      if (!raw) {
+        spinner.fail(err.message);
+      } else {
+        logger.error(err.message);
+      }
     }
   }
 }

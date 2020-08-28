@@ -110,12 +110,15 @@ export async function handler({
     } else if (!breachData && !raw) {
       spinner.succeed('Good news — no pwnage found!');
     }
-  } catch (err) {
-    const errMsg = translateApiError(err.message);
-    if (!raw) {
-      spinner.fail(errMsg);
-    } else {
-      logger.error(errMsg);
+  } catch (err: unknown) {
+    /* istanbul ignore else */
+    if (err instanceof Error) {
+      const errMsg = translateApiError(err.message);
+      if (!raw) {
+        spinner.fail(errMsg);
+      } else {
+        logger.error(errMsg);
+      }
     }
   }
 }

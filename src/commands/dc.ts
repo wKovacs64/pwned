@@ -53,11 +53,14 @@ export async function handler({ raw }: DcHandlerOptions): Promise<void> {
         'No data classes found. This is unexpected - the remote API may be having difficulties.',
       );
     }
-  } catch (err) {
-    if (!raw) {
-      spinner.fail(err.message);
-    } else {
-      logger.error(err.message);
+  } catch (err: unknown) {
+    /* istanbul ignore else */
+    if (err instanceof Error) {
+      if (!raw) {
+        spinner.fail(err.message);
+      } else {
+        logger.error(err.message);
+      }
     }
   }
 }
