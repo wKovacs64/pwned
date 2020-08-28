@@ -63,11 +63,14 @@ export async function handler({
     } else if (!breachData.length && !raw) {
       spinner.succeed('No breaches found.');
     }
-  } catch (err) {
-    if (!raw) {
-      spinner.fail(err.message);
-    } else {
-      logger.error(err.message);
+  } catch (err: unknown) {
+    /* istanbul ignore else */
+    if (err instanceof Error) {
+      if (!raw) {
+        spinner.fail(err.message);
+      } else {
+        logger.error(err.message);
+      }
     }
   }
 }

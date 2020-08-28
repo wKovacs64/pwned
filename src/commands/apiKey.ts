@@ -55,7 +55,10 @@ export async function handler({ key }: ApiKeyHandlerOptions): Promise<void> {
         key supplied!
       `);
     }
-  } catch (err) {
-    logger.error(err.message);
+  } catch (err: unknown) {
+    /* istanbul ignore else */
+    if (err instanceof Error) {
+      logger.error(err.message);
+    }
   }
 }
