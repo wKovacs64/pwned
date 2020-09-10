@@ -8,6 +8,7 @@
     "noEmit": true,
     "strict": true,
     "stripInternal": true,
+    "skipLibCheck": true,
     "types": ["node", "jest"]
   },
   "include": ["src/**/*.ts", "test/**/*.ts"]
