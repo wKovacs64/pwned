@@ -76,8 +76,8 @@
   "devDependencies": {
     "@babel/cli": "7.13.0",
     "@babel/core": "7.13.1",
-    "@babel/parser": "7.13.0",
-    "@babel/preset-env": "7.13.0",
+    "@babel/parser": "7.13.4",
+    "@babel/preset-env": "7.13.5",
     "@babel/preset-typescript": "7.13.0",
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
