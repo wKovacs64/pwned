@@ -1,5 +1,5 @@
 import Conf from 'conf';
-import * as pkg from '../package.json';
+import { pkg } from './utils';
 
 export const config = new Conf<{ apiKey: string }>({
   projectName: pkg.name,

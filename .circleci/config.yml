@@ -15,10 +15,10 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
+      - run: yarn build
       - run: yarn validate
       - run: yarn test --coverage --no-cache --maxWorkers 4
       - run: yarn codecov
-      - run: yarn build
       - persist_to_workspace:
           root: ~/
           paths:
