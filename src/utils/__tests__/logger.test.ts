@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { jest } from '@jest/globals';
 import { loggerFns } from '../../../test/fixtures';
 import { logger, Logger, LoggerFunction } from '../logger';
 

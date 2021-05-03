@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals';
 import * as hibp from 'hibp';
 import {
   spinnerFns,
