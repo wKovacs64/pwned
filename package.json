@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "common-tags": "^1.8.0",
-    "conf": "^9.0.0",
+    "conf": "^10.0.0",
     "hibp": "^9.0.0",
     "ora": "^5.0.0",
     "prettyjson": "^1.2.1",
