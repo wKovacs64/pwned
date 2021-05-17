@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { server, rest } from '../../mocks/server';
+import { server, rest } from '../../../test/server';
 import {
   spinnerFns,
   loggerFns,

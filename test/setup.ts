@@ -1,4 +1,4 @@
-import { server } from '../src/mocks/server';
+import { server } from './server';
 
 beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
 afterEach(() => server.resetHandlers());
