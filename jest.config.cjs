@@ -8,5 +8,6 @@ module.exports = {
     'index.ts',
   ],
   coverageReporters: ['html', 'json', 'lcov', 'text'],
+  setupFilesAfterEnv: ['<rootDir>/test/setup.ts'],
   testEnvironment: 'node',
 };

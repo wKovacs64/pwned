@@ -1,4 +1,5 @@
-import { Breach, Paste } from 'hibp';
+import { stripIndents } from 'common-tags';
+import type { Breach, Paste } from 'hibp';
 
 export const spinnerFns = ['start', 'stop', 'succeed', 'warn', 'fail'];
 export const loggerFns = ['info', 'log', 'warn', 'error'];
@@ -31,10 +32,18 @@ export const PASTE: Paste = {
 };
 export const PASTES = [PASTE];
 
+export const PASSWORD_HASHES = stripIndents`
+  003D68EB55068C33ACE09247EE4C639306B:3
+  1E4C9B93F3F0682250B6CF8331B7EE68FD8:3303003
+  01330C689E5D64F660D6947A93AD634EF8F:1
+`;
+
 export const EMAIL = 'foo@bar.baz';
 export const EMPTY_ARRAY = [];
 export const ERROR = 'foo';
 export const ERROR_MSG = 'Set sail for fail!';
 export const FOUND = 'bar';
+export const FOUND_PW = 'password';
 export const NOT_FOUND = 'baz';
+export const NOT_FOUND_PW = 'a better password';
 export const NONE = ' ';
