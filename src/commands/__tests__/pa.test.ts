@@ -1,10 +1,9 @@
 import { jest } from '@jest/globals';
-import * as hibp from 'hibp';
+import { server, rest } from '../../../test/server';
 import {
   spinnerFns,
   loggerFns,
   FOUND,
-  PASTES,
   NOT_FOUND,
   ERROR,
   ERROR_MSG,
@@ -17,33 +16,17 @@ import {
 } from '../../utils';
 import { handler as pa } from '../pa';
 
-jest.mock('hibp');
 jest.mock('../../utils');
 
-const mockHibp = hibp as jest.Mocked<typeof hibp>;
 const logger = mockLogger as Logger & {
   [key: string]: jest.Mocked<LoggerFunction>;
 };
+
 const spinner = mockSpinner as typeof mockSpinner & {
   [key: string]: jest.Mock;
 };
 
 describe('command: pa', () => {
-  beforeAll(() => {
-    mockHibp.pasteAccount.mockImplementation(async (email) => {
-      if (email === FOUND) {
-        return PASTES;
-      }
-      if (email === NOT_FOUND) {
-        return null;
-      }
-      if (email === ERROR) {
-        throw new Error(ERROR_MSG);
-      }
-      throw new Error('Unexpected input!');
-    });
-  });
-
   describe('normal output (default)', () => {
     it('calls spinner.start', async () => {
       expect(spinner.start).toHaveBeenCalledTimes(0);
@@ -68,6 +51,8 @@ describe('command: pa', () => {
     });
 
     it('on error: only calls spinner.fail', async () => {
+      server.use(rest.get('*', (_, res) => res.networkError(ERROR_MSG)));
+
       expect(spinner.fail).toHaveBeenCalledTimes(0);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await pa({ email: ERROR, raw: false });
@@ -100,6 +85,8 @@ describe('command: pa', () => {
     });
 
     it('on error: only calls logger.error', async () => {
+      server.use(rest.get('*', (_, res) => res.networkError(ERROR_MSG)));
+
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);
       await pa({ email: ERROR, raw: true });
