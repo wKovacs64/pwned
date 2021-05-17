@@ -4,7 +4,6 @@ import {
   spinnerFns,
   loggerFns,
   FOUND,
-  BREACH,
   NOT_FOUND,
   ERROR,
   ERROR_MSG,
@@ -30,16 +29,12 @@ const spinner = mockSpinner as typeof mockSpinner & {
 describe('command: breach', () => {
   describe('normal output (default)', () => {
     it('calls spinner.start', async () => {
-      server.use(rest.get('*', (_, res, ctx) => res.once(ctx.json(BREACH))));
-
       expect(spinner.start).toHaveBeenCalledTimes(0);
       await breach({ name: FOUND, raw: false });
       expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
     it('with data: calls spinner.stop and logger.log', async () => {
-      server.use(rest.get('*', (_, res, ctx) => res.once(ctx.json(BREACH))));
-
       expect(spinner.stop).toHaveBeenCalledTimes(0);
       expect(logger.log).toHaveBeenCalledTimes(0);
       await breach({ name: FOUND, raw: false });
@@ -48,8 +43,6 @@ describe('command: breach', () => {
     });
 
     it('without data: only calls spinner.succeed', async () => {
-      server.use(rest.get('*', (_, res, ctx) => res.once(ctx.status(404))));
-
       expect(spinner.succeed).toHaveBeenCalledTimes(0);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await breach({ name: NOT_FOUND, raw: false });
@@ -70,16 +63,12 @@ describe('command: breach', () => {
 
   describe('raw mode', () => {
     it('does not call spinner.start', async () => {
-      server.use(rest.get('*', (_, res, ctx) => res.once(ctx.json(BREACH))));
-
       expect(spinner.start).toHaveBeenCalledTimes(0);
       await breach({ name: FOUND, raw: true });
       expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
     it('with data: only calls logger.log', async () => {
-      server.use(rest.get('*', (_, res, ctx) => res.once(ctx.json(BREACH))));
-
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
       await breach({ name: FOUND, raw: true });
@@ -88,8 +77,6 @@ describe('command: breach', () => {
     });
 
     it('without data: does not call any spinner or logger methods', async () => {
-      server.use(rest.get('*', (_, res, ctx) => res.once(ctx.status(404))));
-
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await breach({ name: NOT_FOUND, raw: true });

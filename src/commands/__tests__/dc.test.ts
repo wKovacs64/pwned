@@ -3,7 +3,6 @@ import { server, rest } from '../../../test/server';
 import {
   spinnerFns,
   loggerFns,
-  DATA_CLASSES,
   EMPTY_ARRAY,
   ERROR_MSG,
 } from '../../../test/fixtures';
@@ -20,6 +19,7 @@ jest.mock('../../utils');
 const logger = mockLogger as Logger & {
   [key: string]: jest.Mocked<LoggerFunction>;
 };
+
 const spinner = mockSpinner as typeof mockSpinner & {
   [key: string]: jest.Mock;
 };
@@ -27,20 +27,12 @@ const spinner = mockSpinner as typeof mockSpinner & {
 describe('command: dc', () => {
   describe('normal output (default)', () => {
     it('calls spinner.start', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.json(DATA_CLASSES))),
-      );
-
       expect(spinner.start).toHaveBeenCalledTimes(0);
       await dc({ raw: false });
       expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
     it('with data: calls spinner.stop and logger.log', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.json(DATA_CLASSES))),
-      );
-
       expect(spinner.stop).toHaveBeenCalledTimes(0);
       expect(logger.log).toHaveBeenCalledTimes(0);
       await dc({ raw: false });
@@ -73,20 +65,12 @@ describe('command: dc', () => {
 
   describe('raw mode', () => {
     it('does not call spinner.start', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.json(DATA_CLASSES))),
-      );
-
       expect(spinner.start).toHaveBeenCalledTimes(0);
       await dc({ raw: true });
       expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
     it('with data: only calls logger.log', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.json(DATA_CLASSES))),
-      );
-
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
       await dc({ raw: true });

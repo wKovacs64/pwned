@@ -4,7 +4,6 @@ import {
   spinnerFns,
   loggerFns,
   FOUND_PW,
-  PASSWORD_HASHES,
   NOT_FOUND_PW,
   ERROR,
   ERROR_MSG,
@@ -30,20 +29,12 @@ const spinner = mockSpinner as typeof mockSpinner & {
 describe('command: pw', () => {
   describe('normal output (default)', () => {
     it('calls spinner.start', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.text(PASSWORD_HASHES))),
-      );
-
       expect(spinner.start).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND_PW, raw: false });
       expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
     it('with data: only calls spinner.warn', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.text(PASSWORD_HASHES))),
-      );
-
       expect(spinner.warn).toHaveBeenCalledTimes(0);
       expect(logger.log).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND_PW, raw: false });
@@ -52,10 +43,6 @@ describe('command: pw', () => {
     });
 
     it('without data: only calls spinner.succeed', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.text(PASSWORD_HASHES))),
-      );
-
       expect(spinner.succeed).toHaveBeenCalledTimes(0);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await pw({ password: NOT_FOUND_PW, raw: false });
@@ -76,20 +63,12 @@ describe('command: pw', () => {
 
   describe('raw mode', () => {
     it('does not call spinner.start', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.text(PASSWORD_HASHES))),
-      );
-
       expect(spinner.start).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND_PW, raw: true });
       expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
     it('with data: only calls logger.log', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.text(PASSWORD_HASHES))),
-      );
-
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND_PW, raw: true });
@@ -98,10 +77,6 @@ describe('command: pw', () => {
     });
 
     it('without data: only calls logger.log', async () => {
-      server.use(
-        rest.get('*', (_, res, ctx) => res.once(ctx.text(PASSWORD_HASHES))),
-      );
-
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await pw({ password: NOT_FOUND_PW, raw: true });
