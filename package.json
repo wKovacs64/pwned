@@ -84,7 +84,7 @@
     "@jest/globals": "26.6.2",
     "@types/common-tags": "1.8.0",
     "@types/jest": "26.0.23",
-    "@types/node": "12.20.13",
+    "@types/node": "14.17.0",
     "@types/ora": "3.2.0",
     "@types/prettyjson": "0.0.29",
     "@types/yargs": "16.0.2",
