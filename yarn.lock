@@ -6937,10 +6937,10 @@ is-negative-zero@^2.0.1:
   resolved "https://registry.yarnpkg.com/is-negative-zero/-/is-negative-zero-2.0.1.tgz#3de746c18dda2319241a53675908d8f766f11c24"
   integrity sha512-2z6JzQvZRa9A2Y7xC6dQQm4FSTSTNWjKIYYTt4246eMTJmIo0Q+ZyOsU66X8lxK1AbB92dFeglPLrhwpeRKO6w==
 
-is-node-process@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/is-node-process/-/is-node-process-1.0.0.tgz#7e3f833139aac65d31d21aca81587d6ccda80a10"
-  integrity sha512-m9HTvEwmJx2rf2c8QM26jGVK865A/tYWz+GORRB0ehitPPF/Ajm8yImTRwkEJC7giteusNdgtMEPIeY4alf9Lg==
+is-node-process@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-node-process/-/is-node-process-1.0.1.tgz#4fc7ac3a91e8aac58175fe0578abbc56f2831b23"
+  integrity sha512-5IcdXuf++TTNt3oGl9EBdkvndXA8gmc4bz/Y+mdEpWh3Mcn/+kOw6hI7LD5CocqJWMzeb0I0ClndRVNdEPuJXQ==
 
 is-npm@^1.0.0:
   version "1.0.0"
@@ -8735,10 +8735,10 @@ ms@2.1.2, ms@^2.0.0, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-msw@0.32.2:
-  version "0.32.2"
-  resolved "https://registry.yarnpkg.com/msw/-/msw-0.32.2.tgz#816848a5e2a1af112f24bf498b27e4961b70433f"
-  integrity sha512-lMHsQkspK9iHh/cPAJQO1AuH/w04WMWDvt9YLcpZWmlrvdWR4B6n1yR6tYvcwWUQi9bWr9Szn5Vy6uWamgdg8Q==
+msw@0.33.0:
+  version "0.33.0"
+  resolved "https://registry.yarnpkg.com/msw/-/msw-0.33.0.tgz#6a842dd17a6e8a2aff176106fb18b50a7b37ab8e"
+  integrity sha512-lX0mBSE+kgXYMiqyjaYM+2kfxPg2ywbhZjPDwHk5bN/MqoEvGcj6cpL0j1OgLSitN1ve8F0ePCSrk2jhITRubw==
   dependencies:
     "@mswjs/cookies" "^0.1.6"
     "@mswjs/interceptors" "^0.12.3"
@@ -8752,7 +8752,7 @@ msw@0.32.2:
     graphql "^15.5.1"
     headers-utils "^3.0.2"
     inquirer "^8.1.1"
-    is-node-process "^1.0.0"
+    is-node-process "^1.0.1"
     js-levenshtein "^1.1.6"
     node-fetch "^2.6.1"
     node-match-path "^0.6.3"
