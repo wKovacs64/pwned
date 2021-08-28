@@ -8,8 +8,8 @@
   },
   "packageRules": [
     {
-      "packageNames": ["eslint"],
-      "updateTypes": ["major"],
+      "matchPackageNames": ["eslint"],
+      "matchUpdateTypes": ["major"],
       "enabled": false
     }
   ],
