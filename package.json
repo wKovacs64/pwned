@@ -68,7 +68,7 @@
     "common-tags": "^1.8.0",
     "conf": "^10.0.0",
     "hibp": "^11.0.0",
-    "ora": "^5.0.0",
+    "ora": "^6.0.0",
     "prettyjson": "^1.2.1",
     "source-map-support": "^0.5.12",
     "yargs": "^17.0.0"
