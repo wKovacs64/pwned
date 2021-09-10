@@ -91,7 +91,7 @@
     "@wkovacs64/prettier-config": "3.0.0",
     "babel-jest": "27.1.1",
     "babel-plugin-add-import-extension": "1.6.0",
-    "babel-plugin-transform-import-meta": "2.0.0",
+    "babel-plugin-transform-import-meta": "2.1.0",
     "codecov": "3.8.3",
     "commitizen": "4.2.4",
     "cross-env": "7.0.3",
