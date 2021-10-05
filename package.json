@@ -67,6 +67,7 @@
   "dependencies": {
     "common-tags": "^1.8.0",
     "conf": "^10.0.0",
+    "fs-extra": "10.0.0",
     "hibp": "^11.0.0",
     "ora": "^6.0.0",
     "prettyjson": "^1.2.1",

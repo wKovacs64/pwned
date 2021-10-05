@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { fileURLToPath } from 'url';
+import fs from 'fs-extra';
 import sourceMapSupport from 'source-map-support';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
@@ -15,6 +17,10 @@ import * as search from '../lib/commands/search.js';
 
 sourceMapSupport.install();
 
+const pathToPackageJson = fileURLToPath(
+  new URL('../package.json', import.meta.url),
+);
+
 // eslint-disable-next-line no-unused-expressions
 yargs(hideBin(process.argv))
   .command(apiKey)
@@ -30,4 +36,6 @@ yargs(hideBin(process.argv))
   .strict()
   .wrap(Math.min(100, yargs().terminalWidth()))
   .alias('h', 'help')
-  .alias('v', 'version').argv;
+  .alias('v', 'version')
+  // TODO: remove version hack, see https://github.com/yargs/yargs/issues/1934
+  .version(fs.readJsonSync(pathToPackageJson).version).argv;
