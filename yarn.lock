@@ -5618,10 +5618,10 @@ eslint-plugin-testing-library@^4.12.4:
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.30.0"
 
-eslint-plugin-wkovacs64@13.5.1:
-  version "13.5.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.5.1.tgz#f497fa53f861f2173bec8214a9ad1bf919688d89"
-  integrity sha512-HIlty8iMFwq/NVTj0DxurslVdOOBNqJD8niLJAEfbjgeRERP0grDR9kboWI1p4+N2Mq9oo6X69ZljMPOYcXxsQ==
+eslint-plugin-wkovacs64@13.5.2:
+  version "13.5.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wkovacs64/-/eslint-plugin-wkovacs64-13.5.2.tgz#48c44de4692e03df34608e783d482132abfbd595"
+  integrity sha512-ng0Tc+aiRH0be3WomR6AYoxbaOK5hVVyOKYfOJUIN5amRxD+CQV2OTMuMEeESlBsNfvNFQ+u47o4J1Tm7Jxy4Q==
   dependencies:
     "@babel/core" "^7.15.8"
     "@babel/eslint-parser" "^7.15.8"
