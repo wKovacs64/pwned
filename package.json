@@ -88,7 +88,7 @@
     "@types/node": "14.17.27",
     "@types/ora": "3.2.0",
     "@types/prettyjson": "0.0.30",
-    "@types/yargs": "17.0.3",
+    "@types/yargs": "17.0.4",
     "@wkovacs64/prettier-config": "3.0.0",
     "babel-jest": "27.2.5",
     "babel-plugin-add-import-extension": "1.6.0",
