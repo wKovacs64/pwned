@@ -85,7 +85,7 @@
     "@jest/globals": "27.3.1",
     "@types/common-tags": "1.8.1",
     "@types/jest": "27.0.3",
-    "@types/node": "16.11.7",
+    "@types/node": "16.11.8",
     "@types/prettyjson": "0.0.30",
     "@types/yargs": "17.0.7",
     "@wkovacs64/prettier-config": "3.0.0",
