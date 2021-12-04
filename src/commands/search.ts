@@ -1,4 +1,4 @@
-import { Argv } from 'yargs';
+import type { Argv } from 'yargs';
 import { search } from 'hibp';
 import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';

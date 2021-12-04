@@ -1,4 +1,4 @@
-import { Argv } from 'yargs';
+import type { Argv } from 'yargs';
 import { breaches } from 'hibp';
 import prettyjson from 'prettyjson';
 import { logger, spinner, userAgent } from '../utils';

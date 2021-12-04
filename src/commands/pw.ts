@@ -1,4 +1,4 @@
-import { Argv } from 'yargs';
+import type { Argv } from 'yargs';
 import { pwnedPassword } from 'hibp';
 import { logger, spinner, userAgent } from '../utils';
 

@@ -1,4 +1,4 @@
-import { Argv } from 'yargs';
+import type { Argv } from 'yargs';
 import { oneLine } from 'common-tags';
 import { config } from '../config';
 import { logger } from '../utils';
