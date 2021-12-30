@@ -84,7 +84,7 @@
     "@commitlint/config-conventional": "16.0.0",
     "@jest/globals": "27.4.4",
     "@types/common-tags": "1.8.1",
-    "@types/jest": "27.0.3",
+    "@types/jest": "27.4.0",
     "@types/node": "16.11.17",
     "@types/prettyjson": "0.0.30",
     "@types/yargs": "17.0.8",
