@@ -9,12 +9,8 @@ import {
   ERROR_MSG,
   NONE,
 } from '../../../test/fixtures';
-import {
-  logger as mockLogger,
-  spinner as mockSpinner,
-  Logger,
-  LoggerFunction,
-} from '../../utils';
+import { logger as mockLogger, spinner as mockSpinner } from '../../utils';
+import type { Logger, LoggerFunction } from '../../utils';
 import { handler as search } from '../search';
 
 jest.mock('../../utils');

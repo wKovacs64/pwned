@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 import { jest } from '@jest/globals';
 import { loggerFns } from '../../../test/fixtures';
-import { logger, Logger, LoggerFunction } from '../logger';
+import { logger } from '../logger';
+import type { Logger, LoggerFunction } from '../logger';
 
 type IndexableConsole = typeof console & {
   [key: string]: LoggerFunction | jest.Mocked<LoggerFunction>;

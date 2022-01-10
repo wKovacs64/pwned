@@ -6,12 +6,8 @@ import {
   EMPTY_ARRAY,
   ERROR_MSG,
 } from '../../../test/fixtures';
-import {
-  logger as mockLogger,
-  spinner as mockSpinner,
-  Logger,
-  LoggerFunction,
-} from '../../utils';
+import { logger as mockLogger, spinner as mockSpinner } from '../../utils';
+import type { Logger, LoggerFunction } from '../../utils';
 import { handler as dc } from '../dc';
 
 jest.mock('../../utils');

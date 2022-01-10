@@ -8,12 +8,8 @@ import {
   ERROR,
   ERROR_MSG,
 } from '../../../test/fixtures';
-import {
-  logger as mockLogger,
-  spinner as mockSpinner,
-  Logger,
-  LoggerFunction,
-} from '../../utils';
+import { logger as mockLogger, spinner as mockSpinner } from '../../utils';
+import type { Logger, LoggerFunction } from '../../utils';
 import { handler as pw } from '../pw';
 
 jest.mock('../../utils');
