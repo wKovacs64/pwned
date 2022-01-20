@@ -80,7 +80,7 @@
     "@babel/parser": "7.16.10",
     "@babel/preset-env": "7.16.10",
     "@babel/preset-typescript": "7.16.7",
-    "@commitlint/cli": "16.0.3",
+    "@commitlint/cli": "16.1.0",
     "@commitlint/config-conventional": "16.0.0",
     "@jest/globals": "27.4.6",
     "@types/common-tags": "1.8.1",
