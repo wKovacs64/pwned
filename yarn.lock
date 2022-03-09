@@ -1891,10 +1891,10 @@
     "@types/set-cookie-parser" "^2.4.0"
     set-cookie-parser "^2.4.6"
 
-"@mswjs/interceptors@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@mswjs/interceptors/-/interceptors-0.14.0.tgz#34d435e25b207e36779a21ce416d9291d024988d"
-  integrity sha512-s0Mz/t2YCNxOcN8pnjJhcmPiOCg5pSoZGPYvDhAQhIrZiBvs6jtxxJnDgkpi5B40fJcvNqUou/K/HPvJudzilw==
+"@mswjs/interceptors@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@mswjs/interceptors/-/interceptors-0.14.1.tgz#0beca4cd89200aaf9e067e7d14138c14152680de"
+  integrity sha512-E+0qtLySvVC4cIo5vlqDXn7BAtAgyVJe9hJjGorfbbClvTRNWMym9V70jhNB11y9txcd6ZPXbgxf2dMT73jGmw==
   dependencies:
     "@open-draft/until" "^1.0.3"
     "@xmldom/xmldom" "^0.7.5"
@@ -6768,13 +6768,13 @@ ms@2.1.2:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-msw@0.39.0:
-  version "0.39.0"
-  resolved "https://registry.yarnpkg.com/msw/-/msw-0.39.0.tgz#197a56c7fcfbe6c367c560176b625882deb97126"
-  integrity sha512-IOfagNGNIhuD46RIZ/7UY3/j3fAJodzeHyCgr4v6JgV2AERf5I499RNUTR+pQKlzn5opJBKIrS7pCZB/oNDnzw==
+msw@0.39.1:
+  version "0.39.1"
+  resolved "https://registry.yarnpkg.com/msw/-/msw-0.39.1.tgz#2c5af1fb00c393bbc4a0e0f6a022f338810ae472"
+  integrity sha512-IiM1F94Ecp3iyHUPpbmEIUcxmNB2HHOmUaEOBsbbHNGnfSg+IGgB3VsXjXOEVPHJCgeoeJc2rJywD7u4wEgOTw==
   dependencies:
     "@mswjs/cookies" "^0.1.7"
-    "@mswjs/interceptors" "^0.14.0"
+    "@mswjs/interceptors" "^0.14.1"
     "@open-draft/until" "^1.0.3"
     "@types/cookie" "^0.4.1"
     "@types/js-levenshtein" "^1.1.1"
