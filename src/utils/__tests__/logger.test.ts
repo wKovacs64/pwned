@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
-import { jest } from '@jest/globals';
+import { vi } from 'vitest';
+import type { SpyInstanceFn } from 'vitest';
 import { loggerFns } from '../../../test/fixtures';
 import { logger } from '../logger';
 import type { Logger, LoggerFunction } from '../logger';
 
 type IndexableConsole = typeof console & {
-  [key: string]: LoggerFunction | jest.Mocked<LoggerFunction>;
+  [key: string]: LoggerFunction | SpyInstanceFn;
 };
 
 type IndexableLogger = Logger & {
@@ -34,8 +35,7 @@ describe('util: logger', () => {
     const args = ['Wubba lubba dub dub!', { param: 'value' }];
     loggerFns.forEach((fn) => {
       const orig = indexableConsole[fn];
-      // eslint-disable-next-line jest/prefer-spy-on
-      indexableConsole[fn] = jest.fn();
+      indexableConsole[fn] = vi.fn();
       expect(indexableConsole[fn]).toHaveBeenCalledTimes(0);
       indexableLogger[fn](...args);
       expect(indexableConsole[fn]).toHaveBeenCalledTimes(1);

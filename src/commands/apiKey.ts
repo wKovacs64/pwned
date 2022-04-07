@@ -14,7 +14,7 @@ interface ApiKeyHandlerOptions {
   key: string;
 }
 
-/* istanbul ignore next */
+/* c8 ignore next */
 export function builder(
   yargs: Argv<ApiKeyArgvOptions>,
 ): Argv<ApiKeyHandlerOptions> {
@@ -56,7 +56,7 @@ export async function handler({ key }: ApiKeyHandlerOptions): Promise<void> {
       `);
     }
   } catch (err: unknown) {
-    /* istanbul ignore else */
+    /* c8 ignore else */
     if (err instanceof Error) {
       logger.error(err.message);
     }
