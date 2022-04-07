@@ -23,7 +23,7 @@ interface SearchHandlerOptions {
   raw?: boolean;
 }
 
-/* istanbul ignore next */
+/* c8 ignore start */
 export function builder(
   yargs: Argv<SearchArgvOptions>,
 ): Argv<SearchHandlerOptions> {
@@ -62,6 +62,7 @@ export function builder(
       command first.
     `);
 }
+/* c8 ignore stop */
 
 /**
  * Fetches and outputs breach and paste data for the specified account.
@@ -102,7 +103,7 @@ export async function handler({
       spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err: unknown) {
-    /* istanbul ignore else */
+    /* c8 ignore else */
     if (err instanceof Error) {
       const errMsg = translateApiError(err.message);
       if (!raw) {

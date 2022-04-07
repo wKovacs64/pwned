@@ -18,7 +18,7 @@ interface PaHandlerOptions {
   raw?: boolean;
 }
 
-/* istanbul ignore next */
+/* c8 ignore start */
 export function builder(yargs: Argv<PaArgvOptions>): Argv<PaHandlerOptions> {
   return yargs
     .positional('email', {
@@ -43,6 +43,7 @@ export function builder(yargs: Argv<PaArgvOptions>): Argv<PaHandlerOptions> {
       command first.
     `);
 }
+/* c8 ignore stop */
 
 /**
  * Fetches and outputs all pastes for an account (email address).
@@ -71,7 +72,7 @@ export async function handler({ email, raw }: PaHandlerOptions): Promise<void> {
       spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err: unknown) {
-    /* istanbul ignore else */
+    /* c8 ignore else */
     if (err instanceof Error) {
       const errMsg = translateApiError(err.message);
       if (!raw) {

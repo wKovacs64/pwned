@@ -10,7 +10,7 @@
     "strict": true,
     "stripInternal": true,
     "skipLibCheck": true,
-    "types": ["node", "jest"]
+    "types": ["node", "vitest/globals"]
   },
   "include": ["src/**/*.ts", "test/**/*.ts"]
 }

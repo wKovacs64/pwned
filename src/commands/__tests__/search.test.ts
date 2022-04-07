@@ -1,4 +1,5 @@
-import { jest } from '@jest/globals';
+import { vi } from 'vitest';
+import type { SpyInstance } from 'vitest';
 import { server, rest } from '../../../test/server';
 import {
   spinnerFns,
@@ -10,17 +11,17 @@ import {
   NONE,
 } from '../../../test/fixtures';
 import { logger as mockLogger, spinner as mockSpinner } from '../../utils';
-import type { Logger, LoggerFunction } from '../../utils';
+import type { Logger } from '../../utils';
 import { handler as search } from '../search';
 
-jest.mock('../../utils');
+vi.mock('../../utils');
 
 const logger = mockLogger as Logger & {
-  [key: string]: jest.Mocked<LoggerFunction>;
+  [key: string]: SpyInstance;
 };
 
 const spinner = mockSpinner as typeof mockSpinner & {
-  [key: string]: jest.Mock;
+  [key: string]: SpyInstance;
 };
 
 describe('command: search', () => {

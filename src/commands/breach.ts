@@ -16,7 +16,7 @@ interface BreachHandlerOptions {
   raw?: boolean;
 }
 
-/* istanbul ignore next */
+/* c8 ignore start */
 export function builder(
   yargs: Argv<BreachArgvOptions>,
 ): Argv<BreachHandlerOptions> {
@@ -40,6 +40,7 @@ export function builder(
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 }
+/* c8 ignore stop */
 
 /**
  * Fetches and outputs breach data for a single site by breach name.
@@ -68,7 +69,7 @@ export async function handler({
       spinner.succeed('No breach found by that name.');
     }
   } catch (err: unknown) {
-    /* istanbul ignore else */
+    /* c8 ignore else */
     if (err instanceof Error) {
       if (!raw) {
         spinner.fail(err.message);

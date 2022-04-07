@@ -16,7 +16,7 @@ interface BreachesHandlerOptions {
   raw?: boolean;
 }
 
-/* istanbul ignore next */
+/* c8 ignore start */
 export function builder(
   yargs: Argv<BreachesArgvOptions>,
 ): Argv<BreachesHandlerOptions> {
@@ -35,6 +35,7 @@ export function builder(
     .group(['d', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 }
+/* c8 ignore stop */
 
 /**
  * Fetches and outputs all breached sites in the system.
@@ -64,7 +65,7 @@ export async function handler({
       spinner.succeed('No breaches found.');
     }
   } catch (err: unknown) {
-    /* istanbul ignore else */
+    /* c8 ignore else */
     if (err instanceof Error) {
       if (!raw) {
         spinner.fail(err.message);
