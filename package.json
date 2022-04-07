@@ -39,6 +39,7 @@
     "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
     "husky:install": "husky install",
     "test": "cross-env NODE_ENV=test jest",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "prebuild": "npm run --silent clean",
     "prepublishOnly": "npm-run-all --silent --sequential lint check-types test build",
     "prepare": "npm run --silent husky:install",
