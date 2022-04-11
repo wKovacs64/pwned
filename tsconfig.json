@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"], // "dom" only for msw
     "target": "es2019", // Node 12
     "module": "es2020",
     "moduleResolution": "node",
@@ -9,7 +9,7 @@
     "noEmit": true,
     "strict": true,
     "stripInternal": true,
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     "types": ["node", "vitest/globals"]
   },
   "include": ["src/**/*.ts", "test/**/*.ts"]
