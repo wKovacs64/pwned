@@ -22,8 +22,8 @@ version bump (i.e., "chores") don't necessarily need a changeset.
 1. Make your changes
 1. Run `npx changeset`, answer the questions, commit the results
 1. Push your branch and open a pull request
-1. Once these changes are in the `master` branch, the changesets pull request
-   will be updated automatically.
-1. When you're ready to release a new version, merge the changesets PR to
-   `master` and the GitHub "Release" workflow will publish the package to npm
-   and commit the updated `CHANGELOG.md` file back to the repository.
+1. Once these changes are in the `main` branch, the changesets pull request will
+   be updated automatically.
+1. When you're ready to release a new version, merge the changesets PR to `main`
+   and the GitHub "Release" workflow will publish the package to npm and commit
+   the updated `CHANGELOG.md` file back to the repository.

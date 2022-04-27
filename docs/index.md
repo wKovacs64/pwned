@@ -214,4 +214,4 @@ pastes:   null
 ## License
 
 This tool is distributed under the
-[MIT License](https://github.com/wKovacs64/pwned/tree/master/LICENSE.txt).
+[MIT License](https://github.com/wKovacs64/pwned/tree/main/LICENSE.txt).
