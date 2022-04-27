@@ -1,13 +1,11 @@
 # Change Log
 
-The changelog is automatically updated using
-[semantic-release](https://github.com/semantic-release/semantic-release). You
-can see it on the [releases page](../../releases).
+## 7.x-9.x and Newer Versions
 
----
+**Please refer to the [releases page](../../releases) for the 7.x-9.x versions
+and [CHANGELOG.md](CHANGELOG.md) for the newer versions.**
 
-<details>
-<summary>Historical Change Log</summary>
+## 6.x and Older
 
 #### Version 6.3.0 _(2019-02-04)_
 
@@ -191,8 +189,6 @@ can see it on the [releases page](../../releases).
 #### Version 1.0.0 _(2016-04-09)_
 
 - Initial release
-
-</details>
 
 [haveibeenpwned]: https://haveibeenpwned.com
 [singlebreach]: https://haveibeenpwned.com/API/v2#SingleBreach
