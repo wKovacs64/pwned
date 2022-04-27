@@ -9,4 +9,10 @@ module.exports = {
     // doesn't work with vitest as it relies on jest version detection
     'jest/no-deprecated-functions': 'off',
   },
+  settings: {
+    react: {
+      // config hack to work around eslint-plugin-react crying
+      version: '99999',
+    },
+  },
 };
