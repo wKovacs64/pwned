@@ -43,8 +43,7 @@
     "test:watch": "vitest watch",
     "prebuild": "npm run --silent clean",
     "prepublishOnly": "npm-run-all --silent --sequential lint check-types test build",
-    "prepare": "npm run --silent husky:install",
-    "validate": "npm-run-all --silent --parallel lint check-types"
+    "prepare": "npm run --silent husky:install"
   },
   "config": {
     "commitizen": {
