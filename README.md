@@ -219,8 +219,8 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [npm-image]: https://img.shields.io/npm/v/pwned.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/pwned
 [ci-image]:
-  https://img.shields.io/circleci/project/github/wKovacs64/pwned/master.svg?style=flat-square
-[ci-url]: https://circleci.com/gh/wKovacs64/pwned
+  https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FwKovacs64%2Fpwned%2Fbadge%3Fref%3Dmaster&style=flat-square
+[ci-url]: https://github.com/wKovacs64/pwned/actions/workflows/ci.yml
 [coverage-image]:
   https://img.shields.io/codecov/c/github/wKovacs64/pwned/master.svg?style=flat-square
 [coverage-url]: https://codecov.io/gh/wKovacs64/pwned/branch/master
