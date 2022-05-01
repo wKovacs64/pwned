@@ -89,7 +89,7 @@
     "@commitlint/cli": "16.2.4",
     "@commitlint/config-conventional": "16.2.4",
     "@types/common-tags": "1.8.1",
-    "@types/node": "16.11.32",
+    "@types/node": "16.11.33",
     "@types/prettyjson": "0.0.30",
     "@types/ws": "8.5.3",
     "@types/yargs": "17.0.10",
