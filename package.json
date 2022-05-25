@@ -86,7 +86,7 @@
     "@babel/preset-typescript": "7.17.12",
     "@changesets/changelog-github": "0.4.4",
     "@changesets/cli": "2.22.0",
-    "@commitlint/cli": "17.0.0",
+    "@commitlint/cli": "17.0.1",
     "@commitlint/config-conventional": "17.0.0",
     "@types/common-tags": "1.8.1",
     "@types/node": "16.11.36",
