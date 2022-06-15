@@ -90,7 +90,7 @@
     "@commitlint/config-conventional": "17.0.2",
     "@types/common-tags": "1.8.1",
     "@types/debug": "4.1.7",
-    "@types/node": "16.11.40",
+    "@types/node": "16.11.41",
     "@types/prettyjson": "0.0.30",
     "@types/ws": "8.5.3",
     "@types/yargs": "17.0.10",
