@@ -1,5 +1,4 @@
-import { vi } from 'vitest';
-import type { SpyInstance } from 'vitest';
+import { vi, type SpyInstance } from 'vitest';
 import { server, rest } from '../../../test/server';
 import {
   spinnerFns,
@@ -10,8 +9,11 @@ import {
   ERROR_MSG,
   NONE,
 } from '../../../test/fixtures';
-import { logger as mockLogger, spinner as mockSpinner } from '../../utils';
-import type { Logger } from '../../utils';
+import {
+  logger as mockLogger,
+  spinner as mockSpinner,
+  type Logger,
+} from '../../utils';
 import { handler as search } from '../search';
 
 vi.mock('../../utils');
