@@ -39,7 +39,7 @@
     "clean": "rimraf lib coverage",
     "cm": "git-cz",
     "format": "prettier --write .",
-    "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
+    "lint": "eslint .",
     "husky:install": "husky install",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
