@@ -105,7 +105,7 @@
     "eslint-plugin-wkovacs64": "13.14.0",
     "husky": "8.0.1",
     "lint-staged": "12.5.0",
-    "msw": "0.43.0",
+    "msw": "0.43.1",
     "npm-run-all": "4.1.5",
     "prettier": "2.7.1",
     "rimraf": "3.0.2",
