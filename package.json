@@ -37,7 +37,6 @@
     "changeset:publish": "changeset publish",
     "check-types": "tsc",
     "clean": "rimraf lib coverage",
-    "cm": "git-cz",
     "format": "prettier --cache --write .",
     "lint": "eslint .",
     "husky:install": "husky install",
@@ -45,7 +44,7 @@
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch",
     "prebuild": "npm run --silent clean",
-    "prepublishOnly": "npm-run-all --silent --sequential lint check-types test build",
+    "prepublishOnly": "run-p --silent lint check-types test build",
     "prepare": "npm run --silent husky:install"
   },
   "config": {
