@@ -1,34 +1,123 @@
-name: ci
+name: 🤖 CI
 
 on: [push]
 
+env:
+  CI: true
+
 jobs:
-  validate:
-    name: validate
+  lint:
+    name: ⬣ ESLint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+
+      - name: ⬇️ Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js LTS
+      - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
 
-      - name: Install Dependencies
-        run: npm ci
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
 
-      - name: Build
-        run: npm run build
-
-      - name: Lint
+      - name: 🔬 Lint
         run: npm run lint
 
-      - name: Check Types
+  typecheck:
+    name: ʦ TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: 🔎 Type check
         run: npm run check-types
 
-      - name: Run Tests
+  test:
+    name: 🩺 Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: ⚡ Vitest with coverage
         run: npm run test:coverage
 
-      - name: Submit Coverage Report
+      - name: ☂ Codecov
         run: npx codecov
+
+  build:
+    name: 🐟 Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: ⚙️ Build
+        run: npm run build
+
+  release:
+    name: 🚀 Release
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, test, build]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: 🦋 Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: npm run changeset:publish
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
