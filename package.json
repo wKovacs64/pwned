@@ -92,7 +92,7 @@
     "@types/node": "16.11.56",
     "@types/prettyjson": "0.0.30",
     "@types/ws": "8.5.3",
-    "@types/yargs": "17.0.11",
+    "@types/yargs": "17.0.12",
     "@vitest/coverage-c8": "0.22.1",
     "@wkovacs64/prettier-config": "3.0.2",
     "babel-plugin-add-import-extension": "1.6.0",
