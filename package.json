@@ -101,7 +101,7 @@
     "commitizen": "4.2.5",
     "cross-env": "7.0.3",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.23.0",
+    "eslint": "8.23.1",
     "eslint-plugin-wkovacs64": "13.16.0",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
