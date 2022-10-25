@@ -33,7 +33,7 @@
   "scripts": {
     "build": "babel src --extensions .js,.ts --out-dir lib --source-maps --ignore \"**/*.test.ts\",\"**/*.test.js\",\"**/__mocks__/\"",
     "changeset": "changeset",
-    "changeset:version": "changeset version",
+    "changeset:version": "changeset version && npm install --package-lock-only",
     "changeset:publish": "changeset publish",
     "check-types": "tsc",
     "clean": "rimraf lib coverage",
