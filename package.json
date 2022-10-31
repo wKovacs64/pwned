@@ -38,7 +38,7 @@
     "check-types": "tsc",
     "clean": "rimraf lib coverage",
     "format": "prettier --cache --write .",
-    "lint": "eslint --cache .",
+    "lint": "eslint .",
     "husky:install": "husky install",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
