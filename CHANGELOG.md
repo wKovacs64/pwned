@@ -1,5 +1,11 @@
 # Change Log
 
+## 10.0.1
+
+### Patch Changes
+
+- [`ae51440`](https://github.com/wKovacs64/pwned/commit/ae51440c39454b3f6921346b85c6500e9361b040) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Write version bumps to `package-lock.json`.
+
 ## 10.0.0
 
 ### Major Changes
