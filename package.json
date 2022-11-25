@@ -45,11 +45,6 @@
     "prebuild": "npm run --silent clean",
     "prepublishOnly": "run-p --silent lint check-types test build"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "private": false,
   "publishConfig": {
     "access": "public"
