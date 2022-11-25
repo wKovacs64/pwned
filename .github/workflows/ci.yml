@@ -94,7 +94,7 @@ jobs:
         run: npx codecov
 
   build:
-    name: 🐟 Build
+    name: ⚒️ Build
     runs-on: ubuntu-latest
     steps:
       - name: 🛑 Cancel Previous Runs
