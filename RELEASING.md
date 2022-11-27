@@ -4,7 +4,7 @@
 
 This package is versioned and released using
 [changesets](https://github.com/changesets/changesets). A changesets pull
-request with the title "Version Packages" should be opened automatically and get
+request with the title "chore: release" should be opened automatically and get
 updated automatically with the current list of pending changes since the
 previous release. Merging this PR will release those pending changes under the
 next appropriate version.
