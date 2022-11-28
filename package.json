@@ -83,7 +83,7 @@
     "@types/node": "16.18.3",
     "@types/prettyjson": "0.0.30",
     "@types/ws": "8.5.3",
-    "@types/yargs": "17.0.14",
+    "@types/yargs": "17.0.15",
     "@vitest/coverage-c8": "0.25.3",
     "@wkovacs64/prettier-config": "3.0.3",
     "babel-plugin-add-import-extension": "1.6.0",
