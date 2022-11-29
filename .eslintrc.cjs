@@ -9,6 +9,9 @@ module.exports = {
     // doesn't work with vitest as it relies on jest version detection
     'jest/no-deprecated-functions': 'off',
   },
+  parserOptions: {
+    project: 'tsconfig.json',
+  },
   settings: {
     react: {
       // config hack to work around eslint-plugin-react crying

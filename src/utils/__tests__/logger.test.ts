@@ -21,7 +21,7 @@ describe('util: logger', () => {
         loggerFns.reduce(
           (obj, fn) => ({
             ...obj,
-            [fn]: expect.any(Function),
+            [fn]: expect.any(Function) as unknown,
           }),
           {},
         ),

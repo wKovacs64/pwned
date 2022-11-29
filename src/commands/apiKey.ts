@@ -41,7 +41,7 @@ export function builder(
  * @param {string} argv.key the user's API key
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ key }: ApiKeyHandlerOptions): Promise<void> {
+export function handler({ key }: ApiKeyHandlerOptions) {
   try {
     config.set('apiKey', key);
     if (config.get('apiKey') === key) {
