@@ -12,6 +12,15 @@ module.exports = {
   parserOptions: {
     project: 'tsconfig.json',
   },
+  overrides: [
+    {
+      files: ['src/**/*.test.ts'],
+      rules: {
+        '@typescript-eslint/unbound-method': 'off',
+        'jest/unbound-method': 'error',
+      },
+    },
+  ],
   settings: {
     react: {
       // config hack to work around eslint-plugin-react crying
