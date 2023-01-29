@@ -1,4 +1,4 @@
-import { translateApiError } from '../translate-api-error';
+import { translateApiError } from '../translate-api-error.js';
 
 describe('util: getErrorMessage', () => {
   it('returns a custom error message if input matches "hibp-api-key"', () => {

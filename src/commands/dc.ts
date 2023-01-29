@@ -1,7 +1,9 @@
 import type { Argv } from 'yargs';
 import { dataClasses } from 'hibp';
 import prettyjson from 'prettyjson';
-import { logger, spinner, userAgent } from '../utils';
+import { logger } from '../utils/logger.js';
+import { spinner } from '../utils/spinner.js';
+import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'dc';
 export const describe = 'get all data classes in the system';

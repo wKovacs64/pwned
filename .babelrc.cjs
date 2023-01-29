@@ -1,5 +1,4 @@
 module.exports = {
-  plugins: ['babel-plugin-add-import-extension'],
   presets: [
     '@babel/preset-typescript',
     [
@@ -7,7 +6,7 @@ module.exports = {
       {
         modules: false,
         targets: {
-          node: '14.13.1',
+          node: '16.0.0',
         },
       },
     ],

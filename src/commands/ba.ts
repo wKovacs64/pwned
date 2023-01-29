@@ -2,8 +2,11 @@ import type { Argv } from 'yargs';
 import { breachedAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
-import { config } from '../config';
-import { logger, spinner, translateApiError, userAgent } from '../utils';
+import { config } from '../config.js';
+import { logger } from '../utils/logger.js';
+import { spinner } from '../utils/spinner.js';
+import { translateApiError } from '../utils/translate-api-error.js';
+import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'ba <account|email>';
 export const describe =

@@ -1,5 +1,5 @@
 import { vi, type SpyInstance } from 'vitest';
-import { server, rest } from '../../../test/server';
+import { server, rest } from '../../../test/server.js';
 import {
   spinnerFns,
   loggerFns,
@@ -7,15 +7,13 @@ import {
   NOT_FOUND_PW,
   ERROR,
   ERROR_MSG,
-} from '../../../test/fixtures';
-import {
-  logger as mockLogger,
-  spinner as mockSpinner,
-  type Logger,
-} from '../../utils';
-import { handler as pw } from '../pw';
+} from '../../../test/fixtures.js';
+import { logger as mockLogger, type Logger } from '../../utils/logger.js';
+import { spinner as mockSpinner } from '../../utils/spinner.js';
+import { handler as pw } from '../pw.js';
 
-vi.mock('../../utils');
+vi.mock('../../utils/logger');
+vi.mock('../../utils/spinner');
 
 const logger = mockLogger as Logger & {
   [key: string]: SpyInstance;

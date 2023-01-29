@@ -1,5 +1,5 @@
-import { spinnerFns } from '../../../test/fixtures';
-import { spinner } from '../spinner';
+import { spinnerFns } from '../../../test/fixtures.js';
+import { spinner } from '../spinner.js';
 
 describe('util: spinner', () => {
   it('returns an object with all the expected methods', () => {

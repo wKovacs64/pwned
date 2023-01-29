@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
     "lib": ["ESNext", "DOM"], // "DOM" only for msw
-    "target": "ES2020", // Node 14
-    "module": "ES2020",
-    "moduleResolution": "Node",
+    "target": "ES2021", // Node 16
+    "module": "Node16",
+    "moduleResolution": "node16",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "importsNotUsedAsValues": "error",
     "noEmit": true,
     "strict": true,
     "stripInternal": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true, // TODO: return to false, see vitejs/vite#11552
     "types": ["node", "vitest/globals"]
   }
 }

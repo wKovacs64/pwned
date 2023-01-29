@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { vi, type SpyInstance } from 'vitest';
-import { loggerFns } from '../../../test/fixtures';
-import { logger, type Logger, type LoggerFunction } from '../logger';
+import { loggerFns } from '../../../test/fixtures.js';
+import { logger, type Logger, type LoggerFunction } from '../logger.js';
 
 type IndexableConsole = typeof console & {
   [key: string]: LoggerFunction | SpyInstance;

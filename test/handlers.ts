@@ -7,7 +7,7 @@ import {
   PASTES,
   PASSWORD_HASHES,
   EMPTY_ARRAY,
-} from './fixtures';
+} from './fixtures.js';
 
 export const handlers = [
   rest.get('*/breachedaccount/:account', (req, res, ctx) => {

@@ -1,7 +1,7 @@
 import type { Argv } from 'yargs';
 import { oneLine } from 'common-tags';
-import { config } from '../config';
-import { logger } from '../utils';
+import { config } from '../config.js';
+import { logger } from '../utils/logger.js';
 
 export const command = 'apiKey <key>';
 export const describe = 'set the API key to be used for authenticated requests';

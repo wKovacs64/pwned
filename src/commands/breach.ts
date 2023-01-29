@@ -1,7 +1,9 @@
 import type { Argv } from 'yargs';
 import { breach } from 'hibp';
 import prettyjson from 'prettyjson';
-import { logger, spinner, userAgent } from '../utils';
+import { logger } from '../utils/logger.js';
+import { spinner } from '../utils/spinner.js';
+import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'breach <name>';
 export const describe = 'get a single breached site by breach name';

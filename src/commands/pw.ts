@@ -1,6 +1,8 @@
 import type { Argv } from 'yargs';
 import { pwnedPassword } from 'hibp';
-import { logger, spinner, userAgent } from '../utils';
+import { logger } from '../utils/logger.js';
+import { spinner } from '../utils/spinner.js';
+import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'pw <password>';
 export const describe = 'securely check a password for public exposure';

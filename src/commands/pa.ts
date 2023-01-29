@@ -2,8 +2,11 @@ import type { Argv } from 'yargs';
 import { pasteAccount } from 'hibp';
 import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
-import { config } from '../config';
-import { logger, spinner, translateApiError, userAgent } from '../utils';
+import { config } from '../config.js';
+import { logger } from '../utils/logger.js';
+import { spinner } from '../utils/spinner.js';
+import { translateApiError } from '../utils/translate-api-error.js';
+import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'pa <email>';
 export const describe = 'get all pastes for an account (email address)';
