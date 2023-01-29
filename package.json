@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "common-tags": "^1.8.2",
-    "conf": "^10.1.2",
+    "conf": "^11.0.1",
     "fs-extra": "11.1.0",
     "hibp": "^11.1.1",
     "ora": "^6.1.2",
