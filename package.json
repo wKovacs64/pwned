@@ -64,7 +64,7 @@
     "common-tags": "^1.8.2",
     "conf": "^10.1.2",
     "fs-extra": "11.1.0",
-    "hibp": "^11.0.0",
+    "hibp": "^11.1.1",
     "ora": "^6.1.2",
     "prettyjson": "^1.2.5",
     "source-map-support": "^0.5.21",
