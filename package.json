@@ -83,7 +83,7 @@
     "@types/node": "18.15.5",
     "@types/prettyjson": "0.0.30",
     "@types/ws": "8.5.4",
-    "@types/yargs": "17.0.22",
+    "@types/yargs": "17.0.23",
     "@vitest/coverage-c8": "0.29.3",
     "@wkovacs64/prettier-config": "3.0.3",
     "c8": "7.13.0",
