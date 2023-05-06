@@ -6,7 +6,7 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 /* eslint-disable import/extensions, import/no-unresolved */
-import * as apiKey from '../lib/commands/apiKey.js';
+import * as apiKey from '../lib/commands/api-key.js';
 import * as ba from '../lib/commands/ba.js';
 import * as breach from '../lib/commands/breach.js';
 import * as breaches from '../lib/commands/breaches.js';
