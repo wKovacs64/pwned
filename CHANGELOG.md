@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.0.0
+
+### Major Changes
+
+- [`3fe2524`](https://github.com/wKovacs64/pwned/commit/3fe25245bd702886d2788541006cf236d915c800) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Drop support for Node.js 14 as it is [end-of-life](https://nodejs.org/en/about/releases/), making the new minimum Node.js runtime v16.0.0. Please upgrade your Node.js environment if necessary, or continue using a previous release if you are unable to upgrade your environment.
+
 ## 10.0.1
 
 ### Patch Changes
