@@ -87,7 +87,6 @@
     "@vitest/coverage-c8": "0.31.0",
     "@wkovacs64/prettier-config": "3.0.3",
     "c8": "7.13.0",
-    "codecov": "3.8.3",
     "cross-env": "7.0.3",
     "eslint": "8.40.0",
     "eslint-plugin-wkovacs64": "14.1.0",
