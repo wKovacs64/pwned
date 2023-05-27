@@ -73,7 +73,7 @@
   "devDependencies": {
     "@babel/cli": "7.21.5",
     "@babel/core": "7.22.1",
-    "@babel/parser": "7.22.0",
+    "@babel/parser": "7.22.3",
     "@babel/preset-env": "7.22.2",
     "@babel/preset-typescript": "7.21.5",
     "@changesets/changelog-github": "0.4.8",
