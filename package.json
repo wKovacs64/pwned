@@ -82,7 +82,7 @@
     "@types/debug": "4.1.8",
     "@types/node": "18.16.16",
     "@types/prettyjson": "0.0.30",
-    "@types/ws": "8.5.4",
+    "@types/ws": "8.5.5",
     "@types/yargs": "17.0.24",
     "@vitest/coverage-c8": "0.31.4",
     "@wkovacs64/prettier-config": "3.0.3",
