@@ -1,5 +1,6 @@
 import { vi, type SpyInstance } from 'vitest';
-import { server, rest } from '../../../test/server.js';
+import { rest } from 'msw';
+import { server } from '../../../test/server.js';
 import {
   spinnerFns,
   loggerFns,
@@ -48,7 +49,11 @@ describe('command: breaches', () => {
     });
 
     it('on error: only calls spinner.fail', async () => {
-      server.use(rest.get('*', (_, res) => res.networkError(ERROR_MSG)));
+      server.use(
+        rest.get('*', () => {
+          throw new Error(ERROR_MSG);
+        }),
+      );
 
       expect(spinner.fail).toHaveBeenCalledTimes(0);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
@@ -82,7 +87,11 @@ describe('command: breaches', () => {
     });
 
     it('on error: only calls logger.error', async () => {
-      server.use(rest.get('*', (_, res) => res.networkError(ERROR_MSG)));
+      server.use(
+        rest.get('*', () => {
+          throw new Error(ERROR_MSG);
+        }),
+      );
 
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);

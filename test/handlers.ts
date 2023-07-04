@@ -10,22 +10,39 @@ import {
 } from './fixtures.js';
 
 export const handlers = [
-  rest.get('*/breachedaccount/:account', (req, res, ctx) => {
-    const { account } = req.params;
-    return res(account === FOUND ? ctx.json(BREACHES) : ctx.status(404));
+  rest.get('*/breachedaccount/:account', ({ params }) => {
+    const { account } = params;
+    if (account === FOUND) {
+      return new Response(JSON.stringify(BREACHES));
+    }
+    return new Response(null, { status: 404 });
   }),
-  rest.get('*/pasteaccount/:account', (req, res, ctx) => {
-    const { account } = req.params;
-    return res(account === FOUND ? ctx.json(PASTES) : ctx.status(404));
+  rest.get('*/pasteaccount/:account', ({ params }) => {
+    const { account } = params;
+    if (account === FOUND) {
+      return new Response(JSON.stringify(PASTES));
+    }
+    return new Response(null, { status: 404 });
   }),
-  rest.get('*/breach/:breachName', (req, res, ctx) => {
-    const { breachName } = req.params;
-    return res(breachName === FOUND ? ctx.json(BREACH) : ctx.status(404));
+  rest.get('*/breach/:breachName', ({ params }) => {
+    const { breachName } = params;
+    if (breachName === FOUND) {
+      return new Response(JSON.stringify(BREACH));
+    }
+    return new Response(null, { status: 404 });
   }),
-  rest.get('*/breaches', (req, res, ctx) => {
-    const domain = req.url.searchParams.get('domain');
-    return res(ctx.json(!domain || domain === FOUND ? BREACHES : EMPTY_ARRAY));
+  rest.get('*/breaches', ({ request }) => {
+    const url = new URL(request.url);
+    const domain = url.searchParams.get('domain');
+    if (!domain || domain === FOUND) {
+      return new Response(JSON.stringify(BREACHES));
+    }
+    return new Response(JSON.stringify(EMPTY_ARRAY));
   }),
-  rest.get('*/dataclasses', (_, res, ctx) => res(ctx.json(DATA_CLASSES))),
-  rest.get('*/range/:suffix', (_, res, ctx) => res(ctx.text(PASSWORD_HASHES))),
+  rest.get('*/dataclasses', () => {
+    return new Response(JSON.stringify(DATA_CLASSES));
+  }),
+  rest.get('*/range/:suffix', () => {
+    return new Response(PASSWORD_HASHES);
+  }),
 ];
