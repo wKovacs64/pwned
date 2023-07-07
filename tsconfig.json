@@ -10,7 +10,7 @@
     "noEmit": true,
     "strict": true,
     "stripInternal": true,
-    "skipLibCheck": true, // TODO: return to false, see vitejs/vite#11552
+    "skipLibCheck": true,
     "types": ["node", "vitest/globals"]
   }
 }
