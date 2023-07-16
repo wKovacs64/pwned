@@ -102,7 +102,7 @@ export async function handler({
     } else if (foundData) {
       spinner.stop();
       logger.log(prettyjson.render(searchData));
-    } else if (!foundData && !raw) {
+    } else if (!raw) {
       spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err: unknown) {

@@ -3,13 +3,9 @@ import { vi, type SpyInstance } from 'vitest';
 import { loggerFns } from '../../../test/fixtures.js';
 import { logger, type Logger, type LoggerFunction } from '../logger.js';
 
-type IndexableConsole = typeof console & {
-  [key: string]: LoggerFunction | SpyInstance;
-};
-
-type IndexableLogger = Logger & {
-  [key: string]: LoggerFunction;
-};
+type IndexableConsole = typeof console &
+  Record<string, LoggerFunction | SpyInstance>;
+type IndexableLogger = Logger & Record<string, LoggerFunction>;
 
 const indexableConsole = console as IndexableConsole;
 const indexableLogger = logger as IndexableLogger;

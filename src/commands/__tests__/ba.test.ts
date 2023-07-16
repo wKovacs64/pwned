@@ -17,13 +17,8 @@ import { handler as ba } from '../ba.js';
 vi.mock('../../utils/logger');
 vi.mock('../../utils/spinner');
 
-const logger = mockLogger as Logger & {
-  [key: string]: SpyInstance;
-};
-
-const spinner = mockSpinner as typeof mockSpinner & {
-  [key: string]: SpyInstance;
-};
+const logger = mockLogger as Logger & Record<string, SpyInstance>;
+const spinner = mockSpinner as typeof mockSpinner & Record<string, SpyInstance>;
 
 describe('command: ba', () => {
   describe('normal output (default)', () => {
