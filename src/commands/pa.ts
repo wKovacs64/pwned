@@ -71,7 +71,7 @@ export async function handler({ email, raw }: PaHandlerOptions): Promise<void> {
     } else if (pasteData) {
       spinner.stop();
       logger.log(prettyjson.render(pasteData));
-    } else if (!pasteData && !raw) {
+    } else if (!raw) {
       spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err: unknown) {

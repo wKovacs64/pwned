@@ -111,7 +111,7 @@ export async function handler({
     } else if (breachData) {
       spinner.stop();
       logger.log(prettyjson.render(breachData));
-    } else if (!breachData && !raw) {
+    } else if (!raw) {
       spinner.succeed('Good news — no pwnage found!');
     }
   } catch (err: unknown) {

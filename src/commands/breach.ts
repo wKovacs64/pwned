@@ -67,7 +67,7 @@ export async function handler({
     } else if (breachData) {
       spinner.stop();
       logger.log(prettyjson.render(breachData));
-    } else if (!breachData && !raw) {
+    } else if (!raw) {
       spinner.succeed('No breach found by that name.');
     }
   } catch (err: unknown) {
