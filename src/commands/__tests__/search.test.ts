@@ -1,5 +1,5 @@
 import { vi, type SpyInstance } from 'vitest';
-import { rest } from 'msw';
+import { http } from 'msw';
 import { server } from '../../../test/server.js';
 import {
   spinnerFns,
@@ -61,7 +61,7 @@ describe('command: search', () => {
 
     it('on error: only calls spinner.fail', async () => {
       server.use(
-        rest.get('*', () => {
+        http.get('*', () => {
           throw new Error(ERROR_MSG);
         }),
       );
@@ -119,7 +119,7 @@ describe('command: search', () => {
 
     it('on error: only calls logger.error', async () => {
       server.use(
-        rest.get('*', () => {
+        http.get('*', () => {
           throw new Error(ERROR_MSG);
         }),
       );

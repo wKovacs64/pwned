@@ -1,4 +1,4 @@
-import { rest } from 'msw';
+import { http } from 'msw';
 import {
   FOUND,
   BREACH,
@@ -10,28 +10,28 @@ import {
 } from './fixtures.js';
 
 export const handlers = [
-  rest.get('*/breachedaccount/:account', ({ params }) => {
+  http.get('*/breachedaccount/:account', ({ params }) => {
     const { account } = params;
     if (account === FOUND) {
       return new Response(JSON.stringify(BREACHES));
     }
     return new Response(null, { status: 404 });
   }),
-  rest.get('*/pasteaccount/:account', ({ params }) => {
+  http.get('*/pasteaccount/:account', ({ params }) => {
     const { account } = params;
     if (account === FOUND) {
       return new Response(JSON.stringify(PASTES));
     }
     return new Response(null, { status: 404 });
   }),
-  rest.get('*/breach/:breachName', ({ params }) => {
+  http.get('*/breach/:breachName', ({ params }) => {
     const { breachName } = params;
     if (breachName === FOUND) {
       return new Response(JSON.stringify(BREACH));
     }
     return new Response(null, { status: 404 });
   }),
-  rest.get('*/breaches', ({ request }) => {
+  http.get('*/breaches', ({ request }) => {
     const url = new URL(request.url);
     const domain = url.searchParams.get('domain');
     if (!domain || domain === FOUND) {
@@ -39,10 +39,10 @@ export const handlers = [
     }
     return new Response(JSON.stringify(EMPTY_ARRAY));
   }),
-  rest.get('*/dataclasses', () => {
+  http.get('*/dataclasses', () => {
     return new Response(JSON.stringify(DATA_CLASSES));
   }),
-  rest.get('*/range/:suffix', () => {
+  http.get('*/range/:suffix', () => {
     return new Response(PASSWORD_HASHES);
   }),
 ];

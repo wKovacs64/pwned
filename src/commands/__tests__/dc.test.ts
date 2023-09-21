@@ -1,5 +1,5 @@
 import { vi, type SpyInstance } from 'vitest';
-import { rest } from 'msw';
+import { http } from 'msw';
 import { server } from '../../../test/server.js';
 import {
   spinnerFns,
@@ -35,7 +35,7 @@ describe('command: dc', () => {
 
     it('without data: only calls spinner.fail', async () => {
       server.use(
-        rest.get('*', () => {
+        http.get('*', () => {
           return new Response(JSON.stringify(EMPTY_ARRAY));
         }),
       );
@@ -49,7 +49,7 @@ describe('command: dc', () => {
 
     it('on error: only calls spinner.fail', async () => {
       server.use(
-        rest.get('*', () => {
+        http.get('*', () => {
           throw new Error(ERROR_MSG);
         }),
       );
@@ -79,7 +79,7 @@ describe('command: dc', () => {
 
     it('without data: does not call any spinner or logger methods', async () => {
       server.use(
-        rest.get('*', () => {
+        http.get('*', () => {
           return new Response(JSON.stringify(EMPTY_ARRAY));
         }),
       );
@@ -93,7 +93,7 @@ describe('command: dc', () => {
 
     it('on error: only calls logger.error', async () => {
       server.use(
-        rest.get('*', () => {
+        http.get('*', () => {
           throw new Error(ERROR_MSG);
         }),
       );
