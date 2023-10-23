@@ -65,7 +65,7 @@ jobs:
         run: npm install
 
       - name: 🔎 Type check
-        run: npm run check-types
+        run: npm run typecheck
 
   test:
     name: 🩺 Tests

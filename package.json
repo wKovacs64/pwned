@@ -35,7 +35,7 @@
     "changeset": "changeset",
     "changeset:version": "changeset version && npm install --package-lock-only",
     "changeset:publish": "changeset publish",
-    "check-types": "tsc",
+    "typecheck": "tsc",
     "clean": "rimraf lib coverage",
     "format": "prettier --cache --write .",
     "lint": "eslint .",
@@ -43,7 +43,7 @@
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch",
     "prebuild": "npm run --silent clean",
-    "prepublishOnly": "run-p --silent lint check-types test build"
+    "prepublishOnly": "run-p --silent lint typecheck test build"
   },
   "private": false,
   "publishConfig": {
