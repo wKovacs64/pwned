@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "lib": ["ESNext", "DOM"], // "DOM" only for msw
-    "target": "ES2021", // Node 16
-    "module": "Node16",
-    "moduleResolution": "node16",
+    "target": "ES2022", // Node 18
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
