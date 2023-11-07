@@ -79,7 +79,7 @@
     "@changesets/changelog-github": "0.4.8",
     "@changesets/cli": "2.26.2",
     "@types/common-tags": "1.8.4",
-    "@types/debug": "4.1.10",
+    "@types/debug": "4.1.11",
     "@types/node": "20.8.10",
     "@types/prettyjson": "0.0.32",
     "@types/ws": "8.5.8",
