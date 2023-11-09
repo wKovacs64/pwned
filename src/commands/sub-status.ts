@@ -7,7 +7,7 @@ import { spinner } from '../utils/spinner.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'subStatus';
-export const describe = 'get your subscription status';
+export const describe = 'get the subscription status of your API key';
 
 interface SubStatusArgvOptions {
   r?: boolean;
