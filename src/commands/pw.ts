@@ -9,11 +9,13 @@ export const describe = 'securely check a password for public exposure';
 
 interface PwArgvOptions {
   password: string;
+  p?: boolean;
   r?: boolean;
 }
 
 interface PwHandlerOptions {
   password: string;
+  pad?: boolean;
   raw?: boolean;
 }
 
@@ -30,13 +32,19 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
       }
       return true;
     })
+    .option('p', {
+      alias: 'pad',
+      describe: 'add padding to the API response to obscure the contents',
+      type: 'boolean',
+      default: false,
+    })
     .option('r', {
       alias: 'raw',
       describe: 'disable the console spinner',
       type: 'boolean',
       default: false,
     })
-    .group(['r'], 'Command Options:')
+    .group(['r', 'p'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 }
 /* c8 ignore stop */
@@ -52,6 +60,7 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
  */
 export async function handler({
   password,
+  pad,
   raw,
 }: PwHandlerOptions): Promise<void> {
   if (!raw) {
@@ -59,7 +68,10 @@ export async function handler({
   }
 
   try {
-    const pwnCount = await pwnedPassword(password, { userAgent });
+    const pwnCount = await pwnedPassword(password, {
+      userAgent,
+      addPadding: pad,
+    });
     if (pwnCount) {
       const pwnedMessage = `Oh no — pwned ${pwnCount} times!`;
       if (!raw) {
