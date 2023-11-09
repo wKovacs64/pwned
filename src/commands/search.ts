@@ -35,7 +35,7 @@ export function builder(
       alias: 'email',
       type: 'string',
     })
-    .demand('account')
+    .demandOption('account')
     .check((argv) => {
       if (!argv.account.length) {
         throw new Error('The account argument must not be empty.');

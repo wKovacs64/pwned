@@ -25,7 +25,7 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
     .positional('password', {
       type: 'string',
     })
-    .demand('password')
+    .demandOption('password')
     .check((argv) => {
       if (!argv.password.length) {
         throw new Error('The password argument must not be empty.');
