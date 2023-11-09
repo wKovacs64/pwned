@@ -14,6 +14,7 @@ import * as dc from '../lib/commands/dc.js';
 import * as pa from '../lib/commands/pa.js';
 import * as pw from '../lib/commands/pw.js';
 import * as search from '../lib/commands/search.js';
+import * as subStatus from '../lib/commands/sub-status.js';
 /* eslint-enable */
 
 sourceMapSupport.install();
@@ -32,6 +33,7 @@ yargs(hideBin(process.argv))
   .command(pa)
   .command(pw)
   .command(search)
+  .command(subStatus)
   .demandCommand()
   .recommendCommands()
   .strict()

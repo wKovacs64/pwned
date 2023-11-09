@@ -6,6 +6,7 @@ import {
   DATA_CLASSES,
   PASTES,
   PASSWORD_HASHES,
+  SUBSCRIPTION_STATUS,
   EMPTY_ARRAY,
 } from './fixtures.js';
 
@@ -44,5 +45,8 @@ export const handlers = [
   }),
   http.get('*/range/:suffix', () => {
     return new Response(PASSWORD_HASHES);
+  }),
+  http.get('*/subscription/status', () => {
+    return new Response(JSON.stringify(SUBSCRIPTION_STATUS));
   }),
 ];
