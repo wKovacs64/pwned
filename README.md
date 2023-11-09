@@ -55,6 +55,7 @@ Commands:
   pwned pw <password>           securely check a password for public exposure
   pwned search <account|email>  search breaches and pastes for an account (username or email
                                 address)
+  pwned subStatus               get your subscription status
 
 Options:
   -h, --help     Show help                                                                 [boolean]

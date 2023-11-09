@@ -1,5 +1,5 @@
 import { stripIndents } from 'common-tags';
-import type { Breach, Paste } from 'hibp';
+import type { Breach, Paste, SubscriptionStatus } from 'hibp';
 
 export const spinnerFns = ['start', 'stop', 'succeed', 'warn', 'fail'];
 export const loggerFns = ['info', 'log', 'warn', 'error'];
@@ -39,6 +39,14 @@ export const PASSWORD_HASHES = stripIndents`
   1E4C9B93F3F0682250B6CF8331B7EE68FD8:3303003
   01330C689E5D64F660D6947A93AD634EF8F:1
 `;
+
+export const SUBSCRIPTION_STATUS: SubscriptionStatus = {
+  SubscriptionName: 'Pwned 42',
+  Description: 'A mock subscrpition',
+  SubscribedUntil: '2023-12-31T01:23:45',
+  Rpm: 69,
+  DomainSearchMaxBreachedAccounts: 0,
+};
 
 export const EMAIL = 'foo@bar.baz';
 export const EMPTY_ARRAY = [];
