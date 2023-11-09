@@ -14,13 +14,15 @@ export const BREACH: Breach = {
   ModifiedDate: '2019-03-03',
   PwnCount: 42,
   Description: 'fake breach',
-  LogoPath: '/foo.png',
   DataClasses: ['foo', 'bar'],
   IsVerified: true,
   IsFabricated: false,
   IsSensitive: false,
   IsSpamList: false,
   IsRetired: false,
+  IsMalware: false,
+  IsSubscriptionFree: true,
+  LogoPath: '/foo.png',
 };
 export const BREACHES = [BREACH];
 export const PASTE: Paste = {
