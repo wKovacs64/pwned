@@ -80,7 +80,7 @@
     "@changesets/cli": "2.27.1",
     "@types/common-tags": "1.8.4",
     "@types/debug": "4.1.12",
-    "@types/node": "20.10.3",
+    "@types/node": "20.10.4",
     "@types/prettyjson": "0.0.33",
     "@types/ws": "8.5.10",
     "@types/yargs": "17.0.32",
