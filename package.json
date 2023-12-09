@@ -84,7 +84,7 @@
     "@types/prettyjson": "0.0.33",
     "@types/ws": "8.5.10",
     "@types/yargs": "17.0.32",
-    "@vitest/coverage-v8": "1.0.2",
+    "@vitest/coverage-v8": "1.0.4",
     "@wkovacs64/prettier-config": "3.0.3",
     "cross-env": "7.0.3",
     "eslint": "8.55.0",
@@ -95,6 +95,6 @@
     "rimraf": "5.0.5",
     "type-fest": "4.8.3",
     "typescript": "5.2.2",
-    "vitest": "1.0.2"
+    "vitest": "1.0.4"
   }
 }
