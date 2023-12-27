@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.1.0
+
+### Minor Changes
+
+- [#253](https://github.com/wKovacs64/pwned/pull/253) [`d80c130`](https://github.com/wKovacs64/pwned/commit/d80c130f4610ff5f349a40e09b920ea436fc76c8) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Provide an interactive prompt for the API key when the `apiKey` command is issued without an argument. This is a safer way to input your API key, as providing it on the command line may cause it to show up in your shell's command history.
+
 ## 12.0.0
 
 ### Major Changes
