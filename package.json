@@ -86,7 +86,7 @@
     "@types/prompts": "2.4.9",
     "@types/ws": "8.5.10",
     "@types/yargs": "17.0.32",
-    "@vitest/coverage-v8": "1.2.0",
+    "@vitest/coverage-v8": "1.2.1",
     "@wkovacs64/prettier-config": "3.0.3",
     "cross-env": "7.0.3",
     "eslint": "8.56.0",
@@ -97,6 +97,6 @@
     "rimraf": "5.0.5",
     "type-fest": "4.9.0",
     "typescript": "5.3.3",
-    "vitest": "1.2.0"
+    "vitest": "1.2.1"
   }
 }
