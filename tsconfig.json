@@ -11,6 +11,6 @@
     "strict": true,
     "stripInternal": true,
     "skipLibCheck": true,
-    "types": ["node", "vitest/globals"]
-  }
+    "types": ["node", "vitest/globals"],
+  },
 }
