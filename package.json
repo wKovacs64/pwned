@@ -92,7 +92,7 @@
     "eslint": "8.56.0",
     "eslint-plugin-wkovacs64": "15.1.0",
     "msw": "2.1.5",
-    "npm-run-all2": "5.0.0",
+    "npm-run-all2": "6.1.1",
     "prettier": "3.2.4",
     "rimraf": "5.0.5",
     "type-fest": "4.10.1",
