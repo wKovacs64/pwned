@@ -93,7 +93,7 @@
     "eslint-plugin-wkovacs64": "15.1.0",
     "msw": "2.1.5",
     "npm-run-all2": "6.1.2",
-    "prettier": "3.2.4",
+    "prettier": "3.2.5",
     "rimraf": "5.0.5",
     "type-fest": "4.10.2",
     "typescript": "5.3.3",
