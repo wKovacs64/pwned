@@ -86,7 +86,7 @@
     "@types/prompts": "2.4.9",
     "@types/ws": "8.5.10",
     "@types/yargs": "17.0.32",
-    "@vitest/coverage-v8": "1.5.1",
+    "@vitest/coverage-v8": "1.5.2",
     "@wkovacs64/prettier-config": "3.0.3",
     "cross-env": "7.0.3",
     "eslint": "8.57.0",
@@ -97,7 +97,7 @@
     "rimraf": "5.0.5",
     "type-fest": "4.17.0",
     "typescript": "5.4.5",
-    "vitest": "1.5.1"
+    "vitest": "1.5.2"
   },
   "overrides": {
     "typescript": "5.4.5"
