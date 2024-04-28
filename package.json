@@ -90,7 +90,7 @@
     "@wkovacs64/prettier-config": "3.0.3",
     "cross-env": "7.0.3",
     "eslint": "8.57.0",
-    "eslint-plugin-wkovacs64": "16.1.0",
+    "eslint-plugin-wkovacs64": "16.2.0",
     "msw": "2.2.14",
     "npm-run-all2": "6.1.2",
     "prettier": "3.2.5",
