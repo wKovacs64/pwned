@@ -95,7 +95,7 @@
     "npm-run-all2": "6.2.0",
     "prettier": "3.2.5",
     "rimraf": "5.0.7",
-    "type-fest": "4.18.2",
+    "type-fest": "4.18.3",
     "typescript": "5.4.5",
     "vitest": "1.6.0"
   },
