@@ -38,6 +38,7 @@
     "typecheck": "tsc",
     "clean": "rimraf lib coverage",
     "format": "prettier --cache --write .",
+    "format:check": "prettier --cache --check .",
     "lint": "eslint .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
@@ -49,6 +50,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "prettier": "@wkovacs64/prettier-config",
   "repository": {
     "type": "git",
     "url": "https://github.com/wKovacs64/pwned.git"

@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: 💅 Format check
-        run: npx prettier --cache --check .
+        run: npm run format:check
 
   lint:
     name: ⬣ ESLint
