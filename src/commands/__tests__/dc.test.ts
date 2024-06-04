@@ -1,12 +1,7 @@
 import { vi, type SpyInstance } from 'vitest';
 import { http } from 'msw';
 import { server } from '../../../test/server.js';
-import {
-  spinnerFns,
-  loggerFns,
-  EMPTY_ARRAY,
-  ERROR_MSG,
-} from '../../../test/fixtures.js';
+import { spinnerFns, loggerFns, EMPTY_ARRAY, ERROR_MSG } from '../../../test/fixtures.js';
 import { logger as mockLogger, type Logger } from '../../utils/logger.js';
 import { spinner as mockSpinner } from '../../utils/spinner.js';
 import { handler as dc } from '../dc.js';

@@ -19,9 +19,7 @@ interface BreachHandlerOptions {
 }
 
 /* c8 ignore start */
-export function builder(
-  yargs: Argv<BreachArgvOptions>,
-): Argv<BreachHandlerOptions> {
+export function builder(yargs: Argv<BreachArgvOptions>): Argv<BreachHandlerOptions> {
   return yargs
     .positional('name', {
       type: 'string',
@@ -52,10 +50,7 @@ export function builder(
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({
-  name,
-  raw,
-}: BreachHandlerOptions): Promise<void> {
+export async function handler({ name, raw }: BreachHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }

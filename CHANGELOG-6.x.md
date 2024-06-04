@@ -2,20 +2,20 @@
 
 ## 7.x-9.x and Newer Versions
 
-**Please refer to the [releases page](../../releases) for the 7.x-9.x versions
-and [CHANGELOG.md](CHANGELOG.md) for the newer versions.**
+**Please refer to the [releases page](../../releases) for the 7.x-9.x versions and
+[CHANGELOG.md](CHANGELOG.md) for the newer versions.**
 
 ## 6.x and Older
 
 #### Version 6.3.0 _(2019-02-04)_
 
-- Specified a custom `User-Agent` to explicitly identify ourselves to the
-  `haveibeenpwned.com` API ([9185536d][9185536d])
+- Specified a custom `User-Agent` to explicitly identify ourselves to the `haveibeenpwned.com` API
+  ([9185536d][9185536d])
 
 #### Version 6.2.0 _(2019-01-19)_
 
-- Added `-i`/`--include-unverified` option to `ba` command to include
-  "unverified" breaches in the results
+- Added `-i`/`--include-unverified` option to `ba` command to include "unverified" breaches in the
+  results
 - Converted to TypeScript ([#26][26])
 
 #### Version 6.1.2 _(2018-12-20)_
@@ -29,15 +29,15 @@ and [CHANGELOG.md](CHANGELOG.md) for the newer versions.**
 
 #### Version 6.1.0 _(2018-05-23)_
 
-- Made the progress spinner animation a little more fun and added status emojis
-  (✔, ⚠, ✖) to some output ([#11][11])
+- Made the progress spinner animation a little more fun and added status emojis (✔, ⚠, ✖) to some
+  output ([#11][11])
 
 #### Version 6.0.0 _(2018-03-13)_
 
-- Upgraded `hibp` to v7 which handles password hashing and suffix processing,
-  removing this logic from `pwned`.
-- The `pw` command now includes a count in the output, indicating how many times
-  the given password was exposed in a breach.
+- Upgraded `hibp` to v7 which handles password hashing and suffix processing, removing this logic
+  from `pwned`.
+- The `pw` command now includes a count in the output, indicating how many times the given password
+  was exposed in a breach.
 
 ##### Breaking Changes:
 
@@ -45,18 +45,17 @@ and [CHANGELOG.md](CHANGELOG.md) for the newer versions.**
 
 #### Version 5.0.0 _(2018-02-25)_
 
-- Refactored `pw` command to be secure by default (#8). Passwords will no longer
-  be sent over the network. Instead, the first 5 characters of the SHA-1 hash of
-  the password will be sent, and the list of suffixes that match the submitted
-  prefix will be returned. `pwned` will then search the range of suffixes for
-  the suffix from your hash. If a match is found, the password has been
+- Refactored `pw` command to be secure by default (#8). Passwords will no longer be sent over the
+  network. Instead, the first 5 characters of the SHA-1 hash of the password will be sent, and the
+  list of suffixes that match the submitted prefix will be returned. `pwned` will then search the
+  range of suffixes for the suffix from your hash. If a match is found, the password has been
   compromised in a breach.
 
 ##### Breaking Changes:
 
-- The `pw` command no longer takes the `-s` (`--sha1`) option. Instead, all
-  passwords will be taken literally and hashed. This is due to a remote API
-  endpoint change which no longer performs automatic hash detection.
+- The `pw` command no longer takes the `-s` (`--sha1`) option. Instead, all passwords will be taken
+  literally and hashed. This is due to a remote API endpoint change which no longer performs
+  automatic hash detection.
 
 #### Version 4.0.3 _(2017-12-07)_
 
@@ -86,8 +85,7 @@ and [CHANGELOG.md](CHANGELOG.md) for the newer versions.**
 
 #### Version 3.2.0 _(2017-08-05)_
 
-- Added new `pw` command to check if a password has been exposed in a data
-  breach (#3)
+- Added new `pw` command to check if a password has been exposed in a data breach (#3)
 - Enabled `source-map-support` in the entry point for easier debugging
 
 #### Version 3.1.2 _(2017-07-10)_
@@ -101,8 +99,8 @@ and [CHANGELOG.md](CHANGELOG.md) for the newer versions.**
 
 #### Version 3.1.0 _(2017-06-08)_
 
-- Added new `search` command to query breaches and pastes simultaneously (like
-  the search form on the [website][haveibeenpwned])
+- Added new `search` command to query breaches and pastes simultaneously (like the search form on
+  the [website][haveibeenpwned])
 - Optimized stub restores/resets in tests
 - Updated dependencies
 
@@ -131,19 +129,17 @@ and [CHANGELOG.md](CHANGELOG.md) for the newer versions.**
 
 - Removed spinner output when command completes
 
-  _This is technically a breaking change as the output for the same input will
-  be different than in previous versions. Previously, the progress spinner was
-  included in the output (unless using the `--raw` option) and now it isn't. So,
-  if you were previously parsing the **formatted** (non-raw) output, you may
-  need to adjust._
+  _This is technically a breaking change as the output for the same input will be different than in
+  previous versions. Previously, the progress spinner was included in the output (unless using the
+  `--raw` option) and now it isn't. So, if you were previously parsing the **formatted** (non-raw)
+  output, you may need to adjust._
 
 - Shortened error messages
 
-  _In the event of a failed request to the remote API (network errors, etc.), an
-  error message is written to `stderr`. Due to an upstream change in the
-  underlying network request technology in the `hibp` library, these messages
-  will be significantly shorter as only the "reason" will be displayed now as
-  opposed to a more verbose explanation of what went wrong._
+  _In the event of a failed request to the remote API (network errors, etc.), an error message is
+  written to `stderr`. Due to an upstream change in the underlying network request technology in the
+  `hibp` library, these messages will be significantly shorter as only the "reason" will be
+  displayed now as opposed to a more verbose explanation of what went wrong._
 
 - Added tests
 - Updated dependencies
@@ -183,8 +179,7 @@ and [CHANGELOG.md](CHANGELOG.md) for the newer versions.**
 #### Version 1.0.1 _(2016-04-10)_
 
 - Updated hibp to 1.0.2
-- Removed temporary hack for broken '[breach][singlebreach]' endpoint (moved to
-  hibp)
+- Removed temporary hack for broken '[breach][singlebreach]' endpoint (moved to hibp)
 
 #### Version 1.0.0 _(2016-04-09)_
 
@@ -196,5 +191,4 @@ and [CHANGELOG.md](CHANGELOG.md) for the newer versions.**
 [24]: https://github.com/wKovacs64/pwned/pull/24
 [25]: https://github.com/wKovacs64/pwned/pull/25
 [26]: https://github.com/wKovacs64/pwned/pull/26
-[9185536d]:
-  https://github.com/wKovacs64/pwned/commit/9185536d1d33c34c6d45a55d0a78f837612371cb
+[9185536d]: https://github.com/wKovacs64/pwned/commit/9185536d1d33c34c6d45a55d0a78f837612371cb

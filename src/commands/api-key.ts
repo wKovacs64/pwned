@@ -16,12 +16,9 @@ interface ApiKeyHandlerOptions {
 }
 
 /* c8 ignore next */
-export function builder(
-  yargs: Argv<ApiKeyArgvOptions>,
-): Argv<ApiKeyHandlerOptions> {
-  return yargs
-    .positional('key', { type: 'string' })
-    .group(['h', 'v'], 'Global Options:').epilog(oneLine`
+export function builder(yargs: Argv<ApiKeyArgvOptions>): Argv<ApiKeyHandlerOptions> {
+  return yargs.positional('key', { type: 'string' }).group(['h', 'v'], 'Global Options:')
+    .epilog(oneLine`
       Please obtain an API key from https://haveibeenpwned.com/API/Key and then
       run "pwned apiKey" to configure pwned.
     `);
@@ -44,9 +41,7 @@ export async function handler({ key }: ApiKeyHandlerOptions) {
       name: 'apiKeyFromPrompt',
       message: 'Enter your API key (input will be masked for your security)',
       validate: (value: string) =>
-        value.length > 0
-          ? true
-          : 'API key must be a non-empty string of characters.',
+        value.length > 0 ? true : 'API key must be a non-empty string of characters.',
     });
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
     apiKey = promptResponse.apiKeyFromPrompt;

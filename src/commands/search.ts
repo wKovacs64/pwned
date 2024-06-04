@@ -9,8 +9,7 @@ import { translateApiError } from '../utils/translate-api-error.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'search <account|email>';
-export const describe =
-  'search breaches and pastes for an account (username or email address)';
+export const describe = 'search breaches and pastes for an account (username or email address)';
 
 interface SearchArgvOptions {
   account: string;
@@ -27,9 +26,7 @@ interface SearchHandlerOptions {
 }
 
 /* c8 ignore start */
-export function builder(
-  yargs: Argv<SearchArgvOptions>,
-): Argv<SearchHandlerOptions> {
+export function builder(yargs: Argv<SearchArgvOptions>): Argv<SearchHandlerOptions> {
   return yargs
     .positional('account', {
       alias: 'email',

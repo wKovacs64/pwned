@@ -14,16 +14,16 @@ title: pwned
 
 ## Installation
 
-Download and install [Node.js](https://nodejs.org/en/download/), then install
-`pwned` globally using `npm`:
+Download and install [Node.js](https://nodejs.org/en/download/), then install `pwned` globally using
+`npm`:
 
 ```shell
 npm install pwned -g
 ```
 
 Alternatively, you can run it on-demand using the
-[`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
-package runner:
+[`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) package
+runner:
 
 ```shell
 npx pwned
@@ -31,14 +31,13 @@ npx pwned
 
 ## Protected Commands
 
-On July 18th, 2019, the haveibeenpwned.com API moved several services behind
-authentication, requiring an API key. See
-[Troy's blog post](https://www.troyhunt.com/authentication-and-the-have-i-been-pwned-api/)
-for rationale and a full explanation. In order to use some of `pwned` commands
-(e.g. `ba`, `pa`, and `search`), you will need to
-[get an API key](https://haveibeenpwned.com/API/Key) and run
-`pwned apiKey <your-key>` to configure `pwned`. The other commands do not
-require an API key and you may use them without obtaining one.
+On July 18th, 2019, the haveibeenpwned.com API moved several services behind authentication,
+requiring an API key. See
+[Troy's blog post](https://www.troyhunt.com/authentication-and-the-have-i-been-pwned-api/) for
+rationale and a full explanation. In order to use some of `pwned` commands (e.g. `ba`, `pa`, and
+`search`), you will need to [get an API key](https://haveibeenpwned.com/API/Key) and run
+`pwned apiKey <your-key>` to configure `pwned`. The other commands do not require an API key and you
+may use them without obtaining one.
 
 ## Usage
 
@@ -71,8 +70,7 @@ $ pwned ba pleasebeclean@fingerscrossed.tld
 ✔ Good news — no pwnage found!
 ```
 
-Get all breaches in the system, filtering results to just the 'adobe.com'
-domain:
+Get all breaches in the system, filtering results to just the 'adobe.com' domain:
 
 ```
 $ pwned breaches -d adobe.com
@@ -106,8 +104,7 @@ $ pwned breach MyCompany
 ✔ No breach found by that name.
 ```
 
-Get all the data classes in the system, returning raw JSON results for
-external/chained consumption:
+Get all the data classes in the system, returning raw JSON results for external/chained consumption:
 
 ```
 $ pwned dc --raw
@@ -180,8 +177,8 @@ $ pwned pa nobody@nowhere.com
   EmailCount: 10547
 ```
 
-[Securely](https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange)
-check a password to see if it has been exposed in a data breach:
+[Securely](https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange) check a password to see
+if it has been exposed in a data breach:
 
 ```
 $ pwned pw Password1234

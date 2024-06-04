@@ -19,9 +19,7 @@ interface BreachesHandlerOptions {
 }
 
 /* c8 ignore start */
-export function builder(
-  yargs: Argv<BreachesArgvOptions>,
-): Argv<BreachesHandlerOptions> {
+export function builder(yargs: Argv<BreachesArgvOptions>): Argv<BreachesHandlerOptions> {
   return yargs
     .option('d', {
       describe: 'filter breach data by domain',
