@@ -19,9 +19,7 @@ import * as subStatus from '../lib/commands/sub-status.js';
 
 sourceMapSupport.install();
 
-const pathToPackageJson = fileURLToPath(
-  new URL('../package.json', import.meta.url),
-);
+const pathToPackageJson = fileURLToPath(new URL('../package.json', import.meta.url));
 
 // eslint-disable-next-line no-unused-expressions
 yargs(hideBin(process.argv))

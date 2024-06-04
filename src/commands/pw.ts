@@ -58,11 +58,7 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
  * @param {boolean} [argv.raw] disable the console spinner (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({
-  password,
-  pad,
-  raw,
-}: PwHandlerOptions): Promise<void> {
+export async function handler({ password, pad, raw }: PwHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }

@@ -9,8 +9,7 @@ import { translateApiError } from '../utils/translate-api-error.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'ba <account|email>';
-export const describe =
-  'get all breaches for an account (username or email address)';
+export const describe = 'get all breaches for an account (username or email address)';
 
 interface BaArgvOptions {
   account: string;

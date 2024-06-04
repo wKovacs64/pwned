@@ -10,16 +10,15 @@
 
 # pwned
 
-_A command-line tool for querying [Troy Hunt][troy]'s [Have I been
-pwned?][haveibeenpwned] service using the [hibp][hibp] Node.js module._
+_A command-line tool for querying [Troy Hunt][troy]'s [Have I been pwned?][haveibeenpwned] service
+using the [hibp][hibp] Node.js module._
 
 [![npm Version][npm-image]][npm-url] [![Build Status][ci-image]][ci-url]
 [![Code Coverage][coverage-image]][coverage-url]
 
 ## Installation
 
-Download and install [Node.js][nodejs], then install `pwned` globally using
-`npm`:
+Download and install [Node.js][nodejs], then install `pwned` globally using `npm`:
 
 ```shell
 npm install pwned -g
@@ -33,12 +32,11 @@ npx pwned
 
 ## Protected Commands
 
-On July 18th, 2019, the haveibeenpwned.com API moved several services behind
-authentication, requiring an API key. See [Troy's blog post][api-key-blog-post]
-for rationale and a full explanation. In order to use some of `pwned` commands
-(e.g. `ba`, `pa`, and `search`), you will need to [get an API key][get-api-key]
-and run `pwned apiKey` to configure `pwned`. The other commands do not require
-an API key and you may use them without obtaining one.
+On July 18th, 2019, the haveibeenpwned.com API moved several services behind authentication,
+requiring an API key. See [Troy's blog post][api-key-blog-post] for rationale and a full
+explanation. In order to use some of `pwned` commands (e.g. `ba`, `pa`, and `search`), you will need
+to [get an API key][get-api-key] and run `pwned apiKey` to configure `pwned`. The other commands do
+not require an API key and you may use them without obtaining one.
 
 ## Usage
 
@@ -71,8 +69,7 @@ $ pwned ba pleasebeclean@fingerscrossed.tld
 ✔ Good news — no pwnage found!
 ```
 
-Get all breaches in the system, filtering results to just the 'adobe.com'
-domain:
+Get all breaches in the system, filtering results to just the 'adobe.com' domain:
 
 ```
 $ pwned breaches -d adobe.com
@@ -106,8 +103,7 @@ $ pwned breach MyCompany
 ✔ No breach found by that name.
 ```
 
-Get all the data classes in the system, returning raw JSON results for
-external/chained consumption:
+Get all the data classes in the system, returning raw JSON results for external/chained consumption:
 
 ```
 $ pwned dc --raw
@@ -180,8 +176,7 @@ $ pwned pa nobody@nowhere.com
   EmailCount: 10547
 ```
 
-[Securely][search-by-range] check a password to see if it has been exposed in a
-data breach:
+[Securely][search-by-range] check a password to see if it has been exposed in a data breach:
 
 ```
 $ pwned pw Password1234
@@ -221,17 +216,13 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [ci-image]:
   https://img.shields.io/github/actions/workflow/status/wKovacs64/pwned/ci.yml?logo=github&style=flat-square
 [ci-url]: https://github.com/wKovacs64/pwned/actions?query=workflow%3Aci
-[coverage-image]:
-  https://img.shields.io/codecov/c/github/wKovacs64/pwned/main.svg?style=flat-square
+[coverage-image]: https://img.shields.io/codecov/c/github/wKovacs64/pwned/main.svg?style=flat-square
 [coverage-url]: https://codecov.io/gh/wKovacs64/pwned/branch/main
 [troy]: https://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
 [nodejs]: https://nodejs.org/en/download/
-[npx]:
-  https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
-[search-by-range]:
-  https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange
-[api-key-blog-post]:
-  https://www.troyhunt.com/authentication-and-the-have-i-been-pwned-api/
+[npx]: https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
+[search-by-range]: https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange
+[api-key-blog-post]: https://www.troyhunt.com/authentication-and-the-have-i-been-pwned-api/
 [get-api-key]: https://haveibeenpwned.com/API/Key

@@ -18,9 +18,7 @@ interface SubStatusHandlerOptions {
 }
 
 /* c8 ignore start */
-export function builder(
-  yargs: Argv<SubStatusArgvOptions>,
-): Argv<SubStatusHandlerOptions> {
+export function builder(yargs: Argv<SubStatusArgvOptions>): Argv<SubStatusHandlerOptions> {
   return yargs
     .option('r', {
       describe: 'output the raw JSON data',
