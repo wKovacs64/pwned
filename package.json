@@ -89,7 +89,7 @@
     "@types/ws": "8.5.10",
     "@types/yargs": "17.0.32",
     "@vitest/coverage-v8": "1.6.0",
-    "@wkovacs64/prettier-config": "4.1.0",
+    "@wkovacs64/prettier-config": "4.1.1",
     "cross-env": "7.0.3",
     "eslint": "8.57.0",
     "eslint-plugin-wkovacs64": "16.2.0",
