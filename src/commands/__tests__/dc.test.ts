@@ -1,4 +1,4 @@
-import { vi, type SpyInstance } from 'vitest';
+import { vi, type MockInstance } from 'vitest';
 import { http } from 'msw';
 import { server } from '../../../test/server.js';
 import { spinnerFns, loggerFns, EMPTY_ARRAY, ERROR_MSG } from '../../../test/fixtures.js';
@@ -9,8 +9,8 @@ import { handler as dc } from '../dc.js';
 vi.mock('../../utils/logger');
 vi.mock('../../utils/spinner');
 
-const logger = mockLogger as Logger & Record<string, SpyInstance>;
-const spinner = mockSpinner as typeof mockSpinner & Record<string, SpyInstance>;
+const logger = mockLogger as Logger & Record<string, MockInstance>;
+const spinner = mockSpinner as typeof mockSpinner & Record<string, MockInstance>;
 
 describe('command: dc', () => {
   describe('normal output (default)', () => {
