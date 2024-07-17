@@ -64,10 +64,10 @@
   },
   "dependencies": {
     "common-tags": "^1.8.2",
-    "conf": "^13.0.0",
+    "conf": "^13.0.1",
     "fs-extra": "11.2.0",
-    "hibp": "^14.0.0",
-    "ora": "^8.0.0",
+    "hibp": "^14.1.2",
+    "ora": "^8.0.1",
     "prettyjson": "^1.2.5",
     "prompts": "2.4.2",
     "source-map-support": "^0.5.21",
