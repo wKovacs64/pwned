@@ -1,6 +1,6 @@
 name: 🤖 CI
 
-on: [push]
+on: [push, pull_request]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,6 +13,7 @@ jobs:
   prettier:
     name: 🅿️ Prettier
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
@@ -32,6 +33,7 @@ jobs:
   lint:
     name: ⬣ ESLint
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
@@ -51,6 +53,7 @@ jobs:
   typecheck:
     name: ʦ TypeScript
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
@@ -70,6 +73,7 @@ jobs:
   test:
     name: 🩺 Tests
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
@@ -95,6 +99,7 @@ jobs:
   build:
     name: ⚒️ Build
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
