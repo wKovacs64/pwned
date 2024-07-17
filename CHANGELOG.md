@@ -1,5 +1,13 @@
 # Change Log
 
+## 12.1.1
+
+### Patch Changes
+
+- [#277](https://github.com/wKovacs64/pwned/pull/277) [`fc0efb9`](https://github.com/wKovacs64/pwned/commit/fc0efb935e793e2c66251cda3fb894a7bf4b2a49) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Recommend the interactive prompt of the `apiKey` command over providing your key as a command-line argument (for enhanced security) when the API responds with 401 Unauthorized.
+
+- [#274](https://github.com/wKovacs64/pwned/pull/274) [`50f59ec`](https://github.com/wKovacs64/pwned/commit/50f59ece0e9f7c77d049ee4f94890c88155f1b04) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Update `conf` to v13.0.1, `ora` to v8.0.1, and `hibp` to v14.1.2. The last one fixes 401 Unauthorized response handling, as the [haveibeenpwned.com API (v3)](https://haveibeenpwned.com/API/v3#Authorisation) changed its response format.
+
 ## 12.1.0
 
 ### Minor Changes
