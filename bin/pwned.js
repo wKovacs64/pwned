@@ -5,7 +5,6 @@ import sourceMapSupport from 'source-map-support';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-/* eslint-disable import/extensions, import/no-unresolved */
 import * as apiKey from '../lib/commands/api-key.js';
 import * as ba from '../lib/commands/ba.js';
 import * as breach from '../lib/commands/breach.js';
@@ -15,13 +14,12 @@ import * as pa from '../lib/commands/pa.js';
 import * as pw from '../lib/commands/pw.js';
 import * as search from '../lib/commands/search.js';
 import * as subStatus from '../lib/commands/sub-status.js';
-/* eslint-enable */
 
 sourceMapSupport.install();
 
 const pathToPackageJson = fileURLToPath(new URL('../package.json', import.meta.url));
 
-// eslint-disable-next-line no-unused-expressions
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 yargs(hideBin(process.argv))
   .command(apiKey)
   .command(ba)
