@@ -39,4 +39,4 @@ jobs:
         run: npm run build
 
       - name: ⚡ pkg.pr.new
-        run: npx pkg-pr-new@https://15b89861.stackblitz-cr.pages.dev/stackblitz-labs/pkg.pr.new/pkg-pr-new@166 publish --compact
+        run: npx pkg-pr-new@https://923978aa.stackblitz-cr.pages.dev/stackblitz-labs/pkg.pr.new/pkg-pr-new@166 publish --compact
