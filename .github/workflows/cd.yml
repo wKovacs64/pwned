@@ -39,4 +39,4 @@ jobs:
         run: npm run build
 
       - name: ⚡ pkg.pr.new
-        run: API_URL=https://pkg.pr.new npx --yes pkg-pr-new@https://773145bf.stackblitz-cr.pages.dev/stackblitz-labs/pkg.pr.new/pkg-pr-new@166 publish --compact
+        run: npx --yes pkg-pr-new publish --compact
