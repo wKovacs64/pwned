@@ -1,3 +1,4 @@
+
 <a href="https://wkovacs64.github.io/pwned">
   <img
     alt="logo"
@@ -8,15 +9,22 @@
   />
 </a>
 
-# pwned
+# 💥 pwned
 
-_A command-line tool for querying [Troy Hunt][troy]'s [Have I been pwned?][haveibeenpwned] service
-using the [hibp][hibp] Node.js module._
+_A command-line tool for querying [Troy Hunt][troy]'s [Have I been pwned?][haveibeenpwned] service using the [hibp][hibp] Node.js module._
 
 [![npm Version][npm-image]][npm-url] [![Build Status][ci-image]][ci-url]
 [![Code Coverage][coverage-image]][coverage-url]
 
-## Installation
+## 📚 Table of Contents
+
+- [💻 Installation](#-installation)
+- [🔐 Protected Commands](#-protected-commands)
+- [🛠️ Usage](#-usage)
+- [🌟 Examples](#-examples)
+- [📜 License](#-license)
+
+## 💻 Installation 
 
 Download and install [Node.js][nodejs], then install `pwned` globally using `npm`:
 
@@ -30,43 +38,38 @@ Alternatively, you can run it on-demand using the [`npx`][npx] package runner:
 npx pwned
 ```
 
-## Protected Commands
+## 🔐 Protected Commands
 
-On July 18th, 2019, the haveibeenpwned.com API moved several services behind authentication,
-requiring an API key. See [Troy's blog post][api-key-blog-post] for rationale and a full
-explanation. In order to use some of `pwned` commands (e.g. `ba`, `pa`, and `search`), you will need
-to [get an API key][get-api-key] and run `pwned apiKey` to configure `pwned`. The other commands do
-not require an API key and you may use them without obtaining one.
+On July 18th, 2019, the haveibeenpwned.com API moved several services behind authentication, requiring an API key. See [Troy's blog post][api-key-blog-post] for rationale and a full explanation. To use some of `pwned` commands (e.g. `ba`, `pa`, and `search`), you will need to [get an API key][get-api-key] and run `pwned apiKey` to configure `pwned`. Other commands do not require an API key and can be used freely.
 
-## Usage
+## 🛠️ Usage 
 
 ```
 pwned <command>
 
 Commands:
-  pwned apiKey [key]            set the API key to be used for authenticated requests
-  pwned ba <account|email>      get all breaches for an account (username or email address)
-  pwned breach <name>           get a single breached site by breach name
-  pwned breaches                get all breaches in the system
-  pwned dc                      get all data classes in the system
-  pwned pa <email>              get all pastes for an account (email address)
-  pwned pw <password>           securely check a password for public exposure
-  pwned search <account|email>  search breaches and pastes for an account (username or email
-                                address)
-  pwned subStatus               get the subscription status of your API key
+  pwned apiKey [key]            Set the API key for authenticated requests
+  pwned ba <account|email>      Get all breaches for an account (username or email address)
+  pwned breach <name>           Get a single breached site by breach name
+  pwned breaches                Get all breaches in the system
+  pwned dc                      Get all data classes in the system
+  pwned pa <email>              Get all pastes for an account (email address)
+  pwned pw <password>           Securely check a password for public exposure
+  pwned search <account|email>  Search breaches and pastes for an account (username or email address)
+  pwned subStatus               Get the subscription status of your API key
 
 Options:
   -h, --help     Show help                                                                 [boolean]
   -v, --version  Show version number                                                       [boolean]
 ```
 
-#### Examples
+### 🌟 Examples 
 
 Get all breaches for an account:
 
 ```
 $ pwned ba pleasebeclean@fingerscrossed.tld
-✔ Good news — no pwnage found!
+✔ Good news — no pwnage found! 🎉
 ```
 
 Get all breaches in the system, filtering results to just the 'adobe.com' domain:
@@ -100,14 +103,15 @@ Get a single breached site by breach name:
 
 ```
 $ pwned breach MyCompany
-✔ No breach found by that name.
+✔ No breach found by that name. 🚫
 ```
 
-Get all the data classes in the system, returning raw JSON results for external/chained consumption:
+Get all the data classes in the system:
 
 ```
 $ pwned dc --raw
-["Account balances","Address book contacts","Age groups","Ages","Apps installed on devices","Astrological signs","Auth tokens","Avatars","Bank account numbers","Banking PINs","Beauty ratings","Biometric data","Browser user agent details","Buying preferences","Car ownership statuses","Career levels","Cellular network names","Charitable donations","Chat logs","Credit card CVV","Credit cards","Credit status information","Customer feedback","Customer interactions","Dates of birth","Deceased date","Deceased statuses","Device information","Device usage tracking data","Drinking habits","Drug habits","Eating habits","Education levels","Email addresses","Email messages","Employers","Ethnicities","Family members' names","Family plans","Family structure","Financial investments","Financial transactions","Fitness levels","Genders","Geographic locations","Government issued IDs","Health insurance information","Historical passwords","Home ownership statuses","Homepage URLs","IMEI numbers","IMSI numbers","Income levels","Instant messenger identities","IP addresses","Job titles","MAC addresses","Marital statuses","Names","Nationalities","Net worths","Nicknames","Occupations","Parenting plans","Partial credit card data","Passport numbers","Password hints","Passwords","Payment histories","Payment methods","Personal descriptions","Personal health data","Personal interests","Phone numbers","Physical addresses","Physical attributes","Political donations","Political views","Private messages","Professional skills","Profile photos","Purchases","Purchasing habits","Races","Recovery email addresses","Relationship statuses","Religions","Reward program balances","Salutations","School grades (class levels)","Security questions and answers","Sexual fetishes","Sexual orientations","Smoking habits","SMS messages","Social connections","Social media profiles","Spoken languages","Support tickets","Survey results","Time zones","Travel habits","User statuses","User website URLs","Usernames","Utility bills","Vehicle details","Website activity","Work habits","Years of birth","Years of professional experience"]
+["Account balances", "Email addresses", "Passwords", ...]
+
 ```
 
 Get all pastes for an email address:
@@ -176,14 +180,18 @@ $ pwned pa nobody@nowhere.com
   EmailCount: 10547
 ```
 
+
+
+
+
 [Securely][search-by-range] check a password to see if it has been exposed in a data breach:
 
 ```
 $ pwned pw Password1234
-⚠ Oh no — pwned 3360 times!
+⚠ Oh no — pwned 3360 times! 😱
 ```
 
-Search both breaches and pastes for an account (truncating breach data):
+Search both breaches and pastes for an account:
 
 ```
 $ pwned search nobody
@@ -207,22 +215,8 @@ breaches:
 pastes:   null
 ```
 
-## License
+## 📜 License 
 
 This tool is distributed under the [MIT License](LICENSE.txt).
 
-[npm-image]: https://img.shields.io/npm/v/pwned.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/pwned
-[ci-image]:
-  https://img.shields.io/github/actions/workflow/status/wKovacs64/pwned/ci.yml?logo=github&style=flat-square
-[ci-url]: https://github.com/wKovacs64/pwned/actions?query=workflow%3Aci
-[coverage-image]: https://img.shields.io/codecov/c/github/wKovacs64/pwned/main.svg?style=flat-square
-[coverage-url]: https://codecov.io/gh/wKovacs64/pwned/branch/main
-[troy]: https://www.troyhunt.com
-[haveibeenpwned]: https://haveibeenpwned.com
-[hibp]: https://github.com/wKovacs64/hibp
-[nodejs]: https://nodejs.org/en/download/
-[npx]: https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b
-[search-by-range]: https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange
-[api-key-blog-post]: https://www.troyhunt.com/authentication-and-the-have-i-been-pwned-api/
-[get-api-key]: https://haveibeenpwned.com/API/Key
+
