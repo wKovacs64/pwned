@@ -86,7 +86,7 @@
     "@types/node": "22.8.6",
     "@types/prettyjson": "0.0.33",
     "@types/prompts": "2.4.9",
-    "@types/ws": "8.5.12",
+    "@types/ws": "8.5.13",
     "@types/yargs": "17.0.33",
     "@vitest/coverage-v8": "2.1.4",
     "@wkovacs64/eslint-config": "7.3.0",
