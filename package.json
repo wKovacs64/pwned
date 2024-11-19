@@ -83,7 +83,7 @@
     "@changesets/cli": "2.27.9",
     "@types/common-tags": "1.8.4",
     "@types/debug": "4.1.12",
-    "@types/node": "22.9.0",
+    "@types/node": "22.9.1",
     "@types/prettyjson": "0.0.33",
     "@types/prompts": "2.4.9",
     "@types/ws": "8.5.13",
