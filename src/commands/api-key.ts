@@ -35,7 +35,6 @@ export function builder(yargs: Argv<ApiKeyArgvOptions>): Argv<ApiKeyHandlerOptio
 export async function handler({ key }: ApiKeyHandlerOptions) {
   let apiKey = key;
   if (!apiKey) {
-     
     const promptResponse = await prompts({
       type: 'password',
       name: 'apiKeyFromPrompt',
@@ -43,7 +42,7 @@ export async function handler({ key }: ApiKeyHandlerOptions) {
       validate: (value: string) =>
         value.length > 0 ? true : 'API key must be a non-empty string of characters.',
     });
-     
+
     apiKey = promptResponse.apiKeyFromPrompt;
   }
 

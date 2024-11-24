@@ -1,4 +1,3 @@
- 
 import { vi, type MockInstance } from 'vitest';
 import { loggerFns } from '../../../test/fixtures.js';
 import { logger, type Logger, type LoggerFunction } from '../logger.js';
