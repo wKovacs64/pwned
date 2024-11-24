@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 export type LoggerFunction = (message?: any, ...args: any[]) => void;
 
 export interface Logger {
