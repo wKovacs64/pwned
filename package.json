@@ -93,7 +93,7 @@
     "@wkovacs64/prettier-config": "4.1.1",
     "cross-env": "7.0.3",
     "eslint": "9.17.0",
-    "msw": "2.6.8",
+    "msw": "2.6.9",
     "prettier": "3.4.2",
     "rimraf": "6.0.1",
     "type-fest": "4.30.1",
