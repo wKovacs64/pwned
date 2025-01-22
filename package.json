@@ -94,6 +94,7 @@
     "cross-env": "7.0.3",
     "eslint": "9.18.0",
     "msw": "2.7.0",
+    "npm-run-all2": "7.0.2",
     "prettier": "3.4.2",
     "rimraf": "6.0.1",
     "type-fest": "4.33.0",
