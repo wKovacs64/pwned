@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.1.2
+
+### Patch Changes
+
+- [#293](https://github.com/wKovacs64/pwned/pull/293) [`901eefc`](https://github.com/wKovacs64/pwned/commit/901eefc838d19631932b105aaa716712e67bb2a6) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update `undici` to v6.21.1 (only matters on Node v18).
+
 ## 12.1.1
 
 ### Patch Changes
