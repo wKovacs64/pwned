@@ -60,14 +60,14 @@
   },
   "homepage": "https://wkovacs64.github.io/pwned",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.19.0"
   },
   "dependencies": {
     "common-tags": "^1.8.2",
-    "conf": "^13.0.1",
+    "conf": "^13.1.0",
     "fs-extra": "11.3.0",
     "hibp": "^15.0.1",
-    "ora": "^8.0.1",
+    "ora": "^8.2.0",
     "prettyjson": "^1.2.5",
     "prompts": "2.4.2",
     "source-map-support": "^0.5.21",
@@ -100,8 +100,5 @@
     "type-fest": "4.38.0",
     "typescript": "5.8.2",
     "vitest": "3.0.9"
-  },
-  "overrides": {
-    "typescript": "5.8.2"
   }
 }
