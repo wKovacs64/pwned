@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { translateApiError } from '../translate-api-error.js';
 
 describe('util: getErrorMessage', () => {

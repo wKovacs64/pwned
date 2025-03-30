@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { spinnerFns } from '../../../test/fixtures.js';
 import { spinner } from '../spinner.js';
 
