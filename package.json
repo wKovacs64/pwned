@@ -31,7 +31,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc --project tsconfig.tsc.json",
+    "build": "tsc --project tsconfig.build.json",
     "changeset": "changeset",
     "changeset:version": "changeset version && npm install --package-lock-only",
     "changeset:publish": "changeset publish",
