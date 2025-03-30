@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     "lib": ["ESNext", "DOM"], // "DOM" only for msw
-    "target": "ES2022", // Node 18
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "target": "ES2022", // Node 20
+    "module": "NodeNext",
+    "moduleDetection": "force",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
-    "noEmit": true,
-    "strict": true,
-    "stripInternal": true,
     "skipLibCheck": true,
-    "types": ["node", "vitest/globals"]
+    "noEmit": true,
+
+    "strict": true,
+    "noImplicitOverride": true
   }
 }
