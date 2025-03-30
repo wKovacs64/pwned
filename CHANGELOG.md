@@ -1,5 +1,19 @@
 # Change Log
 
+## 13.0.0
+
+### Major Changes
+
+- [#299](https://github.com/wKovacs64/pwned/pull/299) [`3427321`](https://github.com/wKovacs64/pwned/commit/3427321e3b596f82467949512b48759bc42af980) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Drop support for Node.js 18 as it is [end-of-life](https://nodejs.org/en/download/releases), making the new minimum Node.js runtime v20.19.0. Please upgrade your Node.js environment if necessary, or continue using a previous release if you are unable to upgrade your environment.
+
+  - Update various dependencies
+
+    ```
+    conf                       ^13.0.1  →   ^13.1.0
+    hibp                       ^14.1.2  →   ^15.0.1
+    ora                         ^8.0.1  →    ^8.2.0
+    ```
+
 ## 12.1.2
 
 ### Patch Changes
