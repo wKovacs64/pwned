@@ -90,7 +90,7 @@
     "del-cli": "6.0.0",
     "eslint": "9.27.0",
     "msw": "2.8.4",
-    "npm-run-all2": "8.0.2",
+    "npm-run-all2": "8.0.3",
     "prettier": "3.5.3",
     "type-fest": "4.41.0",
     "typescript": "5.8.3",
