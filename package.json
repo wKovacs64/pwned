@@ -86,7 +86,7 @@
     "@vitest/coverage-v8": "3.2.4",
     "@wkovacs64/eslint-config": "7.9.1",
     "@wkovacs64/prettier-config": "4.2.1",
-    "cross-env": "10.0.0",
+    "cross-env": "10.1.0",
     "del-cli": "7.0.0",
     "eslint": "9.36.0",
     "msw": "2.11.3",
