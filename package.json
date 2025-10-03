@@ -52,8 +52,7 @@
   },
   "prettier": "@wkovacs64/prettier-config",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/wKovacs64/pwned.git"
+    "url": "git+https://github.com/wKovacs64/pwned.git"
   },
   "bugs": {
     "url": "https://github.com/wKovacs64/pwned/issues"
@@ -78,7 +77,7 @@
     "@changesets/cli": "2.29.7",
     "@types/common-tags": "1.8.4",
     "@types/debug": "4.1.12",
-    "@types/node": "22.18.8",
+    "@types/node": "24.6.2",
     "@types/prettyjson": "0.0.33",
     "@types/prompts": "2.4.9",
     "@types/ws": "8.18.1",
