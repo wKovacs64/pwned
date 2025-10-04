@@ -87,7 +87,7 @@
     "@wkovacs64/prettier-config": "4.2.2",
     "cross-env": "10.1.0",
     "del-cli": "7.0.0",
-    "eslint": "9.36.0",
+    "eslint": "9.37.0",
     "msw": "2.11.3",
     "npm-run-all2": "8.0.4",
     "prettier": "3.6.2",
