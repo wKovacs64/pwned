@@ -46,6 +46,7 @@ export const SUBSCRIPTION_STATUS: SubscriptionStatus = {
   SubscribedUntil: '2023-12-31T01:23:45',
   Rpm: 69,
   DomainSearchMaxBreachedAccounts: 0,
+  IncludesStealerLogs: false,
 };
 
 export const EMAIL = 'foo@bar.baz';
