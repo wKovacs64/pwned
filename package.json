@@ -88,7 +88,7 @@
     "cross-env": "10.1.0",
     "del-cli": "7.0.0",
     "eslint": "9.37.0",
-    "msw": "2.11.4",
+    "msw": "2.11.5",
     "npm-run-all2": "8.0.4",
     "prettier": "3.6.2",
     "type-fest": "5.0.1",
