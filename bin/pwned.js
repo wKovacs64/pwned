@@ -14,6 +14,7 @@ import * as pa from '../lib/commands/pa.js';
 import * as pw from '../lib/commands/pw.js';
 import * as sd from '../lib/commands/sd.js';
 import * as search from '../lib/commands/search.js';
+import * as slbe from '../lib/commands/slbe.js';
 import * as subStatus from '../lib/commands/sub-status.js';
 
 sourceMapSupport.install();
@@ -31,6 +32,7 @@ yargs(hideBin(process.argv))
   .command(pw)
   .command(sd)
   .command(search)
+  .command(slbe)
   .command(subStatus)
   .demandCommand()
   .recommendCommands()

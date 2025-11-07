@@ -56,6 +56,7 @@ Commands:
   pwned sd                      get all subscribed domains for your account
   pwned search <account|email>  search breaches and pastes for an account (username or email
                                 address)
+  pwned slbe <email>            get all stealer log domains for an email address
   pwned subStatus               get the subscription status of your API key
 
 Options:

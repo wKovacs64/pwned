@@ -7,6 +7,7 @@ import {
   DATA_CLASSES,
   PASTES,
   PASSWORD_HASHES,
+  STEALER_LOG_DOMAINS,
   SUBSCRIBED_DOMAINS,
   SUBSCRIPTION_STATUS,
   EMPTY_ARRAY,
@@ -63,5 +64,12 @@ export const handlers = [
   }),
   http.get('*/subscribeddomains', () => {
     return new Response(JSON.stringify(SUBSCRIBED_DOMAINS));
+  }),
+  http.get('*/stealerlogsbyemail/:email', ({ params }) => {
+    const { email } = params;
+    if (email === FOUND) {
+      return new Response(JSON.stringify(STEALER_LOG_DOMAINS));
+    }
+    return new Response(null, { status: 404 });
   }),
 ];

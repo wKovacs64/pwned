@@ -37,6 +37,7 @@ export const BREACHED_DOMAIN: BreachedDomainsByEmailAlias = {
   john: ['Adobe'],
   jane: ['Adobe', 'Gawker'],
 };
+export const STEALER_LOG_DOMAINS = ['example.com', 'test.org'];
 
 export const PASSWORD_HASHES = stripIndents`
   003D68EB55068C33ACE09247EE4C639306B:3
