@@ -9,6 +9,7 @@ import {
   PASSWORD_HASHES,
   STEALER_LOG_DOMAINS,
   STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS,
+  STEALER_LOG_EMAILS,
   SUBSCRIBED_DOMAINS,
   SUBSCRIPTION_STATUS,
   EMPTY_ARRAY,
@@ -77,6 +78,13 @@ export const handlers = [
     const { emailDomain } = params;
     if (emailDomain === FOUND) {
       return new Response(JSON.stringify(STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS));
+    }
+    return new Response(null, { status: 404 });
+  }),
+  http.get('*/stealerlogsbywebsitedomain/:websiteDomain', ({ params }) => {
+    const { websiteDomain } = params;
+    if (websiteDomain === FOUND) {
+      return new Response(JSON.stringify(STEALER_LOG_EMAILS));
     }
     return new Response(null, { status: 404 });
   }),

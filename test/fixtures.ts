@@ -42,6 +42,7 @@ export const STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS: StealerLogDomainsByEmailAlias =
   andy: ['netflix.com'],
   jane: ['netflix.com', 'spotify.com'],
 };
+export const STEALER_LOG_EMAILS = ['andy@gmail.com', 'jane@gmail.com'];
 
 export const PASSWORD_HASHES = stripIndents`
   003D68EB55068C33ACE09247EE4C639306B:3

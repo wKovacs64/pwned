@@ -58,6 +58,7 @@ Commands:
                                 address)
   pwned slbe <email>            get all stealer log domains for an email address
   pwned slbed <email-domain>    get all stealer log email aliases for an email domain
+  pwned slbwd <website-domain>  get all stealer log email addresses for a website domain
   pwned subStatus               get the subscription status of your API key
 
 Options:
