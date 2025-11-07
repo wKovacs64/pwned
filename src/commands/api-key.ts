@@ -15,7 +15,7 @@ interface ApiKeyHandlerOptions {
   key?: string;
 }
 
-/* c8 ignore next */
+/* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<ApiKeyArgvOptions>): Argv<ApiKeyHandlerOptions> {
   return yargs.positional('key', { type: 'string' }).group(['h', 'v'], 'Global Options:')
     .epilog(oneLine`
@@ -62,8 +62,8 @@ export async function handler({ key }: ApiKeyHandlerOptions) {
         key supplied!
       `);
     }
-  } catch (err: unknown) {
-    /* c8 ignore else */
+  } catch (err) {
+    /* v8 ignore else -- @preserve */
     if (err instanceof Error) {
       logger.error(err.message);
     }

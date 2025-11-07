@@ -17,7 +17,7 @@ interface SubStatusHandlerOptions {
   raw?: boolean;
 }
 
-/* c8 ignore start */
+/* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<SubStatusArgvOptions>): Argv<SubStatusHandlerOptions> {
   return yargs
     .option('r', {
@@ -29,7 +29,6 @@ export function builder(yargs: Argv<SubStatusArgvOptions>): Argv<SubStatusHandle
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 }
-/* c8 ignore stop */
 
 /**
  * Fetches and outputs your subscription status (of your API key).
@@ -54,13 +53,13 @@ export async function handler({ raw }: SubStatusHandlerOptions): Promise<void> {
       spinner.stop();
       logger.log(prettyjson.render(subStatusData));
     }
-  } catch (err: unknown) {
-    /* c8 ignore else */
-    if (err instanceof Error) {
+  } catch (maybeError) {
+    /* v8 ignore else -- @preserve */
+    if (maybeError instanceof Error) {
       if (!raw) {
-        spinner.fail(err.message);
+        spinner.fail(maybeError.message);
       } else {
-        logger.error(err.message);
+        logger.error(maybeError.message);
       }
     }
   }

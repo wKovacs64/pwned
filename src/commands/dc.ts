@@ -16,7 +16,7 @@ interface DcHandlerOptions {
   raw?: boolean;
 }
 
-/* c8 ignore start */
+/* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<DcArgvOptions>): Argv<DcHandlerOptions> {
   return yargs
     .option('r', {
@@ -28,7 +28,6 @@ export function builder(yargs: Argv<DcArgvOptions>): Argv<DcHandlerOptions> {
     .group(['r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 }
-/* c8 ignore stop */
 
 /**
  * Fetches and outputs all data classes in the system.
@@ -56,13 +55,13 @@ export async function handler({ raw }: DcHandlerOptions): Promise<void> {
         'No data classes found. This is unexpected - the remote API may be having difficulties.',
       );
     }
-  } catch (err: unknown) {
-    /* c8 ignore else */
-    if (err instanceof Error) {
+  } catch (maybeError) {
+    /* v8 ignore else -- @preserve */
+    if (maybeError instanceof Error) {
       if (!raw) {
-        spinner.fail(err.message);
+        spinner.fail(maybeError.message);
       } else {
-        logger.error(err.message);
+        logger.error(maybeError.message);
       }
     }
   }

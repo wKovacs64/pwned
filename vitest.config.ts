@@ -5,12 +5,8 @@ export default defineConfig({
     setupFiles: './test/setup.ts',
     coverage: {
       reporter: ['text', 'lcov', 'clover'],
-      exclude: [
-        ...(configDefaults.coverage.exclude ?? []),
-        'src/commands/api-key.ts',
-        '**/*.cjs',
-        '**/*.js',
-      ],
+      include: ['src/**/*'],
+      exclude: [...(configDefaults.coverage.exclude ?? []), 'src/commands/api-key.ts'],
     },
     clearMocks: true,
     globals: true,
