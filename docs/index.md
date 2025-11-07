@@ -58,6 +58,7 @@ Commands:
   pwned search <account|email>  search breaches and pastes for an account (username or email
                                 address)
   pwned slbe <email>            get all stealer log domains for an email address
+  pwned slbed <email-domain>    get all stealer log email aliases for an email domain
   pwned subStatus               get the subscription status of your API key
 
 Options:

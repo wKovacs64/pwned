@@ -1,5 +1,5 @@
 import { stripIndents } from 'common-tags';
-import type { Breach, BreachedDomainsByEmailAlias, Paste, SubscribedDomain, SubscriptionStatus } from 'hibp';
+import type { Breach, BreachedDomainsByEmailAlias, Paste, StealerLogDomainsByEmailAlias, SubscribedDomain, SubscriptionStatus } from 'hibp';
 
 export const spinnerFns = ['start', 'stop', 'succeed', 'warn', 'fail'];
 export const loggerFns = ['info', 'log', 'warn', 'error'];
@@ -38,6 +38,10 @@ export const BREACHED_DOMAIN: BreachedDomainsByEmailAlias = {
   jane: ['Adobe', 'Gawker'],
 };
 export const STEALER_LOG_DOMAINS = ['example.com', 'test.org'];
+export const STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS: StealerLogDomainsByEmailAlias = {
+  andy: ['netflix.com'],
+  jane: ['netflix.com', 'spotify.com'],
+};
 
 export const PASSWORD_HASHES = stripIndents`
   003D68EB55068C33ACE09247EE4C639306B:3
