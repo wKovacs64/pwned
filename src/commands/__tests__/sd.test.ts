@@ -1,12 +1,7 @@
 import { describe, expect, it, vi, type MockInstance } from 'vitest';
 import { http } from 'msw';
 import { server } from '../../../test/server.js';
-import {
-  spinnerFns,
-  loggerFns,
-  ERROR,
-  ERROR_MSG,
-} from '../../../test/fixtures.js';
+import { spinnerFns, loggerFns, ERROR, ERROR_MSG } from '../../../test/fixtures.js';
 import { logger as mockLogger, type Logger } from '../../utils/logger.js';
 import { spinner as mockSpinner } from '../../utils/spinner.js';
 import { handler as sd } from '../sd.js';

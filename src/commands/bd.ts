@@ -55,10 +55,7 @@ export function builder(yargs: Argv<BdArgvOptions>): Argv<BdHandlerOptions> {
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({
-  domain,
-  raw,
-}: BdHandlerOptions): Promise<void> {
+export async function handler({ domain, raw }: BdHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }

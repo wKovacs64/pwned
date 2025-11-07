@@ -1,5 +1,12 @@
 import { stripIndents } from 'common-tags';
-import type { Breach, BreachedDomainsByEmailAlias, Paste, StealerLogDomainsByEmailAlias, SubscribedDomain, SubscriptionStatus } from 'hibp';
+import type {
+  Breach,
+  BreachedDomainsByEmailAlias,
+  Paste,
+  StealerLogDomainsByEmailAlias,
+  SubscribedDomain,
+  SubscriptionStatus,
+} from 'hibp';
 
 export const spinnerFns = ['start', 'stop', 'succeed', 'warn', 'fail'];
 export const loggerFns = ['info', 'log', 'warn', 'error'];

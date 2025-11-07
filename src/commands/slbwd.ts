@@ -55,10 +55,7 @@ export function builder(yargs: Argv<SlbwdArgvOptions>): Argv<SlbwdHandlerOptions
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({
-  websiteDomain,
-  raw,
-}: SlbwdHandlerOptions): Promise<void> {
+export async function handler({ websiteDomain, raw }: SlbwdHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
