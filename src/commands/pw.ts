@@ -19,7 +19,7 @@ interface PwHandlerOptions {
   raw?: boolean;
 }
 
-/* c8 ignore start */
+/* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
   return yargs
     .positional('password', {
@@ -47,7 +47,6 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
     .group(['r', 'p'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 }
-/* c8 ignore stop */
 
 /**
  * Securely fetches the number of times the given password has been exposed in a
@@ -83,13 +82,13 @@ export async function handler({ password, pad, raw }: PwHandlerOptions): Promise
         logger.log(successMessage);
       }
     }
-  } catch (err: unknown) {
-    /* c8 ignore else */
-    if (err instanceof Error) {
+  } catch (maybeError) {
+    /* v8 ignore else -- @preserve */
+    if (maybeError instanceof Error) {
       if (!raw) {
-        spinner.fail(err.message);
+        spinner.fail(maybeError.message);
       } else {
-        logger.error(err.message);
+        logger.error(maybeError.message);
       }
     }
   }

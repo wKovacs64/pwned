@@ -18,7 +18,7 @@ interface BreachesHandlerOptions {
   raw?: boolean;
 }
 
-/* c8 ignore start */
+/* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<BreachesArgvOptions>): Argv<BreachesHandlerOptions> {
   return yargs
     .option('d', {
@@ -35,7 +35,6 @@ export function builder(yargs: Argv<BreachesArgvOptions>): Argv<BreachesHandlerO
     .group(['d', 'r'], 'Command Options:')
     .group(['h', 'v'], 'Global Options:');
 }
-/* c8 ignore stop */
 
 /**
  * Fetches and outputs all breached sites in the system.
@@ -64,13 +63,13 @@ export async function handler({
     } else if (!breachData.length && !raw) {
       spinner.succeed('No breaches found.');
     }
-  } catch (err: unknown) {
-    /* c8 ignore else */
-    if (err instanceof Error) {
+  } catch (maybeError) {
+    /* v8 ignore else -- @preserve */
+    if (maybeError instanceof Error) {
       if (!raw) {
-        spinner.fail(err.message);
+        spinner.fail(maybeError.message);
       } else {
-        logger.error(err.message);
+        logger.error(maybeError.message);
       }
     }
   }

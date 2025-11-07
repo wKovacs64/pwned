@@ -27,7 +27,7 @@ interface BaHandlerOptions {
   raw?: boolean;
 }
 
-/* c8 ignore start */
+/* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<BaArgvOptions>): Argv<BaHandlerOptions> {
   return yargs
     .positional('account', {
@@ -70,7 +70,6 @@ export function builder(yargs: Argv<BaArgvOptions>): Argv<BaHandlerOptions> {
       command first.
     `);
 }
-/* c8 ignore stop */
 
 /**
  * Fetches and outputs breach data for the specified account.
@@ -113,14 +112,14 @@ export async function handler({
     } else if (!raw) {
       spinner.succeed('Good news — no pwnage found!');
     }
-  } catch (err: unknown) {
-    /* c8 ignore else */
-    if (err instanceof Error) {
-      const errMsg = translateApiError(err.message);
+  } catch (maybeError) {
+    /* v8 ignore else -- @preserve */
+    if (maybeError instanceof Error) {
+      const errorMessage = translateApiError(maybeError.message);
       if (!raw) {
-        spinner.fail(errMsg);
+        spinner.fail(errorMessage);
       } else {
-        logger.error(errMsg);
+        logger.error(errorMessage);
       }
     }
   }
