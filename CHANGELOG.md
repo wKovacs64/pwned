@@ -1,5 +1,27 @@
 # Change Log
 
+## 13.1.0
+
+### Minor Changes
+
+- [#327](https://github.com/wKovacs64/pwned/pull/327) [`ee8380b`](https://github.com/wKovacs64/pwned/commit/ee8380b28588c184616aebf257c1b9ddc45ef9fb) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add new `bd` command to get all breached email addresses for a domain. See https://haveibeenpwned.com/API/v3#BreachesForDomain for more information.
+
+- [#327](https://github.com/wKovacs64/pwned/pull/327) [`ee8380b`](https://github.com/wKovacs64/pwned/commit/ee8380b28588c184616aebf257c1b9ddc45ef9fb) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add new `lb` command to get the most recently added breach. See https://haveibeenpwned.com/API/v3#MostRecentBreach for more information.
+
+- [#327](https://github.com/wKovacs64/pwned/pull/327) [`ee8380b`](https://github.com/wKovacs64/pwned/commit/ee8380b28588c184616aebf257c1b9ddc45ef9fb) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add new `sd` command to get all subscribed domains for your account. See https://haveibeenpwned.com/API/v3#SubscribedDomains for more information.
+
+- [#327](https://github.com/wKovacs64/pwned/pull/327) [`ee8380b`](https://github.com/wKovacs64/pwned/commit/ee8380b28588c184616aebf257c1b9ddc45ef9fb) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add new `slbe` command to get all stealer log domains for an email address. See https://haveibeenpwned.com/API/v3#StealerLogsForEmail for more information.
+
+- [#327](https://github.com/wKovacs64/pwned/pull/327) [`ee8380b`](https://github.com/wKovacs64/pwned/commit/ee8380b28588c184616aebf257c1b9ddc45ef9fb) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add new `slbed` command to get all stealer log email aliases for an email domain. See https://haveibeenpwned.com/API/v3#StealerLogsForEmailDomain for more information.
+
+- [#327](https://github.com/wKovacs64/pwned/pull/327) [`ee8380b`](https://github.com/wKovacs64/pwned/commit/ee8380b28588c184616aebf257c1b9ddc45ef9fb) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add new `slbwd` command to get all stealer log email addresses for a website domain. See https://haveibeenpwned.com/API/v3#StealerLogsForWebsiteDomain for more information.
+
+### Patch Changes
+
+- [#329](https://github.com/wKovacs64/pwned/pull/329) [`1ba5785`](https://github.com/wKovacs64/pwned/commit/1ba5785fdcf9d8f9e0aec42ec93b89cc1c24cf0f) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Update `conf` to v15.0.2.
+
+- [#327](https://github.com/wKovacs64/pwned/pull/327) [`ee8380b`](https://github.com/wKovacs64/pwned/commit/ee8380b28588c184616aebf257c1b9ddc45ef9fb) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Update `hibp` to v15.1.0.
+
 ## 13.0.0
 
 ### Major Changes
