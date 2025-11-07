@@ -3,9 +3,14 @@ import {
   FOUND,
   BREACH,
   BREACHES,
+  BREACHED_DOMAIN,
   DATA_CLASSES,
   PASTES,
   PASSWORD_HASHES,
+  STEALER_LOG_DOMAINS,
+  STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS,
+  STEALER_LOG_EMAILS,
+  SUBSCRIBED_DOMAINS,
   SUBSCRIPTION_STATUS,
   EMPTY_ARRAY,
 } from './fixtures.js';
@@ -48,5 +53,39 @@ export const handlers = [
   }),
   http.get('*/subscription/status', () => {
     return new Response(JSON.stringify(SUBSCRIPTION_STATUS));
+  }),
+  http.get('*/latestbreach', () => {
+    return new Response(JSON.stringify(BREACH));
+  }),
+  http.get('*/breacheddomain/:domain', ({ params }) => {
+    const { domain } = params;
+    if (domain === FOUND) {
+      return new Response(JSON.stringify(BREACHED_DOMAIN));
+    }
+    return new Response(null, { status: 404 });
+  }),
+  http.get('*/subscribeddomains', () => {
+    return new Response(JSON.stringify(SUBSCRIBED_DOMAINS));
+  }),
+  http.get('*/stealerlogsbyemail/:email', ({ params }) => {
+    const { email } = params;
+    if (email === FOUND) {
+      return new Response(JSON.stringify(STEALER_LOG_DOMAINS));
+    }
+    return new Response(null, { status: 404 });
+  }),
+  http.get('*/stealerlogsbyemaildomain/:emailDomain', ({ params }) => {
+    const { emailDomain } = params;
+    if (emailDomain === FOUND) {
+      return new Response(JSON.stringify(STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS));
+    }
+    return new Response(null, { status: 404 });
+  }),
+  http.get('*/stealerlogsbywebsitedomain/:websiteDomain', ({ params }) => {
+    const { websiteDomain } = params;
+    if (websiteDomain === FOUND) {
+      return new Response(JSON.stringify(STEALER_LOG_EMAILS));
+    }
+    return new Response(null, { status: 404 });
   }),
 ];

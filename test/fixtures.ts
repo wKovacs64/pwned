@@ -1,5 +1,12 @@
 import { stripIndents } from 'common-tags';
-import type { Breach, Paste, SubscriptionStatus } from 'hibp';
+import type {
+  Breach,
+  BreachedDomainsByEmailAlias,
+  Paste,
+  StealerLogDomainsByEmailAlias,
+  SubscribedDomain,
+  SubscriptionStatus,
+} from 'hibp';
 
 export const spinnerFns = ['start', 'stop', 'succeed', 'warn', 'fail'];
 export const loggerFns = ['info', 'log', 'warn', 'error'];
@@ -33,6 +40,16 @@ export const PASTE: Paste = {
   Title: 'Paste',
 };
 export const PASTES = [PASTE];
+export const BREACHED_DOMAIN: BreachedDomainsByEmailAlias = {
+  john: ['Adobe'],
+  jane: ['Adobe', 'Gawker'],
+};
+export const STEALER_LOG_DOMAINS = ['example.com', 'test.org'];
+export const STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS: StealerLogDomainsByEmailAlias = {
+  andy: ['netflix.com'],
+  jane: ['netflix.com', 'spotify.com'],
+};
+export const STEALER_LOG_EMAILS = ['andy@gmail.com', 'jane@gmail.com'];
 
 export const PASSWORD_HASHES = stripIndents`
   003D68EB55068C33ACE09247EE4C639306B:3
@@ -40,6 +57,14 @@ export const PASSWORD_HASHES = stripIndents`
   01330C689E5D64F660D6947A93AD634EF8F:1
 `;
 
+export const SUBSCRIBED_DOMAIN: SubscribedDomain = {
+  DomainName: 'example.com',
+  PwnCount: 100,
+  PwnCountExcludingSpamLists: 90,
+  PwnCountExcludingSpamListsAtLastSubscriptionRenewal: 85,
+  NextSubscriptionRenewal: '2024-12-31T00:00:00Z',
+};
+export const SUBSCRIBED_DOMAINS = [SUBSCRIBED_DOMAIN];
 export const SUBSCRIPTION_STATUS: SubscriptionStatus = {
   SubscriptionName: 'Pwned 42',
   Description: 'A mock subscrpition',
