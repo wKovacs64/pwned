@@ -8,6 +8,7 @@ import * as ba from '../lib/commands/ba.js';
 import * as breach from '../lib/commands/breach.js';
 import * as breaches from '../lib/commands/breaches.js';
 import * as dc from '../lib/commands/dc.js';
+import * as lb from '../lib/commands/lb.js';
 import * as pa from '../lib/commands/pa.js';
 import * as pw from '../lib/commands/pw.js';
 import * as search from '../lib/commands/search.js';
@@ -22,6 +23,7 @@ yargs(hideBin(process.argv))
   .command(breach)
   .command(breaches)
   .command(dc)
+  .command(lb)
   .command(pa)
   .command(pw)
   .command(search)

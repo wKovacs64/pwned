@@ -50,6 +50,7 @@ Commands:
   pwned breach <name>           get a single breached site by breach name
   pwned breaches                get all breaches in the system
   pwned dc                      get all data classes in the system
+  pwned lb                      get the most recently added breach
   pwned pa <email>              get all pastes for an account (email address)
   pwned pw <password>           securely check a password for public exposure
   pwned search <account|email>  search breaches and pastes for an account (username or email

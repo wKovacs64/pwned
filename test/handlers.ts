@@ -49,4 +49,7 @@ export const handlers = [
   http.get('*/subscription/status', () => {
     return new Response(JSON.stringify(SUBSCRIPTION_STATUS));
   }),
+  http.get('*/latestbreach', () => {
+    return new Response(JSON.stringify(BREACH));
+  }),
 ];
