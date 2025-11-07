@@ -47,6 +47,7 @@ pwned <command>
 Commands:
   pwned apiKey <key>            set the API key to be used for authenticated requests
   pwned ba <account|email>      get all breaches for an account (username or email address)
+  pwned bd <domain>             get all breached email addresses for a domain
   pwned breach <name>           get a single breached site by breach name
   pwned breaches                get all breaches in the system
   pwned dc                      get all data classes in the system

@@ -3,6 +3,7 @@ import {
   FOUND,
   BREACH,
   BREACHES,
+  BREACHED_DOMAIN,
   DATA_CLASSES,
   PASTES,
   PASSWORD_HASHES,
@@ -51,5 +52,12 @@ export const handlers = [
   }),
   http.get('*/latestbreach', () => {
     return new Response(JSON.stringify(BREACH));
+  }),
+  http.get('*/breacheddomain/:domain', ({ params }) => {
+    const { domain } = params;
+    if (domain === FOUND) {
+      return new Response(JSON.stringify(BREACHED_DOMAIN));
+    }
+    return new Response(null, { status: 404 });
   }),
 ];

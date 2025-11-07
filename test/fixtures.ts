@@ -1,5 +1,5 @@
 import { stripIndents } from 'common-tags';
-import type { Breach, Paste, SubscriptionStatus } from 'hibp';
+import type { Breach, BreachedDomainsByEmailAlias, Paste, SubscriptionStatus } from 'hibp';
 
 export const spinnerFns = ['start', 'stop', 'succeed', 'warn', 'fail'];
 export const loggerFns = ['info', 'log', 'warn', 'error'];
@@ -33,6 +33,10 @@ export const PASTE: Paste = {
   Title: 'Paste',
 };
 export const PASTES = [PASTE];
+export const BREACHED_DOMAIN: BreachedDomainsByEmailAlias = {
+  john: ['Adobe'],
+  jane: ['Adobe', 'Gawker'],
+};
 
 export const PASSWORD_HASHES = stripIndents`
   003D68EB55068C33ACE09247EE4C639306B:3

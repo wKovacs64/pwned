@@ -5,6 +5,7 @@ import { hideBin } from 'yargs/helpers';
 
 import * as apiKey from '../lib/commands/api-key.js';
 import * as ba from '../lib/commands/ba.js';
+import * as bd from '../lib/commands/bd.js';
 import * as breach from '../lib/commands/breach.js';
 import * as breaches from '../lib/commands/breaches.js';
 import * as dc from '../lib/commands/dc.js';
@@ -20,6 +21,7 @@ sourceMapSupport.install();
 yargs(hideBin(process.argv))
   .command(apiKey)
   .command(ba)
+  .command(bd)
   .command(breach)
   .command(breaches)
   .command(dc)
