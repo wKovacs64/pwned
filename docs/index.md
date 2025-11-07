@@ -54,6 +54,7 @@ Commands:
   pwned lb                      get the most recently added breach
   pwned pa <email>              get all pastes for an account (email address)
   pwned pw <password>           securely check a password for public exposure
+  pwned sd                      get all subscribed domains for your account
   pwned search <account|email>  search breaches and pastes for an account (username or email
                                 address)
   pwned subStatus               get the subscription status of your API key

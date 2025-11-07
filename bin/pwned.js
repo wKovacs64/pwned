@@ -12,6 +12,7 @@ import * as dc from '../lib/commands/dc.js';
 import * as lb from '../lib/commands/lb.js';
 import * as pa from '../lib/commands/pa.js';
 import * as pw from '../lib/commands/pw.js';
+import * as sd from '../lib/commands/sd.js';
 import * as search from '../lib/commands/search.js';
 import * as subStatus from '../lib/commands/sub-status.js';
 
@@ -28,6 +29,7 @@ yargs(hideBin(process.argv))
   .command(lb)
   .command(pa)
   .command(pw)
+  .command(sd)
   .command(search)
   .command(subStatus)
   .demandCommand()

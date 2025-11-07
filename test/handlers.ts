@@ -7,6 +7,7 @@ import {
   DATA_CLASSES,
   PASTES,
   PASSWORD_HASHES,
+  SUBSCRIBED_DOMAINS,
   SUBSCRIPTION_STATUS,
   EMPTY_ARRAY,
 } from './fixtures.js';
@@ -59,5 +60,8 @@ export const handlers = [
       return new Response(JSON.stringify(BREACHED_DOMAIN));
     }
     return new Response(null, { status: 404 });
+  }),
+  http.get('*/subscribeddomains', () => {
+    return new Response(JSON.stringify(SUBSCRIBED_DOMAINS));
   }),
 ];

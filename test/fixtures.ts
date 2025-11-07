@@ -1,5 +1,5 @@
 import { stripIndents } from 'common-tags';
-import type { Breach, BreachedDomainsByEmailAlias, Paste, SubscriptionStatus } from 'hibp';
+import type { Breach, BreachedDomainsByEmailAlias, Paste, SubscribedDomain, SubscriptionStatus } from 'hibp';
 
 export const spinnerFns = ['start', 'stop', 'succeed', 'warn', 'fail'];
 export const loggerFns = ['info', 'log', 'warn', 'error'];
@@ -44,6 +44,14 @@ export const PASSWORD_HASHES = stripIndents`
   01330C689E5D64F660D6947A93AD634EF8F:1
 `;
 
+export const SUBSCRIBED_DOMAIN: SubscribedDomain = {
+  DomainName: 'example.com',
+  PwnCount: 100,
+  PwnCountExcludingSpamLists: 90,
+  PwnCountExcludingSpamListsAtLastSubscriptionRenewal: 85,
+  NextSubscriptionRenewal: '2024-12-31T00:00:00Z',
+};
+export const SUBSCRIBED_DOMAINS = [SUBSCRIBED_DOMAIN];
 export const SUBSCRIPTION_STATUS: SubscriptionStatus = {
   SubscriptionName: 'Pwned 42',
   Description: 'A mock subscrpition',
