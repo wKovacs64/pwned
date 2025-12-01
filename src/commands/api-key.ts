@@ -65,6 +65,7 @@ export async function handler({ key }: ApiKeyHandlerOptions) {
   } catch (err) {
     /* v8 ignore else -- @preserve */
     if (err instanceof Error) {
+      process.exitCode = 1;
       logger.error(err.message);
     }
   }

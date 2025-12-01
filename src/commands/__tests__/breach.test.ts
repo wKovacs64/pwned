@@ -1,4 +1,4 @@
-import { describe, expect, it, vi, type MockInstance } from 'vitest';
+import { beforeEach, describe, expect, it, vi, type MockInstance } from 'vitest';
 import { http } from 'msw';
 import { server } from '../../../test/server.js';
 import {
@@ -92,6 +92,30 @@ describe('command: breach', () => {
       expect(logger.error).toHaveBeenCalledTimes(0);
       await breach({ name: ERROR, raw: true });
       expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('exit codes', () => {
+    beforeEach(() => {
+      process.exitCode = undefined;
+    });
+
+    it('sets exit code 1 on error', async () => {
+      server.use(
+        http.get('*', () => {
+          throw new Error(ERROR_MSG);
+        }),
+      );
+
+      expect(process.exitCode).toBeUndefined();
+      await breach({ name: ERROR, raw: false });
+      expect(process.exitCode).toBe(1);
+    });
+
+    it('does not set exit code on success', async () => {
+      expect(process.exitCode).toBeUndefined();
+      await breach({ name: FOUND, raw: false });
+      expect(process.exitCode).toBeUndefined();
     });
   });
 });

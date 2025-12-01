@@ -1,4 +1,4 @@
-import { describe, expect, it, vi, type MockInstance } from 'vitest';
+import { beforeEach, describe, expect, it, vi, type MockInstance } from 'vitest';
 import { http } from 'msw';
 import { server } from '../../../test/server.js';
 import { spinnerFns, loggerFns, ERROR_MSG } from '../../../test/fixtures.js';
@@ -70,6 +70,30 @@ describe('command: subStatus', () => {
       await subStatus({ raw: true });
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('exit codes', () => {
+    beforeEach(() => {
+      process.exitCode = undefined;
+    });
+
+    it('sets exit code 1 on error', async () => {
+      server.use(
+        http.get('*', () => {
+          throw new Error(ERROR_MSG);
+        }),
+      );
+
+      expect(process.exitCode).toBeUndefined();
+      await subStatus({ raw: false });
+      expect(process.exitCode).toBe(1);
+    });
+
+    it('does not set exit code on success', async () => {
+      expect(process.exitCode).toBeUndefined();
+      await subStatus({ raw: false });
+      expect(process.exitCode).toBeUndefined();
     });
   });
 });
