@@ -9,7 +9,6 @@ export default defineConfig({
       exclude: [...(configDefaults.coverage.exclude ?? []), 'src/commands/api-key.ts'],
     },
     clearMocks: true,
-    globals: true,
     environment: 'node',
   },
 });
