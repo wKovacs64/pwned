@@ -1,11 +1,8 @@
 import type { Argv } from 'yargs';
 import { breachedAccount } from 'hibp';
-import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
 import { config } from '../config.js';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { translateApiError } from '../utils/translate-api-error.js';
+import { runCommand } from '../utils/run-command.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'ba <account|email>';
@@ -92,35 +89,17 @@ export async function handler({
   truncate,
   raw,
 }: BaHandlerOptions): Promise<void> {
-  if (!raw) {
-    spinner.start();
-  }
-
-  try {
-    const breachData = await breachedAccount(account.trim(), {
-      apiKey: config.get('apiKey'),
-      domain,
-      includeUnverified,
-      truncate,
-      userAgent,
-    });
-    if (breachData && raw) {
-      logger.log(JSON.stringify(breachData));
-    } else if (breachData) {
-      spinner.stop();
-      logger.log(prettyjson.render(breachData));
-    } else if (!raw) {
-      spinner.succeed('Good news — no pwnage found!');
-    }
-  } catch (maybeError) {
-    /* v8 ignore else -- @preserve */
-    if (maybeError instanceof Error) {
-      const errorMessage = translateApiError(maybeError.message);
-      if (!raw) {
-        spinner.fail(errorMessage);
-      } else {
-        logger.error(errorMessage);
-      }
-    }
-  }
+  return runCommand({
+    raw: Boolean(raw),
+    fetchData: () =>
+      breachedAccount(account.trim(), {
+        apiKey: config.get('apiKey'),
+        domain,
+        includeUnverified,
+        truncate,
+        userAgent,
+      }),
+    hasData: (data) => data !== null,
+    noDataMessage: 'Good news — no pwnage found!',
+  });
 }

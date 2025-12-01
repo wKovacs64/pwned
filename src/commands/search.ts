@@ -1,11 +1,8 @@
 import type { Argv } from 'yargs';
 import { search } from 'hibp';
-import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
 import { config } from '../config.js';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { translateApiError } from '../utils/translate-api-error.js';
+import { runCommand } from '../utils/run-command.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'search <account|email>';
@@ -81,35 +78,16 @@ export async function handler({
   truncate,
   raw,
 }: SearchHandlerOptions): Promise<void> {
-  if (!raw) {
-    spinner.start();
-  }
-
-  try {
-    const searchData = await search(account, {
-      apiKey: config.get('apiKey'),
-      domain,
-      truncate,
-      userAgent,
-    });
-    const foundData = !!(searchData.breaches || searchData.pastes);
-    if (foundData && raw) {
-      logger.log(JSON.stringify(searchData));
-    } else if (foundData) {
-      spinner.stop();
-      logger.log(prettyjson.render(searchData));
-    } else if (!raw) {
-      spinner.succeed('Good news — no pwnage found!');
-    }
-  } catch (maybeError) {
-    /* v8 ignore else -- @preserve */
-    if (maybeError instanceof Error) {
-      const errorMessage = translateApiError(maybeError.message);
-      if (!raw) {
-        spinner.fail(errorMessage);
-      } else {
-        logger.error(errorMessage);
-      }
-    }
-  }
+  return runCommand({
+    raw: Boolean(raw),
+    fetchData: () =>
+      search(account, {
+        apiKey: config.get('apiKey'),
+        domain,
+        truncate,
+        userAgent,
+      }),
+    hasData: (data) => !!(data.breaches || data.pastes),
+    noDataMessage: 'Good news — no pwnage found!',
+  });
 }

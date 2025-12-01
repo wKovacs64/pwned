@@ -1,9 +1,7 @@
 import type { Argv } from 'yargs';
 import { subscriptionStatus } from 'hibp';
-import prettyjson from 'prettyjson';
 import { config } from '../config.js';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
+import { runCommand } from '../utils/run-command.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'subStatus';
@@ -38,29 +36,13 @@ export function builder(yargs: Argv<SubStatusArgvOptions>): Argv<SubStatusHandle
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
 export async function handler({ raw }: SubStatusHandlerOptions): Promise<void> {
-  if (!raw) {
-    spinner.start();
-  }
-
-  try {
-    const subStatusData = await subscriptionStatus({
-      apiKey: config.get('apiKey'),
-      userAgent,
-    });
-    if (raw) {
-      logger.log(JSON.stringify(subStatusData));
-    } else {
-      spinner.stop();
-      logger.log(prettyjson.render(subStatusData));
-    }
-  } catch (maybeError) {
-    /* v8 ignore else -- @preserve */
-    if (maybeError instanceof Error) {
-      if (!raw) {
-        spinner.fail(maybeError.message);
-      } else {
-        logger.error(maybeError.message);
-      }
-    }
-  }
+  return runCommand({
+    raw: Boolean(raw),
+    fetchData: () =>
+      subscriptionStatus({
+        apiKey: config.get('apiKey'),
+        userAgent,
+      }),
+    hasData: () => true,
+  });
 }

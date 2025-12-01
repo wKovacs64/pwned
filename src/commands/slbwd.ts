@@ -1,11 +1,8 @@
 import type { Argv } from 'yargs';
 import { stealerLogsByWebsiteDomain } from 'hibp';
-import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
 import { config } from '../config.js';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { translateApiError } from '../utils/translate-api-error.js';
+import { runCommand } from '../utils/run-command.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'slbwd <website-domain>';
@@ -56,32 +53,14 @@ export function builder(yargs: Argv<SlbwdArgvOptions>): Argv<SlbwdHandlerOptions
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
 export async function handler({ websiteDomain, raw }: SlbwdHandlerOptions): Promise<void> {
-  if (!raw) {
-    spinner.start();
-  }
-
-  try {
-    const emailsData = await stealerLogsByWebsiteDomain(websiteDomain.trim(), {
-      apiKey: config.get('apiKey'),
-      userAgent,
-    });
-    if (emailsData && raw) {
-      logger.log(JSON.stringify(emailsData));
-    } else if (emailsData) {
-      spinner.stop();
-      logger.log(prettyjson.render(emailsData));
-    } else if (!raw) {
-      spinner.succeed('Good news — no stealer logs found!');
-    }
-  } catch (maybeError) {
-    /* v8 ignore else -- @preserve */
-    if (maybeError instanceof Error) {
-      const errorMessage = translateApiError(maybeError.message);
-      if (!raw) {
-        spinner.fail(errorMessage);
-      } else {
-        logger.error(errorMessage);
-      }
-    }
-  }
+  return runCommand({
+    raw: Boolean(raw),
+    fetchData: () =>
+      stealerLogsByWebsiteDomain(websiteDomain.trim(), {
+        apiKey: config.get('apiKey'),
+        userAgent,
+      }),
+    hasData: (data) => data !== null,
+    noDataMessage: 'Good news — no stealer logs found!',
+  });
 }

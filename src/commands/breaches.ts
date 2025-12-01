@@ -1,8 +1,6 @@
 import type { Argv } from 'yargs';
 import { breaches } from 'hibp';
-import prettyjson from 'prettyjson';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
+import { runCommand } from '../utils/run-command.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'breaches';
@@ -49,28 +47,10 @@ export async function handler({
   domainFilter: domain,
   raw,
 }: BreachesHandlerOptions): Promise<void> {
-  if (!raw) {
-    spinner.start();
-  }
-
-  try {
-    const breachData = await breaches({ domain, userAgent });
-    if (breachData.length && raw) {
-      logger.log(JSON.stringify(breachData));
-    } else if (breachData.length) {
-      spinner.stop();
-      logger.log(prettyjson.render(breachData));
-    } else if (!breachData.length && !raw) {
-      spinner.succeed('No breaches found.');
-    }
-  } catch (maybeError) {
-    /* v8 ignore else -- @preserve */
-    if (maybeError instanceof Error) {
-      if (!raw) {
-        spinner.fail(maybeError.message);
-      } else {
-        logger.error(maybeError.message);
-      }
-    }
-  }
+  return runCommand({
+    raw: Boolean(raw),
+    fetchData: () => breaches({ domain, userAgent }),
+    hasData: (data) => data.length > 0,
+    noDataMessage: 'No breaches found.',
+  });
 }

@@ -1,11 +1,8 @@
 import type { Argv } from 'yargs';
 import { stealerLogsByEmail } from 'hibp';
-import prettyjson from 'prettyjson';
 import { oneLine } from 'common-tags';
 import { config } from '../config.js';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { translateApiError } from '../utils/translate-api-error.js';
+import { runCommand } from '../utils/run-command.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'slbe <email>';
@@ -56,32 +53,14 @@ export function builder(yargs: Argv<SlbeArgvOptions>): Argv<SlbeHandlerOptions> 
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
 export async function handler({ email, raw }: SlbeHandlerOptions): Promise<void> {
-  if (!raw) {
-    spinner.start();
-  }
-
-  try {
-    const domainsData = await stealerLogsByEmail(email.trim(), {
-      apiKey: config.get('apiKey'),
-      userAgent,
-    });
-    if (domainsData && raw) {
-      logger.log(JSON.stringify(domainsData));
-    } else if (domainsData) {
-      spinner.stop();
-      logger.log(prettyjson.render(domainsData));
-    } else if (!raw) {
-      spinner.succeed('Good news — no stealer logs found!');
-    }
-  } catch (maybeError) {
-    /* v8 ignore else -- @preserve */
-    if (maybeError instanceof Error) {
-      const errorMessage = translateApiError(maybeError.message);
-      if (!raw) {
-        spinner.fail(errorMessage);
-      } else {
-        logger.error(errorMessage);
-      }
-    }
-  }
+  return runCommand({
+    raw: Boolean(raw),
+    fetchData: () =>
+      stealerLogsByEmail(email.trim(), {
+        apiKey: config.get('apiKey'),
+        userAgent,
+      }),
+    hasData: (data) => data !== null,
+    noDataMessage: 'Good news — no stealer logs found!',
+  });
 }

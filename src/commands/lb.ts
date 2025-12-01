@@ -1,8 +1,6 @@
 import type { Argv } from 'yargs';
 import { latestBreach } from 'hibp';
-import prettyjson from 'prettyjson';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
+import { runCommand } from '../utils/run-command.js';
 import { userAgent } from '../utils/user-agent.js';
 
 export const command = 'lb';
@@ -37,28 +35,10 @@ export function builder(yargs: Argv<LbArgvOptions>): Argv<LbHandlerOptions> {
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
 export async function handler({ raw }: LbHandlerOptions): Promise<void> {
-  if (!raw) {
-    spinner.start();
-  }
-
-  try {
-    const breachData = await latestBreach({ userAgent });
-    if (breachData && raw) {
-      logger.log(JSON.stringify(breachData));
-    } else if (breachData) {
-      spinner.stop();
-      logger.log(prettyjson.render(breachData));
-    } else if (!breachData && !raw) {
-      spinner.succeed('No breach found.');
-    }
-  } catch (maybeError) {
-    /* v8 ignore else -- @preserve */
-    if (maybeError instanceof Error) {
-      if (!raw) {
-        spinner.fail(maybeError.message);
-      } else {
-        logger.error(maybeError.message);
-      }
-    }
-  }
+  return runCommand({
+    raw: Boolean(raw),
+    fetchData: () => latestBreach({ userAgent }),
+    hasData: (data) => data !== null,
+    noDataMessage: 'No breach found.',
+  });
 }

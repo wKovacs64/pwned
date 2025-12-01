@@ -161,3 +161,7 @@ lib/
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+
+
+### Claude Code ###
+.claude/
