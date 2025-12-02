@@ -1,5 +1,5 @@
 import type { Argv } from 'yargs';
-import prompts from 'prompts';
+import { password } from '@inquirer/prompts';
 import { oneLine } from 'common-tags';
 import { config } from '../config.js';
 import { logger } from '../utils/logger.js';
@@ -35,15 +35,21 @@ export function builder(yargs: Argv<ApiKeyArgvOptions>): Argv<ApiKeyHandlerOptio
 export async function handler({ key }: ApiKeyHandlerOptions) {
   let apiKey = key;
   if (!apiKey) {
-    const promptResponse = await prompts({
-      type: 'password',
-      name: 'apiKeyFromPrompt',
-      message: 'Enter your API key (input will be masked for your security)',
-      validate: (value: string) =>
-        value.length > 0 ? true : 'API key must be a non-empty string of characters.',
-    });
-
-    apiKey = promptResponse.apiKeyFromPrompt;
+    try {
+      apiKey = await password({
+        message: 'Enter your API key (input will be masked for your security)',
+        validate: (value: string) =>
+          value.length > 0 ? true : 'API key must be a non-empty string of characters.',
+      });
+    } catch (maybeError) {
+      /* v8 ignore else -- @preserve */
+      if (maybeError instanceof Error) {
+        if (maybeError.name === 'ExitPromptError') {
+          process.exit(1);
+        }
+        throw maybeError;
+      }
+    }
   }
 
   try {
@@ -62,11 +68,11 @@ export async function handler({ key }: ApiKeyHandlerOptions) {
         key supplied!
       `);
     }
-  } catch (err) {
+  } catch (maybeError) {
     /* v8 ignore else -- @preserve */
-    if (err instanceof Error) {
+    if (maybeError instanceof Error) {
       process.exitCode = 1;
-      logger.error(err.message);
+      logger.error(maybeError.message);
     }
   }
 }

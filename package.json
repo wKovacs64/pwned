@@ -62,12 +62,12 @@
     "node": ">=20.19.0"
   },
   "dependencies": {
+    "@inquirer/prompts": "^8.0.1",
     "common-tags": "^1.8.2",
     "conf": "^15.0.2",
     "hibp": "^15.1.0",
     "ora": "^9.0.0",
     "prettyjson": "^1.2.5",
-    "prompts": "2.4.2",
     "source-map-support": "^0.5.21",
     "yargs": "^18.0.0"
   },
@@ -78,7 +78,6 @@
     "@types/debug": "4.1.12",
     "@types/node": "24.10.1",
     "@types/prettyjson": "0.0.33",
-    "@types/prompts": "2.4.9",
     "@types/ws": "8.18.1",
     "@types/yargs": "17.0.35",
     "@vitest/coverage-v8": "4.0.14",
