@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.1.1
+
+### Patch Changes
+
+- [#356](https://github.com/wKovacs64/pwned/pull/356) [`a04b9c1`](https://github.com/wKovacs64/pwned/commit/a04b9c11c8592ac66f636f036e2e26d7f25148ea) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Exit process with code `1` on errors/failures to assist with scripting, CI/CD, and other automation. Technically, one could argue this is a breaking change, but I'm justifying it as a patch as it should have worked this way all along. So if this affects you, sorry - you were relying on a bug. ;)
+
 ## 13.1.0
 
 ### Minor Changes
