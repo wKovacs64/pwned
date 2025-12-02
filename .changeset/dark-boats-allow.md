@@ -2,7 +2,4 @@
 'pwned': minor
 ---
 
-Set process exit code to assist with scripting, CI/CD, and other automation:
-
-- `0` - Success (command was successful)
-- `1` - Failure (API failure, invalid input, etc.)
+On errors/failures, set process exit code to `1` to assist with scripting, CI/CD, and other automation. Successful commands will continue exiting with code `0`.
