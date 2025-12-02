@@ -76,6 +76,7 @@ export async function handler({ websiteDomain, raw }: SlbwdHandlerOptions): Prom
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */
     if (maybeError instanceof Error) {
+      process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
       if (!raw) {
         spinner.fail(errorMessage);

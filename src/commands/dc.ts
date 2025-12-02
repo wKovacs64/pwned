@@ -58,6 +58,7 @@ export async function handler({ raw }: DcHandlerOptions): Promise<void> {
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */
     if (maybeError instanceof Error) {
+      process.exitCode = 1;
       if (!raw) {
         spinner.fail(maybeError.message);
       } else {

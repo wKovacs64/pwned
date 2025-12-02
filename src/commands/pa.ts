@@ -76,6 +76,7 @@ export async function handler({ email, raw }: PaHandlerOptions): Promise<void> {
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */
     if (maybeError instanceof Error) {
+      process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
       if (!raw) {
         spinner.fail(errorMessage);
