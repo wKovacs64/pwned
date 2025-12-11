@@ -82,7 +82,7 @@
     "@types/yargs": "17.0.35",
     "@vitest/coverage-v8": "4.0.15",
     "@wkovacs64/eslint-config": "7.11.1",
-    "@wkovacs64/prettier-config": "4.2.2",
+    "@wkovacs64/prettier-config": "4.2.3",
     "cross-env": "10.1.0",
     "del-cli": "7.0.0",
     "eslint": "9.39.1",
