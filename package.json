@@ -33,7 +33,7 @@
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "changeset": "changeset",
-    "changeset:version": "changeset version && npm install --package-lock-only",
+    "changeset:version": "changeset version && pnpm install",
     "changeset:publish": "changeset publish",
     "typecheck": "tsc",
     "clean": "del-cli lib coverage",
@@ -43,7 +43,7 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch",
-    "prebuild": "npm run --silent clean",
+    "prebuild": "pnpm run --silent clean",
     "prepublishOnly": "run-p --silent lint typecheck test build"
   },
   "private": false,
@@ -61,6 +61,7 @@
   "engines": {
     "node": ">=20.19.0"
   },
+  "packageManager": "pnpm@10.25.0",
   "dependencies": {
     "@inquirer/prompts": "^8.0.1",
     "common-tags": "^1.8.2",
