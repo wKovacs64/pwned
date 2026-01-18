@@ -1,5 +1,18 @@
 # Change Log
 
+## 13.1.2
+
+### Patch Changes
+
+- [#383](https://github.com/wKovacs64/pwned/pull/383) [`3a0507f`](https://github.com/wKovacs64/pwned/commit/3a0507f0836eb151c127f153884518de24d3c621) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Update various dependencies.
+
+  ```
+  @inquirer/prompts   ^8.0.1  →   ^8.2.0
+  hibp               ^15.1.0  →  ^15.2.0
+  ```
+
+- [#381](https://github.com/wKovacs64/pwned/pull/381) [`ffec206`](https://github.com/wKovacs64/pwned/commit/ffec206acc430854b3af77b7707558b580563b02) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Attempt to fix preview publishing by adding `type` to the `repository` section of `package.json`.
+
 ## 13.1.1
 
 ### Patch Changes
