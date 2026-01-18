@@ -52,6 +52,7 @@
   },
   "prettier": "@wkovacs64/prettier-config",
   "repository": {
+    "type": "git",
     "url": "git+https://github.com/wKovacs64/pwned.git"
   },
   "bugs": {
