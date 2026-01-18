@@ -64,10 +64,10 @@
   },
   "packageManager": "pnpm@10.28.0",
   "dependencies": {
-    "@inquirer/prompts": "^8.0.1",
+    "@inquirer/prompts": "^8.2.0",
     "common-tags": "^1.8.2",
     "conf": "^15.0.2",
-    "hibp": "^15.1.0",
+    "hibp": "^15.2.0",
     "ora": "^9.0.0",
     "prettyjson": "^1.2.5",
     "source-map-support": "^0.5.21",
