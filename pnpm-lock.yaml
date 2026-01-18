@@ -64,8 +64,8 @@ importers:
         specifier: 7.12.0
         version: 7.12.0(@typescript-eslint/utils@8.53.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)(typescript@5.9.3)(vitest@4.0.16(@types/node@24.10.7)(msw@2.12.7(@types/node@24.10.7)(typescript@5.9.3)))
       '@wkovacs64/prettier-config':
-        specifier: 4.2.3
-        version: 4.2.3(prettier@3.7.4)
+        specifier: 4.2.4
+        version: 4.2.4(prettier@3.7.4)
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
@@ -1086,8 +1086,8 @@ packages:
     resolution: {integrity: sha512-Czn7gxv5P8BpKziJnwqBjznGGrDONbkyfIRKYXGeQ5/H0ELu2w6RtTJ2bRscTLLF9RV7POGJT6uee/ygOQREXA==}
     engines: {node: ^18.18.0 || >=20.0.0}
 
-  '@wkovacs64/prettier-config@4.2.3':
-    resolution: {integrity: sha512-1YJhIeL3vprXLgYZshZPF1k7E2lC+46OThGNWhdwmkQzP3+hUuVaTgfW13bDdUKCsmo/rU1VDce7meLmlSvrtQ==}
+  '@wkovacs64/prettier-config@4.2.4':
+    resolution: {integrity: sha512-4rQZeoTWrh+xOFIZDJGIL+4c1vaUURePRriTkJCKGjZq9obGQ52Vr7SW9pACXA2i3kncKjU2uZBRDn42BlksUw==}
     engines: {node: '>= 18'}
 
   acorn-jsx@5.3.2:
@@ -4041,7 +4041,7 @@ snapshots:
       - typescript
       - vitest
 
-  '@wkovacs64/prettier-config@4.2.3(prettier@3.7.4)':
+  '@wkovacs64/prettier-config@4.2.4(prettier@3.7.4)':
     dependencies:
       prettier-plugin-astro: 0.14.1
       prettier-plugin-tailwindcss: 0.7.2(prettier-plugin-astro@0.14.1)(prettier@3.7.4)
