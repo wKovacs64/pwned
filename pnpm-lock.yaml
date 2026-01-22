@@ -65,7 +65,7 @@ importers:
         version: 7.12.0(@typescript-eslint/utils@8.53.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)(typescript@5.9.3)(vitest@4.0.17(@types/node@24.10.8)(msw@2.12.7(@types/node@24.10.8)(typescript@5.9.3)))
       '@wkovacs64/prettier-config':
         specifier: 4.2.4
-        version: 4.2.4(prettier@3.7.4)
+        version: 4.2.4(prettier@3.8.0)
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
@@ -82,8 +82,8 @@ importers:
         specifier: 8.0.4
         version: 8.0.4
       prettier:
-        specifier: 3.7.4
-        version: 3.7.4
+        specifier: 3.8.0
+        version: 3.8.0
       type-fest:
         specifier: 5.4.1
         version: 5.4.1
@@ -2428,8 +2428,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.7.4:
-    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
+  prettier@3.8.0:
+    resolution: {integrity: sha512-yEPsovQfpxYfgWNhCfECjG5AQaO+K3dp6XERmOepyPDVqcJm+bjyCVO3pmU+nAPe0N5dDvekfGezt/EIiRe1TA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4034,10 +4034,10 @@ snapshots:
       - typescript
       - vitest
 
-  '@wkovacs64/prettier-config@4.2.4(prettier@3.7.4)':
+  '@wkovacs64/prettier-config@4.2.4(prettier@3.8.0)':
     dependencies:
       prettier-plugin-astro: 0.14.1
-      prettier-plugin-tailwindcss: 0.7.2(prettier-plugin-astro@0.14.1)(prettier@3.7.4)
+      prettier-plugin-tailwindcss: 0.7.2(prettier-plugin-astro@0.14.1)(prettier@3.8.0)
     transitivePeerDependencies:
       - '@ianvs/prettier-plugin-sort-imports'
       - '@prettier/plugin-hermes'
@@ -5467,18 +5467,18 @@ snapshots:
   prettier-plugin-astro@0.14.1:
     dependencies:
       '@astrojs/compiler': 2.13.0
-      prettier: 3.7.4
+      prettier: 3.8.0
       sass-formatter: 0.7.9
 
-  prettier-plugin-tailwindcss@0.7.2(prettier-plugin-astro@0.14.1)(prettier@3.7.4):
+  prettier-plugin-tailwindcss@0.7.2(prettier-plugin-astro@0.14.1)(prettier@3.8.0):
     dependencies:
-      prettier: 3.7.4
+      prettier: 3.8.0
     optionalDependencies:
       prettier-plugin-astro: 0.14.1
 
   prettier@2.8.8: {}
 
-  prettier@3.7.4: {}
+  prettier@3.8.0: {}
 
   prettyjson@1.2.5:
     dependencies:

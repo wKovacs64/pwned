@@ -90,7 +90,7 @@
     "eslint": "9.39.2",
     "msw": "2.12.7",
     "npm-run-all2": "8.0.4",
-    "prettier": "3.7.4",
+    "prettier": "3.8.0",
     "type-fest": "5.4.1",
     "typescript": "5.9.3",
     "vitest": "4.0.17"
