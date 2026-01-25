@@ -19,7 +19,7 @@ importers:
         version: 15.0.2
       hibp:
         specifier: ^15.2.0
-        version: 15.2.0
+        version: 15.2.1
       ora:
         specifier: ^9.0.0
         version: 9.0.0
@@ -1815,8 +1815,8 @@ packages:
   hermes-parser@0.25.1:
     resolution: {integrity: sha512-6pEjquH3rqaI6cYAXYPcz9MS4rY6R4ngRgrgfDshRptUZIc3lw0MCIJIGDj9++mfySOuPTHB4nrSW99BCvOPIA==}
 
-  hibp@15.2.0:
-    resolution: {integrity: sha512-txVFlAJFan3KdaWCatrFZ3faEmo980Cc4YRKFjLSrDYt+l4d6d3UBv+bdq/V4AIUIBWudNc2ltB5rufDkNsEeg==}
+  hibp@15.2.1:
+    resolution: {integrity: sha512-f7FxrlBz5FGd/J7tx9DR1cCQNIzKTl4BLZzgRXeQblzcO/xiWGrvXBMwztRzjJVeFACpED6P+iVmU7of9eFqyA==}
     engines: {node: '>= 20.19.0'}
 
   html-escaper@2.0.2:
@@ -4950,7 +4950,7 @@ snapshots:
     dependencies:
       hermes-estree: 0.25.1
 
-  hibp@15.2.0: {}
+  hibp@15.2.1: {}
 
   html-escaper@2.0.2: {}
 
