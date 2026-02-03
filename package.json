@@ -91,7 +91,7 @@
     "msw": "2.12.7",
     "npm-run-all2": "8.0.4",
     "prettier": "3.8.1",
-    "type-fest": "5.4.1",
+    "type-fest": "5.4.2",
     "typescript": "5.9.3",
     "vitest": "4.0.18"
   }
