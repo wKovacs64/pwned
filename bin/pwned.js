@@ -1,23 +1,23 @@
 #!/usr/bin/env node
-import sourceMapSupport from 'source-map-support';
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
+import sourceMapSupport from "source-map-support";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
-import * as apiKey from '../lib/commands/api-key.js';
-import * as ba from '../lib/commands/ba.js';
-import * as bd from '../lib/commands/bd.js';
-import * as breach from '../lib/commands/breach.js';
-import * as breaches from '../lib/commands/breaches.js';
-import * as dc from '../lib/commands/dc.js';
-import * as lb from '../lib/commands/lb.js';
-import * as pa from '../lib/commands/pa.js';
-import * as pw from '../lib/commands/pw.js';
-import * as sd from '../lib/commands/sd.js';
-import * as search from '../lib/commands/search.js';
-import * as slbe from '../lib/commands/slbe.js';
-import * as slbed from '../lib/commands/slbed.js';
-import * as slbwd from '../lib/commands/slbwd.js';
-import * as subStatus from '../lib/commands/sub-status.js';
+import * as apiKey from "../lib/commands/api-key.js";
+import * as ba from "../lib/commands/ba.js";
+import * as bd from "../lib/commands/bd.js";
+import * as breach from "../lib/commands/breach.js";
+import * as breaches from "../lib/commands/breaches.js";
+import * as dc from "../lib/commands/dc.js";
+import * as lb from "../lib/commands/lb.js";
+import * as pa from "../lib/commands/pa.js";
+import * as pw from "../lib/commands/pw.js";
+import * as sd from "../lib/commands/sd.js";
+import * as search from "../lib/commands/search.js";
+import * as slbe from "../lib/commands/slbe.js";
+import * as slbed from "../lib/commands/slbed.js";
+import * as slbwd from "../lib/commands/slbwd.js";
+import * as subStatus from "../lib/commands/sub-status.js";
 
 sourceMapSupport.install();
 
@@ -42,5 +42,5 @@ yargs(hideBin(process.argv))
   .recommendCommands()
   .strict()
   .wrap(Math.min(100, yargs().terminalWidth()))
-  .alias('h', 'help')
-  .alias('v', 'version').argv;
+  .alias("h", "help")
+  .alias("v", "version").argv;

@@ -1,15 +1,15 @@
-import type { Argv } from 'yargs';
-import { stealerLogsByEmailDomain } from 'hibp';
-import prettyjson from 'prettyjson';
-import { oneLine } from 'common-tags';
-import { config } from '../config.js';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { translateApiError } from '../utils/translate-api-error.js';
-import { userAgent } from '../utils/user-agent.js';
+import type { Argv } from "yargs";
+import { stealerLogsByEmailDomain } from "hibp";
+import prettyjson from "prettyjson";
+import { oneLine } from "common-tags";
+import { config } from "../config.js";
+import { logger } from "../utils/logger.js";
+import { spinner } from "../utils/spinner.js";
+import { translateApiError } from "../utils/translate-api-error.js";
+import { userAgent } from "../utils/user-agent.js";
 
-export const command = 'slbed <email-domain>';
-export const describe = 'get all stealer log email aliases for an email domain';
+export const command = "slbed <email-domain>";
+export const describe = "get all stealer log email aliases for an email domain";
 
 interface SlbedArgvOptions {
   emailDomain: string;
@@ -22,26 +22,28 @@ interface SlbedHandlerOptions {
 }
 
 /* v8 ignore next -- @preserve */
-export function builder(yargs: Argv<SlbedArgvOptions>): Argv<SlbedHandlerOptions> {
+export function builder(
+  yargs: Argv<SlbedArgvOptions>,
+): Argv<SlbedHandlerOptions> {
   return yargs
-    .positional('email-domain', {
-      type: 'string',
+    .positional("email-domain", {
+      type: "string",
     })
-    .demandOption('email-domain')
+    .demandOption("email-domain")
     .check((argv) => {
       if (!argv.emailDomain.length) {
-        throw new Error('The email-domain argument must not be empty.');
+        throw new Error("The email-domain argument must not be empty.");
       }
       return true;
     })
-    .option('r', {
-      alias: 'raw',
-      describe: 'output the raw JSON data (or nothing, if no results found)',
-      type: 'boolean',
+    .option("r", {
+      alias: "raw",
+      describe: "output the raw JSON data (or nothing, if no results found)",
+      type: "boolean",
       default: false,
     })
-    .group(['r'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:').epilog(oneLine`
+    .group(["r"], "Command Options:")
+    .group(["h", "v"], "Global Options:").epilog(oneLine`
       🔑 This command requires an API key. Make sure you've run the "apiKey"
       command first.
     `);
@@ -55,14 +57,17 @@ export function builder(yargs: Argv<SlbedArgvOptions>): Argv<SlbedHandlerOptions
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ emailDomain, raw }: SlbedHandlerOptions): Promise<void> {
+export async function handler({
+  emailDomain,
+  raw,
+}: SlbedHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
 
   try {
     const logsData = await stealerLogsByEmailDomain(emailDomain.trim(), {
-      apiKey: config.get('apiKey'),
+      apiKey: config.get("apiKey"),
       userAgent,
     });
     if (logsData && raw) {
@@ -71,7 +76,7 @@ export async function handler({ emailDomain, raw }: SlbedHandlerOptions): Promis
       spinner.stop();
       logger.log(prettyjson.render(logsData));
     } else if (!raw) {
-      spinner.succeed('Good news — no stealer logs found!');
+      spinner.succeed("Good news — no stealer logs found!");
     }
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */

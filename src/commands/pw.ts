@@ -1,11 +1,11 @@
-import type { Argv } from 'yargs';
-import { pwnedPassword } from 'hibp';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { userAgent } from '../utils/user-agent.js';
+import type { Argv } from "yargs";
+import { pwnedPassword } from "hibp";
+import { logger } from "../utils/logger.js";
+import { spinner } from "../utils/spinner.js";
+import { userAgent } from "../utils/user-agent.js";
 
-export const command = 'pw <password>';
-export const describe = 'securely check a password for public exposure';
+export const command = "pw <password>";
+export const describe = "securely check a password for public exposure";
 
 interface PwArgvOptions {
   password: string;
@@ -22,30 +22,30 @@ interface PwHandlerOptions {
 /* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
   return yargs
-    .positional('password', {
-      type: 'string',
+    .positional("password", {
+      type: "string",
     })
-    .demandOption('password')
+    .demandOption("password")
     .check((argv) => {
       if (!argv.password.length) {
-        throw new Error('The password argument must not be empty.');
+        throw new Error("The password argument must not be empty.");
       }
       return true;
     })
-    .option('p', {
-      alias: 'pad',
-      describe: 'add padding to the API response to obscure the contents',
-      type: 'boolean',
+    .option("p", {
+      alias: "pad",
+      describe: "add padding to the API response to obscure the contents",
+      type: "boolean",
       default: false,
     })
-    .option('r', {
-      alias: 'raw',
-      describe: 'disable the console spinner',
-      type: 'boolean',
+    .option("r", {
+      alias: "raw",
+      describe: "disable the console spinner",
+      type: "boolean",
       default: false,
     })
-    .group(['r', 'p'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:');
+    .group(["r", "p"], "Command Options:")
+    .group(["h", "v"], "Global Options:");
 }
 
 /**
@@ -57,7 +57,11 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
  * @param {boolean} [argv.raw] disable the console spinner (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ password, pad, raw }: PwHandlerOptions): Promise<void> {
+export async function handler({
+  password,
+  pad,
+  raw,
+}: PwHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -75,7 +79,7 @@ export async function handler({ password, pad, raw }: PwHandlerOptions): Promise
         logger.log(pwnedMessage);
       }
     } else {
-      const successMessage = 'Good news — no pwnage found!';
+      const successMessage = "Good news — no pwnage found!";
       if (!raw) {
         spinner.succeed(successMessage);
       } else {

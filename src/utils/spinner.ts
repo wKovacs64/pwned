@@ -1,6 +1,6 @@
-import ora from 'ora';
+import ora from "ora";
 
 export const spinner = ora({
-  spinner: 'dots',
-  text: 'Fetching data...',
+  spinner: "dots",
+  text: "Fetching data...",
 });

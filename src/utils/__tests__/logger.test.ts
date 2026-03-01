@@ -1,15 +1,16 @@
-import { describe, expect, it, vi, type MockInstance } from 'vitest';
-import { loggerFns } from '../../../test/fixtures.js';
-import { logger, type Logger, type LoggerFunction } from '../logger.js';
+import { describe, expect, it, vi, type MockInstance } from "vitest";
+import { loggerFns } from "../../../test/fixtures.js";
+import { logger, type Logger, type LoggerFunction } from "../logger.js";
 
-type IndexableConsole = typeof console & Record<string, LoggerFunction | MockInstance>;
+type IndexableConsole = typeof console &
+  Record<string, LoggerFunction | MockInstance>;
 type IndexableLogger = Logger & Record<string, LoggerFunction>;
 
 const indexableConsole = console as IndexableConsole;
 const indexableLogger = logger as IndexableLogger;
 
-describe('util: logger', () => {
-  it('returns an object with all the expected methods', () => {
+describe("util: logger", () => {
+  it("returns an object with all the expected methods", () => {
     expect(logger).toEqual(
       expect.objectContaining(
         loggerFns.reduce(
@@ -23,8 +24,8 @@ describe('util: logger', () => {
     );
   });
 
-  it('calls the corresponding console functions with the same arguments', () => {
-    const args = ['Wubba lubba dub dub!', { param: 'value' }];
+  it("calls the corresponding console functions with the same arguments", () => {
+    const args = ["Wubba lubba dub dub!", { param: "value" }];
     loggerFns.forEach((fn) => {
       const orig = indexableConsole[fn];
       indexableConsole[fn] = vi.fn();

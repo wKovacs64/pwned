@@ -1,12 +1,12 @@
-import type { Argv } from 'yargs';
-import { breach } from 'hibp';
-import prettyjson from 'prettyjson';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { userAgent } from '../utils/user-agent.js';
+import type { Argv } from "yargs";
+import { breach } from "hibp";
+import prettyjson from "prettyjson";
+import { logger } from "../utils/logger.js";
+import { spinner } from "../utils/spinner.js";
+import { userAgent } from "../utils/user-agent.js";
 
-export const command = 'breach <name>';
-export const describe = 'get a single breached site by breach name';
+export const command = "breach <name>";
+export const describe = "get a single breached site by breach name";
 
 interface BreachArgvOptions {
   name: string;
@@ -19,26 +19,28 @@ interface BreachHandlerOptions {
 }
 
 /* v8 ignore next -- @preserve */
-export function builder(yargs: Argv<BreachArgvOptions>): Argv<BreachHandlerOptions> {
+export function builder(
+  yargs: Argv<BreachArgvOptions>,
+): Argv<BreachHandlerOptions> {
   return yargs
-    .positional('name', {
-      type: 'string',
+    .positional("name", {
+      type: "string",
     })
-    .demandOption('name')
+    .demandOption("name")
     .check((argv) => {
       if (!argv.name.length) {
-        throw new Error('The name argument must not be empty.');
+        throw new Error("The name argument must not be empty.");
       }
       return true;
     })
-    .option('r', {
-      alias: 'raw',
-      describe: 'output the raw JSON data (or nothing, if no results found)',
-      type: 'boolean',
+    .option("r", {
+      alias: "raw",
+      describe: "output the raw JSON data (or nothing, if no results found)",
+      type: "boolean",
       default: false,
     })
-    .group(['r'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:');
+    .group(["r"], "Command Options:")
+    .group(["h", "v"], "Global Options:");
 }
 
 /**
@@ -49,7 +51,10 @@ export function builder(yargs: Argv<BreachArgvOptions>): Argv<BreachHandlerOptio
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ name, raw }: BreachHandlerOptions): Promise<void> {
+export async function handler({
+  name,
+  raw,
+}: BreachHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -62,7 +67,7 @@ export async function handler({ name, raw }: BreachHandlerOptions): Promise<void
       spinner.stop();
       logger.log(prettyjson.render(breachData));
     } else if (!raw) {
-      spinner.succeed('No breach found by that name.');
+      spinner.succeed("No breach found by that name.");
     }
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */

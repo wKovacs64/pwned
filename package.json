@@ -1,35 +1,47 @@
 {
   "name": "pwned",
   "version": "13.1.2",
+  "private": false,
   "description": "A command-line tool for querying the 'Have I been pwned?' service.",
   "keywords": [
+    "breach",
+    "dump",
+    "hack",
     "haveibeenpwned",
     "hibp",
-    "pwned",
-    "security",
-    "hack",
-    "dump",
-    "breach",
+    "passwords",
     "pastes",
-    "passwords"
+    "pwned",
+    "security"
   ],
+  "homepage": "https://wkovacs64.github.io/pwned",
+  "bugs": {
+    "url": "https://github.com/wKovacs64/pwned/issues"
+  },
+  "license": "MIT",
   "author": {
     "name": "Justin Hall",
     "email": "justin.r.hall@gmail.com"
   },
   "contributors": [],
-  "license": "MIT",
-  "type": "module",
-  "main": "bin/pwned.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wKovacs64/pwned.git"
+  },
   "bin": "bin/pwned.js",
   "directories": {
-    "bin": "./bin",
-    "lib": "./lib"
+    "lib": "./lib",
+    "bin": "./bin"
   },
   "files": [
     "bin",
     "lib"
   ],
+  "type": "module",
+  "main": "bin/pwned.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "changeset": "changeset",
@@ -37,8 +49,8 @@
     "changeset:publish": "changeset publish",
     "typecheck": "tsc",
     "clean": "del-cli lib coverage",
-    "format": "prettier --cache --write .",
-    "format:check": "prettier --cache --check .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
@@ -46,23 +58,6 @@
     "prebuild": "pnpm run --silent clean",
     "prepublishOnly": "run-p --silent lint typecheck test build"
   },
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "prettier": "@wkovacs64/prettier-config",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wKovacs64/pwned.git"
-  },
-  "bugs": {
-    "url": "https://github.com/wKovacs64/pwned/issues"
-  },
-  "homepage": "https://wkovacs64.github.io/pwned",
-  "engines": {
-    "node": ">=20.19.0"
-  },
-  "packageManager": "pnpm@10.30.0",
   "dependencies": {
     "@inquirer/prompts": "^8.2.0",
     "common-tags": "^1.8.2",
@@ -84,15 +79,18 @@
     "@types/yargs": "17.0.35",
     "@vitest/coverage-v8": "4.0.18",
     "@wkovacs64/eslint-config": "7.12.0",
-    "@wkovacs64/prettier-config": "4.2.4",
     "cross-env": "10.1.0",
     "del-cli": "7.0.0",
     "eslint": "9.39.2",
     "msw": "2.12.10",
     "npm-run-all2": "8.0.4",
-    "prettier": "3.8.1",
+    "oxfmt": "0.35.0",
     "type-fest": "5.4.4",
     "typescript": "5.9.3",
     "vitest": "4.0.18"
-  }
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "packageManager": "pnpm@10.30.0"
 }
