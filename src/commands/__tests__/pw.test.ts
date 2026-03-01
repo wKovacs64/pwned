@@ -1,6 +1,13 @@
-import { beforeEach, describe, expect, it, vi, type MockInstance } from 'vitest';
-import { http } from 'msw';
-import { server } from '../../../test/server.js';
+import {
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+  type MockInstance,
+} from "vitest";
+import { http } from "msw";
+import { server } from "../../../test/server.js";
 import {
   spinnerFns,
   loggerFns,
@@ -8,26 +15,27 @@ import {
   NOT_FOUND_PW,
   ERROR,
   ERROR_MSG,
-} from '../../../test/fixtures.js';
-import { logger as mockLogger, type Logger } from '../../utils/logger.js';
-import { spinner as mockSpinner } from '../../utils/spinner.js';
-import { handler as pw } from '../pw.js';
+} from "../../../test/fixtures.js";
+import { logger as mockLogger, type Logger } from "../../utils/logger.js";
+import { spinner as mockSpinner } from "../../utils/spinner.js";
+import { handler as pw } from "../pw.js";
 
-vi.mock('../../utils/logger');
-vi.mock('../../utils/spinner');
+vi.mock("../../utils/logger");
+vi.mock("../../utils/spinner");
 
 const logger = mockLogger as Logger & Record<string, MockInstance>;
-const spinner = mockSpinner as typeof mockSpinner & Record<string, MockInstance>;
+const spinner = mockSpinner as typeof mockSpinner &
+  Record<string, MockInstance>;
 
-describe('command: pw', () => {
-  describe('normal output (default)', () => {
-    it('calls spinner.start', async () => {
+describe("command: pw", () => {
+  describe("normal output (default)", () => {
+    it("calls spinner.start", async () => {
       expect(spinner.start).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND_PW, raw: false });
       expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
-    it('with data: only calls spinner.warn', async () => {
+    it("with data: only calls spinner.warn", async () => {
       expect(spinner.warn).toHaveBeenCalledTimes(0);
       expect(logger.log).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND_PW, raw: false });
@@ -35,7 +43,7 @@ describe('command: pw', () => {
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
-    it('without data: only calls spinner.succeed', async () => {
+    it("without data: only calls spinner.succeed", async () => {
       expect(spinner.succeed).toHaveBeenCalledTimes(0);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await pw({ password: NOT_FOUND_PW, raw: false });
@@ -43,9 +51,9 @@ describe('command: pw', () => {
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
 
-    it('on error: only calls spinner.fail', async () => {
+    it("on error: only calls spinner.fail", async () => {
       server.use(
-        http.get('*', () => {
+        http.get("*", () => {
           throw new Error(ERROR_MSG);
         }),
       );
@@ -58,14 +66,14 @@ describe('command: pw', () => {
     });
   });
 
-  describe('raw mode', () => {
-    it('does not call spinner.start', async () => {
+  describe("raw mode", () => {
+    it("does not call spinner.start", async () => {
       expect(spinner.start).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND_PW, raw: true });
       expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
-    it('with data: only calls logger.log', async () => {
+    it("with data: only calls logger.log", async () => {
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
       await pw({ password: FOUND_PW, raw: true });
@@ -73,7 +81,7 @@ describe('command: pw', () => {
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
-    it('without data: only calls logger.log', async () => {
+    it("without data: only calls logger.log", async () => {
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
       await pw({ password: NOT_FOUND_PW, raw: true });
@@ -81,9 +89,9 @@ describe('command: pw', () => {
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
 
-    it('on error: only calls logger.error', async () => {
+    it("on error: only calls logger.error", async () => {
       server.use(
-        http.get('*', () => {
+        http.get("*", () => {
           throw new Error(ERROR_MSG);
         }),
       );
@@ -96,14 +104,14 @@ describe('command: pw', () => {
     });
   });
 
-  describe('exit codes', () => {
+  describe("exit codes", () => {
     beforeEach(() => {
       process.exitCode = undefined;
     });
 
-    it('sets exit code 1 on error', async () => {
+    it("sets exit code 1 on error", async () => {
       server.use(
-        http.get('*', () => {
+        http.get("*", () => {
           throw new Error(ERROR_MSG);
         }),
       );
@@ -113,7 +121,7 @@ describe('command: pw', () => {
       expect(process.exitCode).toBe(1);
     });
 
-    it('does not set exit code on success', async () => {
+    it("does not set exit code on success", async () => {
       expect(process.exitCode).toBeUndefined();
       await pw({ password: FOUND_PW, raw: false });
       expect(process.exitCode).toBeUndefined();

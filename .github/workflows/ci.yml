@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           cache: pnpm
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: 📥 Install deps
         run: pnpm install
@@ -51,7 +51,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           cache: pnpm
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: 📥 Install deps
         run: pnpm install
@@ -74,7 +74,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           cache: pnpm
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: 📥 Install deps
         run: pnpm install
@@ -97,7 +97,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           cache: pnpm
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: 📥 Install deps
         run: pnpm install
@@ -125,7 +125,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           cache: pnpm
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: 📥 Install deps
         run: pnpm install
@@ -153,7 +153,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           cache: pnpm
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: 📥 Install deps
         run: pnpm install
@@ -164,7 +164,7 @@ jobs:
         with:
           version: pnpm run changeset:version
           publish: pnpm run changeset:publish
-          commit: 'chore: release'
-          title: 'chore: release'
+          commit: "chore: release"
+          title: "chore: release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

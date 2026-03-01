@@ -1,12 +1,12 @@
-import type { Argv } from 'yargs';
-import { breaches } from 'hibp';
-import prettyjson from 'prettyjson';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { userAgent } from '../utils/user-agent.js';
+import type { Argv } from "yargs";
+import { breaches } from "hibp";
+import prettyjson from "prettyjson";
+import { logger } from "../utils/logger.js";
+import { spinner } from "../utils/spinner.js";
+import { userAgent } from "../utils/user-agent.js";
 
-export const command = 'breaches';
-export const describe = 'get all breaches in the system';
+export const command = "breaches";
+export const describe = "get all breaches in the system";
 
 interface BreachesArgvOptions {
   d?: string;
@@ -19,21 +19,23 @@ interface BreachesHandlerOptions {
 }
 
 /* v8 ignore next -- @preserve */
-export function builder(yargs: Argv<BreachesArgvOptions>): Argv<BreachesHandlerOptions> {
+export function builder(
+  yargs: Argv<BreachesArgvOptions>,
+): Argv<BreachesHandlerOptions> {
   return yargs
-    .option('d', {
-      describe: 'filter breach data by domain',
-      type: 'string',
+    .option("d", {
+      describe: "filter breach data by domain",
+      type: "string",
     })
-    .alias('d', 'domain-filter')
-    .option('r', {
-      describe: 'output the raw JSON data (or nothing, if no results found)',
-      type: 'boolean',
+    .alias("d", "domain-filter")
+    .option("r", {
+      describe: "output the raw JSON data (or nothing, if no results found)",
+      type: "boolean",
       default: false,
     })
-    .alias('r', 'raw')
-    .group(['d', 'r'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:');
+    .alias("r", "raw")
+    .group(["d", "r"], "Command Options:")
+    .group(["h", "v"], "Global Options:");
 }
 
 /**
@@ -61,7 +63,7 @@ export async function handler({
       spinner.stop();
       logger.log(prettyjson.render(breachData));
     } else if (!breachData.length && !raw) {
-      spinner.succeed('No breaches found.');
+      spinner.succeed("No breaches found.");
     }
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */

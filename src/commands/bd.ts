@@ -1,15 +1,15 @@
-import type { Argv } from 'yargs';
-import { breachedDomain } from 'hibp';
-import prettyjson from 'prettyjson';
-import { oneLine } from 'common-tags';
-import { config } from '../config.js';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { translateApiError } from '../utils/translate-api-error.js';
-import { userAgent } from '../utils/user-agent.js';
+import type { Argv } from "yargs";
+import { breachedDomain } from "hibp";
+import prettyjson from "prettyjson";
+import { oneLine } from "common-tags";
+import { config } from "../config.js";
+import { logger } from "../utils/logger.js";
+import { spinner } from "../utils/spinner.js";
+import { translateApiError } from "../utils/translate-api-error.js";
+import { userAgent } from "../utils/user-agent.js";
 
-export const command = 'bd <domain>';
-export const describe = 'get all breached email addresses for a domain';
+export const command = "bd <domain>";
+export const describe = "get all breached email addresses for a domain";
 
 interface BdArgvOptions {
   domain: string;
@@ -24,24 +24,24 @@ interface BdHandlerOptions {
 /* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<BdArgvOptions>): Argv<BdHandlerOptions> {
   return yargs
-    .positional('domain', {
-      type: 'string',
+    .positional("domain", {
+      type: "string",
     })
-    .demandOption('domain')
+    .demandOption("domain")
     .check((argv) => {
       if (!argv.domain.length) {
-        throw new Error('The domain argument must not be empty.');
+        throw new Error("The domain argument must not be empty.");
       }
       return true;
     })
-    .option('r', {
-      alias: 'raw',
-      describe: 'output the raw JSON data (or nothing, if no results found)',
-      type: 'boolean',
+    .option("r", {
+      alias: "raw",
+      describe: "output the raw JSON data (or nothing, if no results found)",
+      type: "boolean",
       default: false,
     })
-    .group(['r'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:').epilog(oneLine`
+    .group(["r"], "Command Options:")
+    .group(["h", "v"], "Global Options:").epilog(oneLine`
       🔑 This command requires an API key. Make sure you've run the "apiKey"
       command first.
     `);
@@ -55,14 +55,17 @@ export function builder(yargs: Argv<BdArgvOptions>): Argv<BdHandlerOptions> {
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ domain, raw }: BdHandlerOptions): Promise<void> {
+export async function handler({
+  domain,
+  raw,
+}: BdHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
 
   try {
     const breachData = await breachedDomain(domain.trim(), {
-      apiKey: config.get('apiKey'),
+      apiKey: config.get("apiKey"),
       userAgent,
     });
     if (breachData && raw) {
@@ -71,7 +74,7 @@ export async function handler({ domain, raw }: BdHandlerOptions): Promise<void> 
       spinner.stop();
       logger.log(prettyjson.render(breachData));
     } else if (!raw) {
-      spinner.succeed('Good news — no pwnage found!');
+      spinner.succeed("Good news — no pwnage found!");
     }
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */

@@ -1,12 +1,12 @@
-import type { Argv } from 'yargs';
-import { latestBreach } from 'hibp';
-import prettyjson from 'prettyjson';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { userAgent } from '../utils/user-agent.js';
+import type { Argv } from "yargs";
+import { latestBreach } from "hibp";
+import prettyjson from "prettyjson";
+import { logger } from "../utils/logger.js";
+import { spinner } from "../utils/spinner.js";
+import { userAgent } from "../utils/user-agent.js";
 
-export const command = 'lb';
-export const describe = 'get the most recently added breach';
+export const command = "lb";
+export const describe = "get the most recently added breach";
 
 interface LbArgvOptions {
   r?: boolean;
@@ -19,14 +19,14 @@ interface LbHandlerOptions {
 /* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<LbArgvOptions>): Argv<LbHandlerOptions> {
   return yargs
-    .option('r', {
-      describe: 'output the raw JSON data (or nothing, if no results found)',
-      type: 'boolean',
+    .option("r", {
+      describe: "output the raw JSON data (or nothing, if no results found)",
+      type: "boolean",
       default: false,
     })
-    .alias('r', 'raw')
-    .group(['r'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:');
+    .alias("r", "raw")
+    .group(["r"], "Command Options:")
+    .group(["h", "v"], "Global Options:");
 }
 
 /**
@@ -49,7 +49,7 @@ export async function handler({ raw }: LbHandlerOptions): Promise<void> {
       spinner.stop();
       logger.log(prettyjson.render(breachData));
     } else if (!breachData && !raw) {
-      spinner.succeed('No breach found.');
+      spinner.succeed("No breach found.");
     }
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */

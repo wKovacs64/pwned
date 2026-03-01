@@ -1,12 +1,12 @@
-import type { Argv } from 'yargs';
-import { dataClasses } from 'hibp';
-import prettyjson from 'prettyjson';
-import { logger } from '../utils/logger.js';
-import { spinner } from '../utils/spinner.js';
-import { userAgent } from '../utils/user-agent.js';
+import type { Argv } from "yargs";
+import { dataClasses } from "hibp";
+import prettyjson from "prettyjson";
+import { logger } from "../utils/logger.js";
+import { spinner } from "../utils/spinner.js";
+import { userAgent } from "../utils/user-agent.js";
 
-export const command = 'dc';
-export const describe = 'get all data classes in the system';
+export const command = "dc";
+export const describe = "get all data classes in the system";
 
 interface DcArgvOptions {
   r?: boolean;
@@ -19,14 +19,14 @@ interface DcHandlerOptions {
 /* v8 ignore next -- @preserve */
 export function builder(yargs: Argv<DcArgvOptions>): Argv<DcHandlerOptions> {
   return yargs
-    .option('r', {
-      describe: 'output the raw JSON data',
-      type: 'boolean',
+    .option("r", {
+      describe: "output the raw JSON data",
+      type: "boolean",
       default: false,
     })
-    .alias('r', 'raw')
-    .group(['r'], 'Command Options:')
-    .group(['h', 'v'], 'Global Options:');
+    .alias("r", "raw")
+    .group(["r"], "Command Options:")
+    .group(["h", "v"], "Global Options:");
 }
 
 /**
@@ -52,7 +52,7 @@ export async function handler({ raw }: DcHandlerOptions): Promise<void> {
       }
     } else if (!raw) {
       throw new Error(
-        'No data classes found. This is unexpected - the remote API may be having difficulties.',
+        "No data classes found. This is unexpected - the remote API may be having difficulties.",
       );
     }
   } catch (maybeError) {
