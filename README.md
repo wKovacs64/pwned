@@ -14,7 +14,6 @@ _A command-line tool for querying [Troy Hunt][troy]'s [Have I been pwned?][havei
 using the [hibp][hibp] Node.js module._
 
 [![npm Version][npm-image]][npm-url] [![Build Status][ci-image]][ci-url]
-[![Code Coverage][coverage-image]][coverage-url]
 
 ## Installation
 
@@ -221,8 +220,6 @@ This tool is distributed under the [MIT License](LICENSE.txt).
 [npm-url]: https://www.npmjs.com/package/pwned
 [ci-image]: https://img.shields.io/github/actions/workflow/status/wKovacs64/pwned/ci.yml?logo=github&style=flat-square
 [ci-url]: https://github.com/wKovacs64/pwned/actions?query=workflow%3Aci
-[coverage-image]: https://img.shields.io/codecov/c/github/wKovacs64/pwned/main.svg?style=flat-square
-[coverage-url]: https://codecov.io/gh/wKovacs64/pwned/branch/main
 [troy]: https://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [hibp]: https://github.com/wKovacs64/hibp
