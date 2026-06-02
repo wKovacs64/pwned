@@ -1,6 +1,6 @@
-minimumReleaseAge: 4320
-
 allowBuilds:
   esbuild: false
   msw: false
   unrs-resolver: false
+
+minimumReleaseAge: 4320
