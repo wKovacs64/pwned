@@ -83,7 +83,7 @@
     "del-cli": "7.0.0",
     "eslint": "9.39.4",
     "msw": "2.14.6",
-    "npm-run-all2": "9.0.1",
+    "npm-run-all2": "9.0.2",
     "oxfmt": "0.54.0",
     "type-fest": "5.7.0",
     "typescript": "6.0.3",
