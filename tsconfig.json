@@ -5,6 +5,7 @@
     "module": "NodeNext",
     "moduleDetection": "force",
     "resolveJsonModule": true,
+    "types": ["node"],
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
