@@ -81,7 +81,7 @@
     "@wkovacs64/eslint-config": "7.14.1",
     "cross-env": "10.1.0",
     "del-cli": "7.0.0",
-    "eslint": "9.39.4",
+    "eslint": "9.39.5",
     "msw": "2.15.0",
     "npm-run-all2": "9.0.2",
     "oxfmt": "0.58.0",
