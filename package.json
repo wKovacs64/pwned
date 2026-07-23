@@ -86,7 +86,7 @@
     "npm-run-all2": "9.0.2",
     "oxfmt": "0.59.0",
     "type-fest": "5.8.0",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vitest": "4.1.10"
   },
   "engines": {
