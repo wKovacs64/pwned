@@ -84,7 +84,7 @@
     "eslint": "9.39.5",
     "msw": "2.15.0",
     "npm-run-all2": "9.0.3",
-    "oxfmt": "0.61.0",
+    "oxfmt": "0.62.0",
     "type-fest": "5.8.0",
     "typescript": "6.0.3",
     "vitest": "4.1.10"
