@@ -17,11 +17,6 @@
       "minimumReleaseAge": "3 days"
     },
     {
-      "matchPackageNames": ["eslint"],
-      "matchUpdateTypes": ["major"],
-      "enabled": false
-    },
-    {
       "matchPackageNames": ["typescript"],
       "matchUpdateTypes": ["minor"],
       "automerge": false

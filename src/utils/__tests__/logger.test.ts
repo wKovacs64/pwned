@@ -28,7 +28,7 @@ describe("util: logger", () => {
     const args = ["Wubba lubba dub dub!", { param: "value" }];
     loggerFns.forEach((fn) => {
       const orig = indexableConsole[fn];
-      indexableConsole[fn] = vi.fn();
+      indexableConsole[fn] = vi.fn<LoggerFunction>();
       expect(indexableConsole[fn]).toHaveBeenCalledTimes(0);
       indexableLogger[fn](...args);
       expect(indexableConsole[fn]).toHaveBeenCalledTimes(1);
