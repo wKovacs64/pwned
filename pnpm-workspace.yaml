@@ -4,5 +4,3 @@ allowBuilds:
   unrs-resolver: false
 
 minimumReleaseAge: 1440
-minimumReleaseAgeExclude:
-  - "@wkovacs64/oxlint-config"
