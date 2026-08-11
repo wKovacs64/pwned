@@ -17,6 +17,11 @@
       "minimumReleaseAge": "3 days"
     },
     {
+      "matchPackageNames": ["oxlint"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
       "matchPackageNames": ["typescript"],
       "matchUpdateTypes": ["minor"],
       "automerge": false
