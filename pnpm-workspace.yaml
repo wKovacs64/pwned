@@ -4,3 +4,5 @@ allowBuilds:
   unrs-resolver: false
 
 minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@changesets/*"
