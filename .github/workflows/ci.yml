@@ -162,4 +162,3 @@ jobs:
           commit-message: "chore: release"
           pr-title: "chore: release"
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-with-git-cli: true
