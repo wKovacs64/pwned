@@ -1,10 +1,25 @@
 import fs from "node:fs";
 import path from "node:path";
 import url from "node:url";
-import type { PackageJson } from "type-fest";
 
 const dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
-export const pkg = JSON.parse(
+const parsedPackage: unknown = JSON.parse(
   fs.readFileSync(path.join(dirname, "..", "..", "package.json"), "utf8"),
-) as PackageJson;
+);
+
+if (
+  typeof parsedPackage !== "object" ||
+  parsedPackage === null ||
+  !("name" in parsedPackage) ||
+  typeof parsedPackage.name !== "string" ||
+  !("version" in parsedPackage) ||
+  typeof parsedPackage.version !== "string"
+) {
+  throw new TypeError("Invalid package.json");
+}
+
+export const pkg = {
+  name: parsedPackage.name,
+  version: parsedPackage.version,
+};

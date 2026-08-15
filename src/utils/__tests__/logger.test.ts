@@ -1,13 +1,6 @@
-import { describe, expect, it, vi, type MockInstance } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { loggerFns } from "../../../test/fixtures.js";
-import { logger, type Logger, type LoggerFunction } from "../logger.js";
-
-type IndexableConsole = typeof console &
-  Record<string, LoggerFunction | MockInstance>;
-type IndexableLogger = Logger & Record<string, LoggerFunction>;
-
-const indexableConsole = console as IndexableConsole;
-const indexableLogger = logger as IndexableLogger;
+import { logger, type LoggerFunction } from "../logger.js";
 
 describe("util: logger", () => {
   it("returns an object with all the expected methods", () => {
@@ -27,13 +20,14 @@ describe("util: logger", () => {
   it("calls the corresponding console functions with the same arguments", () => {
     const args = ["Wubba lubba dub dub!", { param: "value" }];
     loggerFns.forEach((fn) => {
-      const orig = indexableConsole[fn];
-      indexableConsole[fn] = vi.fn<LoggerFunction>();
-      expect(indexableConsole[fn]).toHaveBeenCalledTimes(0);
-      indexableLogger[fn](...args);
-      expect(indexableConsole[fn]).toHaveBeenCalledTimes(1);
-      expect(indexableConsole[fn]).toHaveBeenCalledWith(...args);
-      indexableConsole[fn] = orig;
+      const mock = vi
+        .spyOn(console, fn)
+        .mockImplementation(vi.fn<LoggerFunction>());
+      expect(mock).toHaveBeenCalledTimes(0);
+      logger[fn](...args);
+      expect(mock).toHaveBeenCalledTimes(1);
+      expect(mock).toHaveBeenCalledWith(...args);
+      mock.mockRestore();
     });
   });
 });
