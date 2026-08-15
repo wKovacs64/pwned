@@ -1,11 +1,4 @@
-import {
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi,
-  type MockInstance,
-} from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { http } from "msw";
 import { server } from "../../../test/server.js";
 import {
@@ -14,16 +7,15 @@ import {
   EMPTY_ARRAY,
   ERROR_MSG,
 } from "../../../test/fixtures.js";
-import { logger as mockLogger, type Logger } from "../../utils/logger.js";
+import { logger as mockLogger } from "../../utils/logger.js";
 import { spinner as mockSpinner } from "../../utils/spinner.js";
 import { handler as dc } from "../dc.js";
 
 vi.mock("../../utils/logger");
 vi.mock("../../utils/spinner");
 
-const logger = mockLogger as Logger & Record<string, MockInstance>;
-const spinner = mockSpinner as typeof mockSpinner &
-  Record<string, MockInstance>;
+const logger = vi.mocked(mockLogger);
+const spinner = vi.mocked(mockSpinner);
 
 describe("command: dc", () => {
   describe("normal output (default)", () => {

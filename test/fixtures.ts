@@ -8,8 +8,8 @@ import type {
   SubscriptionStatus,
 } from "hibp";
 
-export const spinnerFns = ["start", "stop", "succeed", "warn", "fail"];
-export const loggerFns = ["info", "log", "warn", "error"];
+export const spinnerFns = ["start", "stop", "succeed", "warn", "fail"] as const;
+export const loggerFns = ["info", "log", "warn", "error"] as const;
 
 export const DATA_CLASSES = ["foo", "bar"];
 export const BREACH: Breach = {
