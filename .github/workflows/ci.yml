@@ -37,7 +37,7 @@ jobs:
         run: pnpm run format:check
 
   lint:
-    name: ⬣ ESLint
+    name: 🐂 Oxlint
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     steps:

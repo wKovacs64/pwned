@@ -21,8 +21,7 @@ import * as subStatus from "../lib/commands/sub-status.js";
 
 sourceMapSupport.install();
 
-// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-yargs(hideBin(process.argv))
+void yargs(hideBin(process.argv))
   .command(apiKey)
   .command(ba)
   .command(bd)
