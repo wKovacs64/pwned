@@ -84,7 +84,7 @@
     "msw": "2.15.0",
     "npm-run-all2": "9.0.3",
     "oxfmt": "0.64.0",
-    "oxlint": "1.78.0",
+    "oxlint": "1.79.0",
     "oxlint-tsgolint": "7.0.2001",
     "type-fest": "5.8.0",
     "typescript": "7.0.2",
