@@ -61,8 +61,8 @@ importers:
         specifier: 4.1.11
         version: 4.1.11(vitest@4.1.11)
       '@wkovacs64/oxlint-config':
-        specifier: 0.2.0
-        version: 0.2.0(oxlint-tsgolint@7.0.2001)(oxlint@1.79.0(oxlint-tsgolint@7.0.2001))
+        specifier: 0.2.1
+        version: 0.2.1(oxlint-tsgolint@7.0.2001)(oxlint@1.79.0(oxlint-tsgolint@7.0.2001))
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
@@ -1004,11 +1004,11 @@ packages:
   '@vitest/utils@4.1.11':
     resolution: {integrity: sha512-zTCVGpyFsGWBhllOyKlTw/vnr6D9qxsfSDyfbyZmTyjHw5N/VuvzHpHoQjm2ZJzn4RJgx5w4r7V0er69CmLgPQ==}
 
-  '@wkovacs64/oxlint-config@0.2.0':
-    resolution: {integrity: sha512-dBraznos45K6H1gs2fvX5xzjKOdGrQCJe1y9xJzLkjV+kyJEF70EIoSlSXBjGEPlhE88ofmgmUylLe/7W9kl5Q==}
+  '@wkovacs64/oxlint-config@0.2.1':
+    resolution: {integrity: sha512-5Sb5K5pKP/PmWSlY+JJ0FqX5x/8XqzjINBTHyePwTU03mMO85Pe47FODc+WMHL4HCmYDSEdY9MyrfZOd6p66mA==}
     engines: {node: '>=24'}
     peerDependencies:
-      oxlint: '>=1.70.0 <2'
+      oxlint: '>=1.79.0 <2'
       oxlint-tsgolint: '>=7.0.2001'
 
   ajv-formats@3.0.1:
@@ -2629,7 +2629,7 @@ snapshots:
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.0
 
-  '@wkovacs64/oxlint-config@0.2.0(oxlint-tsgolint@7.0.2001)(oxlint@1.79.0(oxlint-tsgolint@7.0.2001))':
+  '@wkovacs64/oxlint-config@0.2.1(oxlint-tsgolint@7.0.2001)(oxlint@1.79.0(oxlint-tsgolint@7.0.2001))':
     dependencies:
       oxlint: 1.79.0(oxlint-tsgolint@7.0.2001)
       oxlint-tsgolint: 7.0.2001

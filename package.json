@@ -78,7 +78,7 @@
     "@types/ws": "8.18.1",
     "@types/yargs": "17.0.35",
     "@vitest/coverage-v8": "4.1.11",
-    "@wkovacs64/oxlint-config": "0.2.0",
+    "@wkovacs64/oxlint-config": "0.2.1",
     "cross-env": "10.1.0",
     "del-cli": "7.0.0",
     "msw": "2.15.0",
