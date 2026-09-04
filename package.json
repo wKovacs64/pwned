@@ -83,7 +83,7 @@
     "del-cli": "7.0.0",
     "msw": "2.15.0",
     "npm-run-all2": "9.0.3",
-    "oxfmt": "0.65.0",
+    "oxfmt": "0.66.0",
     "oxlint": "1.80.0",
     "oxlint-tsgolint": "7.0.2001",
     "type-fest": "5.9.0",
