@@ -69,7 +69,7 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "1.0.0",
+    "@changesets/changelog-github": "1.0.1",
     "@changesets/cli": "3.0.1",
     "@types/common-tags": "1.8.4",
     "@types/debug": "4.1.13",
