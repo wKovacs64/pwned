@@ -85,7 +85,7 @@
     "npm-run-all2": "9.0.3",
     "oxfmt": "0.68.0",
     "oxlint": "1.83.0",
-    "oxlint-tsgolint": "7.0.2001",
+    "oxlint-tsgolint": "7.0.2002",
     "type-fest": "5.10.0",
     "typescript": "7.0.2",
     "vitest": "5.0.1"
