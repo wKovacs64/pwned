@@ -219,8 +219,8 @@ importers:
         specifier: 5.0.3
         version: 5.0.3(vitest@5.0.3)
       '@wkovacs64/oxlint-config':
-        specifier: 0.2.2
-        version: 0.2.2(oxlint-tsgolint@7.0.2003)(oxlint@1.86.0(oxlint-tsgolint@7.0.2003))
+        specifier: 0.3.0
+        version: 0.3.0(oxlint-tsgolint@7.0.2003)(oxlint@1.86.0(oxlint-tsgolint@7.0.2003))
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
@@ -1160,8 +1160,8 @@ packages:
   '@vitest/spy@5.0.3':
     resolution: {integrity: sha512-XhFysQTB8AZ+P4gMi+Lpo99vg2AZi0qKpaB9yXQl37+CaMEAPO3iH/wGVnSyL5MPERiLezpqTVtrR6UZH5GCXg==}
 
-  '@wkovacs64/oxlint-config@0.2.2':
-    resolution: {integrity: sha512-CEFeVHclhGQztEkWSnVMl7iVsrc5nSXiYJ7T2XNsD8Xx26Bzsw+E8sZjE9RRRIjn4MUJiNK/Xirv9zfFFtE5Uw==}
+  '@wkovacs64/oxlint-config@0.3.0':
+    resolution: {integrity: sha512-LTf6xsV5hfUppVwp48S5NbTtdEnhSBjBvCBccLXWWF5c+yIHE1S7j5Z+cnFnl8zKxAtZiLN1ztS5LqRPeZiDOA==}
     engines: {node: '>=24'}
     peerDependencies:
       oxlint: '>=1.79.0 <2'
@@ -2741,7 +2741,7 @@ snapshots:
 
   '@vitest/spy@5.0.3': {}
 
-  '@wkovacs64/oxlint-config@0.2.2(oxlint-tsgolint@7.0.2003)(oxlint@1.86.0(oxlint-tsgolint@7.0.2003))':
+  '@wkovacs64/oxlint-config@0.3.0(oxlint-tsgolint@7.0.2003)(oxlint@1.86.0(oxlint-tsgolint@7.0.2003))':
     dependencies:
       oxlint: 1.86.0(oxlint-tsgolint@7.0.2003)
       oxlint-tsgolint: 7.0.2003
