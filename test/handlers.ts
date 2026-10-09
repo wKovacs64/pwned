@@ -1,4 +1,4 @@
-import { http } from "msw";
+import { http } from "msw/http";
 import {
   FOUND,
   BREACH,
