@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { http } from "msw";
+import { http } from "msw/http";
 import { server } from "../../../test/server.js";
 import { spinnerFns, loggerFns, ERROR_MSG } from "../../../test/fixtures.js";
 import { logger as mockLogger } from "../../utils/logger.js";
