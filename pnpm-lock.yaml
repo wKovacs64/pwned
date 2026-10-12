@@ -225,8 +225,8 @@ importers:
         specifier: 10.1.0
         version: 10.1.0
       del-cli:
-        specifier: 8.0.0
-        version: 8.0.0
+        specifier: 8.0.1
+        version: 8.0.1
       msw:
         specifier: 3.0.2
         version: 3.0.2(@types/node@24.19.1)(graphql@16.14.0)(typescript@7.0.2)(vite@8.0.14(@types/node@24.19.1)(yaml@2.9.0))
@@ -1240,8 +1240,8 @@ packages:
       supports-color:
         optional: true
 
-  del-cli@8.0.0:
-    resolution: {integrity: sha512-H5Ad74ydhJDLp1HHQbbcWP4qq+aHOeVoE9IIqsTJdSDSeF17HxvfY8UCLpfjBBk9OR8J5olkJO3T8fOBXKeCMg==}
+  del-cli@8.0.1:
+    resolution: {integrity: sha512-Z4+xLjVJs9dMN4gDMRfY/7b7WItNOB5EOKu9BenbJD63olx9YM5SU/DEuDFWvN0B1BdGIzejCJFgPt2vIGwj1A==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -2721,7 +2721,7 @@ snapshots:
     dependencies:
       ms: 2.1.3
 
-  del-cli@8.0.0:
+  del-cli@8.0.1:
     dependencies:
       del: 9.0.1
       meow: 14.1.0

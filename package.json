@@ -80,7 +80,7 @@
     "@vitest/coverage-v8": "5.0.3",
     "@wkovacs64/oxlint-config": "0.3.0",
     "cross-env": "10.1.0",
-    "del-cli": "8.0.0",
+    "del-cli": "8.0.1",
     "msw": "3.0.2",
     "npm-run-all2": "9.0.3",
     "oxfmt": "0.72.0",
