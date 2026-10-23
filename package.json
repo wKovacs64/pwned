@@ -61,7 +61,7 @@
   "dependencies": {
     "@inquirer/prompts": "^8.2.0",
     "common-tags": "^1.8.2",
-    "conf": "^15.0.2",
+    "conf": "^16.0.0",
     "hibp": "^15.2.0",
     "ora": "^9.0.0",
     "prettyjson": "^1.2.5",
