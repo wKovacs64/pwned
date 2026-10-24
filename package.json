@@ -82,7 +82,7 @@
     "cross-env": "10.1.0",
     "del-cli": "8.0.1",
     "msw": "3.0.3",
-    "npm-run-all2": "9.0.3",
+    "npm-run-all2": "9.0.4",
     "oxfmt": "0.74.0",
     "oxlint": "1.89.0",
     "oxlint-tsgolint": "7.0.2004",
