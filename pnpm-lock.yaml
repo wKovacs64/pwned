@@ -176,8 +176,8 @@ importers:
         specifier: ^15.0.2
         version: 15.1.0
       hibp:
-        specifier: ^15.2.0
-        version: 15.2.1
+        specifier: ^16.0.0
+        version: 16.0.0
       ora:
         specifier: ^9.0.0
         version: 9.4.1
@@ -1359,9 +1359,9 @@ packages:
   headers-polyfill@5.0.1:
     resolution: {integrity: sha512-1TJ6Fih/b8h5TIcv+1+Hw0PDQWJTKDKzFZzcKOiW1wJza3XoAQlkCuXLbymPYB8+ZQyw8mHvdw560e8zVFIWyA==}
 
-  hibp@15.2.1:
-    resolution: {integrity: sha512-f7FxrlBz5FGd/J7tx9DR1cCQNIzKTl4BLZzgRXeQblzcO/xiWGrvXBMwztRzjJVeFACpED6P+iVmU7of9eFqyA==}
-    engines: {node: '>= 20.19.0'}
+  hibp@16.0.0:
+    resolution: {integrity: sha512-8gBsZC95txWLMsMANg5itArk2Sv204PjCNtXrvP/Tj7fZ4lndLgw4+Bb4tDscfpjXpa7McAQvNwKKDS0vGTPrg==}
+    engines: {node: '>= 22.12.0'}
 
   human-id@4.2.0:
     resolution: {integrity: sha512-K3GbkIWqyvvlpfhBPlbEvD97TtqBpAYA4kt+cn2lD2x2HuohzZCibcA2nOlnJT6exqvJLggoB5nv2dNf192nEA==}
@@ -2860,7 +2860,7 @@ snapshots:
       '@types/set-cookie-parser': 2.4.10
       set-cookie-parser: 3.1.0
 
-  hibp@15.2.1: {}
+  hibp@16.0.0: {}
 
   human-id@4.2.0: {}
 
