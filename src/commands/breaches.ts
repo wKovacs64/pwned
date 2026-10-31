@@ -10,11 +10,13 @@ export const describe = "get all breaches in the system";
 
 interface BreachesArgvOptions {
   d?: string;
+  s?: boolean;
   r?: boolean;
 }
 
 interface BreachesHandlerOptions {
   domainFilter?: string;
+  spamList?: boolean;
   raw?: boolean;
 }
 
@@ -28,13 +30,19 @@ export function builder(
       type: "string",
     })
     .alias("d", "domain-filter")
+    .option("s", {
+      describe:
+        "only spam list breaches (--no-spam-list to exclude them instead)",
+      type: "boolean",
+    })
+    .alias("s", "spam-list")
     .option("r", {
       describe: "output the raw JSON data (or nothing, if no results found)",
       type: "boolean",
       default: false,
     })
     .alias("r", "raw")
-    .group(["d", "r"], "Command Options:")
+    .group(["d", "s", "r"], "Command Options:")
     .group(["h", "v"], "Global Options:");
 }
 
@@ -44,11 +52,14 @@ export function builder(
  * @param {object} argv the parsed argv object
  * @param {string} [argv.domainFilter] a domain by which to filter the results
  * (default: all domains)
+ * @param {boolean} [argv.spamList] true for only spam list breaches, false for
+ * only non-spam list breaches (default: no spam list filter)
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
 export async function handler({
   domainFilter: domain,
+  spamList: isSpamList,
   raw,
 }: BreachesHandlerOptions): Promise<void> {
   if (!raw) {
@@ -56,7 +67,7 @@ export async function handler({
   }
 
   try {
-    const breachData = await breaches({ domain, userAgent });
+    const breachData = await breaches({ domain, isSpamList, userAgent });
     if (breachData.length && raw) {
       logger.log(JSON.stringify(breachData));
     } else if (breachData.length) {

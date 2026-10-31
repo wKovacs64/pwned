@@ -1,7 +1,10 @@
 import { stripIndents } from "common-tags";
 import type {
   Breach,
+  BreachedAccountRangeResult,
   BreachedDomainsByEmailAlias,
+  DataClassDescription,
+  DnsToken,
   Paste,
   StealerLogDomainsByEmailAlias,
   SubscribedDomain,
@@ -12,6 +15,9 @@ export const spinnerFns = ["start", "stop", "succeed", "warn", "fail"] as const;
 export const loggerFns = ["info", "log", "warn", "error"] as const;
 
 export const DATA_CLASSES = ["foo", "bar"];
+export const DATA_CLASS_DESCRIPTIONS: DataClassDescription[] = [
+  { name: "foo", description: "fake data class" },
+];
 export const BREACH: Breach = {
   Name: "breach",
   Title: "Breach",
@@ -28,8 +34,11 @@ export const BREACH: Breach = {
   IsSpamList: false,
   IsRetired: false,
   IsMalware: false,
+  IsStealerLog: false,
   IsSubscriptionFree: true,
   LogoPath: "/foo.png",
+  Attribution: null,
+  DisclosureUrl: null,
 };
 export const BREACHES = [BREACH];
 export const PASTE: Paste = {
@@ -44,6 +53,11 @@ export const BREACHED_DOMAIN: BreachedDomainsByEmailAlias = {
   john: ["Adobe"],
   jane: ["Adobe", "Gawker"],
 };
+export const BREACHED_ACCOUNT_RANGE: BreachedAccountRangeResult[] = [
+  { hashSuffix: "020FF920E5AA642C3D4066950DD1F01F4D", websites: ["Adobe"] },
+  { hashSuffix: "0000000000000000000000000000000000", websites: ["Unrelated"] },
+];
+export const DNS_TOKEN: DnsToken = { txtRecordValue: "hibp-verify=foo" };
 export const STEALER_LOG_DOMAINS = ["example.com", "test.org"];
 export const STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS: StealerLogDomainsByEmailAlias =
   {
@@ -72,7 +86,12 @@ export const SUBSCRIPTION_STATUS: SubscriptionStatus = {
   SubscribedUntil: "2023-12-31T01:23:45",
   Rpm: 69,
   DomainSearchMaxBreachedAccounts: 0,
+  MaxBreachedDomains: null,
   IncludesStealerLogs: false,
+  IncludesBulkDomainAdd: false,
+  IncludesAutoSubdomainVerification: false,
+  IncludesCustomerDomains: false,
+  IncludesKAnon: false,
 };
 
 export const EMAIL = "foo@bar.baz";

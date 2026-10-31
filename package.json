@@ -62,7 +62,7 @@
     "@inquirer/prompts": "^8.2.0",
     "common-tags": "^1.8.2",
     "conf": "^15.0.2",
-    "hibp": "^15.2.0",
+    "hibp": "^16.0.0",
     "ora": "^9.0.0",
     "prettyjson": "^1.2.5",
     "source-map-support": "^0.5.21",
@@ -73,7 +73,7 @@
     "@changesets/cli": "3.0.3",
     "@types/common-tags": "1.8.4",
     "@types/debug": "4.1.13",
-    "@types/node": "24.19.2",
+    "@types/node": "26.6.5",
     "@types/prettyjson": "0.0.33",
     "@types/ws": "8.18.2",
     "@types/yargs": "17.0.35",
@@ -91,7 +91,7 @@
     "vitest": "5.0.5"
   },
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=22.12.0"
   },
   "packageManager": "pnpm@12.16.1"
 }

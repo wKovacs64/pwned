@@ -47,20 +47,25 @@ pwned <command>
 Commands:
   pwned apiKey <key>            set the API key to be used for authenticated requests
   pwned ba <account|email>      get all breaches for an account (username or email address)
+  pwned bar <email>             get all breaches for an email address using k-anonymity
   pwned bd <domain>             get all breached email addresses for a domain
   pwned breach <name>           get a single breached site by breach name
   pwned breaches                get all breaches in the system
   pwned dc                      get all data classes in the system
+  pwned dcd                     get all data classes in the system with descriptions
+  pwned gdt <domain>            generate a DNS TXT record value to verify a domain
   pwned lb                      get the most recently added breach
   pwned pa <email>              get all pastes for an account (email address)
   pwned pw <password>           securely check a password for public exposure
   pwned sd                      get all subscribed domains for your account
+  pwned se <domain> <alias>     send a domain verification approval email
   pwned search <account|email>  search breaches and pastes for an account (username or email
                                 address)
   pwned slbe <email>            get all stealer log domains for an email address
   pwned slbed <email-domain>    get all stealer log email aliases for an email domain
   pwned slbwd <website-domain>  get all stealer log email addresses for a website domain
   pwned subStatus               get the subscription status of your API key
+  pwned vdt <domain>            verify a domain using its published DNS TXT record
 
 Options:
   -h, --help     Show help                                                                 [boolean]
