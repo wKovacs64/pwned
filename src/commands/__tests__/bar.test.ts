@@ -81,7 +81,7 @@ describe("command: bar", () => {
     it("discards results for other accounts", async () => {
       await bar({ email: FOUND, raw: true });
       expect(logger.log).toHaveBeenCalledTimes(1);
-      expect(logger.log).toHaveBeenCalledWith('["Adobe"]');
+      expect(logger.log).toHaveBeenCalledWith('[{"Name":"Adobe"}]');
     });
   });
 

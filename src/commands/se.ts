@@ -1,7 +1,7 @@
 import type { Argv } from "yargs";
 import { sendEmail, type EmailAlias } from "hibp";
-import { oneLine } from "common-tags";
 import { config } from "../config.js";
+import { apiKeyEpilog } from "../utils/api-key-epilog.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -53,10 +53,8 @@ export function builder(yargs: Argv<SeArgvOptions>): Argv<SeHandlerOptions> {
       default: false,
     })
     .group(["r"], "Command Options:")
-    .group(["h", "v"], "Global Options:").epilog(oneLine`
-      🔑 This command requires an API key with a Pro subscription. Make sure
-      you've run the "apiKey" command first.
-    `);
+    .group(["h", "v"], "Global Options:")
+    .epilog(apiKeyEpilog("Pro"));
 }
 
 /**

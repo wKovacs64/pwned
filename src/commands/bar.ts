@@ -2,8 +2,8 @@ import { createHash } from "node:crypto";
 import type { Argv } from "yargs";
 import { breachedAccountRange } from "hibp";
 import prettyjson from "prettyjson";
-import { oneLine } from "common-tags";
 import { config } from "../config.js";
+import { apiKeyEpilog } from "../utils/api-key-epilog.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -45,10 +45,8 @@ export function builder(yargs: Argv<BarArgvOptions>): Argv<BarHandlerOptions> {
       default: false,
     })
     .group(["r"], "Command Options:")
-    .group(["h", "v"], "Global Options:").epilog(oneLine`
-      🔑 This command requires an API key with a Pro or High RPM subscription.
-      Make sure you've run the "apiKey" command first.
-    `);
+    .group(["h", "v"], "Global Options:")
+    .epilog(apiKeyEpilog("Pro", "High RPM"));
 }
 
 /**
@@ -79,15 +77,17 @@ export async function handler({
       emailHash.slice(0, PREFIX_LENGTH),
       { apiKey: config.get("apiKey"), userAgent },
     );
-    const breachNames = rangeData?.find(
-      ({ hashSuffix }) =>
-        hashSuffix.toUpperCase() === emailHash.slice(PREFIX_LENGTH),
-    )?.websites;
-    if (breachNames && raw) {
-      logger.log(JSON.stringify(breachNames));
-    } else if (breachNames) {
+    const breachData = rangeData
+      ?.find(
+        ({ hashSuffix }) =>
+          hashSuffix.toUpperCase() === emailHash.slice(PREFIX_LENGTH),
+      )
+      ?.websites.map((Name) => ({ Name }));
+    if (breachData && raw) {
+      logger.log(JSON.stringify(breachData));
+    } else if (breachData) {
       spinner.stop();
-      logger.log(prettyjson.render(breachNames));
+      logger.log(prettyjson.render(breachData));
     } else if (!raw) {
       spinner.succeed("Good news — no pwnage found!");
     }
