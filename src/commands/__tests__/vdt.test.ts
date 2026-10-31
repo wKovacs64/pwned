@@ -36,7 +36,7 @@ describe("command: vdt", () => {
 
     it("on error: only calls spinner.fail", async () => {
       server.use(
-        http.post("*", () => {
+        http.post("*/domainVerification/verifyDnsToken", () => {
           throw new Error(ERROR_MSG);
         }),
       );
@@ -66,7 +66,7 @@ describe("command: vdt", () => {
 
     it("on error: only calls logger.error", async () => {
       server.use(
-        http.post("*", () => {
+        http.post("*/domainVerification/verifyDnsToken", () => {
           throw new Error(ERROR_MSG);
         }),
       );
@@ -86,7 +86,7 @@ describe("command: vdt", () => {
 
     it("sets exit code 1 on error", async () => {
       server.use(
-        http.post("*", () => {
+        http.post("*/domainVerification/verifyDnsToken", () => {
           throw new Error(ERROR_MSG);
         }),
       );

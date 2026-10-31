@@ -5,6 +5,7 @@ import {
   spinnerFns,
   loggerFns,
   EMPTY_ARRAY,
+  DATA_CLASS_DESCRIPTIONS,
   ERROR_MSG,
 } from "../../../test/fixtures.js";
 import { logger as mockLogger } from "../../utils/logger.js";
@@ -75,6 +76,9 @@ describe("command: dcd", () => {
       await dcd({ raw: true });
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
+      expect(logger.log).toHaveBeenCalledWith(
+        JSON.stringify(DATA_CLASS_DESCRIPTIONS),
+      );
     });
 
     it("without data: does not call any spinner or logger methods", async () => {

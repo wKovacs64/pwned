@@ -4,6 +4,7 @@ import { server } from "../../../test/server.js";
 import {
   spinnerFns,
   loggerFns,
+  DNS_TOKEN,
   FOUND,
   ERROR,
   ERROR_MSG,
@@ -62,6 +63,7 @@ describe("command: gdt", () => {
       await gdt({ domain: FOUND, raw: true });
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
+      expect(logger.log).toHaveBeenCalledWith(JSON.stringify(DNS_TOKEN));
     });
 
     it("on error: only calls logger.error", async () => {

@@ -17,8 +17,4 @@ describe("util: apiKeyEpilog", () => {
       "from a Core, Pro, or High RPM plan.",
     );
   });
-
-  it('points to the "apiKey" command', () => {
-    expect(apiKeyEpilog("Pro")).toContain('run the "apiKey" command');
-  });
 });

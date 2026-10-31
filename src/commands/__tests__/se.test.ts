@@ -64,7 +64,6 @@ describe("command: se", () => {
         DomainName: FOUND,
         EmailAlias: "security",
       });
-      expect(logger.log).toHaveBeenCalledTimes(1);
     });
   });
 

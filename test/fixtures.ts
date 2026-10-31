@@ -54,8 +54,8 @@ export const BREACHED_DOMAIN: BreachedDomainsByEmailAlias = {
   jane: ["Adobe", "Gawker"],
 };
 export const BREACHED_ACCOUNT_RANGE: BreachedAccountRangeResult[] = [
-  { hashSuffix: "020FF920E5AA642C3D4066950DD1F01F4D", websites: ["Adobe"] },
   { hashSuffix: "0000000000000000000000000000000000", websites: ["Unrelated"] },
+  { hashSuffix: "020FF920E5AA642C3D4066950DD1F01F4D", websites: ["Adobe"] },
 ];
 export const DNS_TOKEN: DnsToken = { txtRecordValue: "hibp-verify=foo" };
 export const STEALER_LOG_DOMAINS = ["example.com", "test.org"];
