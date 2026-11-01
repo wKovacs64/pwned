@@ -23,6 +23,7 @@ import * as slbed from "../lib/commands/slbed.js";
 import * as slbwd from "../lib/commands/slbwd.js";
 import * as subStatus from "../lib/commands/sub-status.js";
 import * as vdt from "../lib/commands/vdt.js";
+import { pkg } from "../lib/utils/pkg.js";
 
 sourceMapSupport.install();
 
@@ -51,5 +52,6 @@ void yargs(hideBin(process.argv))
   .recommendCommands()
   .strict()
   .wrap(Math.min(100, yargs().terminalWidth()))
+  .version(pkg.version)
   .alias("h", "help")
   .alias("v", "version").argv;
