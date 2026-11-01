@@ -1,5 +1,27 @@
 # Change Log
 
+## 14.0.0
+
+### Major Changes
+
+- [#419](https://github.com/wKovacs64/pwned/pull/419) [`ac91414`](https://github.com/wKovacs64/pwned/commit/ac9141484658fdc1a65b283acb6c48a7ed3cb4b1) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Drop support for Node.js 20 as it is [end-of-life](https://nodejs.org/en/about/previous-releases), making the new minimum Node.js runtime v22.12.0. Please upgrade your Node.js environment if necessary, or continue using a previous release if you are unable to upgrade your environment.
+
+### Minor Changes
+
+- [#419](https://github.com/wKovacs64/pwned/pull/419) [`ac91414`](https://github.com/wKovacs64/pwned/commit/ac9141484658fdc1a65b283acb6c48a7ed3cb4b1) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add new `bar` command to get all breaches for an email address using k-anonymity, so the address is never sent to the API. Requires a Pro or High RPM subscription. See https://haveibeenpwned.com/API/v3#BreachesForHashRange for more information.
+
+- [#419](https://github.com/wKovacs64/pwned/pull/419) [`ac91414`](https://github.com/wKovacs64/pwned/commit/ac9141484658fdc1a65b283acb6c48a7ed3cb4b1) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add `--spam-list` and `--no-spam-list` options to the `breaches` command to get only spam list breaches or exclude them.
+
+- [#419](https://github.com/wKovacs64/pwned/pull/419) [`ac91414`](https://github.com/wKovacs64/pwned/commit/ac9141484658fdc1a65b283acb6c48a7ed3cb4b1) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add new `dcd` command to get all data classes in the system with descriptions.
+
+- [#419](https://github.com/wKovacs64/pwned/pull/419) [`ac91414`](https://github.com/wKovacs64/pwned/commit/ac9141484658fdc1a65b283acb6c48a7ed3cb4b1) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Add new `gdt`, `vdt`, and `se` commands to verify a domain through DNS or an approval email. Requires a Pro subscription. See https://haveibeenpwned.com/API/v3#VerifyDomainViaDns and https://haveibeenpwned.com/API/v3#VerifyDomainViaEmail for more information.
+
+- [#419](https://github.com/wKovacs64/pwned/pull/419) [`ac91414`](https://github.com/wKovacs64/pwned/commit/ac9141484658fdc1a65b283acb6c48a7ed3cb4b1) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Show the HIBP plans each protected command requires in its `--help` output. The `subStatus` command now also explains invalid or missing API key errors like the other protected commands.
+
+### Patch Changes
+
+- [#423](https://github.com/wKovacs64/pwned/pull/423) [`62ec73c`](https://github.com/wKovacs64/pwned/commit/62ec73c0563c32478623dcd659c6b88077b6dacf) Thanks [@wKovacs64](https://github.com/wKovacs64)! - Fix `--version` printing `unknown`, `0.0.0`, or the version of the surrounding project when run through `npx`, `pnpm dlx`, or as a project dependency.
+
 ## 13.1.2
 
 ### Patch Changes
