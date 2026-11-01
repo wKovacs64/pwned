@@ -1,8 +1,8 @@
 import type { Argv } from "yargs";
 import { stealerLogsByEmail } from "hibp";
 import prettyjson from "prettyjson";
-import { oneLine } from "common-tags";
 import { config } from "../config.js";
+import { apiKeyEpilog } from "../utils/api-key-epilog.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -43,10 +43,8 @@ export function builder(
       default: false,
     })
     .group(["r"], "Command Options:")
-    .group(["h", "v"], "Global Options:").epilog(oneLine`
-      🔑 This command requires an API key. Make sure you've run the "apiKey"
-      command first.
-    `);
+    .group(["h", "v"], "Global Options:")
+    .epilog(apiKeyEpilog("Pro"));
 }
 
 /**

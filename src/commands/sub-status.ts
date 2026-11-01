@@ -2,8 +2,10 @@ import type { Argv } from "yargs";
 import { subscriptionStatus } from "hibp";
 import prettyjson from "prettyjson";
 import { config } from "../config.js";
+import { apiKeyEpilog } from "../utils/api-key-epilog.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
+import { translateApiError } from "../utils/translate-api-error.js";
 import { userAgent } from "../utils/user-agent.js";
 
 export const command = "subStatus";
@@ -29,7 +31,8 @@ export function builder(
     })
     .alias("r", "raw")
     .group(["r"], "Command Options:")
-    .group(["h", "v"], "Global Options:");
+    .group(["h", "v"], "Global Options:")
+    .epilog(apiKeyEpilog("Core", "Pro", "High RPM"));
 }
 
 /**
@@ -59,10 +62,11 @@ export async function handler({ raw }: SubStatusHandlerOptions): Promise<void> {
     /* v8 ignore else -- @preserve */
     if (maybeError instanceof Error) {
       process.exitCode = 1;
+      const errorMessage = translateApiError(maybeError.message);
       if (!raw) {
-        spinner.fail(maybeError.message);
+        spinner.fail(errorMessage);
       } else {
-        logger.error(maybeError.message);
+        logger.error(errorMessage);
       }
     }
   }

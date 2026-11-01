@@ -3,8 +3,11 @@ import {
   FOUND,
   BREACH,
   BREACHES,
+  BREACHED_ACCOUNT_RANGE,
   BREACHED_DOMAIN,
+  DATA_CLASS_DESCRIPTIONS,
   DATA_CLASSES,
+  DNS_TOKEN,
   PASTES,
   PASSWORD_HASHES,
   STEALER_LOG_DOMAINS,
@@ -16,6 +19,9 @@ import {
 } from "./fixtures.js";
 
 export const handlers = [
+  http.get("*/breachedaccount/range/:prefix", () => {
+    return new Response(JSON.stringify(BREACHED_ACCOUNT_RANGE));
+  }),
   http.get("*/breachedaccount/:account", ({ params }) => {
     const { account } = params;
     if (account === FOUND) {
@@ -47,6 +53,9 @@ export const handlers = [
   }),
   http.get("*/dataclasses", () => {
     return new Response(JSON.stringify(DATA_CLASSES));
+  }),
+  http.get("*/dataclasses/descriptions", () => {
+    return new Response(JSON.stringify(DATA_CLASS_DESCRIPTIONS));
   }),
   http.get("*/range/:suffix", () => {
     return new Response(PASSWORD_HASHES);
@@ -87,5 +96,14 @@ export const handlers = [
       return new Response(JSON.stringify(STEALER_LOG_EMAILS));
     }
     return new Response(null, { status: 404 });
+  }),
+  http.post("*/domainVerification/generateDnsToken", () => {
+    return new Response(JSON.stringify(DNS_TOKEN));
+  }),
+  http.post("*/domainVerification/verifyDnsToken", () => {
+    return new Response(null, { status: 200 });
+  }),
+  http.post("*/domainVerification/sendEmail", () => {
+    return new Response(null, { status: 200 });
   }),
 ];

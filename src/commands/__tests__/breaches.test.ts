@@ -8,6 +8,7 @@ import {
   NOT_FOUND,
   ERROR,
   ERROR_MSG,
+  EMPTY_ARRAY,
 } from "../../../test/fixtures.js";
 import { logger as mockLogger } from "../../utils/logger.js";
 import { spinner as mockSpinner } from "../../utils/spinner.js";
@@ -55,6 +56,25 @@ describe("command: breaches", () => {
       await breaches({ domainFilter: ERROR, raw: false });
       expect(spinner.fail).toHaveBeenCalledTimes(1);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
+    });
+  });
+
+  describe("spam list filter", () => {
+    it.each([
+      [true, "true"],
+      [false, "false"],
+      [undefined, null],
+    ])("spamList %s sends isSpamList %s", async (spamList, expected) => {
+      let isSpamList: string | null = "unset";
+      server.use(
+        http.get("*/breaches", ({ request }) => {
+          isSpamList = new URL(request.url).searchParams.get("isSpamList");
+          return new Response(JSON.stringify(EMPTY_ARRAY));
+        }),
+      );
+
+      await breaches({ spamList, raw: true });
+      expect(isSpamList).toBe(expected);
     });
   });
 

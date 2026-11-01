@@ -34,10 +34,30 @@ npx pwned
 On July 18th, 2019, the haveibeenpwned.com API moved several services behind authentication,
 requiring an API key. See
 [Troy's blog post](https://www.troyhunt.com/authentication-and-the-have-i-been-pwned-api/) for
-rationale and a full explanation. In order to use some of `pwned` commands (e.g. `ba`, `pa`, and
-`search`), you will need to [get an API key](https://haveibeenpwned.com/API/Key) and run
-`pwned apiKey <your-key>` to configure `pwned`. The other commands do not require an API key and you
-may use them without obtaining one.
+rationale and a full explanation. Commands are grouped below by the [HIBP plans][hibp-plans] whose
+API key unlocks them. To use a protected command,
+[get an API key](https://haveibeenpwned.com/API/Key) and run `pwned apiKey <your-key>` to configure
+`pwned`.
+
+#### No API key
+
+`breach`, `breaches`, `dc`, `dcd`, `lb`, `pw`
+
+#### ![Core][core-plan] / ![Pro][pro-plan] / ![High RPM][high-rpm-plan]
+
+`ba`, `pa`, `search`, `subStatus`
+
+#### ![Core][core-plan] / ![Pro][pro-plan]
+
+`bd`, `sd`
+
+#### ![Pro][pro-plan] / ![High RPM][high-rpm-plan]
+
+`bar`
+
+#### ![Pro][pro-plan]
+
+`gdt`, `se`, `slbe`, `slbed`, `slbwd`, `vdt`
 
 ## Usage
 
@@ -47,20 +67,25 @@ pwned <command>
 Commands:
   pwned apiKey <key>            set the API key to be used for authenticated requests
   pwned ba <account|email>      get all breaches for an account (username or email address)
+  pwned bar <email>             get all breaches for an email address using k-anonymity
   pwned bd <domain>             get all breached email addresses for a domain
   pwned breach <name>           get a single breached site by breach name
   pwned breaches                get all breaches in the system
   pwned dc                      get all data classes in the system
+  pwned dcd                     get all data classes in the system with descriptions
+  pwned gdt <domain>            generate a DNS TXT record value to verify a domain
   pwned lb                      get the most recently added breach
   pwned pa <email>              get all pastes for an account (email address)
   pwned pw <password>           securely check a password for public exposure
   pwned sd                      get all subscribed domains for your account
+  pwned se <domain> <alias>     send a domain verification approval email
   pwned search <account|email>  search breaches and pastes for an account (username or email
                                 address)
   pwned slbe <email>            get all stealer log domains for an email address
   pwned slbed <email-domain>    get all stealer log email aliases for an email domain
   pwned slbwd <website-domain>  get all stealer log email addresses for a website domain
   pwned subStatus               get the subscription status of your API key
+  pwned vdt <domain>            verify a domain using its published DNS TXT record
 
 Options:
   -h, --help     Show help                                                                 [boolean]
@@ -219,3 +244,8 @@ pastes:   null
 
 This tool is distributed under the
 [MIT License](https://github.com/wKovacs64/pwned/tree/main/LICENSE.txt).
+
+[core-plan]: https://img.shields.io/badge/Core-3c9f43?style=flat-square
+[pro-plan]: https://img.shields.io/badge/Pro-187dbd?style=flat-square
+[high-rpm-plan]: https://img.shields.io/badge/High%20RPM-ef4444?style=flat-square
+[hibp-plans]: https://haveibeenpwned.com/Subscription
