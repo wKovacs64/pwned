@@ -10,6 +10,7 @@ import { translateApiError } from "../utils/translate-api-error.js";
 import { userAgent } from "../utils/user-agent.js";
 
 export const command = "bar <email>";
+
 export const describe =
   "get all breaches for an email address using k-anonymity";
 
@@ -33,9 +34,10 @@ export function builder(yargs: Argv<BarArgvOptions>): Argv<BarHandlerOptions> {
     })
     .demandOption("email")
     .check((argv) => {
-      if (!argv.email.length) {
+      if (argv.email.length === 0) {
         throw new Error("The email argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -62,7 +64,7 @@ export function builder(yargs: Argv<BarArgvOptions>): Argv<BarHandlerOptions> {
  */
 export async function handler({
   email,
-  raw,
+  raw = false,
 }: BarHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -73,16 +75,19 @@ export async function handler({
       .update(email.trim().toLowerCase())
       .digest("hex")
       .toUpperCase();
+
     const rangeData = await breachedAccountRange(
       emailHash.slice(0, PREFIX_LENGTH),
       { apiKey: config.get("apiKey"), userAgent },
     );
+
     const breachData = rangeData
       ?.find(
         ({ hashSuffix }) =>
           hashSuffix.toUpperCase() === emailHash.slice(PREFIX_LENGTH),
       )
       ?.websites.map((Name) => ({ Name }));
+
     if (breachData && raw) {
       logger.log(JSON.stringify(breachData));
     } else if (breachData) {
@@ -96,6 +101,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

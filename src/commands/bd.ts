@@ -29,9 +29,10 @@ export function builder(yargs: Argv<BdArgvOptions>): Argv<BdHandlerOptions> {
     })
     .demandOption("domain")
     .check((argv) => {
-      if (!argv.domain.length) {
+      if (argv.domain.length === 0) {
         throw new Error("The domain argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -55,7 +56,7 @@ export function builder(yargs: Argv<BdArgvOptions>): Argv<BdHandlerOptions> {
  */
 export async function handler({
   domain,
-  raw,
+  raw = false,
 }: BdHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -66,6 +67,7 @@ export async function handler({
       apiKey: config.get("apiKey"),
       userAgent,
     });
+
     if (breachData && raw) {
       logger.log(JSON.stringify(breachData));
     } else if (breachData) {
@@ -79,6 +81,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

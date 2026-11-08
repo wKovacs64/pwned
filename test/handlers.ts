@@ -24,31 +24,39 @@ export const handlers = [
   }),
   http.get("*/breachedaccount/:account", ({ params }) => {
     const { account } = params;
+
     if (account === FOUND) {
       return new Response(JSON.stringify(BREACHES));
     }
+
     return new Response(null, { status: 404 });
   }),
   http.get("*/pasteaccount/:account", ({ params }) => {
     const { account } = params;
+
     if (account === FOUND) {
       return new Response(JSON.stringify(PASTES));
     }
+
     return new Response(null, { status: 404 });
   }),
   http.get("*/breach/:breachName", ({ params }) => {
     const { breachName } = params;
+
     if (breachName === FOUND) {
       return new Response(JSON.stringify(BREACH));
     }
+
     return new Response(null, { status: 404 });
   }),
   http.get("*/breaches", ({ request }) => {
     const url = new URL(request.url);
     const domain = url.searchParams.get("domain");
+
     if (!domain || domain === FOUND) {
       return new Response(JSON.stringify(BREACHES));
     }
+
     return new Response(JSON.stringify(EMPTY_ARRAY));
   }),
   http.get("*/dataclasses", () => {
@@ -68,9 +76,11 @@ export const handlers = [
   }),
   http.get("*/breacheddomain/:domain", ({ params }) => {
     const { domain } = params;
+
     if (domain === FOUND) {
       return new Response(JSON.stringify(BREACHED_DOMAIN));
     }
+
     return new Response(null, { status: 404 });
   }),
   http.get("*/subscribeddomains", () => {
@@ -78,23 +88,29 @@ export const handlers = [
   }),
   http.get("*/stealerlogsbyemail/:email", ({ params }) => {
     const { email } = params;
+
     if (email === FOUND) {
       return new Response(JSON.stringify(STEALER_LOG_DOMAINS));
     }
+
     return new Response(null, { status: 404 });
   }),
   http.get("*/stealerlogsbyemaildomain/:emailDomain", ({ params }) => {
     const { emailDomain } = params;
+
     if (emailDomain === FOUND) {
       return new Response(JSON.stringify(STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS));
     }
+
     return new Response(null, { status: 404 });
   }),
   http.get("*/stealerlogsbywebsitedomain/:websiteDomain", ({ params }) => {
     const { websiteDomain } = params;
+
     if (websiteDomain === FOUND) {
       return new Response(JSON.stringify(STEALER_LOG_EMAILS));
     }
+
     return new Response(null, { status: 404 });
   }),
   http.post("*/domainVerification/generateDnsToken", () => {

@@ -42,7 +42,9 @@ export function builder(
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ raw }: SubStatusHandlerOptions): Promise<void> {
+export async function handler({
+  raw = false,
+}: SubStatusHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -52,6 +54,7 @@ export async function handler({ raw }: SubStatusHandlerOptions): Promise<void> {
       apiKey: config.get("apiKey"),
       userAgent,
     });
+
     if (raw) {
       logger.log(JSON.stringify(subStatusData));
     } else {
@@ -63,6 +66,7 @@ export async function handler({ raw }: SubStatusHandlerOptions): Promise<void> {
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

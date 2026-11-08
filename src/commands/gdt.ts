@@ -29,9 +29,10 @@ export function builder(yargs: Argv<GdtArgvOptions>): Argv<GdtHandlerOptions> {
     })
     .demandOption("domain")
     .check((argv) => {
-      if (!argv.domain.length) {
+      if (argv.domain.length === 0) {
         throw new Error("The domain argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -55,7 +56,7 @@ export function builder(yargs: Argv<GdtArgvOptions>): Argv<GdtHandlerOptions> {
  */
 export async function handler({
   domain,
-  raw,
+  raw = false,
 }: GdtHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -66,6 +67,7 @@ export async function handler({
       apiKey: config.get("apiKey"),
       userAgent,
     });
+
     if (raw) {
       logger.log(JSON.stringify(dnsTokenData));
     } else {
@@ -77,6 +79,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

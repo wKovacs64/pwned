@@ -37,6 +37,7 @@ export function builder(
  */
 export async function handler({ key }: ApiKeyHandlerOptions) {
   let apiKey = key;
+
   if (!apiKey) {
     try {
       apiKey = await password({
@@ -52,6 +53,7 @@ export async function handler({ key }: ApiKeyHandlerOptions) {
         if (maybeError.name === "ExitPromptError") {
           process.exit(1);
         }
+
         throw maybeError;
       }
     }
@@ -61,7 +63,9 @@ export async function handler({ key }: ApiKeyHandlerOptions) {
     if (!apiKey) {
       throw new Error("✖ API key must be a non-empty string of characters.");
     }
+
     config.set("apiKey", apiKey);
+
     if (config.get("apiKey") === apiKey) {
       logger.log(oneLine`
         ✔ API key saved successfully. It will be used in future requests made

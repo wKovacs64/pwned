@@ -29,9 +29,10 @@ export function builder(yargs: Argv<PaArgvOptions>): Argv<PaHandlerOptions> {
     })
     .demandOption("email")
     .check((argv) => {
-      if (!argv.email.length) {
+      if (argv.email.length === 0) {
         throw new Error("The email argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -53,7 +54,10 @@ export function builder(yargs: Argv<PaArgvOptions>): Argv<PaHandlerOptions> {
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ email, raw }: PaHandlerOptions): Promise<void> {
+export async function handler({
+  email,
+  raw = false,
+}: PaHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -63,6 +67,7 @@ export async function handler({ email, raw }: PaHandlerOptions): Promise<void> {
       apiKey: config.get("apiKey"),
       userAgent,
     });
+
     if (pasteData && raw) {
       logger.log(JSON.stringify(pasteData));
     } else if (pasteData) {
@@ -76,6 +81,7 @@ export async function handler({ email, raw }: PaHandlerOptions): Promise<void> {
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

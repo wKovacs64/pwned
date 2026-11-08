@@ -31,9 +31,10 @@ export function builder(
     })
     .demandOption("email-domain")
     .check((argv) => {
-      if (!argv.emailDomain.length) {
+      if (argv.emailDomain.length === 0) {
         throw new Error("The email-domain argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -57,7 +58,7 @@ export function builder(
  */
 export async function handler({
   emailDomain,
-  raw,
+  raw = false,
 }: SlbedHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -68,6 +69,7 @@ export async function handler({
       apiKey: config.get("apiKey"),
       userAgent,
     });
+
     if (logsData && raw) {
       logger.log(JSON.stringify(logsData));
     } else if (logsData) {
@@ -81,6 +83,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {
