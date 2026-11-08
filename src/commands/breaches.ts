@@ -60,7 +60,7 @@ export function builder(
 export async function handler({
   domainFilter: domain,
   spamList: isSpamList,
-  raw,
+  raw = false,
 }: BreachesHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -68,18 +68,20 @@ export async function handler({
 
   try {
     const breachData = await breaches({ domain, isSpamList, userAgent });
-    if (breachData.length && raw) {
+
+    if (breachData.length > 0 && raw) {
       logger.log(JSON.stringify(breachData));
-    } else if (breachData.length) {
+    } else if (breachData.length > 0) {
       spinner.stop();
       logger.log(prettyjson.render(breachData));
-    } else if (!breachData.length && !raw) {
+    } else if (!raw) {
       spinner.succeed("No breaches found.");
     }
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */
     if (maybeError instanceof Error) {
       process.exitCode = 1;
+
       if (!raw) {
         spinner.fail(maybeError.message);
       } else {

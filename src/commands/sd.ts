@@ -41,7 +41,9 @@ export function builder(yargs: Argv<SdArgvOptions>): Argv<SdHandlerOptions> {
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ raw }: SdHandlerOptions): Promise<void> {
+export async function handler({
+  raw = false,
+}: SdHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
@@ -51,12 +53,13 @@ export async function handler({ raw }: SdHandlerOptions): Promise<void> {
       apiKey: config.get("apiKey"),
       userAgent,
     });
-    if (domainsData.length && raw) {
+
+    if (domainsData.length > 0 && raw) {
       logger.log(JSON.stringify(domainsData));
-    } else if (domainsData.length) {
+    } else if (domainsData.length > 0) {
       spinner.stop();
       logger.log(prettyjson.render(domainsData));
-    } else if (!domainsData.length && !raw) {
+    } else if (!raw) {
       spinner.succeed("No subscribed domains found.");
     }
   } catch (maybeError) {
@@ -64,6 +67,7 @@ export async function handler({ raw }: SdHandlerOptions): Promise<void> {
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

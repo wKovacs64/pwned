@@ -31,9 +31,10 @@ export function builder(
     })
     .demandOption("email")
     .check((argv) => {
-      if (!argv.email.length) {
+      if (argv.email.length === 0) {
         throw new Error("The email argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -57,7 +58,7 @@ export function builder(
  */
 export async function handler({
   email,
-  raw,
+  raw = false,
 }: SlbeHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -68,6 +69,7 @@ export async function handler({
       apiKey: config.get("apiKey"),
       userAgent,
     });
+
     if (domainsData && raw) {
       logger.log(JSON.stringify(domainsData));
     } else if (domainsData) {
@@ -81,6 +83,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

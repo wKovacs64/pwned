@@ -1,4 +1,4 @@
-export type LoggerFunction = (message?: any, ...args: any[]) => void;
+export type LoggerFunction = (message: string) => void;
 
 export interface Logger {
   error: LoggerFunction;

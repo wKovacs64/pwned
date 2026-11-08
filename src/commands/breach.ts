@@ -28,9 +28,10 @@ export function builder(
     })
     .demandOption("name")
     .check((argv) => {
-      if (!argv.name.length) {
+      if (argv.name.length === 0) {
         throw new Error("The name argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -53,7 +54,7 @@ export function builder(
  */
 export async function handler({
   name,
-  raw,
+  raw = false,
 }: BreachHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -61,6 +62,7 @@ export async function handler({
 
   try {
     const breachData = await breach(name, { userAgent });
+
     if (breachData && raw) {
       logger.log(JSON.stringify(breachData));
     } else if (breachData) {
@@ -73,6 +75,7 @@ export async function handler({
     /* v8 ignore else -- @preserve */
     if (maybeError instanceof Error) {
       process.exitCode = 1;
+
       if (!raw) {
         spinner.fail(maybeError.message);
       } else {

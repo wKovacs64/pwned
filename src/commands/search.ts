@@ -9,6 +9,7 @@ import { translateApiError } from "../utils/translate-api-error.js";
 import { userAgent } from "../utils/user-agent.js";
 
 export const command = "search <account|email>";
+
 export const describe =
   "search breaches and pastes for an account (username or email address)";
 
@@ -37,9 +38,10 @@ export function builder(
     })
     .demandOption("account")
     .check((argv) => {
-      if (!argv.account.length) {
+      if (argv.account.length === 0) {
         throw new Error("The account argument must not be empty.");
       }
+
       return true;
     })
     .option("d", {
@@ -80,7 +82,7 @@ export async function handler({
   account,
   domainFilter: domain,
   truncate,
-  raw,
+  raw = false,
 }: SearchHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -93,7 +95,9 @@ export async function handler({
       truncate,
       userAgent,
     });
-    const foundData = !!(searchData.breaches || searchData.pastes);
+
+    const foundData = !!(searchData.breaches ?? searchData.pastes);
+
     if (foundData && raw) {
       logger.log(JSON.stringify(searchData));
     } else if (foundData) {
@@ -107,6 +111,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

@@ -27,9 +27,10 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
     })
     .demandOption("password")
     .check((argv) => {
-      if (!argv.password.length) {
+      if (argv.password.length === 0) {
         throw new Error("The password argument must not be empty.");
       }
+
       return true;
     })
     .option("p", {
@@ -60,7 +61,7 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
 export async function handler({
   password,
   pad,
-  raw,
+  raw = false,
 }: PwHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -71,8 +72,10 @@ export async function handler({
       userAgent,
       addPadding: pad,
     });
-    if (pwnCount) {
+
+    if (pwnCount > 0) {
       const pwnedMessage = `Oh no — pwned ${pwnCount} times!`;
+
       if (!raw) {
         spinner.warn(pwnedMessage);
       } else {
@@ -80,6 +83,7 @@ export async function handler({
       }
     } else {
       const successMessage = "Good news — no pwnage found!";
+
       if (!raw) {
         spinner.succeed(successMessage);
       } else {
@@ -90,6 +94,7 @@ export async function handler({
     /* v8 ignore else -- @preserve */
     if (maybeError instanceof Error) {
       process.exitCode = 1;
+
       if (!raw) {
         spinner.fail(maybeError.message);
       } else {

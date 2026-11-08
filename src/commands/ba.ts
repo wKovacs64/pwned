@@ -9,6 +9,7 @@ import { translateApiError } from "../utils/translate-api-error.js";
 import { userAgent } from "../utils/user-agent.js";
 
 export const command = "ba <account|email>";
+
 export const describe =
   "get all breaches for an account (username or email address)";
 
@@ -37,9 +38,10 @@ export function builder(yargs: Argv<BaArgvOptions>): Argv<BaHandlerOptions> {
     })
     .demandOption("account")
     .check((argv) => {
-      if (!argv.account.length) {
+      if (argv.account.length === 0) {
         throw new Error("The account argument must not be empty.");
       }
+
       return true;
     })
     .option("d", {
@@ -89,7 +91,7 @@ export async function handler({
   domainFilter: domain,
   includeUnverified,
   truncate,
-  raw,
+  raw = false,
 }: BaHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -103,6 +105,7 @@ export async function handler({
       truncate,
       userAgent,
     });
+
     if (breachData && raw) {
       logger.log(JSON.stringify(breachData));
     } else if (breachData) {
@@ -116,6 +119,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

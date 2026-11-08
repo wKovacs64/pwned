@@ -15,9 +15,11 @@ export const spinnerFns = ["start", "stop", "succeed", "warn", "fail"] as const;
 export const loggerFns = ["info", "log", "warn", "error"] as const;
 
 export const DATA_CLASSES = ["foo", "bar"];
+
 export const DATA_CLASS_DESCRIPTIONS: DataClassDescription[] = [
   { name: "foo", description: "fake data class" },
 ];
+
 export const BREACH: Breach = {
   Name: "breach",
   Title: "Breach",
@@ -40,7 +42,9 @@ export const BREACH: Breach = {
   Attribution: null,
   DisclosureUrl: null,
 };
+
 export const BREACHES = [BREACH];
+
 export const PASTE: Paste = {
   Id: "paste",
   Date: "2019-01-01",
@@ -48,22 +52,28 @@ export const PASTE: Paste = {
   Source: "never reveal your sources",
   Title: "Paste",
 };
+
 export const PASTES = [PASTE];
+
 export const BREACHED_DOMAIN: BreachedDomainsByEmailAlias = {
   john: ["Adobe"],
   jane: ["Adobe", "Gawker"],
 };
+
 export const BREACHED_ACCOUNT_RANGE: BreachedAccountRangeResult[] = [
   { hashSuffix: "0000000000000000000000000000000000", websites: ["Unrelated"] },
   { hashSuffix: "020FF920E5AA642C3D4066950DD1F01F4D", websites: ["Adobe"] },
 ];
+
 export const DNS_TOKEN: DnsToken = { txtRecordValue: "hibp-verify=foo" };
 export const STEALER_LOG_DOMAINS = ["example.com", "test.org"];
+
 export const STEALER_LOG_DOMAINS_BY_EMAIL_ALIAS: StealerLogDomainsByEmailAlias =
   {
     andy: ["netflix.com"],
     jane: ["netflix.com", "spotify.com"],
   };
+
 export const STEALER_LOG_EMAILS = ["andy@gmail.com", "jane@gmail.com"];
 
 export const PASSWORD_HASHES = stripIndents`
@@ -79,7 +89,9 @@ export const SUBSCRIBED_DOMAIN: SubscribedDomain = {
   PwnCountExcludingSpamListsAtLastSubscriptionRenewal: 85,
   NextSubscriptionRenewal: "2024-12-31T00:00:00Z",
 };
+
 export const SUBSCRIBED_DOMAINS = [SUBSCRIBED_DOMAIN];
+
 export const SUBSCRIPTION_STATUS: SubscriptionStatus = {
   SubscriptionName: "Pwned 42",
   Description: "A mock subscrpition",

@@ -36,14 +36,17 @@ export function builder(yargs: Argv<DcArgvOptions>): Argv<DcHandlerOptions> {
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ raw }: DcHandlerOptions): Promise<void> {
+export async function handler({
+  raw = false,
+}: DcHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
 
   try {
     const dataClassesData = await dataClasses({ userAgent });
-    if (Array.isArray(dataClassesData) && dataClassesData.length) {
+
+    if (Array.isArray(dataClassesData) && dataClassesData.length > 0) {
       if (raw) {
         logger.log(JSON.stringify(dataClassesData));
       } else {
@@ -59,6 +62,7 @@ export async function handler({ raw }: DcHandlerOptions): Promise<void> {
     /* v8 ignore else -- @preserve */
     if (maybeError instanceof Error) {
       process.exitCode = 1;
+
       if (!raw) {
         spinner.fail(maybeError.message);
       } else {

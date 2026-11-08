@@ -9,6 +9,7 @@ import { translateApiError } from "../utils/translate-api-error.js";
 import { userAgent } from "../utils/user-agent.js";
 
 export const command = "slbwd <website-domain>";
+
 export const describe =
   "get all stealer log email addresses for a website domain";
 
@@ -32,9 +33,10 @@ export function builder(
     })
     .demandOption("website-domain")
     .check((argv) => {
-      if (!argv.websiteDomain.length) {
+      if (argv.websiteDomain.length === 0) {
         throw new Error("The website-domain argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -58,7 +60,7 @@ export function builder(
  */
 export async function handler({
   websiteDomain,
-  raw,
+  raw = false,
 }: SlbwdHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -69,6 +71,7 @@ export async function handler({
       apiKey: config.get("apiKey"),
       userAgent,
     });
+
     if (emailsData && raw) {
       logger.log(JSON.stringify(emailsData));
     } else if (emailsData) {
@@ -82,6 +85,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

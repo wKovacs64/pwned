@@ -36,25 +36,29 @@ export function builder(yargs: Argv<LbArgvOptions>): Argv<LbHandlerOptions> {
  * @param {boolean} [argv.raw] output the raw JSON data (default: false)
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ raw }: LbHandlerOptions): Promise<void> {
+export async function handler({
+  raw = false,
+}: LbHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
   }
 
   try {
     const breachData = await latestBreach({ userAgent });
+
     if (breachData && raw) {
       logger.log(JSON.stringify(breachData));
     } else if (breachData) {
       spinner.stop();
       logger.log(prettyjson.render(breachData));
-    } else if (!breachData && !raw) {
+    } else if (!raw) {
       spinner.succeed("No breach found.");
     }
   } catch (maybeError) {
     /* v8 ignore else -- @preserve */
     if (maybeError instanceof Error) {
       process.exitCode = 1;
+
       if (!raw) {
         spinner.fail(maybeError.message);
       } else {

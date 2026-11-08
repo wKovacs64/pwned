@@ -1,6 +1,7 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import { http } from "msw/http";
 import { server } from "../../../test/server.js";
+import { stubOutput } from "../../../test/stub-output.js";
 import {
   spinnerFns,
   loggerFns,
@@ -8,15 +9,9 @@ import {
   ERROR,
   ERROR_MSG,
 } from "../../../test/fixtures.js";
-import { logger as mockLogger } from "../../utils/logger.js";
-import { spinner as mockSpinner } from "../../utils/spinner.js";
 import { handler as bd } from "../bd.js";
 
-vi.mock("../../utils/logger");
-vi.mock("../../utils/spinner");
-
-const logger = vi.mocked(mockLogger);
-const spinner = vi.mocked(mockSpinner);
+const { logger, spinner } = stubOutput();
 
 describe("command: bd", () => {
   describe("normal output (default)", () => {

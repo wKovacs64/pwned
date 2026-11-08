@@ -28,9 +28,10 @@ export function builder(yargs: Argv<VdtArgvOptions>): Argv<VdtHandlerOptions> {
     })
     .demandOption("domain")
     .check((argv) => {
-      if (!argv.domain.length) {
+      if (argv.domain.length === 0) {
         throw new Error("The domain argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -54,7 +55,7 @@ export function builder(yargs: Argv<VdtArgvOptions>): Argv<VdtHandlerOptions> {
  */
 export async function handler({
   domain,
-  raw,
+  raw = false,
 }: VdtHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -67,6 +68,7 @@ export async function handler({
       userAgent,
     });
     const successMessage = `Verified ${trimmedDomain}.`;
+
     if (!raw) {
       spinner.succeed(successMessage);
     } else {
@@ -77,6 +79,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {

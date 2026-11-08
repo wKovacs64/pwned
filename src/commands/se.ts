@@ -41,9 +41,10 @@ export function builder(yargs: Argv<SeArgvOptions>): Argv<SeHandlerOptions> {
     })
     .demandOption(["domain", "alias"])
     .check((argv) => {
-      if (!argv.domain.length) {
+      if (argv.domain.length === 0) {
         throw new Error("The domain argument must not be empty.");
       }
+
       return true;
     })
     .option("r", {
@@ -70,7 +71,7 @@ export function builder(yargs: Argv<SeArgvOptions>): Argv<SeHandlerOptions> {
 export async function handler({
   domain,
   alias,
-  raw,
+  raw = false,
 }: SeHandlerOptions): Promise<void> {
   if (!raw) {
     spinner.start();
@@ -83,6 +84,7 @@ export async function handler({
       userAgent,
     });
     const successMessage = `Sent an approval email to ${alias}@${trimmedDomain}.`;
+
     if (!raw) {
       spinner.succeed(successMessage);
     } else {
@@ -93,6 +95,7 @@ export async function handler({
     if (maybeError instanceof Error) {
       process.exitCode = 1;
       const errorMessage = translateApiError(maybeError.message);
+
       if (!raw) {
         spinner.fail(errorMessage);
       } else {
