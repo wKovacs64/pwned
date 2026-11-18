@@ -2,23 +2,14 @@ import type { Argv } from "yargs";
 import { password } from "@inquirer/prompts";
 import { oneLine } from "common-tags";
 import { config } from "../config.js";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 
 export const command = "apiKey [key]";
 export const describe = "set the API key to be used for authenticated requests";
 
-interface ApiKeyArgvOptions {
-  key?: string;
-}
-
-interface ApiKeyHandlerOptions {
-  key?: string;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(
-  yargs: Argv<ApiKeyArgvOptions>,
-): Argv<ApiKeyHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("key", { type: "string" })
     .group(["h", "v"], "Global Options:").epilog(oneLine`
@@ -35,7 +26,7 @@ export function builder(
  * @param {string} [argv.key] the user's API key
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
-export async function handler({ key }: ApiKeyHandlerOptions) {
+export async function handler({ key }: HandlerOptions<typeof builder>) {
   let apiKey = key;
 
   if (!apiKey) {

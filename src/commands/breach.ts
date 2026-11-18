@@ -1,6 +1,7 @@
 import type { Argv } from "yargs";
 import { breach } from "hibp";
 import prettyjson from "prettyjson";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { userAgent } from "../utils/user-agent.js";
@@ -8,20 +9,8 @@ import { userAgent } from "../utils/user-agent.js";
 export const command = "breach <name>";
 export const describe = "get a single breached site by breach name";
 
-interface BreachArgvOptions {
-  name: string;
-  r?: boolean;
-}
-
-interface BreachHandlerOptions {
-  name: string;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(
-  yargs: Argv<BreachArgvOptions>,
-): Argv<BreachHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("name", {
       type: "string",
@@ -34,13 +23,13 @@ export function builder(
 
       return true;
     })
-    .option("r", {
-      alias: "raw",
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data (or nothing, if no results found)",
       type: "boolean",
       default: false,
     })
-    .group(["r"], "Command Options:")
+    .group(["raw"], "Command Options:")
     .group(["h", "v"], "Global Options:");
 }
 
@@ -54,8 +43,8 @@ export function builder(
  */
 export async function handler({
   name,
-  raw = false,
-}: BreachHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

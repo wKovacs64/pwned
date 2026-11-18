@@ -1,6 +1,7 @@
 import type { Argv } from "yargs";
 import { dataClassDescriptions } from "hibp";
 import prettyjson from "prettyjson";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { userAgent } from "../utils/user-agent.js";
@@ -8,24 +9,16 @@ import { userAgent } from "../utils/user-agent.js";
 export const command = "dcd";
 export const describe = "get all data classes in the system with descriptions";
 
-interface DcdArgvOptions {
-  r?: boolean;
-}
-
-interface DcdHandlerOptions {
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(yargs: Argv<DcdArgvOptions>): Argv<DcdHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
-    .option("r", {
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data",
       type: "boolean",
       default: false,
     })
-    .alias("r", "raw")
-    .group(["r"], "Command Options:")
+    .group(["raw"], "Command Options:")
     .group(["h", "v"], "Global Options:");
 }
 
@@ -37,8 +30,8 @@ export function builder(yargs: Argv<DcdArgvOptions>): Argv<DcdHandlerOptions> {
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
 export async function handler({
-  raw = false,
-}: DcdHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

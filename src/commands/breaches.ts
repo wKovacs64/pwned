@@ -1,6 +1,7 @@
 import type { Argv } from "yargs";
 import { breaches } from "hibp";
 import prettyjson from "prettyjson";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { userAgent } from "../utils/user-agent.js";
@@ -8,41 +9,27 @@ import { userAgent } from "../utils/user-agent.js";
 export const command = "breaches";
 export const describe = "get all breaches in the system";
 
-interface BreachesArgvOptions {
-  d?: string;
-  s?: boolean;
-  r?: boolean;
-}
-
-interface BreachesHandlerOptions {
-  domainFilter?: string;
-  spamList?: boolean;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(
-  yargs: Argv<BreachesArgvOptions>,
-): Argv<BreachesHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
-    .option("d", {
+    .option("domain-filter", {
+      alias: "d",
       describe: "filter breach data by domain",
       type: "string",
     })
-    .alias("d", "domain-filter")
-    .option("s", {
+    .option("spam-list", {
+      alias: "s",
       describe:
         "only spam list breaches (--no-spam-list to exclude them instead)",
       type: "boolean",
     })
-    .alias("s", "spam-list")
-    .option("r", {
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data (or nothing, if no results found)",
       type: "boolean",
       default: false,
     })
-    .alias("r", "raw")
-    .group(["d", "s", "r"], "Command Options:")
+    .group(["domain-filter", "spam-list", "raw"], "Command Options:")
     .group(["h", "v"], "Global Options:");
 }
 
@@ -60,8 +47,8 @@ export function builder(
 export async function handler({
   domainFilter: domain,
   spamList: isSpamList,
-  raw = false,
-}: BreachesHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

@@ -3,6 +3,7 @@ import { breachedAccount } from "hibp";
 import prettyjson from "prettyjson";
 import { config } from "../config.js";
 import { apiKeyEpilog } from "../utils/api-key-epilog.js";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -13,24 +14,8 @@ export const command = "ba <account|email>";
 export const describe =
   "get all breaches for an account (username or email address)";
 
-interface BaArgvOptions {
-  account: string;
-  d?: string;
-  i?: boolean;
-  t?: boolean;
-  r?: boolean;
-}
-
-interface BaHandlerOptions {
-  account: string;
-  domainFilter?: string;
-  includeUnverified?: boolean;
-  truncate?: boolean;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(yargs: Argv<BaArgvOptions>): Argv<BaHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("account", {
       alias: "email",
@@ -44,30 +29,33 @@ export function builder(yargs: Argv<BaArgvOptions>): Argv<BaHandlerOptions> {
 
       return true;
     })
-    .option("d", {
-      alias: "domain-filter",
+    .option("domain-filter", {
+      alias: "d",
       describe: "filter breach data by domain",
       type: "string",
     })
-    .option("i", {
-      alias: "include-unverified",
+    .option("include-unverified", {
+      alias: "i",
       describe: "include unverified breaches in the results",
       type: "boolean",
       default: true,
     })
-    .option("t", {
-      alias: "truncate",
+    .option("truncate", {
+      alias: "t",
       describe: "truncate data to just the name of each breach",
       type: "boolean",
       default: true,
     })
-    .option("r", {
-      alias: "raw",
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data (or nothing, if no results found)",
       type: "boolean",
       default: false,
     })
-    .group(["d", "i", "t", "r"], "Command Options:")
+    .group(
+      ["domain-filter", "include-unverified", "truncate", "raw"],
+      "Command Options:",
+    )
     .group(["h", "v"], "Global Options:")
     .epilog(apiKeyEpilog("Core", "Pro", "High RPM"));
 }
@@ -91,8 +79,8 @@ export async function handler({
   domainFilter: domain,
   includeUnverified,
   truncate,
-  raw = false,
-}: BaHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

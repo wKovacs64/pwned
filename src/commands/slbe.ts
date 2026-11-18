@@ -3,6 +3,7 @@ import { stealerLogsByEmail } from "hibp";
 import prettyjson from "prettyjson";
 import { config } from "../config.js";
 import { apiKeyEpilog } from "../utils/api-key-epilog.js";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -11,20 +12,8 @@ import { userAgent } from "../utils/user-agent.js";
 export const command = "slbe <email>";
 export const describe = "get all stealer log domains for an email address";
 
-interface SlbeArgvOptions {
-  email: string;
-  r?: boolean;
-}
-
-interface SlbeHandlerOptions {
-  email: string;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(
-  yargs: Argv<SlbeArgvOptions>,
-): Argv<SlbeHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("email", {
       type: "string",
@@ -37,13 +26,13 @@ export function builder(
 
       return true;
     })
-    .option("r", {
-      alias: "raw",
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data (or nothing, if no results found)",
       type: "boolean",
       default: false,
     })
-    .group(["r"], "Command Options:")
+    .group(["raw"], "Command Options:")
     .group(["h", "v"], "Global Options:")
     .epilog(apiKeyEpilog("Pro"));
 }
@@ -58,8 +47,8 @@ export function builder(
  */
 export async function handler({
   email,
-  raw = false,
-}: SlbeHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

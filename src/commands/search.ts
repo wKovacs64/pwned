@@ -3,6 +3,7 @@ import { search } from "hibp";
 import prettyjson from "prettyjson";
 import { config } from "../config.js";
 import { apiKeyEpilog } from "../utils/api-key-epilog.js";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -13,24 +14,8 @@ export const command = "search <account|email>";
 export const describe =
   "search breaches and pastes for an account (username or email address)";
 
-interface SearchArgvOptions {
-  account: string;
-  d?: string;
-  t?: boolean;
-  r?: boolean;
-}
-
-interface SearchHandlerOptions {
-  account: string;
-  domainFilter?: string;
-  truncate?: boolean;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(
-  yargs: Argv<SearchArgvOptions>,
-): Argv<SearchHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("account", {
       alias: "email",
@@ -44,24 +29,24 @@ export function builder(
 
       return true;
     })
-    .option("d", {
-      alias: "domain-filter",
+    .option("domain-filter", {
+      alias: "d",
       describe: "filter breach data by domain",
       type: "string",
     })
-    .option("t", {
-      alias: "truncate",
+    .option("truncate", {
+      alias: "t",
       describe: "truncate data to just the name of each breach",
       type: "boolean",
       default: true,
     })
-    .option("r", {
-      alias: "raw",
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data (or nothing, if no results found)",
       type: "boolean",
       default: false,
     })
-    .group(["d", "t", "r"], "Command Options:")
+    .group(["domain-filter", "truncate", "raw"], "Command Options:")
     .group(["h", "v"], "Global Options:")
     .epilog(apiKeyEpilog("Core", "Pro", "High RPM"));
 }
@@ -82,8 +67,8 @@ export async function handler({
   account,
   domainFilter: domain,
   truncate,
-  raw = false,
-}: SearchHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

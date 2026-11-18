@@ -4,6 +4,7 @@ import { breachedAccountRange } from "hibp";
 import prettyjson from "prettyjson";
 import { config } from "../config.js";
 import { apiKeyEpilog } from "../utils/api-key-epilog.js";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -16,18 +17,8 @@ export const describe =
 
 const PREFIX_LENGTH = 6;
 
-interface BarArgvOptions {
-  email: string;
-  r?: boolean;
-}
-
-interface BarHandlerOptions {
-  email: string;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(yargs: Argv<BarArgvOptions>): Argv<BarHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("email", {
       type: "string",
@@ -40,13 +31,13 @@ export function builder(yargs: Argv<BarArgvOptions>): Argv<BarHandlerOptions> {
 
       return true;
     })
-    .option("r", {
-      alias: "raw",
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data (or nothing, if no results found)",
       type: "boolean",
       default: false,
     })
-    .group(["r"], "Command Options:")
+    .group(["raw"], "Command Options:")
     .group(["h", "v"], "Global Options:")
     .epilog(apiKeyEpilog("Pro", "High RPM"));
 }
@@ -64,8 +55,8 @@ export function builder(yargs: Argv<BarArgvOptions>): Argv<BarHandlerOptions> {
  */
 export async function handler({
   email,
-  raw = false,
-}: BarHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

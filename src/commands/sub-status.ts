@@ -3,6 +3,7 @@ import { subscriptionStatus } from "hibp";
 import prettyjson from "prettyjson";
 import { config } from "../config.js";
 import { apiKeyEpilog } from "../utils/api-key-epilog.js";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -11,26 +12,16 @@ import { userAgent } from "../utils/user-agent.js";
 export const command = "subStatus";
 export const describe = "get the subscription status of your API key";
 
-interface SubStatusArgvOptions {
-  r?: boolean;
-}
-
-interface SubStatusHandlerOptions {
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(
-  yargs: Argv<SubStatusArgvOptions>,
-): Argv<SubStatusHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
-    .option("r", {
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data",
       type: "boolean",
       default: false,
     })
-    .alias("r", "raw")
-    .group(["r"], "Command Options:")
+    .group(["raw"], "Command Options:")
     .group(["h", "v"], "Global Options:")
     .epilog(apiKeyEpilog("Core", "Pro", "High RPM"));
 }
@@ -43,8 +34,8 @@ export function builder(
  * @returns {Promise<void>} the resulting Promise where output is rendered
  */
 export async function handler({
-  raw = false,
-}: SubStatusHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }
