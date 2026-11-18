@@ -1,5 +1,6 @@
 import type { Argv } from "yargs";
 import { pwnedPassword } from "hibp";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { userAgent } from "../utils/user-agent.js";
@@ -7,20 +8,8 @@ import { userAgent } from "../utils/user-agent.js";
 export const command = "pw <password>";
 export const describe = "securely check a password for public exposure";
 
-interface PwArgvOptions {
-  password: string;
-  p?: boolean;
-  r?: boolean;
-}
-
-interface PwHandlerOptions {
-  password: string;
-  pad?: boolean;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("password", {
       type: "string",
@@ -33,19 +22,19 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
 
       return true;
     })
-    .option("p", {
-      alias: "pad",
+    .option("pad", {
+      alias: "p",
       describe: "add padding to the API response to obscure the contents",
       type: "boolean",
       default: false,
     })
-    .option("r", {
-      alias: "raw",
+    .option("raw", {
+      alias: "r",
       describe: "disable the console spinner",
       type: "boolean",
       default: false,
     })
-    .group(["r", "p"], "Command Options:")
+    .group(["raw", "pad"], "Command Options:")
     .group(["h", "v"], "Global Options:");
 }
 
@@ -61,8 +50,8 @@ export function builder(yargs: Argv<PwArgvOptions>): Argv<PwHandlerOptions> {
 export async function handler({
   password,
   pad,
-  raw = false,
-}: PwHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

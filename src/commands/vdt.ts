@@ -2,6 +2,7 @@ import type { Argv } from "yargs";
 import { verifyDnsToken } from "hibp";
 import { config } from "../config.js";
 import { apiKeyEpilog } from "../utils/api-key-epilog.js";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -10,18 +11,8 @@ import { userAgent } from "../utils/user-agent.js";
 export const command = "vdt <domain>";
 export const describe = "verify a domain using its published DNS TXT record";
 
-interface VdtArgvOptions {
-  domain: string;
-  r?: boolean;
-}
-
-interface VdtHandlerOptions {
-  domain: string;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(yargs: Argv<VdtArgvOptions>): Argv<VdtHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("domain", {
       type: "string",
@@ -34,13 +25,13 @@ export function builder(yargs: Argv<VdtArgvOptions>): Argv<VdtHandlerOptions> {
 
       return true;
     })
-    .option("r", {
-      alias: "raw",
+    .option("raw", {
+      alias: "r",
       describe: "disable the console spinner",
       type: "boolean",
       default: false,
     })
-    .group(["r"], "Command Options:")
+    .group(["raw"], "Command Options:")
     .group(["h", "v"], "Global Options:")
     .epilog(apiKeyEpilog("Pro"));
 }
@@ -55,8 +46,8 @@ export function builder(yargs: Argv<VdtArgvOptions>): Argv<VdtHandlerOptions> {
  */
 export async function handler({
   domain,
-  raw = false,
-}: VdtHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

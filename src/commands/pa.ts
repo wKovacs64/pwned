@@ -3,6 +3,7 @@ import { pasteAccount } from "hibp";
 import prettyjson from "prettyjson";
 import { config } from "../config.js";
 import { apiKeyEpilog } from "../utils/api-key-epilog.js";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -11,18 +12,8 @@ import { userAgent } from "../utils/user-agent.js";
 export const command = "pa <email>";
 export const describe = "get all pastes for an account (email address)";
 
-interface PaArgvOptions {
-  email: string;
-  r?: boolean;
-}
-
-interface PaHandlerOptions {
-  email: string;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(yargs: Argv<PaArgvOptions>): Argv<PaHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("email", {
       type: "string",
@@ -35,13 +26,13 @@ export function builder(yargs: Argv<PaArgvOptions>): Argv<PaHandlerOptions> {
 
       return true;
     })
-    .option("r", {
-      alias: "raw",
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data (or nothing, if no results found)",
       type: "boolean",
       default: false,
     })
-    .group(["r"], "Command Options:")
+    .group(["raw"], "Command Options:")
     .group(["h", "v"], "Global Options:")
     .epilog(apiKeyEpilog("Core", "Pro", "High RPM"));
 }
@@ -56,8 +47,8 @@ export function builder(yargs: Argv<PaArgvOptions>): Argv<PaHandlerOptions> {
  */
 export async function handler({
   email,
-  raw = false,
-}: PaHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

@@ -18,14 +18,14 @@ describe("command: pw", () => {
   describe("normal output (default)", () => {
     it("calls spinner.start", async () => {
       expect(spinner.start).toHaveBeenCalledTimes(0);
-      await pw({ password: FOUND_PW, raw: false });
+      await pw({ password: FOUND_PW, pad: false, raw: false });
       expect(spinner.start).toHaveBeenCalledTimes(1);
     });
 
     it("with data: only calls spinner.warn", async () => {
       expect(spinner.warn).toHaveBeenCalledTimes(0);
       expect(logger.log).toHaveBeenCalledTimes(0);
-      await pw({ password: FOUND_PW, raw: false });
+      await pw({ password: FOUND_PW, pad: false, raw: false });
       expect(spinner.warn).toHaveBeenCalledTimes(1);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
@@ -33,7 +33,7 @@ describe("command: pw", () => {
     it("without data: only calls spinner.succeed", async () => {
       expect(spinner.succeed).toHaveBeenCalledTimes(0);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
-      await pw({ password: NOT_FOUND_PW, raw: false });
+      await pw({ password: NOT_FOUND_PW, pad: false, raw: false });
       expect(spinner.succeed).toHaveBeenCalledTimes(1);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
@@ -47,7 +47,7 @@ describe("command: pw", () => {
 
       expect(spinner.fail).toHaveBeenCalledTimes(0);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
-      await pw({ password: ERROR, raw: false });
+      await pw({ password: ERROR, pad: false, raw: false });
       expect(spinner.fail).toHaveBeenCalledTimes(1);
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
     });
@@ -56,14 +56,14 @@ describe("command: pw", () => {
   describe("raw mode", () => {
     it("does not call spinner.start", async () => {
       expect(spinner.start).toHaveBeenCalledTimes(0);
-      await pw({ password: FOUND_PW, raw: true });
+      await pw({ password: FOUND_PW, pad: false, raw: true });
       expect(spinner.start).toHaveBeenCalledTimes(0);
     });
 
     it("with data: only calls logger.log", async () => {
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(0);
-      await pw({ password: FOUND_PW, raw: true });
+      await pw({ password: FOUND_PW, pad: false, raw: true });
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
@@ -71,7 +71,7 @@ describe("command: pw", () => {
     it("without data: only calls logger.log", async () => {
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       loggerFns.forEach((fn) => expect(logger[fn]).toHaveBeenCalledTimes(0));
-      await pw({ password: NOT_FOUND_PW, raw: true });
+      await pw({ password: NOT_FOUND_PW, pad: false, raw: true });
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.log).toHaveBeenCalledTimes(1);
     });
@@ -85,7 +85,7 @@ describe("command: pw", () => {
 
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(0);
-      await pw({ password: ERROR, raw: true });
+      await pw({ password: ERROR, pad: false, raw: true });
       spinnerFns.forEach((fn) => expect(spinner[fn]).toHaveBeenCalledTimes(0));
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
@@ -104,13 +104,13 @@ describe("command: pw", () => {
       );
 
       expect(process.exitCode).toBeUndefined();
-      await pw({ password: ERROR, raw: false });
+      await pw({ password: ERROR, pad: false, raw: false });
       expect(process.exitCode).toBe(1);
     });
 
     it("does not set exit code on success", async () => {
       expect(process.exitCode).toBeUndefined();
-      await pw({ password: FOUND_PW, raw: false });
+      await pw({ password: FOUND_PW, pad: false, raw: false });
       expect(process.exitCode).toBeUndefined();
     });
   });

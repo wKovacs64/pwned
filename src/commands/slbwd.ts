@@ -3,6 +3,7 @@ import { stealerLogsByWebsiteDomain } from "hibp";
 import prettyjson from "prettyjson";
 import { config } from "../config.js";
 import { apiKeyEpilog } from "../utils/api-key-epilog.js";
+import type { HandlerOptions } from "../utils/handler-options.js";
 import { logger } from "../utils/logger.js";
 import { spinner } from "../utils/spinner.js";
 import { translateApiError } from "../utils/translate-api-error.js";
@@ -13,39 +14,27 @@ export const command = "slbwd <website-domain>";
 export const describe =
   "get all stealer log email addresses for a website domain";
 
-interface SlbwdArgvOptions {
-  websiteDomain: string;
-  r?: boolean;
-}
-
-interface SlbwdHandlerOptions {
-  websiteDomain: string;
-  raw?: boolean;
-}
-
 /* v8 ignore next -- @preserve */
-export function builder(
-  yargs: Argv<SlbwdArgvOptions>,
-): Argv<SlbwdHandlerOptions> {
+export function builder(yargs: Argv) {
   return yargs
     .positional("website-domain", {
       type: "string",
     })
     .demandOption("website-domain")
     .check((argv) => {
-      if (argv.websiteDomain.length === 0) {
+      if (argv["website-domain"].length === 0) {
         throw new Error("The website-domain argument must not be empty.");
       }
 
       return true;
     })
-    .option("r", {
-      alias: "raw",
+    .option("raw", {
+      alias: "r",
       describe: "output the raw JSON data (or nothing, if no results found)",
       type: "boolean",
       default: false,
     })
-    .group(["r"], "Command Options:")
+    .group(["raw"], "Command Options:")
     .group(["h", "v"], "Global Options:")
     .epilog(apiKeyEpilog("Pro"));
 }
@@ -60,8 +49,8 @@ export function builder(
  */
 export async function handler({
   websiteDomain,
-  raw = false,
-}: SlbwdHandlerOptions): Promise<void> {
+  raw,
+}: HandlerOptions<typeof builder>): Promise<void> {
   if (!raw) {
     spinner.start();
   }

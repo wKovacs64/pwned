@@ -251,9 +251,6 @@ importers:
       oxlint-tsgolint:
         specifier: 7.0.2007
         version: 7.0.2007
-      type-fest:
-        specifier: 5.10.0
-        version: 5.10.0
       typescript:
         specifier: 7.0.2
         version: 7.0.2
