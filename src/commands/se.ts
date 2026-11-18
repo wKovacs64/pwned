@@ -18,6 +18,9 @@ const EMAIL_ALIASES = [
   "webmaster",
 ] as const satisfies readonly EmailAlias[];
 
+// compile error if hibp adds an alias missing here
+true satisfies EmailAlias extends (typeof EMAIL_ALIASES)[number] ? true : false;
+
 interface SeArgvOptions {
   domain: string;
   alias: EmailAlias;
