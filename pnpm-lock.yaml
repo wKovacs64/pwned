@@ -237,8 +237,8 @@ importers:
         specifier: 8.0.1
         version: 8.0.1
       msw:
-        specifier: 3.0.6
-        version: 3.0.6(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
+        specifier: 3.0.7
+        version: 3.0.7(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
       npm-run-all2:
         specifier: 9.0.4
         version: 9.0.4
@@ -256,7 +256,7 @@ importers:
         version: 7.0.2
       vitest:
         specifier: 5.1.0
-        version: 5.1.0(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(msw@3.0.6(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
+        version: 5.1.0(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(msw@3.0.7(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
 
 packages:
 
@@ -582,8 +582,8 @@ packages:
     resolution: {integrity: sha512-6QEf6yqFbETdwGITKq57aYoPfX/3K8XFNwsAlx0C1M7o8cb79sv1M3w+tWuWvIcSbNqrLF7OD7YpZMVVz335hQ==}
     engines: {node: '>=20.0.0'}
 
-  '@msw/url@0.1.2':
-    resolution: {integrity: sha512-DdeBLQxQ+ZrtmwEmaj7GQ7lbzPCgbbbyAqOz/I4ulo68hwBpfdNvQJ5bmihJUkAAKOeCmqCIG3OFZGosqFN4mA==}
+  '@msw/url@0.1.3':
+    resolution: {integrity: sha512-IvN0kCVRFtr12gBS3Nk8PRqjWjE/80ydze2DNQ0Z74ZjnMDWibVoaYFqGv9vR2LoiUfcVgEVaBWLFyp15M5YJg==}
 
   '@mswjs/interceptors@0.45.12':
     resolution: {integrity: sha512-LLttQ/SSmseGFD/sNiHv9q34hd4gmPLN9uQdIIsU/V/o2AgTJm3dWoKHA4KTj0BzAans6CoEmpHYmp80yp69VA==}
@@ -1743,8 +1743,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  msw@3.0.6:
-    resolution: {integrity: sha512-0Axg6UFY1TulPoNYIEA2sk5h30CYa+02vSxtmcBC8WefnmewzXArKhhFyIFxIH3CgRltDLcgYHQ3k9WWWvFd0A==}
+  msw@3.0.7:
+    resolution: {integrity: sha512-e9BmzG3HN2J8VOUbEYU7OJQ7tgNS7GfPmG86jv3hKZks0iiFA0sh1colqLVjPEckU+QLWjWNximsLzykVdINgQ==}
     engines: {node: '>=22.12.0'}
     hasBin: true
     peerDependencies:
@@ -2560,7 +2560,7 @@ snapshots:
       tinyglobby: 0.2.17
       yaml: 2.9.0
 
-  '@msw/url@0.1.2': {}
+  '@msw/url@0.1.3': {}
 
   '@mswjs/interceptors@0.45.12':
     dependencies:
@@ -2885,7 +2885,7 @@ snapshots:
       obug: 3.0.0
       std-env: 4.3.0
       tinyrainbow: 3.2.0
-      vitest: 5.1.0(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(msw@3.0.6(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
+      vitest: 5.1.0(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(msw@3.0.7(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
 
   '@vitest/istanbul-lib-coverage@2.1.0': {}
 
@@ -2893,14 +2893,14 @@ snapshots:
     dependencies:
       '@vitest/istanbul-lib-coverage': 2.1.0
 
-  '@vitest/mocker@5.1.0(msw@3.0.6(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))':
+  '@vitest/mocker@5.1.0(msw@3.0.7(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       '@vitest/spy': 5.1.0
       estree-walker: 3.0.3
       magic-string: 1.4.3
     optionalDependencies:
-      msw: 3.0.6(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
+      msw: 3.0.7(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
       vite: 8.3.5(@types/node@26.6.6)(yaml@2.9.0)
 
   '@vitest/spy@5.1.0': {}
@@ -3406,10 +3406,10 @@ snapshots:
 
   ms@2.1.3: {}
 
-  msw@3.0.6(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)):
+  msw@3.0.7(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)):
     dependencies:
       '@inquirer/confirm': 6.4.0(@types/node@26.6.6)
-      '@msw/url': 0.1.2
+      '@msw/url': 0.1.3
       '@mswjs/interceptors': 0.45.12
       cookie: 2.0.1
       headers-polyfill: 5.0.1
@@ -3764,10 +3764,10 @@ snapshots:
       fsevents: 2.3.3
       yaml: 2.9.0
 
-  vitest@5.1.0(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(msw@3.0.6(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)):
+  vitest@5.1.0(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(msw@3.0.7(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)):
     dependencies:
       '@types/chai': 5.2.3
-      '@vitest/mocker': 5.1.0(msw@3.0.6(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
+      '@vitest/mocker': 5.1.0(msw@3.0.7(@types/node@26.6.6)(graphql@16.14.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0)))(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.0))
       chai: 6.3.0
       es-module-lexer: 2.3.2
       expect-type: 1.4.0
