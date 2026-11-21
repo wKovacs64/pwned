@@ -186,7 +186,7 @@ importers:
         version: 16.0.0
       hibp:
         specifier: ^16.0.0
-        version: 16.0.0
+        version: 16.0.1
       ora:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1515,8 +1515,8 @@ packages:
   headers-polyfill@5.0.1:
     resolution: {integrity: sha512-1TJ6Fih/b8h5TIcv+1+Hw0PDQWJTKDKzFZzcKOiW1wJza3XoAQlkCuXLbymPYB8+ZQyw8mHvdw560e8zVFIWyA==}
 
-  hibp@16.0.0:
-    resolution: {integrity: sha512-8gBsZC95txWLMsMANg5itArk2Sv204PjCNtXrvP/Tj7fZ4lndLgw4+Bb4tDscfpjXpa7McAQvNwKKDS0vGTPrg==}
+  hibp@16.0.1:
+    resolution: {integrity: sha512-DBXJUs5uFqQ0QuIBP0am8HsSbThG+MWxKyWM8PdMGvA79aVRH3oIblAuBlSTtpdgrOFZtQekp9z2aHZ9UQAlrA==}
     engines: {node: '>= 22.12.0'}
 
   hookified@1.15.1:
@@ -3243,7 +3243,7 @@ snapshots:
       '@types/set-cookie-parser': 2.4.10
       set-cookie-parser: 3.1.0
 
-  hibp@16.0.0: {}
+  hibp@16.0.1: {}
 
   hookified@1.15.1: {}
 
