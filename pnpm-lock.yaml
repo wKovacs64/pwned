@@ -238,8 +238,8 @@ importers:
         specifier: 5.1.1
         version: 5.1.1(vitest@5.1.1)
       '@wkovacs64/oxlint-config':
-        specifier: 0.5.0
-        version: 0.5.0(eslint@10.14.0)(oxlint-tsgolint@7.0.2008)(oxlint@1.94.0(oxlint-tsgolint@7.0.2008))
+        specifier: 0.5.1
+        version: 0.5.1(eslint@10.14.0)(oxlint-tsgolint@7.0.2008)(oxlint@1.94.0(oxlint-tsgolint@7.0.2008))
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
@@ -1230,8 +1230,8 @@ packages:
   '@vitest/spy@5.1.1':
     resolution: {integrity: sha512-6K8C6alQG1/Yc8/ZI22iJS7JEsxPdVzqtqDq+/xM4Z0mGVykemMVjLhqMy/q6/IHYG3kKD8hKSwRen/ZdyI9vQ==}
 
-  '@wkovacs64/oxlint-config@0.5.0':
-    resolution: {integrity: sha512-EfTRXEbiV4wRAeEcjU5QnkT282ZU20hEzzaogqz5LRWmLYX0X4H6fz8lMllqO88Z71GwO7kmnv0o9WsgMNKYnw==}
+  '@wkovacs64/oxlint-config@0.5.1':
+    resolution: {integrity: sha512-L2tiwfKuyl1Ll8G7mo4UejRruBfx4YGDZBwmbTb4gFnN4plTtjBe6EcMJUIQIVi2c784n0k84ukqut2nsnEZ/A==}
     engines: {node: '>=24'}
     peerDependencies:
       oxlint: '>=1.79.0 <2'
@@ -2978,7 +2978,7 @@ snapshots:
 
   '@vitest/spy@5.1.1': {}
 
-  '@wkovacs64/oxlint-config@0.5.0(eslint@10.14.0)(oxlint-tsgolint@7.0.2008)(oxlint@1.94.0(oxlint-tsgolint@7.0.2008))':
+  '@wkovacs64/oxlint-config@0.5.1(eslint@10.14.0)(oxlint-tsgolint@7.0.2008)(oxlint@1.94.0(oxlint-tsgolint@7.0.2008))':
     dependencies:
       '@oxlint/plugins': 1.92.0
       eslint-plugin-playwright: 2.12.2(eslint@10.14.0)
