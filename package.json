@@ -81,7 +81,7 @@
     "@wkovacs64/oxlint-config": "0.5.1",
     "cross-env": "10.1.0",
     "del-cli": "8.0.1",
-    "msw": "3.0.7",
+    "msw": "3.0.8",
     "npm-run-all2": "9.1.0",
     "oxfmt": "0.80.0",
     "oxlint": "1.95.0",
